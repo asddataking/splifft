@@ -5,12 +5,13 @@ import { SITE_URL } from "@/lib/site";
 const explore = [
   { href: "/shop", label: "Shop packs" },
   { href: "/services", label: "Services" },
-  { href: "/events", label: "Events" },
+  { href: "/services/events", label: "Events" },
   { href: "/cart", label: "Cart" },
 ] as const;
 
 const service = [
-  { href: "/services#roll-up", label: "Roll Up" },
+  { href: "/services/roll-up", label: "Roll Up" },
+  { href: "/services/fresh-hit", label: "Fresh Hit" },
   { href: "/locations", label: "Locations & areas" },
   { href: "/club", label: "Splifft Club" },
 ] as const;
@@ -50,12 +51,11 @@ export function SiteFooter() {
               />
             </Link>
             <p className="mt-5 max-w-md text-base leading-relaxed text-[var(--splifft-muted)]">
-              Stop rolling. Start smoking. Roll Up and Fresh Hit inside the Roll
-              Wagon — quick handoff, curated packs, and events without the
-              scramble.
+              Stop rolling. Start smoking. Roll Up, Fresh Hit, packs, and events
+              — mobile handoff, curated extras, easier seshes without the scramble.
             </p>
             <p className="mt-4 text-xs font-bold uppercase tracking-[0.2em] text-[var(--splifft-blue)]">
-              Michigan · Roll Wagon energy
+              Michigan · Mobile handoff energy
             </p>
           </div>
 
@@ -110,7 +110,7 @@ export function SiteFooter() {
                 <li>
                   <span className="text-[var(--splifft-muted)]">
                     Questions? Book Roll Up or request an event quote from the
-                    site — we&apos;ll meet you at the wagon.
+                    site — we pull up for a quick handoff.
                   </span>
                 </li>
               </ul>

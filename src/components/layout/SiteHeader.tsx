@@ -8,7 +8,7 @@ import { useCart } from "@/context/cart-context";
 const nav = [
   { href: "/shop", label: "Shop" },
   { href: "/services", label: "Services" },
-  { href: "/events", label: "Events" },
+  { href: "/services/events", label: "Events" },
   { href: "/locations", label: "Locations" },
   { href: "/club", label: "Club" },
 ] as const;

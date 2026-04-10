@@ -8,7 +8,7 @@ export const metadata = buildPageMetadata({
   path: "/shop",
   title: "Shop packs",
   description:
-    "Curated Splifft packs and bundles — make the sesh easier, pair with Roll Up.",
+    "Curated packs — upgrades to a sesh, curated for better sessions. Add to your Roll Up.",
   shareDescription: SOCIAL_SHARE_DESCRIPTION,
 });
 
@@ -26,8 +26,8 @@ export default async function ShopPage() {
             Packs & drops
           </h1>
           <p className="mt-4 max-w-2xl text-[var(--splifft-muted)]">
-            Bundles help make the sesh easier — themed packs, curated extras for a
-            better smoke. Checkout is mocked until you wire your processor.
+            Packs are part of the experience — curated extras that make it a full
+            sesh. Checkout is mocked until you wire your processor.
           </p>
         </div>
       </section>
@@ -35,11 +35,11 @@ export default async function ShopPage() {
       <section className="border-b-2 border-[var(--splifft-blue)]/40 bg-[#12121a] py-6">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <p className="text-sm font-semibold text-[var(--splifft-cream)]">
-            Make it a full sesh — add a bundle to your Roll Up appointment. We
-            prep rolls inside the Roll Wagon; packs are the curated extras.
+            Make it a full sesh — add packs to your Roll Up. Curated for better
+            sessions; we prep your smoke and hand it back ready.
           </p>
           <SplifftButton
-            href="/services#roll-up"
+            href="/services/roll-up"
             variant="primary"
             className="shrink-0"
           >
@@ -58,7 +58,7 @@ export default async function ShopPage() {
           <p className="mt-10 text-center text-sm text-[var(--splifft-muted)]">
             Something bigger?{" "}
             <Link
-              href="/events"
+              href="/services/events"
               className="font-semibold text-[var(--splifft-pink)] underline-offset-4 hover:underline"
             >
               Splifft Events & quotes

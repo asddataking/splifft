@@ -12,6 +12,69 @@ export type Database = {
   };
   public: {
     Tables: {
+      fresh_hit_bookings: {
+        Row: {
+          addon_ids: string[];
+          appointment_slot: string | null;
+          cleaning_tier_id: string;
+          cleaning_tier_label: string;
+          created_at: string;
+          customer_email: string | null;
+          customer_name: string | null;
+          customer_notes: string | null;
+          customer_phone: string | null;
+          id: string;
+          is_member_preview: boolean;
+          payment_notes: string | null;
+          piece_quantity: number;
+          service_address: string | null;
+          service_price_cents: number;
+          status: string;
+          total_cents: number;
+          user_id: string | null;
+        };
+        Insert: {
+          addon_ids?: string[];
+          appointment_slot?: string | null;
+          cleaning_tier_id: string;
+          cleaning_tier_label: string;
+          created_at?: string;
+          customer_email?: string | null;
+          customer_name?: string | null;
+          customer_notes?: string | null;
+          customer_phone?: string | null;
+          id?: string;
+          is_member_preview?: boolean;
+          payment_notes?: string | null;
+          piece_quantity?: number;
+          service_address?: string | null;
+          service_price_cents: number;
+          status?: string;
+          total_cents: number;
+          user_id?: string | null;
+        };
+        Update: {
+          addon_ids?: string[];
+          appointment_slot?: string | null;
+          cleaning_tier_id?: string;
+          cleaning_tier_label?: string;
+          created_at?: string;
+          customer_email?: string | null;
+          customer_name?: string | null;
+          customer_notes?: string | null;
+          customer_phone?: string | null;
+          id?: string;
+          is_member_preview?: boolean;
+          payment_notes?: string | null;
+          piece_quantity?: number;
+          service_address?: string | null;
+          service_price_cents?: number;
+          status?: string;
+          total_cents?: number;
+          user_id?: string | null;
+        };
+        Relationships: [];
+      };
       event_quote_requests: {
         Row: {
           created_at: string;
@@ -95,13 +158,16 @@ export type Database = {
           appointment_slot: string | null;
           created_at: string;
           customer_email: string | null;
+          customer_name: string | null;
           customer_phone: string | null;
           estimated_rolls: number;
           flower_grams: number;
           id: string;
           is_member_preview: boolean;
+          payment_notes: string | null;
           roll_size_grams: number;
           roll_size_label: string;
+          service_address: string | null;
           service_price_cents: number;
           status: string;
           tier_use_case: string | null;
@@ -114,13 +180,16 @@ export type Database = {
           appointment_slot?: string | null;
           created_at?: string;
           customer_email?: string | null;
+          customer_name?: string | null;
           customer_phone?: string | null;
           estimated_rolls: number;
           flower_grams: number;
           id?: string;
           is_member_preview?: boolean;
+          payment_notes?: string | null;
           roll_size_grams: number;
           roll_size_label: string;
+          service_address?: string | null;
           service_price_cents: number;
           status?: string;
           tier_use_case?: string | null;
@@ -133,13 +202,16 @@ export type Database = {
           appointment_slot?: string | null;
           created_at?: string;
           customer_email?: string | null;
+          customer_name?: string | null;
           customer_phone?: string | null;
           estimated_rolls?: number;
           flower_grams?: number;
           id?: string;
           is_member_preview?: boolean;
+          payment_notes?: string | null;
           roll_size_grams?: number;
           roll_size_label?: string;
+          service_address?: string | null;
           service_price_cents?: number;
           status?: string;
           tier_use_case?: string | null;

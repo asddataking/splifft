@@ -6,7 +6,7 @@ export const metadata = buildPageMetadata({
   path: "/club",
   title: "Splifft Club",
   description:
-    "Member pricing on Roll Up, priority times, VIP treatment, early drops, and upgrade perks with Splifft Club.",
+    "Splifft Club: member pricing, priority booking, VIP feel, early drops, and glass tip upgrades.",
   shareDescription: SOCIAL_SHARE_DESCRIPTION,
 });
 

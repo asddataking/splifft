@@ -15,7 +15,7 @@ export const metadata = buildPageMetadata({
   title: "Home",
   absoluteTitle: "Splifft — Stop Rolling. Start Smoking.",
   description:
-    "Splifft makes your sesh easier: Roll Up and Fresh Hit inside the Roll Wagon, curated packs, and Michigan event prep. Quick handoff — ready to smoke.",
+    "Easier sesh — no prep, no stress. Roll Up, Fresh Hit, curated packs, Splifft Events, and Club. We pull up, prep your smoke, hand it back ready.",
   shareDescription: SOCIAL_SHARE_DESCRIPTION,
 });
 

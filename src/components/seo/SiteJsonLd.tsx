@@ -9,7 +9,7 @@ const organization = {
   url: SITE_URL,
   logo: logoUrl,
   description:
-    "Mobile Roll Wagon service — Roll Up (prep inside the van), Fresh Hit glass cleaning, curated packs, and event prep. Michigan pull-ups with a quick handoff, ready to smoke.",
+    "Mobile cannabis prep — Roll Up, Fresh Hit glass care, curated packs, and event prep. Michigan handoffs; quick handoff, ready to smoke.",
   slogan: "Stop Rolling. Start Smoking.",
 };
 
@@ -19,7 +19,7 @@ const website = {
   name: "Splifft",
   url: SITE_URL,
   description:
-    "Book Roll Up, shop packs, and plan events. Splifft preps your sesh inside the Roll Wagon — no rolling, no mess, no hassle.",
+    "Book Roll Up, shop packs, plan events. Splifft preps your sesh on a mobile handoff — no prep stress, ready to go.",
   publisher: {
     "@type": "Organization",
     name: "Splifft",

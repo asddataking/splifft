@@ -5,7 +5,7 @@ export const SITE_URL = "https://getsplifft.com";
 
 /** Primary line for Open Graph / Twitter (share previews). */
 export const SOCIAL_SHARE_DESCRIPTION =
-  "We pull up. You spark. Splifft is your Roll Wagon — joints rolled and glass cleaned inside the van, curated packs, and events locked before the doorbell. Stop rolling. Start smoking. Book Roll Up, grab a pack, or host without the scramble.";
+  "Stop Rolling. Start Smoking. Splifft is mobile cannabis prep — we pull up, prep your smoke, and hand it back ready. Roll Up, Fresh Hit, packs, events, and Club. Michigan handoffs; no prep, no stress.";
 
 export const OG_IMAGE_PATH = "/splifftlogo.png";
 

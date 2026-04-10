@@ -53,7 +53,7 @@ export default async function LocationCityPage({ params }: Props) {
               ))}
             </ul>
           ) : null}
-          <SplifftButton href="/services#roll-up" variant="primary" className="mt-8">
+          <SplifftButton href="/services/roll-up" variant="primary" className="mt-8">
             Book Roll Up · {loc.name}
           </SplifftButton>
         </div>

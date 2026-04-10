@@ -44,10 +44,10 @@ export type RollSizeOption = {
 };
 
 export const rollSizeOptions: RollSizeOption[] = [
-  { id: "r05", gramsPerRoll: 0.5, label: "0.5g rolls" },
-  { id: "r07", gramsPerRoll: 0.7, label: "0.7g rolls" },
-  { id: "r10", gramsPerRoll: 1, label: "1g rolls" },
-  { id: "r20", gramsPerRoll: 2, label: "2g rolls" },
+  { id: "r05", gramsPerRoll: 0.5, label: "0.5g" },
+  { id: "r07", gramsPerRoll: 0.7, label: "0.7g" },
+  { id: "r10", gramsPerRoll: 1, label: "1g" },
+  { id: "r20", gramsPerRoll: 2, label: "2g" },
 ];
 
 /** Estimated count from flower weight and chosen roll size (floor; trim loss not modeled). */
@@ -71,7 +71,7 @@ export const bookingUpgrades: BookingUpgrade[] = [
   {
     id: "glass-tips",
     label: "Glass tips",
-    description: "Premium glass tips on your rolls — done inside the Roll Wagon.",
+    description: "Premium glass tips on your rolls — mobile handoff when ready.",
     price: 18,
   },
   {
@@ -92,12 +92,74 @@ export const bookingUpgrades: BookingUpgrade[] = [
     description: "Add our graze-ready bundle to the same appointment.",
     price: 72,
   },
+];
+
+/** Fresh Hit cleaning types — separate booking flow from Roll Up. */
+export type FreshHitCleaningType = {
+  id: string;
+  label: string;
+  description: string;
+  standardPrice: number;
+  memberPrice: number;
+};
+
+export const freshHitCleaningTypes: FreshHitCleaningType[] = [
   {
-    id: "fresh-hit",
-    label: "Fresh Hit (glass cleaning)",
-    description:
-      "Hand us your glass; we clean it inside the wagon and return it fresh.",
-    price: 35,
+    id: "small-piece",
+    label: "Small piece",
+    description: "Bowls, chillums, small pipes — quick clean, mobile handoff.",
+    standardPrice: 22,
+    memberPrice: 18,
+  },
+  {
+    id: "bong-rig",
+    label: "Bong / rig",
+    description: "Full-size water pieces — soak, rinse, and polish for a fresh hit.",
+    standardPrice: 35,
+    memberPrice: 29,
+  },
+  {
+    id: "heavy-clean",
+    label: "Heavy clean",
+    description: "Reclaim-heavy or neglected glass — extra soak time, same handoff.",
+    standardPrice: 48,
+    memberPrice: 40,
+  },
+  {
+    id: "multi-piece",
+    label: "Multi-piece",
+    description: "Multiple pieces in one stop — scope confirmed at meet-up.",
+    standardPrice: 55,
+    memberPrice: 46,
+  },
+];
+
+export type FreshHitAddon = {
+  id: string;
+  label: string;
+  description: string;
+  price: number;
+};
+
+/** Fresh Hit step-2 add-ons (priced). */
+export const freshHitAddons: FreshHitAddon[] = [
+  {
+    id: "priority-turnaround",
+    label: "Priority turnaround",
+    description: "Bump your slot — first off the line when we pull up (mock).",
+    price: 15,
+  },
+  {
+    id: "multi-piece-pricing",
+    label: "Extra piece add-on",
+    description: "Additional piece beyond your base type — stacked on the same visit.",
+    price: 12,
+  },
+  {
+    id: "protective-packaging",
+    label: "Protective packaging",
+    description: "Padded bags or tubes so glass rides home safe after handoff.",
+    price: 10,
   },
 ];
 

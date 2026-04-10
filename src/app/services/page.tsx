@@ -1,17 +1,17 @@
-import { BookingFlow } from "@/components/services/BookingFlow";
+import Link from "next/link";
 import { serviceCards } from "@/lib/data";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 import { buildPageMetadata, SOCIAL_SHARE_DESCRIPTION } from "@/lib/site";
 
 export const metadata = buildPageMetadata({
   path: "/services",
-  title: "Services & booking",
+  title: "Services",
   description:
-    "Roll Up and Fresh Hit — prep done inside the Roll Wagon. Book by flower weight, roll size, upgrades, and time.",
+    "Roll Up, Fresh Hit, Splifft Events, packs, and Club — mobile handoff cannabis prep for an easier sesh.",
   shareDescription: SOCIAL_SHARE_DESCRIPTION,
 });
 
-export default function ServicesPage() {
+export default function ServicesHubPage() {
   return (
     <div className="flex-1">
       <section className="border-b-2 border-black bg-[radial-gradient(circle_at_70%_0%,rgba(0,191,255,0.2),transparent_45%),#0a0a0c] py-14 sm:py-18">
@@ -20,19 +20,21 @@ export default function ServicesPage() {
             Services
           </p>
           <h1 className="mt-2 font-[family-name:var(--font-display)] text-4xl uppercase text-[var(--splifft-cream)] sm:text-5xl">
-            Book Roll Up
+            Easier sesh, mobile handoff
           </h1>
           <p className="mt-4 max-w-2xl text-[var(--splifft-muted)]">
-            We make the sesh easier: flower weight + your preferred roll size,
-            then upgrades and a time slot — like a service appointment. All prep
-            happens inside our Roll Wagon; you get a quick handoff when it&apos;s
-            ready.
+            We&apos;re not selling &ldquo;rolling&rdquo; or &ldquo;cleaning&rdquo;
+            as products — we sell an easier sesh: no prep, no stress,
+            ready-to-go. Roll Up, Fresh Hit, events, packs, and Club — each has
+            its own page.
           </p>
-          <div className="mt-6 max-w-2xl rounded-xl border-2 border-[var(--splifft-blue)]/50 bg-black/40 px-4 py-3 text-sm text-[var(--splifft-cream)]">
-            <strong className="text-[var(--splifft-pink)]">How it works:</strong>{" "}
-            We stay in the vehicle. We don&apos;t enter your home or organize a
-            sesh area — we prep from our mobile setup and return everything ready
-            to smoke.
+          <div className="mt-6 flex flex-wrap gap-3">
+            <SplifftButton href="/services/roll-up" variant="primary">
+              Book Roll Up
+            </SplifftButton>
+            <SplifftButton href="/shop" variant="secondary">
+              Shop packs
+            </SplifftButton>
           </div>
         </div>
       </section>
@@ -40,7 +42,7 @@ export default function ServicesPage() {
       <section className="border-b-2 border-black bg-[#101018] py-12">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 className="font-[family-name:var(--font-display)] text-2xl uppercase text-[var(--splifft-cream)]">
-            Menu board
+            Choose a service
           </h2>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             {serviceCards.map((s) => (
@@ -76,22 +78,15 @@ export default function ServicesPage() {
               </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section id="roll-up" className="bg-[#0c0c10] py-14 sm:py-18">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-cream)]">
-            Roll Up booking
-          </h2>
-          <p className="mt-2 max-w-2xl text-[var(--splifft-muted)]">
-            Configure flower amount, roll size (for your estimate), upgrades, then
-            time. Members see priority slots and VIP scheduling labels. Add Fresh
-            Hit from upgrades if you want glass cleaned the same visit.
+          <p className="mt-10 text-center text-sm text-[var(--splifft-muted)]">
+            <Link
+              href="/club"
+              className="font-semibold text-[var(--splifft-pink)] underline-offset-4 hover:underline"
+            >
+              Splifft Club
+            </Link>{" "}
+            — member pricing, priority booking, VIP feel, early drops.
           </p>
-          <div className="mt-10">
-            <BookingFlow />
-          </div>
         </div>
       </section>
     </div>

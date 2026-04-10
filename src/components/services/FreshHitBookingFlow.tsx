@@ -2,29 +2,21 @@
 
 import { useMemo, useState } from "react";
 import {
-  bookingUpgrades,
-  estimatePreRollCount,
+  freshHitAddons,
+  freshHitCleaningTypes,
   memberPrioritySlots,
-  rollSizeOptions,
-  rollingTiers,
   standardTimeSlots,
 } from "@/lib/booking-tiers";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
-const steps = [
-  "Flower",
-  "Roll size",
-  "Upgrades",
-  "Time",
-  "Checkout",
-] as const;
+const steps = ["Type", "Add-ons", "Time", "Checkout"] as const;
 
-export function BookingFlow() {
+export function FreshHitBookingFlow() {
   const [step, setStep] = useState(0);
-  const [tierIndex, setTierIndex] = useState(1);
-  const [rollSizeIndex, setRollSizeIndex] = useState(1);
-  const [upgradeIds, setUpgradeIds] = useState<Set<string>>(new Set());
+  const [typeIndex, setTypeIndex] = useState(1);
+  const [quantity, setQuantity] = useState(1);
+  const [addonIds, setAddonIds] = useState<Set<string>>(new Set());
   const [isMember, setIsMember] = useState(false);
   const [slot, setSlot] = useState<string | null>(null);
   const [bookingSaving, setBookingSaving] = useState(false);
@@ -32,13 +24,7 @@ export function BookingFlow() {
   const [serviceAddress, setServiceAddress] = useState("");
   const [paymentNotes, setPaymentNotes] = useState("");
 
-  const tier = rollingTiers[tierIndex]!;
-  const rollSize = rollSizeOptions[rollSizeIndex]!;
-
-  const estimatedRolls = useMemo(
-    () => estimatePreRollCount(tier.grams, rollSize.gramsPerRoll),
-    [tier.grams, rollSize.gramsPerRoll],
-  );
+  const cleaningType = freshHitCleaningTypes[typeIndex]!;
 
   const availableSlots = useMemo(() => {
     const base = [...standardTimeSlots];
@@ -48,19 +34,23 @@ export function BookingFlow() {
     return base;
   }, [isMember]);
 
-  const upgradesTotal = useMemo(
+  const unitPrice = isMember
+    ? cleaningType.memberPrice
+    : cleaningType.standardPrice;
+  const baseServiceTotal = unitPrice * quantity;
+
+  const addonsTotal = useMemo(
     () =>
-      bookingUpgrades
-        .filter((u) => upgradeIds.has(u.id))
-        .reduce((s, u) => s + u.price, 0),
-    [upgradeIds],
+      freshHitAddons
+        .filter((a) => addonIds.has(a.id))
+        .reduce((s, a) => s + a.price, 0),
+    [addonIds],
   );
 
-  const servicePrice = isMember ? tier.memberPrice : tier.standardPrice;
-  const total = servicePrice + upgradesTotal;
+  const total = baseServiceTotal + addonsTotal;
 
-  function toggleUpgrade(id: string) {
-    setUpgradeIds((prev) => {
+  function toggleAddon(id: string) {
+    setAddonIds((prev) => {
       const next = new Set(prev);
       if (next.has(id)) next.delete(id);
       else next.add(id);
@@ -79,17 +69,18 @@ export function BookingFlow() {
     setBookingSaving(true);
     try {
       const supabase = createSupabaseBrowserClient();
-      const { error } = await supabase.from("roll_up_bookings").insert({
-        flower_grams: tier.grams,
-        roll_size_grams: rollSize.gramsPerRoll,
-        roll_size_label: rollSize.label,
-        estimated_rolls: estimatedRolls,
-        tier_use_case: tier.useCase,
-        is_member_preview: isMember,
-        upgrade_ids: [...upgradeIds],
+      const label =
+        quantity > 1
+          ? `${cleaningType.label} × ${quantity}`
+          : cleaningType.label;
+      const { error } = await supabase.from("fresh_hit_bookings").insert({
+        cleaning_tier_id: cleaningType.id,
+        cleaning_tier_label: label,
+        piece_quantity: quantity,
+        addon_ids: [...addonIds],
         appointment_slot: slot,
-        service_price_cents: Math.round(servicePrice * 100),
-        upgrades_total_cents: Math.round(upgradesTotal * 100),
+        is_member_preview: isMember,
+        service_price_cents: Math.round(baseServiceTotal * 100),
         total_cents: Math.round(total * 100),
         customer_name: customerName.trim() || null,
         service_address: serviceAddress.trim() || null,
@@ -97,11 +88,11 @@ export function BookingFlow() {
       });
       if (error) throw error;
       alert(
-        "Booking saved. We will confirm your slot and payment next — thanks.",
+        "Fresh Hit booking saved. We will confirm your slot and payment next — thanks.",
       );
     } catch {
       alert(
-        "Could not save booking. Check your connection or try again shortly.",
+        "Could not save booking. Check your connection, run the latest Supabase migrations, then try again.",
       );
     } finally {
       setBookingSaving(false);
@@ -110,15 +101,15 @@ export function BookingFlow() {
 
   return (
     <div className="mx-auto max-w-3xl">
-      <div className="mb-8 flex flex-wrap gap-2">
+      <div className="mb-8 flex flex-wrap justify-center gap-2 sm:justify-start">
         {steps.map((label, i) => (
           <div
             key={label}
             className={`flex items-center gap-2 rounded-full border-2 px-3 py-1 text-xs font-bold uppercase tracking-wide ${
               i === step
-                ? "border-[var(--splifft-pink)] bg-[var(--splifft-pink)] text-black"
+                ? "border-[var(--splifft-blue)] bg-[var(--splifft-blue)] text-black"
                 : i < step
-                  ? "border-[var(--splifft-blue)] text-[var(--splifft-blue)]"
+                  ? "border-[var(--splifft-pink)] text-[var(--splifft-pink)]"
                   : "border-white/20 text-[var(--splifft-muted)]"
             }`}
           >
@@ -128,89 +119,76 @@ export function BookingFlow() {
         ))}
       </div>
 
-      <div className="rounded-2xl border-2 border-black bg-[var(--splifft-card)] p-6 shadow-[8px_8px_0_0_rgba(0,191,255,0.35)] sm:p-8">
+      <div className="rounded-2xl border-2 border-black bg-[var(--splifft-card)] p-6 shadow-[8px_8px_0_0_rgba(255,45,146,0.35)] sm:p-8">
         {step === 0 ? (
           <div className="space-y-6">
             <div>
               <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-ink)]">
-                Choose flower amount
+                Cleaning type
               </h2>
               <p className="mt-2 text-sm text-[var(--splifft-ink-soft)]">
-                Roll Up is priced by flower weight — mobile handoff when your prep
-                is ready. Built like a service appointment, delivered like a perfect
-                sesh.
-              </p>
-              <p className="mt-2 rounded-lg border border-[var(--splifft-pink)]/40 bg-[var(--splifft-pink)]/10 px-3 py-2 text-sm font-semibold text-[var(--splifft-ink)]">
-                3.5 grams is the minimum mobile appointment.
+                Fresh Hit is glass-only — mobile handoff, pieces back fresh. Book
+                Roll Up separately if you need flower prepped too.
               </p>
             </div>
-
+            <ul className="space-y-3">
+              {freshHitCleaningTypes.map((t, i) => {
+                const selected = i === typeIndex;
+                return (
+                  <li key={t.id}>
+                    <button
+                      type="button"
+                      onClick={() => setTypeIndex(i)}
+                      className={`w-full rounded-xl border-2 p-4 text-left transition ${
+                        selected
+                          ? "border-[var(--splifft-blue)] bg-[var(--splifft-blue)]/15 shadow-[4px_4px_0_0_rgba(0,191,255,0.45)]"
+                          : "border-black/15 bg-white/90 hover:border-[var(--splifft-pink)]/50"
+                      }`}
+                    >
+                      <div className="flex flex-wrap items-baseline justify-between gap-2">
+                        <span className="font-[family-name:var(--font-display)] text-xl uppercase text-[var(--splifft-ink)]">
+                          {t.label}
+                        </span>
+                        <span className="text-sm font-bold text-[var(--splifft-ink)]">
+                          ${t.standardPrice}{" "}
+                          <span className="font-semibold text-[var(--splifft-pink)]">
+                            · Club ${t.memberPrice}
+                          </span>
+                        </span>
+                      </div>
+                      <p className="mt-2 text-sm text-[var(--splifft-ink-soft)]">
+                        {t.description}
+                      </p>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
             <div>
               <label
-                htmlFor="weight-slider"
+                htmlFor="fh-qty"
                 className="text-xs font-bold uppercase tracking-wider text-[var(--splifft-ink-soft)]"
               >
-                Flower weight
+                Quantity (pieces this visit)
               </label>
-              <div className="mt-3 flex items-center gap-4">
+              <div className="mt-2 flex flex-wrap items-center gap-3">
                 <input
-                  id="weight-slider"
-                  type="range"
-                  min={0}
-                  max={rollingTiers.length - 1}
-                  step={1}
-                  value={tierIndex}
-                  onChange={(e) => setTierIndex(Number(e.target.value))}
-                  className="h-3 w-full flex-1 cursor-pointer accent-[var(--splifft-pink)]"
+                  id="fh-qty"
+                  type="number"
+                  min={1}
+                  max={8}
+                  value={quantity}
+                  onChange={(e) =>
+                    setQuantity(
+                      Math.min(8, Math.max(1, Number(e.target.value) || 1)),
+                    )
+                  }
+                  className="w-24 rounded-xl border-2 border-black/15 bg-white px-3 py-2 text-center text-lg font-bold text-[var(--splifft-ink)]"
                 />
-              </div>
-              <div className="mt-2 flex justify-between text-[11px] font-semibold text-[var(--splifft-ink-soft)]">
-                {rollingTiers.map((t, i) => (
-                  <button
-                    key={t.grams}
-                    type="button"
-                    onClick={() => setTierIndex(i)}
-                    className={`rounded-lg px-1 py-1 underline-offset-4 hover:underline ${
-                      i === tierIndex ? "text-[var(--splifft-pink)]" : ""
-                    }`}
-                  >
-                    {t.grams}g
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-xl border-2 border-dashed border-black/20 bg-white/80 p-4">
-              <div className="flex flex-wrap items-center gap-2">
-                <p className="font-[family-name:var(--font-display)] text-4xl text-[var(--splifft-ink)]">
-                  {tier.grams}g
-                </p>
-                {tier.popular ? (
-                  <span className="rounded-full bg-[var(--splifft-pink)] px-2 py-1 text-[10px] font-bold uppercase text-black">
-                    Most popular
-                  </span>
-                ) : null}
-              </div>
-              <p className="mt-1 text-sm font-medium text-[var(--splifft-ink)]">
-                {tier.useCase}
-              </p>
-              <div className="mt-4 flex flex-wrap gap-6">
-                <div>
-                  <p className="text-xs font-bold uppercase text-[var(--splifft-ink-soft)]">
-                    Standard
-                  </p>
-                  <p className="text-2xl font-bold text-[var(--splifft-ink)]">
-                    ${tier.standardPrice}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-xs font-bold uppercase text-[var(--splifft-ink-soft)]">
-                    Club
-                  </p>
-                  <p className="text-2xl font-bold text-[var(--splifft-pink)]">
-                    ${tier.memberPrice}
-                  </p>
-                </div>
+                <span className="text-sm text-[var(--splifft-ink-soft)]">
+                  Line total uses type price × quantity (estimate — final at
+                  handoff).
+                </span>
               </div>
             </div>
           </div>
@@ -218,87 +196,36 @@ export function BookingFlow() {
 
         {step === 1 ? (
           <div className="space-y-6">
-            <div>
-              <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-ink)]">
-                Choose roll size
-              </h2>
-              <p className="mt-2 text-sm text-[var(--splifft-ink-soft)]">
-                Pick each roll size (0.5g–2g). We estimate how many pre-rolls your
-                {tier.grams}g yields — final count matches your flower at handoff.
-              </p>
-              <p className="mt-3 rounded-lg border border-black/10 bg-white/70 px-3 py-2 text-sm text-[var(--splifft-ink)]">
-                <span className="font-bold">Example:</span> 7g at 0.7g per roll ≈
-                10 rolls. You: {tier.grams}g at {rollSize.gramsPerRoll}g → ~
-                {estimatedRolls} rolls.
-              </p>
-            </div>
-            <div
-              className="flex flex-wrap gap-2"
-              role="group"
-              aria-label="Preferred pre-roll size"
-            >
-              {rollSizeOptions.map((opt, i) => (
-                <button
-                  key={opt.id}
-                  type="button"
-                  onClick={() => setRollSizeIndex(i)}
-                  className={`rounded-full border-2 px-4 py-2 text-sm font-bold transition ${
-                    i === rollSizeIndex
-                      ? "border-[var(--splifft-pink)] bg-[var(--splifft-pink)] text-black"
-                      : "border-black/20 bg-white/90 text-[var(--splifft-ink)] hover:border-[var(--splifft-blue)]"
-                  }`}
-                >
-                  {opt.label}
-                </button>
-              ))}
-            </div>
-            <div className="rounded-xl border-2 border-black/15 bg-white/90 p-4">
-              <p className="text-xs font-bold uppercase tracking-wider text-[var(--splifft-ink-soft)]">
-                Estimated pre-rolls
-              </p>
-              <p className="mt-2 font-[family-name:var(--font-display)] text-4xl text-[var(--splifft-ink)]">
-                ~{estimatedRolls}
-              </p>
-              <p className="mt-1 text-sm text-[var(--splifft-ink-soft)]">
-                From {tier.grams}g at {rollSize.gramsPerRoll}g per roll (estimate
-                only — final count matches your flower and pack-out).
-              </p>
-            </div>
-          </div>
-        ) : null}
-
-        {step === 2 ? (
-          <div className="space-y-6">
             <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-ink)]">
-              Add upgrades
+              Add-ons
             </h2>
             <p className="text-sm text-[var(--splifft-ink-soft)]">
-              Stack add-ons for the same appointment — same stop, same handoff.
-              Fresh Hit is booked separately.
+              Stack options on the same Fresh Hit stop — priority, extra pieces,
+              protective packaging.
             </p>
             <ul className="space-y-3">
-              {bookingUpgrades.map((u) => {
-                const on = upgradeIds.has(u.id);
+              {freshHitAddons.map((a) => {
+                const on = addonIds.has(a.id);
                 return (
-                  <li key={u.id}>
+                  <li key={a.id}>
                     <label className="flex cursor-pointer gap-4 rounded-xl border-2 border-black/15 bg-white/90 p-4 transition hover:border-[var(--splifft-blue)] has-[:checked]:border-[var(--splifft-pink)] has-[:checked]:shadow-[4px_4px_0_0_rgba(255,45,146,0.35)]">
                       <input
                         type="checkbox"
                         checked={on}
-                        onChange={() => toggleUpgrade(u.id)}
+                        onChange={() => toggleAddon(a.id)}
                         className="mt-1 size-5 accent-[var(--splifft-pink)]"
                       />
                       <span className="flex-1">
                         <span className="flex flex-wrap items-baseline justify-between gap-2">
                           <span className="font-semibold text-[var(--splifft-ink)]">
-                            {u.label}
+                            {a.label}
                           </span>
                           <span className="text-sm font-bold text-[var(--splifft-ink)]">
-                            +${u.price}
+                            +${a.price}
                           </span>
                         </span>
                         <span className="mt-1 block text-sm text-[var(--splifft-ink-soft)]">
-                          {u.description}
+                          {a.description}
                         </span>
                       </span>
                     </label>
@@ -309,10 +236,10 @@ export function BookingFlow() {
           </div>
         ) : null}
 
-        {step === 3 ? (
+        {step === 2 ? (
           <div className="space-y-6">
             <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-ink)]">
-              Choose appointment time
+              Pick a time
             </h2>
             <label className="flex cursor-pointer items-center gap-3 rounded-xl border-2 border-black/15 bg-white/90 p-4">
               <input
@@ -325,8 +252,8 @@ export function BookingFlow() {
                 className="size-5 accent-[var(--splifft-pink)]"
               />
               <span className="text-sm text-[var(--splifft-ink)]">
-                <strong>Preview as Splifft Club member</strong> — priority slots,
-                better availability, VIP labels on the calendar (mock).
+                <strong>Preview as Splifft Club member</strong> — priority slots
+                and better availability (mock).
               </span>
             </label>
             <div>
@@ -347,13 +274,13 @@ export function BookingFlow() {
                       onClick={() => setSlot(t)}
                       className={`rounded-xl border-2 px-4 py-2 text-sm font-semibold transition ${
                         slot === t
-                          ? "border-[var(--splifft-pink)] bg-[var(--splifft-pink)] text-black"
-                          : "border-black/20 bg-white/90 text-[var(--splifft-ink)] hover:border-[var(--splifft-blue)]"
+                          ? "border-[var(--splifft-blue)] bg-[var(--splifft-blue)] text-black"
+                          : "border-black/20 bg-white/90 text-[var(--splifft-ink)] hover:border-[var(--splifft-pink)]"
                       }`}
                     >
                       {t}
                       {isPriority ? (
-                        <span className="ml-2 text-[10px] font-bold uppercase text-[var(--splifft-blue)]">
+                        <span className="ml-2 text-[10px] font-bold uppercase text-[var(--splifft-pink)]">
                           Club / VIP
                         </span>
                       ) : null}
@@ -365,40 +292,37 @@ export function BookingFlow() {
           </div>
         ) : null}
 
-        {step === 4 ? (
+        {step === 3 ? (
           <div className="space-y-6">
             <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-ink)]">
               Checkout
             </h2>
             <p className="text-sm text-[var(--splifft-ink-soft)]">
-              Review your Roll Up booking, then add contact and payment notes —
-              wire real checkout when you launch.
+              Review Fresh Hit, then name, meet-up, and payment notes — same vibe
+              as Roll Up checkout.
             </p>
             <dl className="space-y-3 rounded-xl border-2 border-black/15 bg-white/90 p-4 text-sm">
               <div className="flex justify-between gap-4">
-                <dt>Roll Up</dt>
+                <dt>Service</dt>
+                <dd className="text-right font-semibold">Fresh Hit</dd>
+              </div>
+              <div className="flex justify-between gap-4">
+                <dt>Type</dt>
                 <dd className="font-semibold text-right">
-                  {tier.grams}g · {tier.useCase}
+                  {cleaningType.label}
+                  {quantity > 1 ? ` × ${quantity}` : ""}
                 </dd>
               </div>
               <div className="flex justify-between gap-4">
-                <dt>Roll size</dt>
-                <dd className="font-semibold">{rollSize.label}</dd>
+                <dt>Service ({isMember ? "Club" : "Standard"})</dt>
+                <dd className="font-semibold">${baseServiceTotal}</dd>
               </div>
-              <div className="flex justify-between gap-4">
-                <dt>Est. pre-rolls</dt>
-                <dd className="font-semibold">~{estimatedRolls}</dd>
-              </div>
-              <div className="flex justify-between gap-4">
-                <dt>Service price ({isMember ? "Club" : "Standard"})</dt>
-                <dd className="font-semibold">${servicePrice}</dd>
-              </div>
-              {bookingUpgrades
-                .filter((u) => upgradeIds.has(u.id))
-                .map((u) => (
-                  <div key={u.id} className="flex justify-between gap-4">
-                    <dt>{u.label}</dt>
-                    <dd className="font-semibold">+${u.price}</dd>
+              {freshHitAddons
+                .filter((a) => addonIds.has(a.id))
+                .map((a) => (
+                  <div key={a.id} className="flex justify-between gap-4">
+                    <dt>{a.label}</dt>
+                    <dd className="font-semibold">+${a.price}</dd>
                   </div>
                 ))}
               <div className="flex justify-between gap-4 border-t border-dashed border-black/20 pt-3 text-base">
@@ -416,13 +340,13 @@ export function BookingFlow() {
               </h3>
               <div>
                 <label
-                  htmlFor="ru-name"
+                  htmlFor="fh-name"
                   className="text-xs font-bold uppercase text-[var(--splifft-ink-soft)]"
                 >
                   Name
                 </label>
                 <input
-                  id="ru-name"
+                  id="fh-name"
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
                   autoComplete="name"
@@ -432,32 +356,31 @@ export function BookingFlow() {
               </div>
               <div>
                 <label
-                  htmlFor="ru-address"
+                  htmlFor="fh-address"
                   className="text-xs font-bold uppercase text-[var(--splifft-ink-soft)]"
                 >
                   Address / meet-up
                 </label>
                 <input
-                  id="ru-address"
+                  id="fh-address"
                   value={serviceAddress}
                   onChange={(e) => setServiceAddress(e.target.value)}
-                  autoComplete="street-address"
-                  placeholder="Where we pull up — street, city, notes"
+                  placeholder="Where we pull up"
                   className="mt-1 w-full rounded-xl border-2 border-black/15 bg-white px-3 py-3 text-[var(--splifft-ink)]"
                 />
               </div>
               <div>
                 <label
-                  htmlFor="ru-pay"
+                  htmlFor="fh-pay"
                   className="text-xs font-bold uppercase text-[var(--splifft-ink-soft)]"
                 >
                   Payment
                 </label>
                 <input
-                  id="ru-pay"
+                  id="fh-pay"
                   value={paymentNotes}
                   onChange={(e) => setPaymentNotes(e.target.value)}
-                  placeholder="e.g. Card on file, Apple Pay, invoice (mock)"
+                  placeholder="e.g. Card on file (mock)"
                   className="mt-1 w-full rounded-xl border-2 border-black/15 bg-white px-3 py-3 text-[var(--splifft-ink)]"
                 />
               </div>
@@ -473,7 +396,7 @@ export function BookingFlow() {
               }
               onClick={() => void submitBooking()}
             >
-              {bookingSaving ? "Saving…" : "Place booking"}
+              {bookingSaving ? "Saving…" : "Place Fresh Hit booking"}
             </SplifftButton>
           </div>
         ) : null}

@@ -20,7 +20,7 @@ const PACK_IMAGES: Record<string, { url: string; alt: string }> = {
 
 const DEFAULT_PACK = {
   url: "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=1200&q=85",
-  alt: "Splifft pack — Roll Wagon street energy",
+  alt: "Splifft pack — street-night energy",
 };
 
 export function getPackImage(slug: string): { url: string; alt: string } {

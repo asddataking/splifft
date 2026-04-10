@@ -69,7 +69,7 @@ export const products: Product[] = [
     slug: "mystery-pack",
     name: "Mystery Pack",
     description:
-      "A rotating drop from the wagon. Same Splifft standards — a little surprise in every box.",
+      "A rotating Splifft drop — a little surprise in every box, same standards.",
     price: 55,
     memberPrice: 47,
     badge: "Limited",
@@ -82,41 +82,41 @@ export const serviceCards: ServiceCard[] = [
     id: "roll-up",
     name: "Roll Up",
     description:
-      "We pull up, you hand us your flower, and we prep it inside the Roll Wagon so it's ready when we hand it back. Quick handoff — we stay in the vehicle.",
+      "We pull up, take your flower, prep it, and hand it back ready — mobile handoff, no stress, built like a service appointment.",
     startingAt: 58,
     memberStartingAt: 49,
     ctaLabel: "Book Roll Up",
-    ctaHref: "/services#roll-up",
+    ctaHref: "/services/roll-up",
   },
   {
     id: "fresh-hit",
     name: "Fresh Hit",
     description:
-      "Hand us your glass, we clean it inside the wagon, and return it fresh. No mess for you — done in our mobile setup.",
-    startingAt: 29,
-    memberStartingAt: 24,
+      "Glass cleaning as a mobile handoff — we prep it and hand pieces back fresh. Easier sesh, zero sink time for you.",
+    startingAt: 22,
+    memberStartingAt: 18,
     ctaLabel: "Book Fresh Hit",
-    ctaHref: "/services#roll-up",
+    ctaHref: "/services/fresh-hit",
   },
   {
     id: "splifft-events",
     name: "Splifft Events",
     description:
-      "Custom prepped cannabis for events — delivered ready before guests arrive. Not every event is the same; we build to your brief.",
+      "Cannabis, prepared for your event — ready before guests arrive. Custom quote; we build to your brief.",
     startingAt: 0,
     memberStartingAt: 0,
     ctaLabel: "Request quote",
-    ctaHref: "/events",
+    ctaHref: "/services/events",
     quoteOnly: true,
   },
 ];
 
 export const membershipPerks: string[] = [
-  "Member pricing on Roll Up",
-  "Priority appointment times & VIP scheduling visibility",
-  "VIP treatment at every handoff",
-  "Early access to drops",
-  "Glass tips and select upgrades included or discounted",
+  "Member pricing on Roll Up (and Fresh Hit where listed)",
+  "Priority booking & better availability on busy windows",
+  "VIP feel at every handoff — you skip the scramble",
+  "Early drops before the public shop opens",
+  "Glass tips & select pack upgrades included or discounted",
 ];
 
 export const locations: LocationArea[] = [
@@ -124,28 +124,28 @@ export const locations: LocationArea[] = [
     slug: "port-huron",
     name: "Port Huron",
     blurb:
-      "Roll Wagon routes with tight scheduling. Meet at the curb or lot — everything’s prepped inside the vehicle, then handed back ready.",
+      "Mobile handoff routes with tight scheduling. Meet at the curb or lot — we prep it and hand it back ready.",
     neighborhoods: ["Downtown", "Fort Gratiot", "Marysville"],
   },
   {
     slug: "detroit",
     name: "Detroit",
     blurb:
-      "City runs with event-aware timing. We prep from the wagon so you’re not rolling when you should be hosting.",
+      "City runs with event-aware timing — mobile handoff so you’re not prepping when you should be hosting.",
     neighborhoods: ["Midtown", "Corktown", "New Center"],
   },
   {
     slug: "ann-arbor",
     name: "Ann Arbor",
     blurb:
-      "Neighborhood-friendly stops — appointment slots built around real traffic. Quick handoff; all work stays in the Roll Wagon.",
+      "Neighborhood-friendly stops — appointment slots built around real traffic. Quick handoff; everything stays mobile until you get it back.",
     neighborhoods: ["Kerrytown", "Burns Park", "Ypsi line"],
   },
   {
     slug: "macomb-county",
     name: "Macomb County",
     blurb:
-      "Suburban meetups with the same mobile workstation: rolled, cleaned, or packed — done inside the wagon, returned ready to smoke.",
+      "Suburban meetups with the same mobile prep standard — rolled, cleaned, or packed, then handed back ready to smoke.",
     neighborhoods: ["Sterling Heights", "Clinton Twp", "Shelby Twp"],
   },
 ];

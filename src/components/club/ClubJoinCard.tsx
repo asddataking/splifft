@@ -25,7 +25,7 @@ export function ClubJoinCard() {
       >
         Join Splifft Club
       </SplifftButton>
-      <SplifftButton href="/services#roll-up" variant="ghost" className="mt-3 w-full">
+      <SplifftButton href="/services/roll-up" variant="ghost" className="mt-3 w-full">
         Book Roll Up with Club slots
       </SplifftButton>
     </div>

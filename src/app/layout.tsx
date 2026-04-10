@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     template: "%s | Splifft",
   },
   description:
-    "Splifft makes your sesh easier: Roll Up and Fresh Hit done inside the Roll Wagon, themed packs, and event prep across Michigan. Quick handoff — ready to smoke.",
+    "Splifft makes your sesh easier — Roll Up, Fresh Hit, packs, events, and Club. Mobile handoff: we prep it and hand it back ready. Michigan.",
   applicationName: "Splifft",
   authors: [{ name: "Splifft", url: SITE_URL }],
   creator: "Splifft",
@@ -44,8 +44,8 @@ export const metadata: Metadata = {
   keywords: [
     "Splifft",
     "Roll Up",
-    "Roll Wagon",
-    "mobile prep",
+    "mobile handoff",
+    "cannabis prep",
     "Michigan",
     "pre-rolls",
     "cannabis packs",

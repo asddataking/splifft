@@ -78,13 +78,13 @@ export default function CartPage() {
             </div>
             <p className="mt-4 text-sm text-[var(--splifft-muted)]">
               <Link
-                href="/services#roll-up"
+                href="/services/roll-up"
                 className="font-semibold text-[var(--splifft-pink)] underline-offset-4 hover:underline"
               >
                 Add a Roll Up appointment
               </Link>{" "}
-              — bundles pair perfectly; we prep inside the Roll Wagon and hand
-              everything back ready.
+              — bundles pair perfectly with mobile handoff prep; everything comes
+              back ready to go.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <SplifftButton

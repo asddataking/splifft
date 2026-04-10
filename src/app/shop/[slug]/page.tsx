@@ -125,8 +125,8 @@ export default async function ProductDetailPage({ params }: Props) {
                 Order this pack
               </p>
               <p className="mt-1 text-sm text-[var(--splifft-muted)]">
-                Add to cart, then checkout when you wire payments. Pair with Roll
-                Up for a full sesh.
+                Add to cart — packs upgrade the sesh. Pair with Roll Up for a full
+                experience; curated for better sessions.
               </p>
               <div className="mt-6">
                 <ProductAddToCart product={product} />
@@ -137,7 +137,7 @@ export default async function ProductDetailPage({ params }: Props) {
               <SplifftButton href="/cart" variant="secondary">
                 View cart
               </SplifftButton>
-              <SplifftButton href="/services#roll-up" variant="ghost">
+              <SplifftButton href="/services/roll-up" variant="ghost">
                 Book Roll Up
               </SplifftButton>
             </div>

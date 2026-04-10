@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { products } from "@/lib/data";
+import { getShopProducts } from "@/lib/catalog";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 
@@ -9,7 +9,9 @@ export const metadata = {
     "Curated Splifft packs and bundles — make the sesh easier, pair with Roll Up.",
 };
 
-export default function ShopPage() {
+export default async function ShopPage() {
+  const products = await getShopProducts();
+
   return (
     <div className="flex-1">
       <section className="border-b-2 border-black bg-[radial-gradient(circle_at_30%_-10%,rgba(255,45,146,0.25),transparent_50%),#0c0c10] py-14 sm:py-18">

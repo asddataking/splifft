@@ -3,9 +3,11 @@
 import { useState } from "react";
 import { eventUpsells } from "@/lib/data";
 import { SplifftButton } from "@/components/ui/SplifftButton";
+import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 export function EventQuoteForm() {
   const [upsells, setUpsells] = useState<Set<string>>(new Set());
+  const [saving, setSaving] = useState(false);
 
   function toggle(id: string) {
     setUpsells((prev) => {
@@ -16,11 +18,38 @@ export function EventQuoteForm() {
     });
   }
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    alert(
-      "Quote request received (mock). No pricing shown — your team follows up with a custom proposal.",
-    );
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const eventType = String(fd.get("eventType") ?? "").trim();
+    const guests = Number(fd.get("guests"));
+    const eventDate = String(fd.get("date") ?? "");
+    const location = String(fd.get("location") ?? "").trim();
+
+    setSaving(true);
+    try {
+      const supabase = createSupabaseBrowserClient();
+      const { error } = await supabase.from("event_quote_requests").insert({
+        event_type: eventType,
+        guest_count: guests,
+        event_date: eventDate,
+        venue_location: location,
+        upsell_ids: Array.from(upsells),
+      });
+      if (error) throw error;
+      form.reset();
+      setUpsells(new Set());
+      alert(
+        "Quote request sent. We will follow up with a custom proposal — no pricing until we talk.",
+      );
+    } catch {
+      alert(
+        "Could not send quote request. Check your connection or try again shortly.",
+      );
+    } finally {
+      setSaving(false);
+    }
   }
 
   return (
@@ -96,8 +125,13 @@ export function EventQuoteForm() {
             />
           </div>
         </div>
-        <SplifftButton type="submit" variant="primary" className="mt-8 w-full">
-          Request custom quote
+        <SplifftButton
+          type="submit"
+          variant="primary"
+          className="mt-8 w-full"
+          disabled={saving}
+        >
+          {saving ? "Sending…" : "Request custom quote"}
         </SplifftButton>
       </form>
 

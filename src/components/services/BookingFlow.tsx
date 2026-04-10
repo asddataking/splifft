@@ -11,6 +11,7 @@ import {
   standardTimeSlots,
 } from "@/lib/booking-tiers";
 import { SplifftButton } from "@/components/ui/SplifftButton";
+import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 const steps = [
   "Flower",
@@ -27,6 +28,7 @@ export function BookingFlow() {
   const [upgradeIds, setUpgradeIds] = useState<Set<string>>(new Set());
   const [isMember, setIsMember] = useState(false);
   const [slot, setSlot] = useState<string | null>(null);
+  const [bookingSaving, setBookingSaving] = useState(false);
 
   const tier = rollingTiers[tierIndex]!;
   const rollSize = rollSizeOptions[rollSizeIndex]!;
@@ -69,6 +71,36 @@ export function BookingFlow() {
   }
   function prevStep() {
     setStep((s) => Math.max(s - 1, 0));
+  }
+
+  async function submitBooking() {
+    setBookingSaving(true);
+    try {
+      const supabase = createSupabaseBrowserClient();
+      const { error } = await supabase.from("roll_up_bookings").insert({
+        flower_grams: tier.grams,
+        roll_size_grams: rollSize.gramsPerRoll,
+        roll_size_label: rollSize.label,
+        estimated_rolls: estimatedRolls,
+        tier_use_case: tier.useCase,
+        is_member_preview: isMember,
+        upgrade_ids: [...upgradeIds],
+        appointment_slot: slot,
+        service_price_cents: Math.round(servicePrice * 100),
+        upgrades_total_cents: Math.round(upgradesTotal * 100),
+        total_cents: Math.round(total * 100),
+      });
+      if (error) throw error;
+      alert(
+        "Booking saved. We will confirm your slot and payment next — thanks.",
+      );
+    } catch {
+      alert(
+        "Could not save booking. Check your connection or try again shortly.",
+      );
+    } finally {
+      setBookingSaving(false);
+    }
   }
 
   return (
@@ -371,9 +403,10 @@ export function BookingFlow() {
             <SplifftButton
               variant="primary"
               className="w-full"
-              onClick={() => alert("Thanks — connect Stripe or your POS next.")}
+              disabled={bookingSaving}
+              onClick={() => void submitBooking()}
             >
-              Place booking
+              {bookingSaving ? "Saving…" : "Place booking"}
             </SplifftButton>
           </div>
         ) : null}

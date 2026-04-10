@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { products, serviceCards } from "@/lib/data";
+import { getShopProducts } from "@/lib/catalog";
+import { serviceCards } from "@/lib/data";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { membershipPerks, locations } from "@/lib/data";
@@ -206,8 +207,9 @@ export function WowGridSection() {
   );
 }
 
-export function FeaturedPacksSection() {
-  const featured = products.filter((p) =>
+export async function FeaturedPacksSection() {
+  const catalog = await getShopProducts();
+  const featured = catalog.filter((p) =>
     ["pack-cabin", "pack-dankndevour", "pack-lake", "pack-mystery"].includes(
       p.id,
     ),

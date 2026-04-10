@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { locations } from "@/lib/data";
 import { SplifftButton } from "@/components/ui/SplifftButton";
+import { buildPageMetadata, SOCIAL_SHARE_DESCRIPTION } from "@/lib/site";
 
-export const metadata = {
-  title: "Locations & service areas | Splifft",
+export const metadata = buildPageMetadata({
+  path: "/locations",
+  title: "Locations & service areas",
   description:
     "Where Splifft pulls up — Port Huron, Detroit, Ann Arbor, Macomb County and expanding.",
-};
+  shareDescription: SOCIAL_SHARE_DESCRIPTION,
+});
 
 export default function LocationsPage() {
   return (

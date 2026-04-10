@@ -2,12 +2,15 @@ import Link from "next/link";
 import { getShopProducts } from "@/lib/catalog";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { SplifftButton } from "@/components/ui/SplifftButton";
+import { buildPageMetadata, SOCIAL_SHARE_DESCRIPTION } from "@/lib/site";
 
-export const metadata = {
-  title: "Shop packs | Splifft",
+export const metadata = buildPageMetadata({
+  path: "/shop",
+  title: "Shop packs",
   description:
     "Curated Splifft packs and bundles — make the sesh easier, pair with Roll Up.",
-};
+  shareDescription: SOCIAL_SHARE_DESCRIPTION,
+});
 
 export default async function ShopPage() {
   const products = await getShopProducts();

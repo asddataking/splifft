@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { locations } from "@/lib/data";
 import { SplifftButton } from "@/components/ui/SplifftButton";
+import { buildPageMetadata, SOCIAL_SHARE_DESCRIPTION } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -13,10 +14,12 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const loc = locations.find((l) => l.slug === slug);
   if (!loc) return { title: "Location | Splifft" };
-  return {
-    title: `${loc.name} service area | Splifft`,
+  return buildPageMetadata({
+    path: `/locations/${loc.slug}`,
+    title: `${loc.name} service area`,
     description: loc.blurb,
-  };
+    shareDescription: SOCIAL_SHARE_DESCRIPTION,
+  });
 }
 
 export default async function LocationCityPage({ params }: Props) {

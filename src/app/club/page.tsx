@@ -1,11 +1,14 @@
 import { ClubJoinCard } from "@/components/club/ClubJoinCard";
 import { membershipPerks } from "@/lib/data";
+import { buildPageMetadata, SOCIAL_SHARE_DESCRIPTION } from "@/lib/site";
 
-export const metadata = {
-  title: "Splifft Club | Membership",
+export const metadata = buildPageMetadata({
+  path: "/club",
+  title: "Splifft Club",
   description:
     "Member pricing on Roll Up, priority times, VIP treatment, early drops, and upgrade perks with Splifft Club.",
-};
+  shareDescription: SOCIAL_SHARE_DESCRIPTION,
+});
 
 export default function ClubPage() {
   return (

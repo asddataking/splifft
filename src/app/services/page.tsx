@@ -1,12 +1,15 @@
 import { BookingFlow } from "@/components/services/BookingFlow";
 import { serviceCards } from "@/lib/data";
 import { SplifftButton } from "@/components/ui/SplifftButton";
+import { buildPageMetadata, SOCIAL_SHARE_DESCRIPTION } from "@/lib/site";
 
-export const metadata = {
-  title: "Services & booking | Splifft",
+export const metadata = buildPageMetadata({
+  path: "/services",
+  title: "Services & booking",
   description:
     "Roll Up and Fresh Hit — prep done inside the Roll Wagon. Book by flower weight, roll size, upgrades, and time.",
-};
+  shareDescription: SOCIAL_SHARE_DESCRIPTION,
+});
 
 export default function ServicesPage() {
   return (

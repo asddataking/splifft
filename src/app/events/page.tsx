@@ -1,10 +1,13 @@
 import { EventQuoteForm } from "@/components/events/EventQuoteForm";
+import { buildPageMetadata, SOCIAL_SHARE_DESCRIPTION } from "@/lib/site";
 
-export const metadata = {
-  title: "Events | Splifft",
+export const metadata = buildPageMetadata({
+  path: "/events",
+  title: "Events",
   description:
     "Splifft Events — cannabis prepared for your event. Custom quote; guest-ready packs available as add-ons.",
-};
+  shareDescription: SOCIAL_SHARE_DESCRIPTION,
+});
 
 export default function EventsPage() {
   return (

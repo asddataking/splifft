@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getShopProducts } from "@/lib/catalog";
 import { serviceCards } from "@/lib/data";
 import { SplifftButton } from "@/components/ui/SplifftButton";
-import { ProductCard } from "@/components/shop/ProductCard";
+import { ShopProductCard } from "@/components/shop/ShopProductCard";
 import { membershipPerks, locations } from "@/lib/data";
 
 export function HeroSection() {
@@ -234,7 +234,7 @@ export async function FeaturedPacksSection() {
         </div>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {featured.map((p) => (
-            <ProductCard key={p.id} product={p} />
+            <ShopProductCard key={p.id} product={p} />
           ))}
         </div>
       </div>

@@ -7,6 +7,9 @@ export type Product = {
   memberPrice: number;
   badge?: string;
   highlights?: string[];
+  /** Filled by catalog layer via `getPackImage(slug)` for shop UI. */
+  imageUrl?: string;
+  imageAlt?: string;
 };
 
 export type ServiceCard = {

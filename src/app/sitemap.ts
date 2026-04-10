@@ -1,11 +1,13 @@
 import type { MetadataRoute } from "next";
+import { getShopProducts } from "@/lib/catalog";
 import { locations } from "@/lib/data";
 import { SITE_URL } from "@/lib/site";
 
 const base = SITE_URL;
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date();
+  const products = await getShopProducts();
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: base, lastModified, changeFrequency: "weekly", priority: 1 },
@@ -24,5 +26,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  return [...staticRoutes, ...locationRoutes];
+  const shopProductRoutes: MetadataRoute.Sitemap = products.map((p) => ({
+    url: `${base}/shop/${p.slug}`,
+    lastModified,
+    changeFrequency: "weekly" as const,
+    priority: 0.85,
+  }));
+
+  return [...staticRoutes, ...shopProductRoutes, ...locationRoutes];
 }

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getShopProducts } from "@/lib/catalog";
-import { ProductCard } from "@/components/shop/ProductCard";
+import { ShopProductCard } from "@/components/shop/ShopProductCard";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 import { buildPageMetadata, SOCIAL_SHARE_DESCRIPTION } from "@/lib/site";
 
@@ -50,9 +50,9 @@ export default async function ShopPage() {
 
       <section className="bg-[#0a0a0c] py-14 sm:py-18">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {products.map((p) => (
-              <ProductCard key={p.id} product={p} />
+              <ShopProductCard key={p.id} product={p} />
             ))}
           </div>
           <p className="mt-10 text-center text-sm text-[var(--splifft-muted)]">

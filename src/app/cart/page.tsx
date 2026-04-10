@@ -78,13 +78,13 @@ export default function CartPage() {
             </div>
             <p className="mt-4 text-sm text-[var(--splifft-muted)]">
               <Link
-                href="/services"
+                href="/services#roll-up"
                 className="font-semibold text-[var(--splifft-pink)] underline-offset-4 hover:underline"
               >
-                Make it ready with your sesh
+                Add a Roll Up appointment
               </Link>{" "}
-              — add rolling, cleaning, and prep to your order flow when you wire
-              fulfillment.
+              — bundles pair perfectly; we prep inside the Roll Wagon and hand
+              everything back ready.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <SplifftButton

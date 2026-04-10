@@ -3,23 +3,38 @@
 import { useMemo, useState } from "react";
 import {
   bookingUpgrades,
+  estimatePreRollCount,
   memberPrioritySlots,
   minMobileGrams,
+  rollSizeOptions,
   rollingTiers,
   standardTimeSlots,
 } from "@/lib/booking-tiers";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 
-const steps = ["Weight", "Upgrades", "Time", "Checkout"] as const;
+const steps = [
+  "Flower",
+  "Roll size",
+  "Upgrades",
+  "Time",
+  "Checkout",
+] as const;
 
 export function BookingFlow() {
   const [step, setStep] = useState(0);
   const [tierIndex, setTierIndex] = useState(1);
+  const [rollSizeIndex, setRollSizeIndex] = useState(1);
   const [upgradeIds, setUpgradeIds] = useState<Set<string>>(new Set());
   const [isMember, setIsMember] = useState(false);
   const [slot, setSlot] = useState<string | null>(null);
 
   const tier = rollingTiers[tierIndex]!;
+  const rollSize = rollSizeOptions[rollSizeIndex]!;
+
+  const estimatedRolls = useMemo(
+    () => estimatePreRollCount(tier.grams, rollSize.gramsPerRoll),
+    [tier.grams, rollSize.gramsPerRoll],
+  );
 
   const availableSlots = useMemo(() => {
     const base = [...standardTimeSlots];
@@ -81,12 +96,14 @@ export function BookingFlow() {
           <div className="space-y-6">
             <div>
               <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-ink)]">
-                Select weight
+                Choose flower amount
               </h2>
               <p className="mt-2 text-sm text-[var(--splifft-ink-soft)]">
-                Mobile service requires a{" "}
-                <strong>{minMobileGrams}g minimum</strong>. Pricing is by weight,
-                not joint count — estimates below reflect typical roll sizes.
+                Roll Up is priced by flower weight. All prep is done inside our
+                Roll Wagon — quick handoff when it&apos;s ready.
+              </p>
+              <p className="mt-2 rounded-lg border border-[var(--splifft-pink)]/40 bg-[var(--splifft-pink)]/10 px-3 py-2 text-sm font-semibold text-[var(--splifft-ink)]">
+                {minMobileGrams} grams is the minimum mobile rolling appointment.
               </p>
             </div>
 
@@ -95,7 +112,7 @@ export function BookingFlow() {
                 htmlFor="weight-slider"
                 className="text-xs font-bold uppercase tracking-wider text-[var(--splifft-ink-soft)]"
               >
-                Weight stops
+                Flower weight
               </label>
               <div className="mt-3 flex items-center gap-4">
                 <input
@@ -139,13 +156,6 @@ export function BookingFlow() {
               <p className="mt-1 text-sm font-medium text-[var(--splifft-ink)]">
                 {tier.useCase}
               </p>
-              <p className="mt-3 text-sm text-[var(--splifft-ink-soft)]">
-                Est. pre-roll output:{" "}
-                <strong>
-                  {tier.rollEstimateMin}–{tier.rollEstimateMax}
-                </strong>{" "}
-                (range)
-              </p>
               <div className="mt-4 flex flex-wrap gap-6">
                 <div>
                   <p className="text-xs font-bold uppercase text-[var(--splifft-ink-soft)]">
@@ -170,11 +180,59 @@ export function BookingFlow() {
 
         {step === 1 ? (
           <div className="space-y-6">
+            <div>
+              <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-ink)]">
+                Choose roll size
+              </h2>
+              <p className="mt-2 text-sm text-[var(--splifft-ink-soft)]">
+                Pick how fat you want each roll. We&apos;ll estimate how many
+                pre-rolls that yields from your {tier.grams}g — clean config, like
+                building your sesh.
+              </p>
+            </div>
+            <div
+              className="flex flex-wrap gap-2"
+              role="group"
+              aria-label="Preferred pre-roll size"
+            >
+              {rollSizeOptions.map((opt, i) => (
+                <button
+                  key={opt.id}
+                  type="button"
+                  onClick={() => setRollSizeIndex(i)}
+                  className={`rounded-full border-2 px-4 py-2 text-sm font-bold transition ${
+                    i === rollSizeIndex
+                      ? "border-[var(--splifft-pink)] bg-[var(--splifft-pink)] text-black"
+                      : "border-black/20 bg-white/90 text-[var(--splifft-ink)] hover:border-[var(--splifft-blue)]"
+                  }`}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+            <div className="rounded-xl border-2 border-black/15 bg-white/90 p-4">
+              <p className="text-xs font-bold uppercase tracking-wider text-[var(--splifft-ink-soft)]">
+                Estimated pre-rolls
+              </p>
+              <p className="mt-2 font-[family-name:var(--font-display)] text-4xl text-[var(--splifft-ink)]">
+                ~{estimatedRolls}
+              </p>
+              <p className="mt-1 text-sm text-[var(--splifft-ink-soft)]">
+                From {tier.grams}g at {rollSize.gramsPerRoll}g per roll (estimate
+                only — final count matches your flower and pack-out).
+              </p>
+            </div>
+          </div>
+        ) : null}
+
+        {step === 2 ? (
+          <div className="space-y-6">
             <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-ink)]">
-              Upgrades
+              Add upgrades
             </h2>
             <p className="text-sm text-[var(--splifft-ink-soft)]">
-              Stack what you want. We bundle it into the same appointment.
+              Stack add-ons for the same appointment. Everything stays in the Roll
+              Wagon until handoff.
             </p>
             <ul className="space-y-3">
               {bookingUpgrades.map((u) => {
@@ -209,10 +267,10 @@ export function BookingFlow() {
           </div>
         ) : null}
 
-        {step === 2 ? (
+        {step === 3 ? (
           <div className="space-y-6">
             <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-ink)]">
-              Pick a time
+              Choose appointment time
             </h2>
             <label className="flex cursor-pointer items-center gap-3 rounded-xl border-2 border-black/15 bg-white/90 p-4">
               <input
@@ -225,8 +283,8 @@ export function BookingFlow() {
                 className="size-5 accent-[var(--splifft-pink)]"
               />
               <span className="text-sm text-[var(--splifft-ink)]">
-                <strong>Preview as Splifft Club member</strong> — unlocks
-                priority time slots (mock).
+                <strong>Preview as Splifft Club member</strong> — priority time
+                slots, VIP scheduling visibility, and preferred windows (mock).
               </span>
             </label>
             <div>
@@ -254,7 +312,7 @@ export function BookingFlow() {
                       {t}
                       {isPriority ? (
                         <span className="ml-2 text-[10px] font-bold uppercase text-[var(--splifft-blue)]">
-                          Club
+                          Club / VIP
                         </span>
                       ) : null}
                     </button>
@@ -265,21 +323,29 @@ export function BookingFlow() {
           </div>
         ) : null}
 
-        {step === 3 ? (
+        {step === 4 ? (
           <div className="space-y-6">
             <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-ink)]">
               Checkout
             </h2>
             <p className="text-sm text-[var(--splifft-ink-soft)]">
-              Review your booking. Payment integration hooks in here when you go
+              Review your Roll Up booking. Payment hooks in here when you go
               live.
             </p>
             <dl className="space-y-3 rounded-xl border-2 border-black/15 bg-white/90 p-4 text-sm">
               <div className="flex justify-between gap-4">
-                <dt>Mobile prep</dt>
-                <dd className="font-semibold">
+                <dt>Roll Up</dt>
+                <dd className="font-semibold text-right">
                   {tier.grams}g · {tier.useCase}
                 </dd>
+              </div>
+              <div className="flex justify-between gap-4">
+                <dt>Roll size</dt>
+                <dd className="font-semibold">{rollSize.label}</dd>
+              </div>
+              <div className="flex justify-between gap-4">
+                <dt>Est. pre-rolls</dt>
+                <dd className="font-semibold">~{estimatedRolls}</dd>
               </div>
               <div className="flex justify-between gap-4">
                 <dt>Service price ({isMember ? "Club" : "Standard"})</dt>
@@ -299,7 +365,7 @@ export function BookingFlow() {
               </div>
               <div className="flex justify-between gap-4 text-[var(--splifft-ink-soft)]">
                 <dt>Time</dt>
-                <dd>{slot ?? "Not selected — go back to step 3"}</dd>
+                <dd>{slot ?? "Not selected — go back to step 4"}</dd>
               </div>
             </dl>
             <SplifftButton

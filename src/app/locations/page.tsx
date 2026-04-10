@@ -83,8 +83,8 @@ export default function LocationsPage() {
                 Drop a line — we expand routes based on demand.
               </p>
             </div>
-            <SplifftButton href="/services" variant="secondary">
-              Check your area (book)
+            <SplifftButton href="/services#roll-up" variant="secondary">
+              Book Roll Up
             </SplifftButton>
           </div>
         </div>

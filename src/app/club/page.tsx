@@ -4,7 +4,7 @@ import { membershipPerks } from "@/lib/data";
 export const metadata = {
   title: "Splifft Club | Membership",
   description:
-    "Priority booking, VIP pull-ups, better pricing, and early drops with Splifft Club.",
+    "Member pricing on Roll Up, priority times, VIP treatment, early drops, and upgrade perks with Splifft Club.",
 };
 
 export default function ClubPage() {
@@ -19,8 +19,8 @@ export default function ClubPage() {
             Members skip the scramble
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-[var(--splifft-muted)]">
-            Priority booking, sharper pricing, and upgrades that make every
-            pull-up feel dialed — without losing the street-brand energy.
+            Member pricing on Roll Up, priority appointment times, and VIP
+            treatment at every handoff — the smart move if you Splifft often.
           </p>
         </div>
       </section>

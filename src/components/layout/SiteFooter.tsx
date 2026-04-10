@@ -9,8 +9,9 @@ export function SiteFooter() {
             SPLIFFT
           </p>
           <p className="mt-2 max-w-sm text-sm text-[var(--splifft-muted)]">
-            Stop Rolling. Start Smoking. Mobile sesh prep with food-truck energy
-            and appointment-level precision.
+            Stop Rolling. Start Smoking. Roll Up & Fresh Hit in the Roll Wagon —
+            food-truck energy, appointment-level booking, quick handoff ready to
+            smoke.
           </p>
         </div>
         <div>
@@ -55,8 +56,8 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <Link href="/services" className="text-[var(--splifft-cream)]">
-                Book prep
+              <Link href="/services#roll-up" className="text-[var(--splifft-cream)]">
+                Roll Up
               </Link>
             </li>
             <li>

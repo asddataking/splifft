@@ -6,7 +6,7 @@ import { SplifftButton } from "@/components/ui/SplifftButton";
 export const metadata = {
   title: "Shop packs | Splifft",
   description:
-    "Curated Splifft packs — Cabin, DankNDevour, Lake Day, Mystery drops.",
+    "Curated Splifft packs and bundles — make the sesh easier, pair with Roll Up.",
 };
 
 export default function ShopPage() {
@@ -21,8 +21,8 @@ export default function ShopPage() {
             Packs & drops
           </h1>
           <p className="mt-4 max-w-2xl text-[var(--splifft-muted)]">
-            Add packs to your cart like a storefront. Checkout is mocked — wire
-            your processor when you are ready to charge.
+            Bundles help make the sesh easier — themed packs, curated extras for a
+            better smoke. Checkout is mocked until you wire your processor.
           </p>
         </div>
       </section>
@@ -30,11 +30,15 @@ export default function ShopPage() {
       <section className="border-b-2 border-[var(--splifft-blue)]/40 bg-[#12121a] py-6">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <p className="text-sm font-semibold text-[var(--splifft-cream)]">
-            Make it ready with your sesh — book rolling, cleaning, and full prep
-            in one pull-up.
+            Make it a full sesh — add a bundle to your Roll Up appointment. We
+            prep rolls inside the Roll Wagon; packs are the curated extras.
           </p>
-          <SplifftButton href="/services" variant="primary" className="shrink-0">
-            Book prep
+          <SplifftButton
+            href="/services#roll-up"
+            variant="primary"
+            className="shrink-0"
+          >
+            Book Roll Up
           </SplifftButton>
         </div>
       </section>
@@ -47,12 +51,12 @@ export default function ShopPage() {
             ))}
           </div>
           <p className="mt-10 text-center text-sm text-[var(--splifft-muted)]">
-            Looking for something custom?{" "}
+            Something bigger?{" "}
             <Link
               href="/events"
               className="font-semibold text-[var(--splifft-pink)] underline-offset-4 hover:underline"
             >
-              Events & quotes
+              Splifft Events & quotes
             </Link>
           </p>
         </div>

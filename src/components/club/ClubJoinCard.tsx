@@ -15,8 +15,8 @@ export function ClubJoinCard() {
         </span>
       </p>
       <p className="mt-4 text-sm text-[var(--splifft-ink-soft)]">
-        Placeholder — connect billing when you launch. Members see better pack
-        pricing and unlocked slots in booking.
+        Placeholder — connect billing when you launch. Members get Roll Up
+        pricing, priority times, VIP scheduling, and upgrade perks.
       </p>
       <SplifftButton
         variant="primary"
@@ -25,8 +25,8 @@ export function ClubJoinCard() {
       >
         Join Splifft Club
       </SplifftButton>
-      <SplifftButton href="/services" variant="ghost" className="mt-3 w-full">
-        See booking with Club slots
+      <SplifftButton href="/services#roll-up" variant="ghost" className="mt-3 w-full">
+        Book Roll Up with Club slots
       </SplifftButton>
     </div>
   );

@@ -103,10 +103,11 @@ export function EventQuoteForm() {
 
       <div>
         <h2 className="font-[family-name:var(--font-display)] text-2xl uppercase text-[var(--splifft-cream)]">
-          Add-ons & upsells
+          Optional add-ons
         </h2>
         <p className="mt-2 text-sm text-[var(--splifft-muted)]">
-          Select what you want quoted — still no dollar amounts until we talk.
+          Guest-ready smoke packs and other extras — fold into your custom quote.
+          No dollar amounts here; every event is different.
         </p>
         <ul className="mt-6 space-y-3">
           {eventUpsells.map((u) => (

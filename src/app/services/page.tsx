@@ -5,7 +5,7 @@ import { SplifftButton } from "@/components/ui/SplifftButton";
 export const metadata = {
   title: "Services & booking | Splifft",
   description:
-    "Book mobile sesh prep — weight-based rolling, upgrades, and appointment checkout.",
+    "Roll Up and Fresh Hit — prep done inside the Roll Wagon. Book by flower weight, roll size, upgrades, and time.",
 };
 
 export default function ServicesPage() {
@@ -17,19 +17,27 @@ export default function ServicesPage() {
             Services
           </p>
           <h1 className="mt-2 font-[family-name:var(--font-display)] text-4xl uppercase text-[var(--splifft-cream)] sm:text-5xl">
-            Book your sesh
+            Book Roll Up
           </h1>
           <p className="mt-4 max-w-2xl text-[var(--splifft-muted)]">
-            Rolling priced by weight — not joint count. Add upgrades, pick a
-            slot, and check out like you ordered from the window.
+            We make the sesh easier: flower weight + your preferred roll size,
+            then upgrades and a time slot — like a service appointment. All prep
+            happens inside our Roll Wagon; you get a quick handoff when it&apos;s
+            ready.
           </p>
+          <div className="mt-6 max-w-2xl rounded-xl border-2 border-[var(--splifft-blue)]/50 bg-black/40 px-4 py-3 text-sm text-[var(--splifft-cream)]">
+            <strong className="text-[var(--splifft-pink)]">How it works:</strong>{" "}
+            We stay in the vehicle. We don&apos;t enter your home or organize a
+            sesh area — we prep from our mobile setup and return everything ready
+            to smoke.
+          </div>
         </div>
       </section>
 
       <section className="border-b-2 border-black bg-[#101018] py-12">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 className="font-[family-name:var(--font-display)] text-2xl uppercase text-[var(--splifft-cream)]">
-            Menu board — service cards
+            Menu board
           </h2>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             {serviceCards.map((s) => (
@@ -43,39 +51,43 @@ export default function ServicesPage() {
                 <p className="mt-2 text-sm text-[var(--splifft-ink-soft)]">
                   {s.description}
                 </p>
-                <p className="mt-4 text-xs font-bold uppercase text-[var(--splifft-pink)]">
-                  From ${s.startingAt}{" "}
-                  <span className="text-[var(--splifft-ink-soft)]">
-                    · Club ${s.memberStartingAt}
-                  </span>
-                </p>
+                {s.quoteOnly ? (
+                  <p className="mt-4 text-xs font-bold uppercase text-[var(--splifft-pink)]">
+                    Custom quote
+                  </p>
+                ) : (
+                  <p className="mt-4 text-xs font-bold uppercase text-[var(--splifft-pink)]">
+                    From ${s.startingAt}{" "}
+                    <span className="text-[var(--splifft-ink-soft)]">
+                      · Club ${s.memberStartingAt}
+                    </span>
+                  </p>
+                )}
+                <SplifftButton
+                  href={s.ctaHref}
+                  variant="secondary"
+                  className="mt-4 w-full text-sm"
+                >
+                  {s.ctaLabel}
+                </SplifftButton>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="rolling" className="bg-[#0c0c10] py-14 sm:py-18">
+      <section id="roll-up" className="bg-[#0c0c10] py-14 sm:py-18">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-cream)]">
-            Rolling & prep booking
+            Roll Up booking
           </h2>
           <p className="mt-2 max-w-2xl text-[var(--splifft-muted)]">
-            Step through weight, upgrades, time, and checkout. Members see extra
-            slots in step 3.
+            Configure flower amount, roll size (for your estimate), upgrades, then
+            time. Members see priority slots and VIP scheduling labels. Add Fresh
+            Hit from upgrades if you want glass cleaned the same visit.
           </p>
           <div className="mt-10">
             <BookingFlow />
-          </div>
-          <div className="mx-auto mt-12 max-w-3xl rounded-xl border border-[var(--splifft-blue)]/40 bg-black/30 p-4 text-center text-sm text-[var(--splifft-muted)]">
-            Need glass-only or a quick reset?{" "}
-            <SplifftButton
-              href="/services#rolling"
-              variant="ghost"
-              className="inline-flex min-h-0 px-3 py-2 text-sm"
-            >
-              Same flow — toggle upgrades
-            </SplifftButton>
           </div>
         </div>
       </section>

@@ -12,7 +12,7 @@ export function HeroSection() {
       <div className="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:flex-row lg:items-center lg:py-24">
         <div className="flex-1 space-y-6">
           <p className="inline-flex items-center gap-2 rounded-full border border-[var(--splifft-pink)]/50 bg-black/40 px-3 py-1 text-xs font-bold uppercase tracking-widest text-[var(--splifft-pink)]">
-            Genius Bar energy. Food truck pull-up.
+            Roll Wagon · Built for an easier sesh
           </p>
           <div className="rounded-2xl border-2 border-[var(--splifft-blue)]/60 bg-black/50 p-6 shadow-[0_0_40px_rgba(255,45,146,0.15)] sm:inline-block sm:p-8">
             <p className="font-[family-name:var(--font-display)] text-5xl leading-none text-[var(--splifft-cream)] sm:text-6xl lg:text-7xl">
@@ -26,14 +26,17 @@ export function HeroSection() {
             Stop Rolling. Start Smoking.
           </h1>
           <p className="max-w-xl text-lg text-[var(--splifft-muted)]">
-            We pull up and get your sesh ready — clean, fast, and done right.
+            We pull up, prep your smoke inside the Roll Wagon, and hand it back
+            ready. A hassle-free way to get your sesh ready — no rolling, no
+            mess, no hassle.
           </p>
           <p className="max-w-xl text-base font-medium text-[var(--splifft-cream)]/90">
-            Built like a service appointment. Delivered like a perfect sesh.
+            Quick handoff. Clean prep. Ready to smoke. Everything prepped from our
+            mobile setup — we stay in the vehicle and return everything ready.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <SplifftButton href="/services" variant="primary">
-              Book your sesh
+            <SplifftButton href="/services#roll-up" variant="primary">
+              Book Roll Up
             </SplifftButton>
             <SplifftButton href="/shop" variant="secondary">
               Shop packs
@@ -53,10 +56,10 @@ export function HeroSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-5">
               <p className="font-[family-name:var(--font-display)] text-2xl text-[var(--splifft-cream)]">
-                WE PULL UP. YOU SPARK.
+                ROLL UP. HAND OFF. SMOKE.
               </p>
               <p className="mt-1 text-sm text-[var(--splifft-muted)]">
-                No prep. No stress. Everything handled.
+                Done inside the Roll Wagon. You get a quick handoff, ready to go.
               </p>
             </div>
           </div>
@@ -69,22 +72,22 @@ export function HeroSection() {
 export function ActionCardsSection() {
   const cards = [
     {
-      title: "Shop your sesh",
-      body: "Curated bundles + mystery drops",
-      cta: "Shop now",
-      href: "/shop",
+      title: "Roll Up",
+      body: "We pull up, take your flower, prep it inside the Roll Wagon, and hand it back ready.",
+      cta: "Book Roll Up",
+      href: "/services#roll-up",
       stripe: "from-[var(--splifft-pink)]/25 to-transparent",
     },
     {
-      title: "Get it ready",
-      body: "Rolling, cleaning, full sesh prep",
-      cta: "Book appointment",
-      href: "/services",
+      title: "Shop your sesh",
+      body: "Curated bundles, themed packs, and easy upgrades for a better smoke.",
+      cta: "Shop packs",
+      href: "/shop",
       stripe: "from-[var(--splifft-blue)]/25 to-transparent",
     },
     {
       title: "Plan your event",
-      body: "Cannabis prepared for your event",
+      body: "Cannabis prepared for your event — planned, guest-ready, and stress-free.",
       cta: "Request quote",
       href: "/events",
       stripe: "from-white/10 to-transparent",
@@ -95,10 +98,11 @@ export function ActionCardsSection() {
     <section className="border-b-2 border-black bg-[var(--splifft-ink)] py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase tracking-wide text-[var(--splifft-cream)] sm:text-4xl">
-          Order it like a menu
+          Start with Roll Up
         </h2>
         <p className="mt-2 max-w-2xl text-[var(--splifft-muted)]">
-          Three ways to get Splifft-level ready. Tap what matches your day.
+          Book rolling in the wagon, grab packs for an easier sesh, or plan an
+          event — same Splifft standard: quick handoff, we handle the rest.
         </p>
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {cards.map((c) => (
@@ -129,28 +133,28 @@ export function ActionCardsSection() {
 
 const wowTiles = [
   {
-    title: "Rolling, handled",
-    caption: "We pull up and prep your sesh",
+    title: "Roll Up",
+    caption: "We prep it inside the wagon.",
     src: "https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=800&q=80",
-    alt: "Hands preparing ingredients on a cutting board — stylized prep scene",
+    alt: "Close-up hands prepping at a workstation",
   },
   {
-    title: "Dirty → clean",
-    caption: "No stress. No rolling.",
+    title: "Fresh Hit",
+    caption: "Dirty glass in, clean glass out — done in the Roll Wagon.",
     src: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800&q=80",
-    alt: "Sparkling clean glassware on a counter",
+    alt: "Sparkling clean glassware",
   },
   {
-    title: "Pack building",
-    caption: "Clean. Consistent. Ready.",
+    title: "Bundles & packs",
+    caption: "Themed extras — your smoke, ready to go.",
     src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80",
-    alt: "Carefully arranged picnic spread and containers",
+    alt: "Carefully arranged food and containers",
   },
   {
-    title: "Roll wagon setup",
-    caption: "Ready when you are",
+    title: "Inside the workstation",
+    caption: "No rolling. No hassle. Handed back ready.",
     src: "https://images.unsplash.com/photo-1525695230005-efd074980869?w=800&q=80",
-    alt: "Outdoor festival wagon and supplies",
+    alt: "Mobile setup and supplies",
   },
 ];
 
@@ -161,15 +165,15 @@ export function WowGridSection() {
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-cream)] sm:text-4xl">
-              The wagon work
+              Easier sesh, same pull-up
             </h2>
             <p className="mt-2 max-w-xl text-[var(--splifft-muted)]">
-              Bold visuals, simple promise: your sesh is productized, labeled,
-              and handed off like a pro kitchen pass.
+              Roll Up and Fresh Hit — cleaned, rolled, and handed back ready.
+              All work stays in the Roll Wagon until handoff.
             </p>
           </div>
-          <SplifftButton href="/services" variant="ghost" className="self-start">
-            Book prep
+          <SplifftButton href="/services#roll-up" variant="ghost" className="self-start">
+            Book Roll Up
           </SplifftButton>
         </div>
         <div className="mt-10 grid gap-4 sm:grid-cols-2">
@@ -218,7 +222,8 @@ export function FeaturedPacksSection() {
               Featured packs
             </h2>
             <p className="mt-2 text-[var(--splifft-muted)]">
-              Dispo-style cards. Clear pricing. Add to cart like you mean it.
+              Make it a full sesh — themed bundles pair perfectly with Roll Up.
+              Curated extras for a better smoke.
             </p>
           </div>
           <SplifftButton href="/shop" variant="secondary">
@@ -243,8 +248,9 @@ export function ServicesPreviewSection() {
           Services — appointment style
         </h2>
         <p className="mt-2 max-w-2xl text-[var(--splifft-muted)]">
-          Pick your reset level. We show up, execute, and bounce — with a clean
-          handoff.
+          Roll Up is the main move: we stay in the vehicle, prep everything in the
+          Roll Wagon, and hand it back ready. Fresh Hit and Events round out the
+          menu.
         </p>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {serviceCards.map((s) => (
@@ -258,14 +264,24 @@ export function ServicesPreviewSection() {
               <p className="mt-3 flex-1 text-sm text-[var(--splifft-muted)]">
                 {s.description}
               </p>
-              <p className="mt-4 text-xs font-bold uppercase tracking-wide text-[var(--splifft-pink)]">
-                Starting at ${s.startingAt}{" "}
-                <span className="text-[var(--splifft-muted)]">
-                  · Club ${s.memberStartingAt}
-                </span>
-              </p>
-              <SplifftButton href="/services" variant="primary" className="mt-5">
-                Book now
+              {s.quoteOnly ? (
+                <p className="mt-4 text-xs font-bold uppercase tracking-wide text-[var(--splifft-pink)]">
+                  Custom quote
+                </p>
+              ) : (
+                <p className="mt-4 text-xs font-bold uppercase tracking-wide text-[var(--splifft-pink)]">
+                  From ${s.startingAt}{" "}
+                  <span className="text-[var(--splifft-muted)]">
+                    · Club ${s.memberStartingAt}
+                  </span>
+                </p>
+              )}
+              <SplifftButton
+                href={s.ctaHref}
+                variant="primary"
+                className="mt-5"
+              >
+                {s.ctaLabel}
               </SplifftButton>
             </article>
           ))}
@@ -284,9 +300,9 @@ export function EventsTeaserSection() {
             Stop Rolling. Start Hosting.
           </h2>
           <p className="mt-4 max-w-2xl text-lg text-[var(--splifft-muted)]">
-            Cannabis, prepared for your event. We plan the prep, stage the
-            packs, and time the pull-up so you are not juggling trays during
-            introductions.
+            Cannabis, prepared for your event. Everything ready before your guests
+            arrive — prep, pack-outs, and timing handled Splifft-style (custom
+            quote; not every event is the same).
           </p>
           <SplifftButton href="/events" variant="secondary" className="mt-8">
             Request custom quote
@@ -305,8 +321,7 @@ export function ServiceAreaSection() {
           Where we pull up
         </h2>
         <p className="mt-2 text-[var(--splifft-muted)]">
-          Michigan routes with room to grow. More cities landing on the board
-          soon.
+          Roll Wagon routes across Michigan — curb or lot meet, quick handoff.
         </p>
         <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {locations.map((loc) => (
@@ -342,8 +357,8 @@ export function MembershipSection() {
               Splifft Club
             </h2>
             <p className="mt-4 text-[var(--splifft-muted)]">
-              Priority lanes, sharper pricing, and the kind of upgrades that make
-              a pull-up feel VIP — without the corporate stiffness.
+              The smart move if you Roll Up on repeat — better pricing, priority
+              times, and VIP treatment at every handoff.
             </p>
             <ul className="mt-6 space-y-3">
               {membershipPerks.map((perk) => (
@@ -368,8 +383,8 @@ export function MembershipSection() {
               </span>
             </p>
             <p className="mt-4 text-sm text-[var(--splifft-ink-soft)]">
-              Lock the perks. Stack the savings. Skip the scramble when drops go
-              live.
+              Stack savings on Roll Up, skip the line on drops, and ride with
+              member-first scheduling.
             </p>
             <SplifftButton href="/club" variant="primary" className="mt-8 w-full sm:w-auto">
               Join Splifft Club

@@ -28,10 +28,11 @@ export const metadata: Metadata = {
     template: "%s | Splifft",
   },
   description:
-    "Splifft pulls up and gets your sesh ready — curated packs, appointment-based prep, and event-ready cannabis. Built like a service appointment. Delivered like a perfect sesh.",
+    "Splifft makes your sesh easier — Roll Up and Fresh Hit done inside the Roll Wagon, curated packs, and events. Quick handoff, ready to smoke.",
   openGraph: {
     title: "Splifft",
-    description: "Stop Rolling. Start Smoking. Mobile sesh prep with Splifft.",
+    description:
+      "Stop Rolling. Start Smoking. Roll Up, Fresh Hit, packs & events — hassle-free, built for an easier sesh.",
     url: "https://getsplifft.com",
     siteName: "Splifft",
     locale: "en_US",

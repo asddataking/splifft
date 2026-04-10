@@ -3,49 +3,62 @@ export type RollingTier = {
   useCase: string;
   standardPrice: number;
   memberPrice: number;
-  rollEstimateMin: number;
-  rollEstimateMax: number;
   popular?: boolean;
 };
 
-/** Mobile rolling is priced by weight, not joint count. Estimates assume typical roll sizes. */
+/** Roll Up is priced by flower weight. Pre-roll count is derived from weight + roll size in the booking UI. */
 export const rollingTiers: RollingTier[] = [
   {
     grams: 3.5,
     useCase: "Quick personal sesh",
     standardPrice: 58,
     memberPrice: 49,
-    rollEstimateMin: 5,
-    rollEstimateMax: 8,
   },
   {
     grams: 7,
     useCase: "Weekend ready",
     standardPrice: 98,
     memberPrice: 83,
-    rollEstimateMin: 10,
-    rollEstimateMax: 16,
     popular: true,
   },
   {
     grams: 14,
-    useCase: "Group session",
+    useCase: "Group-ready",
     standardPrice: 175,
     memberPrice: 149,
-    rollEstimateMin: 22,
-    rollEstimateMax: 32,
   },
   {
     grams: 28,
     useCase: "Event prep",
     standardPrice: 320,
     memberPrice: 272,
-    rollEstimateMin: 44,
-    rollEstimateMax: 60,
   },
 ];
 
 export const minMobileGrams = 3.5;
+
+export type RollSizeOption = {
+  id: string;
+  gramsPerRoll: number;
+  label: string;
+};
+
+export const rollSizeOptions: RollSizeOption[] = [
+  { id: "r05", gramsPerRoll: 0.5, label: "0.5g rolls" },
+  { id: "r07", gramsPerRoll: 0.7, label: "0.7g rolls" },
+  { id: "r10", gramsPerRoll: 1, label: "1g rolls" },
+  { id: "r20", gramsPerRoll: 2, label: "2g rolls" },
+];
+
+/** Estimated count from flower weight and chosen roll size (floor; trim loss not modeled). */
+export function estimatePreRollCount(
+  flowerGrams: number,
+  gramsPerRoll: number,
+): number {
+  if (gramsPerRoll <= 0) return 0;
+  const n = flowerGrams / gramsPerRoll;
+  return Math.max(0, Math.floor(n + 1e-9));
+}
 
 export type BookingUpgrade = {
   id: string;
@@ -58,25 +71,32 @@ export const bookingUpgrades: BookingUpgrade[] = [
   {
     id: "glass-tips",
     label: "Glass tips",
-    description: "Premium tips on every roll in your batch.",
+    description: "Premium glass tips on your rolls — done inside the Roll Wagon.",
     price: 18,
   },
   {
-    id: "packaging",
-    label: "Packaging upgrade",
-    description: "Labeled jars, travel-tight bags, and a clean presentation.",
+    id: "tube-packaging",
+    label: "Tube packaging",
+    description: "Protective tubes so your rolls travel clean after handoff.",
     price: 14,
   },
   {
+    id: "labeled-packs",
+    label: "Labeled packs",
+    description: "Clear labels on every pack — easy to grab and go.",
+    price: 12,
+  },
+  {
     id: "dankndevour",
-    label: "Add DankNDevour Pack",
-    description: "Drop in our graze-ready bundle with your appointment.",
+    label: "DankNDevour bundle",
+    description: "Add our graze-ready bundle to the same appointment.",
     price: 72,
   },
   {
     id: "fresh-hit",
     label: "Fresh Hit (glass cleaning)",
-    description: "Add a glass pass so everything hits clean the same day.",
+    description:
+      "Hand us your glass; we clean it inside the wagon and return it fresh.",
     price: 35,
   },
 ];

@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 /** Production site URL — used for metadata, sitemap, JSON-LD, and social cards. */
 export const SITE_URL = "https://getsplifft.com";
 
+/** Google Analytics 4 measurement ID (gtag.js). */
+export const GOOGLE_ANALYTICS_MEASUREMENT_ID = "G-9FT8YGPK4K";
+
 /** Primary line for Open Graph / Twitter (share previews). */
 export const SOCIAL_SHARE_DESCRIPTION =
   "Stop Rolling. Start Smoking. Splifft is mobile cannabis prep — we pull up, prep your smoke, and hand it back ready. Roll Up, Fresh Hit, packs, events, and Club. Michigan handoffs; no prep, no stress.";

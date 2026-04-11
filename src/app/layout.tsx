@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { Bebas_Neue, Geist_Mono, Outfit } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteJsonLd } from "@/components/seo/SiteJsonLd";
 import {
+  GOOGLE_ANALYTICS_MEASUREMENT_ID,
   OG_IMAGE_PATH,
   SITE_URL,
   SOCIAL_SHARE_DESCRIPTION,
@@ -109,6 +111,18 @@ export default function RootLayout({
           <SiteFooter />
         </Providers>
         <Analytics />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics-gtag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GOOGLE_ANALYTICS_MEASUREMENT_ID}');
+          `}
+        </Script>
       </body>
     </html>
   );

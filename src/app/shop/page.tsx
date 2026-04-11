@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { getShopProducts } from "@/lib/catalog";
 import { ShopProductCard } from "@/components/shop/ShopProductCard";
+import { ShopSplifftMonthlyTeaserCard } from "@/components/shop/ShopSplifftMonthlyTeaserCard";
 import { SplifftButton } from "@/components/ui/SplifftButton";
+import { getSplifftMonthlyTeaserProduct } from "@/lib/splifft-monthly-teaser";
 import { buildPageMetadata, SOCIAL_SHARE_DESCRIPTION } from "@/lib/site";
 
 export const metadata = buildPageMetadata({
@@ -14,6 +16,7 @@ export const metadata = buildPageMetadata({
 
 export default async function ShopPage() {
   const products = await getShopProducts();
+  const splifftMonthly = getSplifftMonthlyTeaserProduct();
 
   return (
     <div className="flex-1">
@@ -50,7 +53,11 @@ export default async function ShopPage() {
 
       <section className="bg-[#0a0a0c] py-14 sm:py-18">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <p className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-[var(--splifft-pink)]">
+            Featured — coming soon
+          </p>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <ShopSplifftMonthlyTeaserCard product={splifftMonthly} />
             {products.map((p) => (
               <ShopProductCard key={p.id} product={p} />
             ))}

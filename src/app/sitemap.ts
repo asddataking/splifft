@@ -51,5 +51,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.85,
   }));
 
-  return [...staticRoutes, ...shopProductRoutes, ...locationRoutes];
+  const teaserShopUrl: MetadataRoute.Sitemap = [
+    {
+      url: `${base}/shop/splifft-monthly`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 0.88,
+    },
+  ];
+
+  return [
+    ...staticRoutes,
+    ...teaserShopUrl,
+    ...shopProductRoutes,
+    ...locationRoutes,
+  ];
 }

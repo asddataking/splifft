@@ -10,6 +10,8 @@ export type Product = {
   /** Filled by catalog layer via `getPackImage(slug)` for shop UI. */
   imageUrl?: string;
   imageAlt?: string;
+  /** Teaser-only: visible in shop, not purchasable, no cart. */
+  comingSoon?: boolean;
 };
 
 export type ServiceCard = {

@@ -11,6 +11,10 @@ export function ProductAddToCart({ product }: Props) {
   const { addLine } = useCart();
   const [qty, setQty] = useState(1);
 
+  if (product.comingSoon) {
+    return null;
+  }
+
   return (
     <div className="flex flex-col gap-4 sm:flex-row sm:items-end">
       <div>

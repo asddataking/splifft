@@ -1,5 +1,9 @@
 /** Hero imagery per pack slug — swap for assets under /public when ready. */
 const PACK_IMAGES: Record<string, { url: string; alt: string }> = {
+  "splifft-monthly": {
+    url: "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=1200&q=85",
+    alt: "Premium pre-rolls and curated session aesthetic — Splifft Monthly teaser",
+  },
   "cabin-pack": {
     url: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=1200&q=85",
     alt: "Warm cabin interior with wood and soft light — Cabin Pack vibe",

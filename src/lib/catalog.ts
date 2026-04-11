@@ -1,6 +1,10 @@
 import type { Product } from "@/lib/data";
 import { products as staticProducts } from "@/lib/data";
 import { getPackImage } from "@/lib/pack-images";
+import {
+  SPLIFFT_MONTHLY_SLUG,
+  getSplifftMonthlyTeaserProduct,
+} from "@/lib/splifft-monthly-teaser";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { Tables } from "@/types/database.types";
 
@@ -46,6 +50,9 @@ export async function getShopProducts(): Promise<Product[]> {
 }
 
 export async function getProductBySlug(slug: string): Promise<Product | null> {
+  if (slug === SPLIFFT_MONTHLY_SLUG) {
+    return getSplifftMonthlyTeaserProduct();
+  }
   const products = await getShopProducts();
   return products.find((p) => p.slug === slug) ?? null;
 }

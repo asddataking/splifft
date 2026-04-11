@@ -2,12 +2,17 @@
 
 import { useMemo, useState } from "react";
 import {
+  HASH_HOLE_PRICE_MULTIPLIER,
   bookingUpgrades,
   estimatePreRollCount,
+  formatUsd,
   memberPrioritySlots,
   rollSizeOptions,
   rollingTiers,
+  roundUsd,
   standardTimeSlots,
+  type InfusionId,
+  type RollStyleId,
 } from "@/lib/booking-tiers";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
@@ -23,6 +28,8 @@ const steps = [
 export function BookingFlow() {
   const [step, setStep] = useState(0);
   const [tierIndex, setTierIndex] = useState(1);
+  const [rollStyle, setRollStyle] = useState<RollStyleId>("regular");
+  const [infusion, setInfusion] = useState<InfusionId>("none");
   const [rollSizeIndex, setRollSizeIndex] = useState(1);
   const [upgradeIds, setUpgradeIds] = useState<Set<string>>(new Set());
   const [isMember, setIsMember] = useState(false);
@@ -56,8 +63,29 @@ export function BookingFlow() {
     [upgradeIds],
   );
 
-  const servicePrice = isMember ? tier.memberPrice : tier.standardPrice;
-  const total = servicePrice + upgradesTotal;
+  const servicePrice = useMemo(() => {
+    const base = isMember ? tier.memberPrice : tier.standardPrice;
+    const mult =
+      rollStyle === "hash-hole" ? HASH_HOLE_PRICE_MULTIPLIER : 1;
+    return roundUsd(base * mult);
+  }, [isMember, rollStyle, tier.memberPrice, tier.standardPrice]);
+
+  const total = useMemo(
+    () => roundUsd(servicePrice + upgradesTotal),
+    [servicePrice, upgradesTotal],
+  );
+
+  const displayStandard = useMemo(() => {
+    const mult =
+      rollStyle === "hash-hole" ? HASH_HOLE_PRICE_MULTIPLIER : 1;
+    return roundUsd(tier.standardPrice * mult);
+  }, [rollStyle, tier.standardPrice]);
+
+  const displayMember = useMemo(() => {
+    const mult =
+      rollStyle === "hash-hole" ? HASH_HOLE_PRICE_MULTIPLIER : 1;
+    return roundUsd(tier.memberPrice * mult);
+  }, [rollStyle, tier.memberPrice]);
 
   function toggleUpgrade(id: string) {
     setUpgradeIds((prev) => {
@@ -88,9 +116,11 @@ export function BookingFlow() {
         is_member_preview: isMember,
         upgrade_ids: [...upgradeIds],
         appointment_slot: slot,
-        service_price_cents: Math.round(servicePrice * 100),
-        upgrades_total_cents: Math.round(upgradesTotal * 100),
-        total_cents: Math.round(total * 100),
+        roll_style: rollStyle,
+        infusion,
+        service_price_cents: Math.round(roundUsd(servicePrice) * 100),
+        upgrades_total_cents: Math.round(roundUsd(upgradesTotal) * 100),
+        total_cents: Math.round(roundUsd(total) * 100),
         customer_name: customerName.trim() || null,
         service_address: serviceAddress.trim() || null,
         payment_notes: paymentNotes.trim() || null,
@@ -180,6 +210,80 @@ export function BookingFlow() {
               </div>
             </div>
 
+            <div className="space-y-3">
+              <p className="text-xs font-bold uppercase tracking-wider text-[var(--splifft-ink-soft)]">
+                Spliff type
+              </p>
+              <div
+                className="flex flex-wrap gap-2"
+                role="group"
+                aria-label="Regular spliff or hash hole"
+              >
+                <button
+                  type="button"
+                  onClick={() => setRollStyle("regular")}
+                  className={`rounded-full border-2 px-4 py-2 text-sm font-bold transition ${
+                    rollStyle === "regular"
+                      ? "border-[var(--splifft-pink)] bg-[var(--splifft-pink)] text-black"
+                      : "border-black/20 bg-white/90 text-[var(--splifft-ink)] hover:border-[var(--splifft-blue)]"
+                  }`}
+                >
+                  Regular spliff
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setRollStyle("hash-hole")}
+                  className={`rounded-full border-2 px-4 py-2 text-sm font-bold transition ${
+                    rollStyle === "hash-hole"
+                      ? "border-[var(--splifft-pink)] bg-[var(--splifft-pink)] text-black"
+                      : "border-black/20 bg-white/90 text-[var(--splifft-ink)] hover:border-[var(--splifft-blue)]"
+                  }`}
+                >
+                  Hash hole (+20%)
+                </button>
+              </div>
+              <p className="text-sm text-[var(--splifft-ink-soft)]">
+                Hash holes add 20% to regular spliff prices for the same flower
+                weight.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <p className="text-xs font-bold uppercase tracking-wider text-[var(--splifft-ink-soft)]">
+                Infusion
+              </p>
+              <div
+                className="flex flex-wrap gap-2"
+                role="group"
+                aria-label="Infusion — crumble or rosin"
+              >
+                {(
+                  [
+                    ["none", "None"],
+                    ["crumble", "Crumble"],
+                    ["rosin", "Rosin"],
+                  ] as const
+                ).map(([id, label]) => (
+                  <button
+                    key={id}
+                    type="button"
+                    onClick={() => setInfusion(id)}
+                    className={`rounded-full border-2 px-4 py-2 text-sm font-bold transition ${
+                      infusion === id
+                        ? "border-[var(--splifft-pink)] bg-[var(--splifft-pink)] text-black"
+                        : "border-black/20 bg-white/90 text-[var(--splifft-ink)] hover:border-[var(--splifft-blue)]"
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+              <p className="text-sm text-[var(--splifft-ink-soft)]">
+                Infused options: crumble or rosin — choose one so we pack your
+                sesh right.
+              </p>
+            </div>
+
             <div className="rounded-xl border-2 border-dashed border-black/20 bg-white/80 p-4">
               <div className="flex flex-wrap items-center gap-2">
                 <p className="font-[family-name:var(--font-display)] text-4xl text-[var(--splifft-ink)]">
@@ -193,6 +297,15 @@ export function BookingFlow() {
               </div>
               <p className="mt-1 text-sm font-medium text-[var(--splifft-ink)]">
                 {tier.useCase}
+                <span className="ml-2 text-[var(--splifft-ink-soft)]">
+                  ·{" "}
+                  {rollStyle === "hash-hole"
+                    ? "Hash hole (+20%)"
+                    : "Regular spliff"}
+                  {infusion !== "none"
+                    ? ` · Infused: ${infusion === "crumble" ? "Crumble" : "Rosin"}`
+                    : ""}
+                </span>
               </p>
               <div className="mt-4 flex flex-wrap gap-6">
                 <div>
@@ -200,7 +313,7 @@ export function BookingFlow() {
                     Standard
                   </p>
                   <p className="text-2xl font-bold text-[var(--splifft-ink)]">
-                    ${tier.standardPrice}
+                    {formatUsd(displayStandard)}
                   </p>
                 </div>
                 <div>
@@ -208,7 +321,7 @@ export function BookingFlow() {
                     Club
                   </p>
                   <p className="text-2xl font-bold text-[var(--splifft-pink)]">
-                    ${tier.memberPrice}
+                    {formatUsd(displayMember)}
                   </p>
                 </div>
               </div>
@@ -294,7 +407,7 @@ export function BookingFlow() {
                             {u.label}
                           </span>
                           <span className="text-sm font-bold text-[var(--splifft-ink)]">
-                            +${u.price}
+                            +{formatUsd(u.price)}
                           </span>
                         </span>
                         <span className="mt-1 block text-sm text-[var(--splifft-ink-soft)]">
@@ -382,6 +495,24 @@ export function BookingFlow() {
                 </dd>
               </div>
               <div className="flex justify-between gap-4">
+                <dt>Spliff type</dt>
+                <dd className="font-semibold text-right">
+                  {rollStyle === "hash-hole"
+                    ? "Hash hole (+20%)"
+                    : "Regular spliff"}
+                </dd>
+              </div>
+              <div className="flex justify-between gap-4">
+                <dt>Infusion</dt>
+                <dd className="font-semibold text-right">
+                  {infusion === "none"
+                    ? "None"
+                    : infusion === "crumble"
+                      ? "Crumble"
+                      : "Rosin"}
+                </dd>
+              </div>
+              <div className="flex justify-between gap-4">
                 <dt>Roll size</dt>
                 <dd className="font-semibold">{rollSize.label}</dd>
               </div>
@@ -391,19 +522,19 @@ export function BookingFlow() {
               </div>
               <div className="flex justify-between gap-4">
                 <dt>Service price ({isMember ? "Club" : "Standard"})</dt>
-                <dd className="font-semibold">${servicePrice}</dd>
+                <dd className="font-semibold">{formatUsd(servicePrice)}</dd>
               </div>
               {bookingUpgrades
                 .filter((u) => upgradeIds.has(u.id))
                 .map((u) => (
                   <div key={u.id} className="flex justify-between gap-4">
                     <dt>{u.label}</dt>
-                    <dd className="font-semibold">+${u.price}</dd>
+                    <dd className="font-semibold">+{formatUsd(u.price)}</dd>
                   </div>
                 ))}
               <div className="flex justify-between gap-4 border-t border-dashed border-black/20 pt-3 text-base">
                 <dt className="font-bold">Total (mock)</dt>
-                <dd className="font-bold">${total}</dd>
+                <dd className="font-bold">{formatUsd(total)}</dd>
               </div>
               <div className="flex justify-between gap-4 text-[var(--splifft-ink-soft)]">
                 <dt>Time</dt>

@@ -163,10 +163,12 @@ export type Database = {
           estimated_rolls: number;
           flower_grams: number;
           id: string;
+          infusion: string | null;
           is_member_preview: boolean;
           payment_notes: string | null;
           roll_size_grams: number;
           roll_size_label: string;
+          roll_style: string | null;
           service_address: string | null;
           service_price_cents: number;
           status: string;
@@ -185,10 +187,12 @@ export type Database = {
           estimated_rolls: number;
           flower_grams: number;
           id?: string;
+          infusion?: string | null;
           is_member_preview?: boolean;
           payment_notes?: string | null;
           roll_size_grams: number;
           roll_size_label: string;
+          roll_style?: string | null;
           service_address?: string | null;
           service_price_cents: number;
           status?: string;
@@ -207,10 +211,12 @@ export type Database = {
           estimated_rolls?: number;
           flower_grams?: number;
           id?: string;
+          infusion?: string | null;
           is_member_preview?: boolean;
           payment_notes?: string | null;
           roll_size_grams?: number;
           roll_size_label?: string;
+          roll_style?: string | null;
           service_address?: string | null;
           service_price_cents?: number;
           status?: string;

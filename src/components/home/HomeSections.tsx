@@ -15,13 +15,16 @@ export function HeroSection() {
           <p className="inline-flex items-center gap-2 rounded-full border border-[var(--splifft-pink)]/50 bg-black/40 px-3 py-1 text-xs font-bold uppercase tracking-widest text-[var(--splifft-pink)]">
             Mobile handoff · Built for an easier sesh
           </p>
-          <div className="rounded-2xl border-2 border-[var(--splifft-blue)]/60 bg-black/50 p-6 shadow-[0_0_40px_rgba(255,45,146,0.15)] sm:inline-block sm:p-8">
-            <p className="font-[family-name:var(--font-display)] text-5xl leading-none text-[var(--splifft-cream)] sm:text-6xl lg:text-7xl">
-              SPLIFFT
-            </p>
-            <p className="mt-2 text-sm font-semibold uppercase tracking-[0.25em] text-[var(--splifft-blue)]">
-              getsplifft.com
-            </p>
+          <div className="relative w-full max-w-[min(100%,28rem)]">
+            <Image
+              src="/splifftlogo.png"
+              alt="Splifft"
+              width={672}
+              height={202}
+              className="h-auto w-full object-contain object-left drop-shadow-[0_0_28px_rgba(255,45,146,0.2)]"
+              priority
+              sizes="(max-width: 640px) 100vw, 448px"
+            />
           </div>
           <h1 className="max-w-xl font-[family-name:var(--font-display)] text-4xl uppercase leading-[0.95] tracking-wide text-[var(--splifft-cream)] sm:text-5xl">
             Stop Rolling. Start Smoking.

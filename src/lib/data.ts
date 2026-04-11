@@ -85,8 +85,8 @@ export const serviceCards: ServiceCard[] = [
     name: "Roll Up",
     description:
       "We pull up, take your flower, prep it, and hand it back ready — mobile handoff, no stress, built like a service appointment.",
-    startingAt: 58,
-    memberStartingAt: 49,
+    startingAt: 34.99,
+    memberStartingAt: 29.99,
     ctaLabel: "Book Roll Up",
     ctaHref: "/services/roll-up",
   },

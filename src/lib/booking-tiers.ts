@@ -6,34 +6,55 @@ export type RollingTier = {
   popular?: boolean;
 };
 
+/** Hash-hole pre-rolls: +20% on the tier service price (regular spliff list). */
+export const HASH_HOLE_PRICE_MULTIPLIER = 1.2;
+
+export type RollStyleId = "regular" | "hash-hole";
+
+export type InfusionId = "none" | "crumble" | "rosin";
+
 /** Roll Up is priced by flower weight. Pre-roll count is derived from weight + roll size in the booking UI. */
 export const rollingTiers: RollingTier[] = [
   {
     grams: 3.5,
-    useCase: "Quick personal sesh",
-    standardPrice: 58,
-    memberPrice: 49,
+    useCase: "Eighth — quick personal sesh",
+    standardPrice: 34.99,
+    memberPrice: 29.99,
   },
   {
     grams: 7,
-    useCase: "Weekend ready",
-    standardPrice: 98,
-    memberPrice: 83,
+    useCase: "Quarter — weekend ready",
+    standardPrice: 59.99,
+    memberPrice: 49.99,
     popular: true,
   },
   {
     grams: 14,
-    useCase: "Group-ready",
-    standardPrice: 175,
-    memberPrice: 149,
+    useCase: "Half — group-ready",
+    standardPrice: 89.99,
+    memberPrice: 75,
   },
   {
     grams: 28,
-    useCase: "Event prep",
-    standardPrice: 320,
-    memberPrice: 272,
+    useCase: "Ounce — event prep",
+    standardPrice: 119,
+    memberPrice: 99,
   },
 ];
+
+/** Round USD for display and cent storage. */
+export function roundUsd(amount: number): number {
+  return Math.round(amount * 100) / 100;
+}
+
+export function formatUsd(amount: number): string {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(amount);
+}
 
 export const minMobileGrams = 3.5;
 

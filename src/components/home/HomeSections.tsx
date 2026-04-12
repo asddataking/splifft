@@ -21,6 +21,7 @@ import { DROP_OF_THE_MONTH_SLUG } from "@/lib/drop-of-the-month";
 import { SPLIFFT_MONTHLY_SLUG } from "@/lib/splifft-monthly-teaser";
 import { HeroParallax } from "@/components/home/HeroParallax";
 import { HeroSubscriptionCtas } from "@/components/home/HeroSubscriptionCtas";
+import { ClubWaitlistCapture } from "@/components/club/ClubWaitlistCapture";
 import { ChooseSplifftSubscriptionCard } from "@/components/home/ChooseSplifftSubscriptionCard";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 import { ShopProductCard } from "@/components/shop/ShopProductCard";
@@ -247,11 +248,18 @@ export function MembershipSection() {
               </span>
             </p>
             <p className="mt-4 text-sm text-[var(--splifft-ink-soft)]">
-              {membershipSection.pricingBlurb}
+              {membershipSection.pricingBlurb} Billing opens soon — same Club
+              waitlist as the Club page.
             </p>
-            <SplifftButton href="/club" variant="primary" className="mt-8 w-full sm:w-auto">
-              Join Splifft Club
-            </SplifftButton>
+            <div className="mt-8 border-t-2 border-dashed border-black/15 pt-8">
+              <ClubWaitlistCapture surface="home_membership" idPrefix="home-club" />
+            </div>
+            <Link
+              href="/club"
+              className="mt-4 inline-flex text-sm font-bold uppercase tracking-wide text-[var(--splifft-blue)] underline-offset-4 hover:underline"
+            >
+              Full Splifft Club details →
+            </Link>
           </div>
         </div>
       </div>

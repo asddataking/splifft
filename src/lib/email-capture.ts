@@ -3,6 +3,8 @@ export const EMAIL_CAPTURE_SOURCES = [
   "subscription_modal",
   "shop_subscription_teaser",
   "subscription_pdp_teaser",
+  "scroll_waitlist",
+  "club_waitlist",
 ] as const;
 
 export type EmailCaptureSource = (typeof EMAIL_CAPTURE_SOURCES)[number];

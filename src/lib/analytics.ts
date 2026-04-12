@@ -5,7 +5,10 @@
 
 export const GA_EVENTS = {
   SUBSCRIPTION_MODAL_OPEN: "subscription_modal_open",
+  WAITLIST_SCROLL_OPEN: "waitlist_scroll_open",
+  WAITLIST_SCROLL_DISMISS: "waitlist_scroll_dismiss",
   NOTIFY_ME_SUBMIT: "notify_me_submit",
+  CLUB_WAITLIST_SUBMIT: "club_waitlist_submit",
   ADD_TO_CART: "add_to_cart",
   BEGIN_CHECKOUT: "begin_checkout",
 } as const;

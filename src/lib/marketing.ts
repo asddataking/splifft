@@ -3,6 +3,9 @@
  * Keep names aligned: Roll Up, Fresh Hit, Splifft Events, Shop packs, Splifft Club.
  */
 
+import { getPackImage } from "@/lib/pack-images";
+import { SPLIFFT_MONTHLY_SLUG } from "@/lib/splifft-monthly-teaser";
+
 export const heroMarketing = {
   eyebrow: "We meet you · Prep done for you",
   lead: "We pull up, prep your smoke, and hand it back ready.",
@@ -48,9 +51,9 @@ export const homeActionCards: HomeActionCard[] = [
 ];
 
 export const actionCardsSection = {
-  heading: "Start with Roll Up",
+  heading: "Pick your path",
   subheading:
-    "Book Roll Up, shop packs, or plan Splifft Events — one quick meet-up, we do the prep.",
+    "Need mobile prep? Book Roll Up. Want extras? Shop packs. Hosting a crowd? Get a Splifft Events quote — three doors, one brand.",
 } as const;
 
 export type WowTile = {
@@ -58,14 +61,18 @@ export type WowTile = {
   caption: string;
   src: string;
   alt: string;
+  href?: string;
 };
+
+const splifftMonthlyImage = getPackImage(SPLIFFT_MONTHLY_SLUG);
 
 export const wowGridTiles: WowTile[] = [
   {
-    title: "Roll Up",
-    caption: "We pull up and roll for you.",
-    src: "https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=800&q=80",
-    alt: "Hands prepping at a clean work surface",
+    title: "Splifft Subscription",
+    caption: "Hand-rolled joints, glass tips, monthly delivery — coming soon.",
+    src: splifftMonthlyImage.url,
+    alt: splifftMonthlyImage.alt,
+    href: `/shop/${SPLIFFT_MONTHLY_SLUG}`,
   },
   {
     title: "Fresh Hit",
@@ -88,15 +95,15 @@ export const wowGridTiles: WowTile[] = [
 ];
 
 export const wowGridSection = {
-  heading: "Same pull-up, simpler smoke",
+  heading: "More ways to Splifft",
   subheading:
-    "Roll Up and Fresh Hit — rolled or cleaned, then handed back ready. We meet you every time.",
+    "Subscription delivery, clean glass, curated packs — plus Roll Up when you want us on-site.",
 } as const;
 
 export const featuredPacksSection = {
   heading: "Featured packs",
   subheading:
-    "Add packs to your Roll Up — picks for a better night in or out.",
+    "Add packs to your Roll Up — picks for a better night in or out. Splifft Subscription (monthly joints) lives in the shop.",
 } as const;
 
 export const servicesPreviewSection = {

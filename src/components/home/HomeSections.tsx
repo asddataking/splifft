@@ -13,15 +13,62 @@ import {
   servicesPreviewSection,
   wowGridSection,
   wowGridTiles,
+  type WowTile,
 } from "@/lib/marketing";
+import { HeroParallax } from "@/components/home/HeroParallax";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 import { ShopProductCard } from "@/components/shop/ShopProductCard";
 import { membershipPerks, locations } from "@/lib/data";
 
+const actionCardClass =
+  "group relative flex min-h-[220px] flex-col justify-between overflow-hidden rounded-2xl border-2 border-black bg-gradient-to-br p-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.65)] transition-all duration-300 ease-out motion-safe:transition-[transform,box-shadow,border-color] motion-reduce:transition-none hover:-translate-y-1 hover:border-[var(--splifft-pink)]/35 hover:shadow-[10px_10px_0_0_rgba(255,45,146,0.38)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--splifft-pink)]/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--splifft-ink)] active:scale-[0.99] motion-reduce:active:scale-100";
+
+const wowTileShellClass =
+  "group relative block aspect-[16/11] overflow-hidden rounded-2xl border-2 border-black shadow-[6px_6px_0_0_rgba(0,191,255,0.35)] transition-shadow duration-300 ease-out hover:shadow-[8px_8px_0_0_rgba(0,191,255,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--splifft-blue)]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#111015] active:scale-[0.995] motion-reduce:active:scale-100";
+
+function WowGridTile({ tile }: { tile: WowTile }) {
+  const inner = (
+    <>
+      <Image
+        src={tile.src}
+        alt={tile.alt}
+        fill
+        className="object-cover transition duration-500 ease-out motion-safe:duration-500 group-hover:scale-105 motion-reduce:group-hover:scale-100"
+        sizes="(max-width: 640px) 100vw, 50vw"
+      />
+      <div className="absolute inset-0 bg-gradient-to-tr from-black/85 via-black/35 to-transparent transition-opacity duration-500 ease-out group-hover:from-black/80" />
+      <div className="absolute bottom-0 left-0 right-0 p-5">
+        <p className="font-[family-name:var(--font-display)] text-2xl uppercase text-[var(--splifft-cream)]">
+          {tile.title}
+        </p>
+        <p className="mt-1 text-sm font-semibold text-[var(--splifft-pink)]">
+          {tile.caption}
+        </p>
+      </div>
+    </>
+  );
+
+  if (tile.href) {
+    return (
+      <Link href={tile.href} className={wowTileShellClass}>
+        {inner}
+      </Link>
+    );
+  }
+
+  return <div className={`${wowTileShellClass} cursor-default`}>{inner}</div>;
+}
+
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden border-b-2 border-black bg-[radial-gradient(ellipse_at_top,_#1a1020_0%,_#0a0a0c_55%,_#050506_100%)]">
-      <div className="pointer-events-none absolute inset-0 opacity-40 [background-image:repeating-linear-gradient(90deg,transparent,transparent_40px,rgba(255,45,146,0.06)_40px,rgba(255,45,146,0.06)_41px),repeating-linear-gradient(0deg,transparent,transparent_40px,rgba(0,191,255,0.05)_40px,rgba(0,191,255,0.05)_41px)]" />
+      <HeroParallax>
+        <div className="absolute inset-0 opacity-40 [background-image:repeating-linear-gradient(90deg,transparent,transparent_40px,rgba(255,45,146,0.06)_40px,rgba(255,45,146,0.06)_41px),repeating-linear-gradient(0deg,transparent,transparent_40px,rgba(0,191,255,0.05)_40px,rgba(0,191,255,0.05)_41px)]" />
+        <div
+          className="splifft-hero-gradient-drift pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(255,45,146,0.12),transparent_50%)]"
+          aria-hidden
+        />
+      </HeroParallax>
       <div className="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:flex-row lg:items-center lg:py-24">
         <div className="flex-1 space-y-6">
           <p className="inline-flex items-center gap-2 rounded-full border border-[var(--splifft-pink)]/50 bg-black/40 px-3 py-1 text-xs font-bold uppercase tracking-widest text-[var(--splifft-pink)]">
@@ -57,7 +104,7 @@ export function HeroSection() {
           </div>
         </div>
         <div className="relative flex-1">
-          <div className="relative aspect-[4/5] w-full max-w-md overflow-hidden rounded-2xl border-2 border-black shadow-[12px_12px_0_0_rgba(255,45,146,0.45)] lg:mx-auto">
+          <div className="relative aspect-[4/5] w-full max-w-md overflow-hidden rounded-2xl border-2 border-black shadow-[12px_12px_0_0_rgba(255,45,146,0.45)] transition-transform duration-500 ease-out motion-safe:md:hover:scale-[1.02] lg:mx-auto">
             <Image
               src={heroMarketing.heroImageSrc}
               alt={heroMarketing.heroImageAlt}
@@ -94,11 +141,7 @@ export function ActionCardsSection() {
         </p>
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {homeActionCards.map((c) => (
-            <Link
-              key={c.title}
-              href={c.href}
-              className={`group relative flex min-h-[220px] flex-col justify-between overflow-hidden rounded-2xl border-2 border-black bg-gradient-to-br ${c.stripe} p-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.65)] transition hover:-translate-y-1 hover:shadow-[10px_10px_0_0_rgba(255,45,146,0.35)]`}
-            >
+            <Link key={c.title} href={c.href} className={`${actionCardClass} ${c.stripe}`}>
               <div>
                 <h3 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-cream)]">
                   {c.title}
@@ -107,7 +150,7 @@ export function ActionCardsSection() {
                   {c.body}
                 </p>
               </div>
-              <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-[var(--splifft-pink)] group-hover:text-[var(--splifft-blue)]">
+              <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-[var(--splifft-pink)] transition-colors duration-300 group-hover:text-[var(--splifft-blue)]">
                 {c.cta}
                 <span aria-hidden>→</span>
               </span>
@@ -138,27 +181,7 @@ export function WowGridSection() {
         </div>
         <div className="mt-10 grid gap-4 sm:grid-cols-2">
           {wowGridTiles.map((tile) => (
-            <div
-              key={tile.title}
-              className="relative aspect-[16/11] overflow-hidden rounded-2xl border-2 border-black shadow-[6px_6px_0_0_rgba(0,191,255,0.35)]"
-            >
-              <Image
-                src={tile.src}
-                alt={tile.alt}
-                fill
-                className="object-cover transition duration-500 hover:scale-105"
-                sizes="(max-width: 640px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-black/85 via-black/35 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-5">
-                <p className="font-[family-name:var(--font-display)] text-2xl uppercase text-[var(--splifft-cream)]">
-                  {tile.title}
-                </p>
-                <p className="mt-1 text-sm font-semibold text-[var(--splifft-pink)]">
-                  {tile.caption}
-                </p>
-              </div>
-            </div>
+            <WowGridTile key={tile.title} tile={tile} />
           ))}
         </div>
       </div>

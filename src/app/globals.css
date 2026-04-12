@@ -29,3 +29,19 @@ body {
   background: var(--splifft-pink);
   color: #0a0a0a;
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes splifft-hero-drift {
+    0%,
+    100% {
+      opacity: 0.22;
+    }
+    50% {
+      opacity: 0.32;
+    }
+  }
+
+  .splifft-hero-gradient-drift {
+    animation: splifft-hero-drift 22s ease-in-out infinite;
+  }
+}

@@ -2,7 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import type { Product } from "@/lib/data";
+import { GA_EVENTS, trackGaEvent } from "@/lib/analytics";
+import { submitEmailCapture } from "@/lib/email-capture";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 
 type Props = { product: Product };
@@ -10,6 +13,37 @@ type Props = { product: Product };
 export function ShopSplifftMonthlyTeaserCard({ product }: Props) {
   const src = product.imageUrl!;
   const alt = product.imageAlt ?? product.name;
+  const [email, setEmail] = useState("");
+  const [saving, setSaving] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleNotify() {
+    setError(null);
+    setMessage(null);
+    const trimmed = email.trim();
+    if (!trimmed) {
+      setError("Enter your email");
+      return;
+    }
+    setSaving(true);
+    const result = await submitEmailCapture({
+      email: trimmed,
+      source: "shop_subscription_teaser",
+      metadata: { product_slug: product.slug },
+    });
+    setSaving(false);
+    if (!result.ok) {
+      setError(result.error);
+      return;
+    }
+    trackGaEvent(GA_EVENTS.NOTIFY_ME_SUBMIT, {
+      source: "shop_subscription_teaser",
+      product_slug: product.slug,
+    });
+    setMessage("You’re on the list.");
+    setEmail("");
+  }
 
   return (
     <article className="group relative overflow-hidden rounded-2xl border-2 border-[var(--splifft-blue)]/60 bg-[#0d0d12] shadow-[6px_6px_0_0_rgba(0,191,255,0.25)] ring-1 ring-white/5">
@@ -70,18 +104,38 @@ export function ShopSplifftMonthlyTeaserCard({ product }: Props) {
       </Link>
 
       <div className="border-t border-white/10 bg-black/55 px-4 py-3 sm:px-5">
+        <label className="sr-only" htmlFor={`notify-email-${product.id}`}>
+          Email for Splifft Subscription updates
+        </label>
+        <input
+          id={`notify-email-${product.id}`}
+          type="email"
+          name="email"
+          autoComplete="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email for updates"
+          className="mb-2 w-full rounded-lg border border-white/15 bg-black/50 px-3 py-2 text-sm text-[var(--splifft-cream)] placeholder:text-[var(--splifft-muted)] focus:border-[var(--splifft-pink)] focus:outline-none"
+        />
+        {error ? (
+          <p className="mb-2 text-xs text-red-400" role="alert">
+            {error}
+          </p>
+        ) : null}
+        {message ? (
+          <p className="mb-2 text-xs font-semibold text-[var(--splifft-blue)]">
+            {message}
+          </p>
+        ) : null}
         <div className="flex flex-col gap-2 sm:flex-row sm:gap-3">
           <SplifftButton
             type="button"
             variant="primary"
             className="min-h-[48px] flex-1"
-            onClick={() =>
-              alert(
-                "You're on the list (demo). Wire email capture or Klaviyo when Splifft Subscription launches.",
-              )
-            }
+            disabled={saving}
+            onClick={() => void handleNotify()}
           >
-            Notify Me
+            {saving ? "Saving…" : "Notify Me"}
           </SplifftButton>
           <SplifftButton
             type="button"

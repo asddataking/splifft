@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { GA_EVENTS, trackGaEvent } from "@/lib/analytics";
 import { useCart } from "@/context/cart-context";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 
@@ -89,7 +90,13 @@ export default function CartPage() {
             <div className="mt-6 flex flex-wrap gap-3">
               <SplifftButton
                 variant="primary"
-                onClick={() => alert("Connect checkout — Stripe, Square, etc.")}
+                onClick={() => {
+                  trackGaEvent(GA_EVENTS.BEGIN_CHECKOUT, {
+                    currency: "USD",
+                    value: subtotal,
+                  });
+                  alert("Connect checkout — Stripe, Square, etc.");
+                }}
               >
                 Checkout
               </SplifftButton>

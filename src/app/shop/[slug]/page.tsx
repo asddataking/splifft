@@ -200,7 +200,7 @@ function ComingSoonDetail({ product }: { product: Product }) {
                 drops, or join Club so you&apos;re first in line.
               </p>
               <div className="mt-6">
-                <ComingSoonProductActions />
+                <ComingSoonProductActions productSlug={product.slug} />
               </div>
             </div>
 

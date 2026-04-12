@@ -108,6 +108,33 @@ export type Database = {
         };
         Relationships: [];
       };
+      email_captures: {
+        Row: {
+          created_at: string;
+          email: string;
+          id: string;
+          metadata: Json;
+          preference: string | null;
+          source: string;
+        };
+        Insert: {
+          created_at?: string;
+          email: string;
+          id?: string;
+          metadata?: Json;
+          preference?: string | null;
+          source: string;
+        };
+        Update: {
+          created_at?: string;
+          email?: string;
+          id?: string;
+          metadata?: Json;
+          preference?: string | null;
+          source?: string;
+        };
+        Relationships: [];
+      };
       products: {
         Row: {
           active: boolean;

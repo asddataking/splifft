@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import { GA_EVENTS, trackGaEvent } from "@/lib/analytics";
+import { submitEmailCapture } from "@/lib/email-capture";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 import { SPLIFFT_MONTHLY_SLUG } from "@/lib/splifft-monthly-teaser";
 
@@ -19,7 +21,14 @@ const included = [
 export function SplifftSubscriptionModal({ open, onClose }: Props) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const titleId = useId();
+  const emailFieldId = useId();
+  const prevOpen = useRef(false);
   const [strain, setStrain] = useState<"indica" | "sativa">("indica");
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "saving" | "done" | "error">(
+    "idle",
+  );
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
     const el = dialogRef.current;
@@ -30,6 +39,50 @@ export function SplifftSubscriptionModal({ open, onClose }: Props) {
       el.close();
     }
   }, [open]);
+
+  useEffect(() => {
+    if (open && !prevOpen.current) {
+      trackGaEvent(GA_EVENTS.SUBSCRIPTION_MODAL_OPEN, {
+        source: "splifft_subscription_modal",
+      });
+    }
+    prevOpen.current = open;
+    if (!open) {
+      setStatus("idle");
+      setErrorMessage(null);
+    }
+  }, [open]);
+
+  async function handleNotify() {
+    setErrorMessage(null);
+    const trimmed = email.trim();
+    if (!trimmed) {
+      setErrorMessage("Enter your email");
+      return;
+    }
+    setStatus("saving");
+    const result = await submitEmailCapture({
+      email: trimmed,
+      source: "subscription_modal",
+      preference: strain,
+      metadata: { strain },
+    });
+    if (!result.ok) {
+      setStatus("error");
+      setErrorMessage(result.error);
+      return;
+    }
+    trackGaEvent(GA_EVENTS.NOTIFY_ME_SUBMIT, {
+      source: "subscription_modal",
+      strain_preference: strain,
+    });
+    setStatus("done");
+    window.setTimeout(() => {
+      setEmail("");
+      setStatus("idle");
+      onClose();
+    }, 1600);
+  }
 
   return (
     <dialog
@@ -127,19 +180,44 @@ export function SplifftSubscriptionModal({ open, onClose }: Props) {
           Save $15/month with Splifft Club + priority access + upgrades
         </p>
 
+        <div className="mt-6">
+          <label
+            htmlFor={emailFieldId}
+            className="text-xs font-bold uppercase tracking-wider text-[var(--splifft-blue)]"
+          >
+            Email for launch updates
+          </label>
+          <input
+            id={emailFieldId}
+            type="email"
+            name="email"
+            autoComplete="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="you@email.com"
+            className="mt-2 w-full rounded-xl border-2 border-white/15 bg-black/50 px-4 py-3 text-[var(--splifft-cream)] placeholder:text-[var(--splifft-muted)] focus:border-[var(--splifft-pink)] focus:outline-none"
+          />
+          {errorMessage ? (
+            <p className="mt-2 text-sm text-red-400" role="alert">
+              {errorMessage}
+            </p>
+          ) : null}
+          {status === "done" ? (
+            <p className="mt-2 text-sm font-semibold text-[var(--splifft-blue)]">
+              You&apos;re on the list — we&apos;ll be in touch.
+            </p>
+          ) : null}
+        </div>
+
         <div className="mt-6 flex flex-col gap-3">
           <SplifftButton
             type="button"
             variant="primary"
             className="w-full"
-            onClick={() => {
-              window.alert(
-                "You're on the list (demo). Wire email capture when checkout goes live.",
-              );
-              onClose();
-            }}
+            disabled={status === "saving"}
+            onClick={() => void handleNotify()}
           >
-            Notify Me
+            {status === "saving" ? "Saving…" : "Notify Me"}
           </SplifftButton>
           <SplifftButton
             href={`/shop/${SPLIFFT_MONTHLY_SLUG}`}

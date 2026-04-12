@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { GA_EVENTS, trackGaEvent } from "@/lib/analytics";
 import type { Product } from "@/lib/data";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 import { useCart } from "@/context/cart-context";
@@ -66,6 +67,18 @@ export function ProductAddToCart({ product }: Props) {
             },
             qty,
           );
+          trackGaEvent(GA_EVENTS.ADD_TO_CART, {
+            currency: "USD",
+            value: product.price * qty,
+            items: [
+              {
+                item_id: product.id,
+                item_name: product.name,
+                price: product.price,
+                quantity: qty,
+              },
+            ],
+          });
           setQty(1);
         }}
       >

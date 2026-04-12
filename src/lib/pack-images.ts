@@ -1,8 +1,8 @@
 /** Hero imagery per pack slug — swap for assets under /public when ready. */
 const PACK_IMAGES: Record<string, { url: string; alt: string }> = {
   "splifft-monthly": {
-    url: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=1200&q=85",
-    alt: "Gift boxes stacked — monthly Splifft delivery vibe",
+    url: "/splifft-1.png",
+    alt: "Splifft Subscription — artisinally hand rolled joints, glass tips, monthly delivery",
   },
   "drop-of-the-month": {
     url: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1200&q=85",

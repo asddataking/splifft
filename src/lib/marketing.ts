@@ -7,6 +7,7 @@ import {
   DROP_OF_THE_MONTH_SLUG,
   dropOfTheMonthTheme,
 } from "@/lib/drop-of-the-month";
+import { getPackImage } from "@/lib/pack-images";
 import { SPLIFFT_MONTHLY_SLUG } from "@/lib/splifft-monthly-teaser";
 import {
   DANKNDEVOUR_REVIEWS_URL,
@@ -21,14 +22,16 @@ export const dankDropProductIds = [
   "pack-dankndevour",
 ] as const;
 
+/** Same asset as Splifft Subscription PDP / shop teaser (`splifft-monthly` in pack-images). */
+const subscriptionHeroVisual = getPackImage(SPLIFFT_MONTHLY_SLUG);
+
 export const heroMarketing = {
   eyebrow: "Product-first · Curated monthly",
   lead: "Get artisinally hand rolled joints and curated sesh boxes delivered to your door.",
   supporting: "No rolling. No prep. Just smoke.",
   trustLine: "Michigan-based. Built for real smokers.",
-  heroImageSrc:
-    "https://images.unsplash.com/photo-1449965408867-eaa3f722e40d?w=800&q=80",
-  heroImageAlt: "Night drive — Splifft delivery energy",
+  heroImageSrc: subscriptionHeroVisual.url,
+  heroImageAlt: subscriptionHeroVisual.alt,
   cardTitle: "READY TO LIGHT UP.",
   cardCaption: "Curated monthly. Everything handled.",
 } as const;

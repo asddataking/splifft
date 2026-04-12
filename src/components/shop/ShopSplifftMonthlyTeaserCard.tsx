@@ -42,7 +42,7 @@ export function ShopSplifftMonthlyTeaserCard({ product }: Props) {
 
           <div className="absolute bottom-0 left-0 right-0 z-[1] p-4 sm:p-5">
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--splifft-blue)]">
-              Future flagship
+              Flagship subscription
             </p>
             <h2 className="mt-1 font-[family-name:var(--font-display)] text-2xl uppercase leading-tight tracking-wide text-[var(--splifft-cream)] sm:text-3xl">
               {product.name}
@@ -77,7 +77,7 @@ export function ShopSplifftMonthlyTeaserCard({ product }: Props) {
             className="min-h-[48px] flex-1"
             onClick={() =>
               alert(
-                "You're on the list (demo). Wire email capture or Klaviyo when Splifft Monthly launches.",
+                "You're on the list (demo). Wire email capture or Klaviyo when Splifft Subscription launches.",
               )
             }
           >

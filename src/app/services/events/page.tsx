@@ -6,14 +6,14 @@ export const metadata = buildPageMetadata({
   path: "/services/events",
   title: "Splifft Events — custom quote",
   description:
-    "Cannabis prepped for your event. Stop Rolling. Start Hosting. Request a custom quote; guest packs as add-ons in the form.",
+    "Cannabis prepped for your event. Stop Rolling. Start Hosting. Request a custom quote; optional guest-ready sesh upgrades in the form.",
   shareDescription: SOCIAL_SHARE_DESCRIPTION,
 });
 
 const useCases = [
   {
     title: "Private parties",
-    body: "Headcount, vibe, and timing — packs ready before the door opens.",
+    body: "Headcount, vibe, and timing — curated prep ready before the door opens.",
   },
   {
     title: "Brand & rooftop nights",
@@ -45,8 +45,8 @@ export default function ServicesEventsPage() {
             <strong className="text-[var(--splifft-cream)]">
               Custom quote only
             </strong>
-            . Guest-ready packs are an optional add-on in the form below — not a
-            one-size headline.
+            . Guest-ready sesh boxes are optional upgrades in the form below — not
+            a one-size headline.
           </p>
           <SplifftButton href="#quote" variant="primary" className="mt-8">
             Request quote
@@ -61,7 +61,7 @@ export default function ServicesEventsPage() {
           </h2>
           <p className="mt-3 max-w-2xl text-[var(--splifft-muted)]">
             We plan cannabis prep for your event the same way we run Roll Up — clear
-            timelines, packed orders, and no guesswork before guests arrive. No
+            timelines, curated orders, and no guesswork before guests arrive. No
             public price list; we build to your brief.
           </p>
         </div>
@@ -96,8 +96,8 @@ export default function ServicesEventsPage() {
             Request a quote
           </h2>
           <p className="mt-2 max-w-2xl text-sm text-[var(--splifft-muted)]">
-            Tell us about the event; tick add-ons like guest packs if you want
-            them in the proposal.
+            Tell us about the event; tick sesh upgrades like guest-ready drops if
+            you want them in the proposal.
           </p>
           <div className="mt-10">
             <EventQuoteForm />

@@ -2,6 +2,10 @@ import type { Product } from "@/lib/data";
 import { products as staticProducts } from "@/lib/data";
 import { getPackImage } from "@/lib/pack-images";
 import {
+  DROP_OF_THE_MONTH_SLUG,
+  getDropOfTheMonthProduct,
+} from "@/lib/drop-of-the-month";
+import {
   SPLIFFT_MONTHLY_SLUG,
   getSplifftMonthlyTeaserProduct,
 } from "@/lib/splifft-monthly-teaser";
@@ -52,6 +56,9 @@ export async function getShopProducts(): Promise<Product[]> {
 export async function getProductBySlug(slug: string): Promise<Product | null> {
   if (slug === SPLIFFT_MONTHLY_SLUG) {
     return getSplifftMonthlyTeaserProduct();
+  }
+  if (slug === DROP_OF_THE_MONTH_SLUG) {
+    return getDropOfTheMonthProduct();
   }
   const products = await getShopProducts();
   return products.find((p) => p.slug === slug) ?? null;

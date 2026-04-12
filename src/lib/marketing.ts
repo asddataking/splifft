@@ -1,133 +1,162 @@
 /**
- * Homepage and shared marketing copy — single source for labels and hero/wow imagery.
- * Keep names aligned: Roll Up, Fresh Hit, Splifft Events, Shop packs, Splifft Club.
+ * Homepage and shared marketing copy — single source for labels and hero imagery.
+ * Align with: Splifft Subscription, Drop of the Month, Dank Drops, Roll Up, Fresh Hit, Splifft Events, Splifft Club.
  */
 
-import { getPackImage } from "@/lib/pack-images";
+import { DROP_OF_THE_MONTH_SLUG } from "@/lib/drop-of-the-month";
 import { SPLIFFT_MONTHLY_SLUG } from "@/lib/splifft-monthly-teaser";
+import {
+  DANKNDEVOUR_REVIEWS_URL,
+  DANKNDEVOUR_SITE_URL,
+} from "@/lib/site";
+
+/** Curated one-off / gift boxes (static catalog ids). */
+export const dankDropProductIds = [
+  "pack-mystery",
+  "pack-cabin",
+  "pack-lake",
+  "pack-dankndevour",
+] as const;
 
 export const heroMarketing = {
-  eyebrow: "We meet you · Prep done for you",
-  lead: "We pull up, prep your smoke, and hand it back ready.",
-  supporting:
-    "Fast meet-up. Clean prep. Ready to smoke. You skip the mess — we bring the service.",
+  eyebrow: "Product-first · Curated monthly",
+  lead: "Get artisinally hand rolled joints and curated sesh boxes delivered to your door.",
+  supporting: "No rolling. No prep. Just smoke.",
+  serviceLine: "Built like a service appointment. Delivered like a perfect sesh.",
+  trustLine: "Michigan-based. Built for real smokers.",
   heroImageSrc:
     "https://images.unsplash.com/photo-1449965408867-eaa3f722e40d?w=800&q=80",
-  heroImageAlt: "Night drive — car on the road, we pull up to meet you",
-  cardTitle: "ROLL UP. GRAB IT. SMOKE.",
-  cardCaption: "We prep it. You take it. Done.",
+  heroImageAlt: "Night drive — Splifft delivery energy",
+  cardTitle: "READY TO LIGHT UP.",
+  cardCaption: "Curated monthly. Everything handled.",
 } as const;
 
-export type HomeActionCard = {
+export const chooseYourSplifftSection = {
+  heading: "Choose your Splifft",
+  subheading:
+    "The main fork: your monthly joints, or this month’s limited curated box.",
+} as const;
+
+export type ChooseSplifftCard = {
   title: string;
   body: string;
+  bullets: readonly string[];
   cta: string;
   href: string;
   stripe: string;
 };
 
-export const homeActionCards: HomeActionCard[] = [
+export const chooseSplifftCards: ChooseSplifftCard[] = [
   {
-    title: "Roll Up",
-    body: "We meet you, take your flower, roll it, and hand it back ready.",
-    cta: "Book Roll Up",
-    href: "/services/roll-up",
+    title: "Splifft Subscription",
+    body: "Your sesh, handled every month.",
+    bullets: [
+      "5 × 0.7g joints",
+      "glass tip included",
+      "indica or sativa",
+    ],
+    cta: "Start Subscription",
+    href: `/shop/${SPLIFFT_MONTHLY_SLUG}`,
     stripe: "from-[var(--splifft-pink)]/25 to-transparent",
   },
   {
-    title: "Shop packs",
-    body: "Add-ons and themed packs that go with your Roll Up.",
-    cta: "Shop packs",
-    href: "/shop",
+    title: "Drop of the Month",
+    body: "A curated box built for this month’s vibe.",
+    bullets: ["rotating theme", "limited feel", "member discount"],
+    cta: "Get This Month’s Drop",
+    href: `/shop/${DROP_OF_THE_MONTH_SLUG}`,
     stripe: "from-[var(--splifft-blue)]/25 to-transparent",
   },
-  {
-    title: "Splifft Events",
-    body: "We prep cannabis for your party — ready before guests show up.",
-    cta: "Request quote",
-    href: "/services/events",
-    stripe: "from-white/10 to-transparent",
-  },
-];
+] as const;
 
-export const actionCardsSection = {
-  heading: "Pick your path",
-  subheading:
-    "Need mobile prep? Book Roll Up. Want extras? Shop packs. Hosting a crowd? Get a Splifft Events quote — three doors, one brand.",
+export const whatYouGetSection = {
+  heading: "What you get",
+  subheading: "Built for easier sessions — fast to understand, ready when you are.",
+  subscriptionTitle: "Splifft Subscription",
+  subscriptionBullets: [
+    "5 artisinally hand rolled 0.7g joints",
+    "glass tip included",
+    "curated monthly",
+    "delivered ready",
+  ],
+  dropTitle: "Drop of the Month",
+  dropBullets: [
+    "rotating themed box",
+    "snacks, gear, sesh items",
+    "exclusive limited feel",
+    "themed extras inside",
+  ],
 } as const;
 
-export type WowTile = {
-  title: string;
-  caption: string;
-  src: string;
-  alt: string;
-  href?: string;
-};
-
-const splifftMonthlyImage = getPackImage(SPLIFFT_MONTHLY_SLUG);
-
-export const wowGridTiles: WowTile[] = [
-  {
-    title: "Splifft Subscription",
-    caption: "Hand-rolled joints, glass tips, monthly delivery — coming soon.",
-    src: splifftMonthlyImage.url,
-    alt: splifftMonthlyImage.alt,
-    href: `/shop/${SPLIFFT_MONTHLY_SLUG}`,
-  },
-  {
-    title: "Fresh Hit",
-    caption: "Glass comes back clean and ready.",
-    src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=80",
-    alt: "Clear glass on a dark surface — clean and simple",
-  },
-  {
-    title: "Packs",
-    caption: "Boxes and add-ons for your order.",
-    src: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=800&q=80",
-    alt: "Stacked shipping boxes and packages",
-  },
-  {
-    title: "Easy mode",
-    caption: "No rolling table at your place. We handle it.",
-    src: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80",
-    alt: "Friends relaxing together",
-  },
-];
-
-export const wowGridSection = {
-  heading: "More ways to Splifft",
-  subheading:
-    "Subscription delivery, clean glass, curated packs — plus Roll Up when you want us on-site.",
+export const dankDropsSection = {
+  heading: "Dank Drops",
+  subheading: "Curated sesh boxes built for real sessions.",
+  intro:
+    "Grab one on its own, gift one, or add one to your monthly. Great on their own — perfect for trips, gifts, and one-off sessions.",
 } as const;
 
-export const featuredPacksSection = {
-  heading: "Featured packs",
+export const fullSeshSection = {
+  heading: "Make it a full sesh",
   subheading:
-    "Add packs to your Roll Up — picks for a better night in or out. Splifft Subscription (monthly joints) lives in the shop.",
+    "Start with your monthly or this month’s drop — then layer in the extras.",
+  tileSubscription: "Splifft Subscription",
+  tileDrop: "Drop of the Month",
+  tileDrops: "Dank Drops",
 } as const;
 
 export const servicesPreviewSection = {
-  heading: "Services — book like an appointment",
+  heading: "Need it done today?",
   subheading:
-    "Roll Up is the main move — we prep and hand it back ready. Fresh Hit, Splifft Events, packs, and Splifft Club fill out the list.",
+    "Mobile handoff services for quicker, easier sessions.",
 } as const;
+
+export const homeServiceCards = [
+  {
+    id: "roll-up",
+    name: "Roll Up",
+    description:
+      "We pull up, take your flower, prep it, and hand it back ready.",
+    ctaLabel: "Book Roll Up",
+    ctaHref: "/services/roll-up",
+  },
+  {
+    id: "fresh-hit",
+    name: "Fresh Hit",
+    description:
+      "Hand us your glass. We clean it and return it fresh.",
+    ctaLabel: "Book Fresh Hit",
+    ctaHref: "/services/fresh-hit",
+  },
+] as const;
 
 export const eventsTeaserSection = {
   heading: "Stop Rolling. Start Hosting.",
-  body: "We prep cannabis for your event before anyone rings the doorbell. Timelines, packs, and timing — custom quote because every party is different.",
-  cta: "Request quote",
+  subheading: "Cannabis, prepared for your event.",
+  body: "From weddings to private parties, Splifft Events helps you plan cannabis experiences that are prepped, curated, and ready before your guests arrive.",
+  cta: "Request Event Quote",
 } as const;
 
 export const serviceAreaSection = {
-  heading: "Where we pull up",
-  subheading: "Michigan — curb or lot, quick meet-up.",
+  heading: "Where We Pull Up",
+  subheading: "Michigan — we meet you for handoff when you book services.",
 } as const;
 
 export const membershipSection = {
   eyebrow: "Membership",
-  heading: "Splifft Club",
+  heading: "Join Splifft Club & Save Every Sesh",
   intro:
-    "Lower prices, first pick of times, early drops, and glass-tip perks — worth it if you order often.",
+    "Lower pricing, priority access, and VIP perks built into every order.",
   pricingBlurb:
-    "Save on Roll Up, get better time slots, early drops, and glass-tip perks — members first.",
+    "Save on Splifft Subscription, Drop of the Month, and Dank Drops — plus Roll Up, priority times, early drops, and glass tip upgrades.",
+} as const;
+
+export const dankndevourPartnerSection = {
+  heading: "Powered by DankNDevour",
+  subheading: "Real food. Real smoke. Real sessions.",
+  supportLine:
+    "Discover pairings, spots, and local session inspiration.",
+  ctaVisit: "Visit DankNDevour",
+  ctaReviews: "Watch Reviews",
+  visitUrl: DANKNDEVOUR_SITE_URL,
+  reviewsUrl: DANKNDEVOUR_REVIEWS_URL,
 } as const;

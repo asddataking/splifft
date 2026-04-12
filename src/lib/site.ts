@@ -8,7 +8,13 @@ export const GOOGLE_ANALYTICS_MEASUREMENT_ID = "G-9FT8YGPK4K";
 
 /** Primary line for Open Graph / Twitter (share previews). */
 export const SOCIAL_SHARE_DESCRIPTION =
-  "Stop rolling. Start smoking. Splifft meets you, preps your smoke, hands it back ready. Roll Up, Fresh Hit, packs, Splifft Events, Splifft Club. Michigan — simple prep, no mess.";
+  "Stop rolling. Start smoking. Splifft Subscription, Drop of the Month, and Dank Drops — curated sesh boxes, member pricing, and mobile handoff when you need it. Splifft Club. Michigan.";
+
+/** DankNDevour brand partner links. */
+export const DANKNDEVOUR_SITE_URL = "https://www.dankndevour.com";
+
+/** Replace with YouTube, TikTok, or reviews page when ready. */
+export const DANKNDEVOUR_REVIEWS_URL = "https://www.dankndevour.com";
 
 export const OG_IMAGE_PATH = "/splifftlogo.png";
 

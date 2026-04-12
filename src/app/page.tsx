@@ -1,13 +1,16 @@
 import {
-  ActionCardsSection,
+  ChooseYourSplifftSection,
+  DankDropsSection,
+  DankNDevourPartnerSection,
   EventsTeaserSection,
-  FeaturedPacksSection,
+  FullSeshSection,
   HeroSection,
   MembershipSection,
   ServiceAreaSection,
   ServicesPreviewSection,
-  WowGridSection,
+  WhatYouGetSection,
 } from "@/components/home/HomeSections";
+import { SubscriptionModalProvider } from "@/components/home/SubscriptionModalProvider";
 import { buildPageMetadata, SOCIAL_SHARE_DESCRIPTION } from "@/lib/site";
 
 export const metadata = buildPageMetadata({
@@ -15,21 +18,23 @@ export const metadata = buildPageMetadata({
   title: "Home",
   absoluteTitle: "Splifft — Stop Rolling. Start Smoking.",
   description:
-    "Simple prep — no mess, no stress. Roll Up, Fresh Hit, packs, Splifft Events, and Splifft Club. We meet you, prep your smoke, hand it back ready.",
+    "Splifft Subscription, Drop of the Month, and Dank Drops — artisinally hand rolled joints and curated sesh boxes. Splifft Club saves every sesh. Michigan.",
   shareDescription: SOCIAL_SHARE_DESCRIPTION,
 });
 
 export default function Home() {
   return (
-    <>
+    <SubscriptionModalProvider>
       <HeroSection />
-      <ActionCardsSection />
-      <WowGridSection />
-      <FeaturedPacksSection />
+      <ChooseYourSplifftSection />
+      <WhatYouGetSection />
+      <MembershipSection />
+      <DankDropsSection />
+      <FullSeshSection />
       <ServicesPreviewSection />
       <EventsTeaserSection />
+      <DankNDevourPartnerSection />
       <ServiceAreaSection />
-      <MembershipSection />
-    </>
+    </SubscriptionModalProvider>
   );
 }

@@ -6,6 +6,10 @@ import { ProductAddToCart } from "@/components/shop/ProductAddToCart";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 import { getProductBySlug, getShopProducts } from "@/lib/catalog";
 import { getPackImage } from "@/lib/pack-images";
+import {
+  DROP_OF_THE_MONTH_SLUG,
+  dropOfTheMonthTheme,
+} from "@/lib/drop-of-the-month";
 import { SPLIFFT_MONTHLY_SLUG } from "@/lib/splifft-monthly-teaser";
 import { SITE_URL, buildPageMetadata } from "@/lib/site";
 import type { Metadata } from "next";
@@ -17,6 +21,7 @@ export async function generateStaticParams() {
   const products = await getShopProducts();
   const slugs = new Set(products.map((p) => p.slug));
   slugs.add(SPLIFFT_MONTHLY_SLUG);
+  slugs.add(DROP_OF_THE_MONTH_SLUG);
   return Array.from(slugs, (slug) => ({ slug }));
 }
 
@@ -24,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const product = await getProductBySlug(slug);
   if (!product) {
-    return { title: "Pack not found" };
+    return { title: "Product not found" };
   }
   const src = product.imageUrl ?? getPackImage(product.slug).url;
   const alt = product.imageAlt ?? getPackImage(product.slug).alt;
@@ -96,7 +101,7 @@ function ComingSoonDetail({ product }: { product: Product }) {
 
           <div className="flex flex-col">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--splifft-blue)]">
-              Future flagship
+              Flagship subscription
             </p>
             <h1 className="mt-2 font-[family-name:var(--font-display)] text-4xl uppercase leading-none tracking-wide text-[var(--splifft-cream)] sm:text-5xl">
               {product.name}
@@ -105,7 +110,8 @@ function ComingSoonDetail({ product }: { product: Product }) {
               Curated monthly. Ready when you are.
             </p>
             <p className="mt-2 text-lg font-medium text-[var(--splifft-cream)]/90">
-              Stop rolling every month. Start getting it ready.
+              Built for easier sessions. Built like a service appointment —
+              delivered like a perfect sesh.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-[var(--splifft-muted)]">
               {product.description}
@@ -130,7 +136,7 @@ function ComingSoonDetail({ product }: { product: Product }) {
                 </li>
                 <li className="flex gap-2">
                   <span className="text-[var(--splifft-pink)]">•</span>
-                  <strong>Hand-rolled with care</strong>
+                  <strong>Artisinally hand rolled with care</strong>
                 </li>
                 <li className="flex gap-2">
                   <span className="text-[var(--splifft-pink)]">•</span>
@@ -180,8 +186,8 @@ function ComingSoonDetail({ product }: { product: Product }) {
                 Membership tie-in
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-[var(--splifft-muted)]">
-                Splifft Club is built for repeat pull-ups: <strong className="text-[var(--splifft-cream)]">member pricing</strong>,{" "}
-                <strong className="text-[var(--splifft-cream)]">priority booking</strong>, early drops, and glass-tip perks. When Splifft Monthly goes live, members get the headline price and first dibs — the subscription is meant to feel like a real part of the ecosystem, not a side SKU.
+                Splifft Club is built for repeat buyers: <strong className="text-[var(--splifft-cream)]">member pricing</strong>,{" "}
+                <strong className="text-[var(--splifft-cream)]">priority booking</strong>, early drops, and glass-tip perks. When Splifft Subscription goes live, members get the headline price and first dibs — the subscription is the core of the ecosystem.
               </p>
             </section>
 
@@ -218,6 +224,8 @@ export default async function ProductDetailPage({ params }: Props) {
   if (product.comingSoon) {
     return <ComingSoonDetail product={product} />;
   }
+
+  const isDropOfTheMonth = product.slug === DROP_OF_THE_MONTH_SLUG;
 
   const src = product.imageUrl ?? getPackImage(product.slug).url;
   const alt = product.imageAlt ?? getPackImage(product.slug).alt;
@@ -256,6 +264,11 @@ export default async function ProductDetailPage({ params }: Props) {
             <h1 className="font-[family-name:var(--font-display)] text-4xl uppercase leading-none tracking-wide text-[var(--splifft-cream)] sm:text-5xl">
               {product.name}
             </h1>
+            {isDropOfTheMonth ? (
+              <p className="mt-3 font-[family-name:var(--font-display)] text-xl uppercase leading-tight text-[var(--splifft-pink)] sm:text-2xl">
+                {dropOfTheMonthTheme.tagline}
+              </p>
+            ) : null}
             <div className="mt-6 flex flex-wrap items-baseline gap-4 border-b border-white/10 pb-6">
               <div>
                 <p className="text-xs font-bold uppercase text-[var(--splifft-muted)]">
@@ -295,11 +308,12 @@ export default async function ProductDetailPage({ params }: Props) {
 
             <div className="mt-10 rounded-2xl border-2 border-[var(--splifft-blue)]/40 bg-black/35 p-6">
               <p className="text-sm font-semibold text-[var(--splifft-cream)]">
-                Order this pack
+                {isDropOfTheMonth ? "Claim this month’s drop" : "Add to your sesh"}
               </p>
               <p className="mt-1 text-sm text-[var(--splifft-muted)]">
-                Add to cart — packs level up your order. Pair with Roll Up for the
-                full Splifft experience.
+                {isDropOfTheMonth
+                  ? "Limited curated box — add to cart and make it a full sesh. Checkout is mocked until your processor is wired."
+                  : "Add this Dank Drop to your cart — great solo, as a gift, or layered with your monthly. Checkout is mocked until your processor is wired."}
               </p>
               <div className="mt-6">
                 <ProductAddToCart product={product} />

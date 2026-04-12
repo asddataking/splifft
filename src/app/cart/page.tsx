@@ -14,14 +14,14 @@ export default function CartPage() {
           Cart
         </h1>
         <p className="mt-2 text-[var(--splifft-muted)]">
-          Review your packs. Checkout is mocked for this build.
+          Review your cart. Checkout is mocked for this build.
         </p>
 
         {lines.length === 0 ? (
           <div className="mt-10 rounded-2xl border-2 border-dashed border-white/20 p-8 text-center">
             <p className="text-[var(--splifft-cream)]">Your cart is empty.</p>
             <SplifftButton href="/shop" variant="primary" className="mt-6">
-              Shop packs
+              Shop drops
             </SplifftButton>
           </div>
         ) : (
@@ -83,8 +83,8 @@ export default function CartPage() {
               >
                 Add a Roll Up appointment
               </Link>{" "}
-              — packs pair with your Roll Up visit; everything comes back ready
-              to go.
+              — curated drops pair great with a Roll Up handoff; everything comes
+              back ready to go.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <SplifftButton

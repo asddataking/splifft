@@ -4,7 +4,7 @@ export const metadata = buildPageMetadata({
   path: "/cart",
   title: "Cart",
   description:
-    "Review your Splifft packs and continue to checkout — built to pair with Roll Up.",
+    "Review your cart — Dank Drops, Drop of the Month, and more. Checkout is mocked until your processor is wired.",
   shareDescription: SOCIAL_SHARE_DESCRIPTION,
 });
 

@@ -137,10 +137,10 @@ export function EventQuoteForm() {
 
       <div>
         <h2 className="font-[family-name:var(--font-display)] text-2xl uppercase text-[var(--splifft-cream)]">
-          Optional add-ons
+          Optional sesh upgrades
         </h2>
         <p className="mt-2 text-sm text-[var(--splifft-muted)]">
-          Guest-ready smoke packs and other extras — fold into your custom quote.
+          Guest-ready curated drops and other extras — fold into your custom quote.
           No dollar amounts here; every event is different.
         </p>
         <ul className="mt-6 space-y-3">

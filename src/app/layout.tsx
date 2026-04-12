@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     template: "%s | Splifft",
   },
   description:
-    "Splifft makes smoking simpler — Roll Up, Fresh Hit, packs, Splifft Events, and Splifft Club. We meet you, prep it, hand it back ready. Michigan.",
+    "Splifft makes sessions simpler — Splifft Subscription, Drop of the Month, Dank Drops, Roll Up, Fresh Hit, Splifft Events, and Splifft Club. Michigan.",
   applicationName: "Splifft",
   authors: [{ name: "Splifft", url: SITE_URL }],
   creator: "Splifft",
@@ -51,7 +51,8 @@ export const metadata: Metadata = {
     "cannabis prep",
     "Michigan",
     "pre-rolls",
-    "cannabis packs",
+    "Dank Drops",
+    "Splifft Subscription",
     "event cannabis prep",
     "Fresh Hit",
     "getsplifft",

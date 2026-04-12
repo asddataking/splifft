@@ -37,20 +37,20 @@ export const products: Product[] = [
   {
     id: "pack-cabin",
     slug: "cabin-pack",
-    name: "Cabin Pack",
+    name: "Cabin Drop",
     description:
-      "Cozy night in: rolls, snack ideas, and a neat kit — everything in one box.",
+      "Curated sesh box for a cozy night in — trip-ready, giftable, or add to your monthly.",
     price: 64,
     memberPrice: 54,
-    badge: "Cozy drop",
+    badge: "Curated drop",
     highlights: ["Curated rolls", "Session kit", "Snack pairing card"],
   },
   {
     id: "pack-dankndevour",
     slug: "dankndevour-pack",
-    name: "DankNDevour Pack",
+    name: "DankNDevour Drop",
     description:
-      "Snack night, upgraded. Extras that pair with Roll Up — less planning, more eating.",
+      "Real food meets real smoke — a graze-friendly sesh upgrade, great standalone or with your monthly.",
     price: 72,
     memberPrice: 61,
     badge: "Fan favorite",
@@ -59,9 +59,9 @@ export const products: Product[] = [
   {
     id: "pack-lake",
     slug: "lake-day-pack",
-    name: "Lake Day Pack",
+    name: "Lake Day Drop",
     description:
-      "Sun and water. A tidy bundle for when you park and smoke — made to travel.",
+      "Sun and water. A tidy one-off box for when you park and smoke — made to travel.",
     price: 68,
     memberPrice: 58,
     highlights: ["Travel-tight", "Labeled jars", "Cooler-friendly layout"],
@@ -69,9 +69,9 @@ export const products: Product[] = [
   {
     id: "pack-mystery",
     slug: "mystery-pack",
-    name: "Mystery Pack",
+    name: "Mystery Box",
     description:
-      "A new Splifft box each time — small surprise, same quality.",
+      "A new Splifft curated drop each time — small surprise, same quality. Perfect for gifts.",
     price: 55,
     memberPrice: 47,
     badge: "Limited",
@@ -114,11 +114,11 @@ export const serviceCards: ServiceCard[] = [
 ];
 
 export const membershipPerks: string[] = [
-  "Member prices on Roll Up and Fresh Hit (where listed)",
-  "Priority booking and better times when it is busy",
-  "First-class treatment at every meet-up — you skip the rush",
-  "Early shop drops before everyone else",
-  "Glass tips and pack upgrades included or discounted",
+  "Lower Splifft Subscription price — $60/mo vs $75 non-member",
+  "Lower Drop of the Month and Dank Drops pricing where listed",
+  "Priority appointment times for Roll Up and Fresh Hit",
+  "Early access to limited drops before everyone else",
+  "Glass tip upgrades on subscription and curated rolls",
 ];
 
 export const locations: LocationArea[] = [
@@ -150,6 +150,13 @@ export const locations: LocationArea[] = [
       "Suburban meet-ups with the same prep rules — rolled, cleaned, or packed, then handed back ready.",
     neighborhoods: ["Sterling Heights", "Clinton Twp", "Shelby Twp"],
   },
+  {
+    slug: "st-clair-county",
+    name: "St. Clair County",
+    blurb:
+      "East-side routes with quick handoff — products ship statewide where allowed; services by coverage.",
+    neighborhoods: ["Marysville", "St. Clair", "Marine City"],
+  },
 ];
 
 export const eventUpsells = [
@@ -161,14 +168,14 @@ export const eventUpsells = [
   },
   {
     id: "curated-bundles",
-    label: "Curated packs",
+    label: "Curated sesh upgrades",
     description:
-      "Themed pack-outs: lake day, cabin night, or your own idea — not one size for all.",
+      "Themed Dank Drops and one-off boxes — lake day, cabin night, or your own idea.",
   },
   {
     id: "guest-packs",
-    label: "Guest-ready smoke packs",
+    label: "Guest-ready sesh boxes",
     description:
-      "Optional single packs so guests can grab the same thing — great when the head count shifts.",
+      "Optional curated drops so guests grab the same thing — great when the head count shifts.",
   },
 ] as const;

@@ -4,6 +4,10 @@ const PACK_IMAGES: Record<string, { url: string; alt: string }> = {
     url: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=1200&q=85",
     alt: "Gift boxes stacked — monthly Splifft delivery vibe",
   },
+  "drop-of-the-month": {
+    url: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1200&q=85",
+    alt: "Curated box and session picks — Drop of the Month",
+  },
   "cabin-pack": {
     url: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=1200&q=85",
     alt: "Warm wood cabin interior — Cabin Pack mood",

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { SITE_URL } from "@/lib/site";
 
 const explore = [
-  { href: "/shop", label: "Shop packs" },
+  { href: "/shop", label: "Shop" },
   { href: "/services", label: "Services" },
   { href: "/services/events", label: "Events" },
   { href: "/cart", label: "Cart" },
@@ -51,8 +51,9 @@ export function SiteFooter() {
               />
             </Link>
             <p className="mt-5 max-w-md text-base leading-relaxed text-[var(--splifft-muted)]">
-              Stop rolling. Start smoking. Roll Up, Fresh Hit, packs, and Splifft
-              Events — we meet you, add extras, and skip the scramble.
+              Stop rolling. Start smoking. Splifft Subscription, Drop of the Month,
+              and Dank Drops — plus Roll Up, Fresh Hit, and Splifft Events when you
+              need handoff fast.
             </p>
             <p className="mt-4 text-xs font-bold uppercase tracking-[0.2em] text-[var(--splifft-blue)]">
               Michigan · We pull up

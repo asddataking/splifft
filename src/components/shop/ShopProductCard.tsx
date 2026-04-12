@@ -3,9 +3,9 @@ import Link from "next/link";
 import type { Product } from "@/lib/data";
 import { getPackImage } from "@/lib/pack-images";
 
-type Props = { product: Product };
+type Props = { product: Product; ctaLabel?: string };
 
-export function ShopProductCard({ product }: Props) {
+export function ShopProductCard({ product, ctaLabel = "View Drop" }: Props) {
   const src = product.imageUrl ?? getPackImage(product.slug).url;
   const alt = product.imageAlt ?? getPackImage(product.slug).alt;
 
@@ -40,7 +40,7 @@ export function ShopProductCard({ product }: Props) {
               </span>
             </p>
             <span className="text-xs font-bold uppercase tracking-wider text-[var(--splifft-blue)] group-hover:text-[var(--splifft-pink)]">
-              View pack →
+              {ctaLabel} →
             </span>
           </div>
         </div>

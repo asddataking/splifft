@@ -6,6 +6,9 @@ export const SITE_URL = "https://getsplifft.com";
 /** Google Analytics 4 measurement ID (gtag.js). */
 export const GOOGLE_ANALYTICS_MEASUREMENT_ID = "G-9FT8YGPK4K";
 
+/** Meta (Facebook) Pixel ID — loaded in root layout (fbq PageView). */
+export const META_PIXEL_ID = "1605409814016301";
+
 /** Primary line for Open Graph / Twitter (share previews). */
 export const SOCIAL_SHARE_DESCRIPTION =
   "Stop rolling. Start smoking. Splifft Subscription, Drop of the Month, and Dank Drops — curated sesh boxes, member pricing, and mobile handoff when you need it. Splifft Club. Michigan.";

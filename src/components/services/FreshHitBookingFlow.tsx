@@ -10,7 +10,7 @@ import {
 import { SplifftButton } from "@/components/ui/SplifftButton";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
-const steps = ["Type", "Add-ons", "Time", "Checkout"] as const;
+const steps = ["Type", "Sesh upgrades", "Time", "Checkout"] as const;
 
 export function FreshHitBookingFlow() {
   const [step, setStep] = useState(0);
@@ -197,7 +197,7 @@ export function FreshHitBookingFlow() {
         {step === 1 ? (
           <div className="space-y-6">
             <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-ink)]">
-              Add-ons
+              Sesh upgrades
             </h2>
             <p className="text-sm text-[var(--splifft-ink-soft)]">
               Stack options on the same Fresh Hit stop — priority, extra pieces,

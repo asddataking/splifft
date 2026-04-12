@@ -29,6 +29,13 @@ function rowToProduct(row: Tables<"products">): Product {
   };
 }
 
+/** Copy-only fields (e.g. shop taglines) stay in static data until DB columns exist. */
+function enrichFromStatic(p: Product): Product {
+  const s = staticProducts.find((x) => x.slug === p.slug);
+  if (!s?.shopTagline) return p;
+  return { ...p, shopTagline: s.shopTagline };
+}
+
 function withPackImage(p: Product): Product {
   const { url, alt } = getPackImage(p.slug);
   return { ...p, imageUrl: url, imageAlt: alt };
@@ -45,11 +52,14 @@ export async function getShopProducts(): Promise<Product[]> {
       .order("sort_order", { ascending: true });
 
     if (error || !data?.length) {
-      return staticProducts.map(withPackImage);
+      return staticProducts.map(enrichFromStatic).map(withPackImage);
     }
-    return data.map(rowToProduct).map(withPackImage);
+    return data
+      .map(rowToProduct)
+      .map(enrichFromStatic)
+      .map(withPackImage);
   } catch {
-    return staticProducts.map(withPackImage);
+    return staticProducts.map(enrichFromStatic).map(withPackImage);
   }
 }
 

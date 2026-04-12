@@ -386,8 +386,8 @@ export function BookingFlow() {
               Add upgrades
             </h2>
             <p className="text-sm text-[var(--splifft-ink-soft)]">
-              Add-ons ride on the same visit — same stop, same meet-up. Book Fresh
-              Hit on its own if you only need glass cleaned.
+              Sesh upgrades ride on the same visit — same stop, same meet-up. Book
+              Fresh Hit on its own if you only need glass cleaned.
             </p>
             <ul className="space-y-3">
               {bookingUpgrades.map((u) => {

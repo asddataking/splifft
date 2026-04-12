@@ -29,13 +29,14 @@ export default async function ShopPage() {
       <section className="border-b-2 border-black bg-[radial-gradient(circle_at_30%_-10%,rgba(255,45,146,0.25),transparent_50%),#0c0c10] py-14 sm:py-18">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--splifft-blue)]">
-            Shop
+            Order online
           </p>
           <h1 className="mt-2 font-[family-name:var(--font-display)] text-4xl uppercase text-[var(--splifft-cream)] sm:text-5xl">
-            Subscriptions &amp; drops
+            Shop
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-[var(--splifft-muted)]">
-            Choose your monthly. Grab a drop. Make it a better sesh.
+            Two pillars: Subscriptions (Splifft Subscription + Drop of the Month),
+            then Dank Drops as curated sesh upgrades.
           </p>
         </div>
       </section>
@@ -49,8 +50,9 @@ export default async function ShopPage() {
             Your monthly, handled
           </h2>
           <p className="mt-2 max-w-2xl text-sm text-[var(--splifft-muted)]">
-            Splifft Subscription for artisinally hand rolled joints — Drop of the
-            Month for a limited curated box.
+            Splifft Subscription is coming soon — notify for launch. Drop of the
+            Month shows member vs non-member pricing; checkout is mocked until your
+            processor is live.
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
             <ShopSplifftMonthlyTeaserCard product={splifftMonthly} />
@@ -71,8 +73,8 @@ export default async function ShopPage() {
             Curated sesh boxes
           </h2>
           <p className="mt-2 max-w-2xl text-sm text-[var(--splifft-muted)]">
-            Great on their own, perfect for trips and gifts, or add a drop to your
-            monthly. Add to sesh at checkout.
+            Cabin, lake day, mystery, DankNDevour — curated drops and sesh upgrades.
+            Add to your subscription or run solo. Add to sesh at checkout.
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {dankDrops.map((p) => (
@@ -99,7 +101,7 @@ export default async function ShopPage() {
                 Roll Up
               </h3>
               <p className="mt-2 text-sm text-[var(--splifft-ink-soft)]">
-                We pull up, take your flower, prep it, and hand it back ready.
+                We pull up. You hand it off. We prep it and return it ready.
               </p>
               <SplifftButton
                 href="/services/roll-up"
@@ -114,7 +116,7 @@ export default async function ShopPage() {
                 Fresh Hit
               </h3>
               <p className="mt-2 text-sm text-[var(--splifft-ink-soft)]">
-                Hand us your glass. We clean it and return it fresh.
+                Clean glass. Better hits. Separate booking from Roll Up.
               </p>
               <SplifftButton
                 href="/services/fresh-hit"

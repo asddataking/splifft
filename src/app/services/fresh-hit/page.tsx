@@ -8,7 +8,7 @@ export const metadata = buildPageMetadata({
   path: "/services/fresh-hit",
   title: "Fresh Hit — glass cleaning, we meet you",
   description:
-    "Fresh Hit: bongs, rigs, and pipes cleaned on a meet-up — separate from Roll Up. Pick type, add-ons, time, checkout.",
+    "Fresh Hit: bongs, rigs, and pipes cleaned on a meet-up — separate from Roll Up. Pick type, sesh upgrades, time, checkout.",
   shareDescription: SOCIAL_SHARE_DESCRIPTION,
 });
 
@@ -94,7 +94,7 @@ export default function FreshHitServicePage() {
           </h2>
           <p className="mt-3 max-w-2xl text-[var(--splifft-muted)]">
             Types start around ${minP} standard (${Math.min(...freshHitCleaningTypes.map((t) => t.memberPrice))} Club) up
-            to about ${maxP} for multi-piece — plus optional add-ons (priority,
+            to about ${maxP} for multi-piece — plus optional sesh upgrades (priority,
             extra piece, protective packaging). Final total confirmed at checkout
             and when we meet you.
           </p>
@@ -113,7 +113,7 @@ export default function FreshHitServicePage() {
             Book Fresh Hit
           </h2>
           <p className="mt-2 max-w-2xl text-[var(--splifft-muted)]">
-            Type → add-ons → time → checkout. Not merged with Roll Up.
+            Type → sesh upgrades → time → checkout. Not merged with Roll Up.
           </p>
           <div className="mt-10">
             <FreshHitBookingFlow />

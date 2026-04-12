@@ -32,6 +32,11 @@ export function ShopProductCard({ product, ctaLabel = "View Drop" }: Props) {
           <h2 className="font-[family-name:var(--font-display)] text-2xl uppercase leading-tight tracking-wide text-[var(--splifft-cream)] sm:text-3xl">
             {product.name}
           </h2>
+          {product.shopTagline ? (
+            <p className="mt-1 line-clamp-2 text-sm text-[var(--splifft-muted)]">
+              {product.shopTagline}
+            </p>
+          ) : null}
           <div className="mt-2 flex flex-wrap items-baseline justify-between gap-2">
             <p className="text-lg font-bold text-white">
               ${product.price}

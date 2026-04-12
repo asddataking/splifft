@@ -3,7 +3,10 @@
  * Align with: Splifft Subscription, Drop of the Month, Dank Drops, Roll Up, Fresh Hit, Splifft Events, Splifft Club.
  */
 
-import { DROP_OF_THE_MONTH_SLUG } from "@/lib/drop-of-the-month";
+import {
+  DROP_OF_THE_MONTH_SLUG,
+  dropOfTheMonthTheme,
+} from "@/lib/drop-of-the-month";
 import { SPLIFFT_MONTHLY_SLUG } from "@/lib/splifft-monthly-teaser";
 import {
   DANKNDEVOUR_REVIEWS_URL,
@@ -22,7 +25,6 @@ export const heroMarketing = {
   eyebrow: "Product-first · Curated monthly",
   lead: "Get artisinally hand rolled joints and curated sesh boxes delivered to your door.",
   supporting: "No rolling. No prep. Just smoke.",
-  serviceLine: "Built like a service appointment. Delivered like a perfect sesh.",
   trustLine: "Michigan-based. Built for real smokers.",
   heroImageSrc:
     "https://images.unsplash.com/photo-1449965408867-eaa3f722e40d?w=800&q=80",
@@ -34,7 +36,7 @@ export const heroMarketing = {
 export const chooseYourSplifftSection = {
   heading: "Choose your Splifft",
   subheading:
-    "The main fork: your monthly joints, or this month’s limited curated box.",
+    "Pick your monthly joints, or this month’s limited curated box — both are built to sesh.",
 } as const;
 
 export type ChooseSplifftCard = {
@@ -53,7 +55,7 @@ export const chooseSplifftCards: ChooseSplifftCard[] = [
     bullets: [
       "5 × 0.7g joints",
       "glass tip included",
-      "indica or sativa",
+      "Indica or Sativa — your choice",
     ],
     cta: "Start Subscription",
     href: `/shop/${SPLIFFT_MONTHLY_SLUG}`,
@@ -61,8 +63,12 @@ export const chooseSplifftCards: ChooseSplifftCard[] = [
   },
   {
     title: "Drop of the Month",
-    body: "A curated box built for this month’s vibe.",
-    bullets: ["rotating theme", "limited feel", "member discount"],
+    body: "This month’s curated sesh. Limited. Ready.",
+    bullets: [
+      `${dropOfTheMonthTheme.themeName} — rotating theme`,
+      "Snacks, gear & vibe picks",
+      "Member & non-member pricing — exclusive feel",
+    ],
     cta: "Get This Month’s Drop",
     href: `/shop/${DROP_OF_THE_MONTH_SLUG}`,
     stripe: "from-[var(--splifft-blue)]/25 to-transparent",
@@ -71,34 +77,35 @@ export const chooseSplifftCards: ChooseSplifftCard[] = [
 
 export const whatYouGetSection = {
   heading: "What you get",
-  subheading: "Built for easier sessions — fast to understand, ready when you are.",
+  subheading:
+    "Two ways in — subscription joints or the monthly box. Both are curated, limited where it counts, and built for real sessions.",
   subscriptionTitle: "Splifft Subscription",
   subscriptionBullets: [
-    "5 artisinally hand rolled 0.7g joints",
+    "5 × 0.7g joints — artisinally hand rolled",
     "glass tip included",
     "curated monthly",
-    "delivered ready",
+    "delivered ready — no prep at your place",
   ],
   dropTitle: "Drop of the Month",
   dropBullets: [
-    "rotating themed box",
-    "snacks, gear, sesh items",
-    "exclusive limited feel",
-    "themed extras inside",
+    "rotating themed box each month",
+    "snacks, gear, and vibe-forward picks",
+    "exclusive, limited feel",
+    "stack with your sub or grab solo",
   ],
 } as const;
 
 export const dankDropsSection = {
   heading: "Dank Drops",
-  subheading: "Curated sesh boxes built for real sessions.",
+  subheading: "Curated sesh boxes — not random filler. Each one’s a vibe.",
   intro:
-    "Grab one on its own, gift one, or add one to your monthly. Great on their own — perfect for trips, gifts, and one-off sessions.",
+    "Cabin, lake day, mystery, DankNDevour — pick a curated drop, add it to your subscription, or run it solo.",
 } as const;
 
 export const fullSeshSection = {
   heading: "Make it a full sesh",
   subheading:
-    "Start with your monthly or this month’s drop — then layer in the extras.",
+    "Add a Dank Drop to your subscription, or buy one on its own — trips, gifts, or leveling up the night.",
   tileSubscription: "Splifft Subscription",
   tileDrop: "Drop of the Month",
   tileDrops: "Dank Drops",
@@ -115,15 +122,14 @@ export const homeServiceCards = [
     id: "roll-up",
     name: "Roll Up",
     description:
-      "We pull up, take your flower, prep it, and hand it back ready.",
+      "We pull up. You hand it off. We prep it and return it ready.",
     ctaLabel: "Book Roll Up",
     ctaHref: "/services/roll-up",
   },
   {
     id: "fresh-hit",
     name: "Fresh Hit",
-    description:
-      "Hand us your glass. We clean it and return it fresh.",
+    description: "Clean glass. Better hits.",
     ctaLabel: "Book Fresh Hit",
     ctaHref: "/services/fresh-hit",
   },
@@ -132,22 +138,25 @@ export const homeServiceCards = [
 export const eventsTeaserSection = {
   heading: "Stop Rolling. Start Hosting.",
   subheading: "Cannabis, prepared for your event.",
-  body: "From weddings to private parties, Splifft Events helps you plan cannabis experiences that are prepped, curated, and ready before your guests arrive.",
+  body: "Weddings, private parties, brand nights — Splifft Events is concierge prep: curated, on your timeline, ready before guests arrive.",
   cta: "Request Event Quote",
 } as const;
 
 export const serviceAreaSection = {
   heading: "Where We Pull Up",
-  subheading: "Michigan — we meet you for handoff when you book services.",
+  subheading:
+    "Michigan — tap a city for neighborhoods and coverage, or open the full locations hub.",
 } as const;
 
 export const membershipSection = {
   eyebrow: "Membership",
   heading: "Join Splifft Club & Save Every Sesh",
   intro:
-    "Lower pricing, priority access, and VIP perks built into every order.",
+    "Lower subscription and drop prices, priority booking, early access, and glass-tip upgrades — repeat buyers win.",
+  subscriptionPriceCallout:
+    "Splifft Subscription: $60/mo members · $75/mo non-members — save $15 every month in Club.",
   pricingBlurb:
-    "Save on Splifft Subscription, Drop of the Month, and Dank Drops — plus Roll Up, priority times, early drops, and glass tip upgrades.",
+    "Club is $9/mo on top of those product savings — worth it if you order often.",
 } as const;
 
 export const dankndevourPartnerSection = {

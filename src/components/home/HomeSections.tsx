@@ -68,9 +68,6 @@ export function HeroSection() {
           <p className="max-w-xl text-base font-medium text-[var(--splifft-cream)]/90">
             {heroMarketing.supporting}
           </p>
-          <p className="max-w-xl text-sm italic text-[var(--splifft-muted)]">
-            {heroMarketing.serviceLine}
-          </p>
           <HeroSubscriptionCtas />
           <p className="text-xs font-bold uppercase tracking-wider text-[var(--splifft-blue)]">
             {heroMarketing.trustLine}
@@ -165,11 +162,16 @@ export function WhatYouGetSection() {
             <h3 className="mt-2 font-[family-name:var(--font-display)] text-2xl uppercase text-[var(--splifft-cream)]">
               {whatYouGetSection.subscriptionTitle}
             </h3>
-            <ul className="mt-4 space-y-2 text-sm font-medium text-[var(--splifft-muted)]">
-              {whatYouGetSection.subscriptionBullets.map((line) => (
-                <li key={line} className="flex gap-2">
-                  <span className="text-[var(--splifft-pink)]">★</span>
-                  {line}
+            <ul className="mt-4 space-y-3 text-sm font-medium text-[var(--splifft-muted)]">
+              {whatYouGetSection.subscriptionBullets.map((line, i) => (
+                <li key={line} className="flex gap-3">
+                  <span
+                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border-2 border-[var(--splifft-pink)] text-xs font-bold text-[var(--splifft-pink)]"
+                    aria-hidden
+                  >
+                    {i + 1}
+                  </span>
+                  <span className="pt-0.5">{line}</span>
                 </li>
               ))}
             </ul>
@@ -181,11 +183,16 @@ export function WhatYouGetSection() {
             <h3 className="mt-2 font-[family-name:var(--font-display)] text-2xl uppercase text-[var(--splifft-cream)]">
               {whatYouGetSection.dropTitle}
             </h3>
-            <ul className="mt-4 space-y-2 text-sm font-medium text-[var(--splifft-muted)]">
-              {whatYouGetSection.dropBullets.map((line) => (
-                <li key={line} className="flex gap-2">
-                  <span className="text-[var(--splifft-blue)]">★</span>
-                  {line}
+            <ul className="mt-4 space-y-3 text-sm font-medium text-[var(--splifft-muted)]">
+              {whatYouGetSection.dropBullets.map((line, i) => (
+                <li key={line} className="flex gap-3">
+                  <span
+                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border-2 border-[var(--splifft-blue)] text-xs font-bold text-[var(--splifft-blue)]"
+                    aria-hidden
+                  >
+                    {i + 1}
+                  </span>
+                  <span className="pt-0.5">{line}</span>
                 </li>
               ))}
             </ul>
@@ -214,6 +221,9 @@ export function MembershipSection() {
             <p className="mt-4 text-[var(--splifft-muted)]">
               {membershipSection.intro}
             </p>
+            <p className="mt-4 rounded-xl border border-[var(--splifft-pink)]/40 bg-black/30 px-4 py-3 text-sm font-semibold text-[var(--splifft-cream)]">
+              {membershipSection.subscriptionPriceCallout}
+            </p>
             <ul className="mt-6 space-y-3">
               {membershipPerks.map((perk) => (
                 <li
@@ -228,7 +238,7 @@ export function MembershipSection() {
           </div>
           <div className="rounded-2xl border-2 border-black bg-[var(--splifft-card)] p-8 shadow-[10px_10px_0_0_rgba(255,45,146,0.45)]">
             <p className="text-sm font-bold uppercase tracking-wider text-[var(--splifft-ink-soft)]">
-              Example pricing
+              Splifft Club
             </p>
             <p className="mt-2 font-[family-name:var(--font-display)] text-6xl text-[var(--splifft-ink)]">
               $9
@@ -279,7 +289,7 @@ export async function DankDropsSection() {
         </div>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {dankDrops.map((p) => (
-            <ShopProductCard key={p.id} product={p} ctaLabel="View Drop" />
+            <ShopProductCard key={p.id} product={p} ctaLabel="Add to Sesh" />
           ))}
         </div>
       </div>
@@ -448,16 +458,21 @@ export function ServiceAreaSection() {
         </p>
         <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {locations.map((loc) => (
-            <li
-              key={loc.slug}
-              className="rounded-xl border-2 border-black bg-[var(--splifft-card)] px-4 py-4 font-semibold text-[var(--splifft-ink)] shadow-[4px_4px_0_0_rgba(0,191,255,0.35)]"
-            >
-              {loc.name}
+            <li key={loc.slug}>
+              <Link
+                href={`/locations/${loc.slug}`}
+                className="block rounded-xl border-2 border-black bg-[var(--splifft-card)] px-4 py-4 font-semibold text-[var(--splifft-ink)] shadow-[4px_4px_0_0_rgba(0,191,255,0.35)] transition hover:-translate-y-0.5 hover:border-[var(--splifft-pink)]/40"
+              >
+                {loc.name}
+                <span className="mt-1 block text-xs font-normal text-[var(--splifft-ink-soft)]">
+                  Area page →
+                </span>
+              </Link>
             </li>
           ))}
         </ul>
         <SplifftButton href="/locations" variant="ghost" className="mt-8">
-          Check Your Area
+          View all service areas
         </SplifftButton>
       </div>
     </section>

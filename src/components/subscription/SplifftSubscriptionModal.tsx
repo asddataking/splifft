@@ -4,6 +4,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { GA_EVENTS, trackGaEvent } from "@/lib/analytics";
 import { submitEmailCapture } from "@/lib/email-capture";
 import { SplifftButton } from "@/components/ui/SplifftButton";
+import { DROP_OF_THE_MONTH_SLUG } from "@/lib/drop-of-the-month";
 import { SPLIFFT_MONTHLY_SLUG } from "@/lib/splifft-monthly-teaser";
 
 type Props = {
@@ -12,10 +13,10 @@ type Props = {
 };
 
 const included = [
-  "5 × 0.7g joints",
+  "5 × 0.7g joints — artisinally hand rolled",
   "glass tip included",
-  "3.5g total monthly",
-  "choose indica or sativa",
+  "curated monthly delivery",
+  "3.5g total monthly · choose Indica or Sativa",
 ] as const;
 
 export function SplifftSubscriptionModal({ open, onClose }: Props) {
@@ -151,6 +152,24 @@ export function SplifftSubscriptionModal({ open, onClose }: Props) {
           </div>
         </div>
 
+        <div className="mt-6 rounded-xl border border-dashed border-[var(--splifft-pink)]/45 bg-black/35 p-4">
+          <p className="text-xs font-bold uppercase tracking-wider text-[var(--splifft-pink)]">
+            Optional upsell
+          </p>
+          <p className="mt-1 text-sm text-[var(--splifft-muted)]">
+            Add this month&apos;s curated drop — stack it with your subscription
+            or peek pricing first.
+          </p>
+          <SplifftButton
+            href={`/shop/${DROP_OF_THE_MONTH_SLUG}`}
+            variant="ghost"
+            className="mt-3 w-full border-2 border-[var(--splifft-pink)]/35"
+            onClick={onClose}
+          >
+            Add this month&apos;s drop →
+          </SplifftButton>
+        </div>
+
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
           <div className="rounded-xl border-2 border-[var(--splifft-pink)]/50 bg-black/35 p-4">
             <p className="text-[10px] font-bold uppercase text-[var(--splifft-muted)]">
@@ -177,7 +196,8 @@ export function SplifftSubscriptionModal({ open, onClose }: Props) {
         </div>
 
         <p className="mt-4 text-sm font-medium text-[var(--splifft-cream)]/90">
-          Save $15/month with Splifft Club + priority access + upgrades
+          Save $15/month and get priority access by joining Splifft Club — plus
+          better drop pricing and glass-tip perks.
         </p>
 
         <div className="mt-6">

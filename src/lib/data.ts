@@ -7,6 +7,8 @@ export type Product = {
   memberPrice: number;
   badge?: string;
   highlights?: string[];
+  /** One-line vibe for shop grid cards. */
+  shopTagline?: string;
   /** Filled by catalog layer via `getPackImage(slug)` for shop UI. */
   imageUrl?: string;
   imageAlt?: string;
@@ -38,6 +40,7 @@ export const products: Product[] = [
     id: "pack-cabin",
     slug: "cabin-pack",
     name: "Cabin Drop",
+    shopTagline: "Cozy night-in energy — cabin vibes without the prep.",
     description:
       "Curated sesh box for a cozy night in — trip-ready, giftable, or add to your monthly.",
     price: 64,
@@ -49,6 +52,7 @@ export const products: Product[] = [
     id: "pack-dankndevour",
     slug: "dankndevour-pack",
     name: "DankNDevour Drop",
+    shopTagline: "Graze, pass, repeat — food-truck smoke without the line.",
     description:
       "Real food meets real smoke — a graze-friendly sesh upgrade, great standalone or with your monthly.",
     price: 72,
@@ -60,6 +64,7 @@ export const products: Product[] = [
     id: "pack-lake",
     slug: "lake-day-pack",
     name: "Lake Day Drop",
+    shopTagline: "Sun, water, and a box built to travel with you.",
     description:
       "Sun and water. A tidy one-off box for when you park and smoke — made to travel.",
     price: 68,
@@ -69,7 +74,8 @@ export const products: Product[] = [
   {
     id: "pack-mystery",
     slug: "mystery-pack",
-    name: "Mystery Box",
+    name: "Mystery Drop",
+    shopTagline: "A fresh curated surprise every time — same quality, new twist.",
     description:
       "A new Splifft curated drop each time — small surprise, same quality. Perfect for gifts.",
     price: 55,
@@ -84,7 +90,7 @@ export const serviceCards: ServiceCard[] = [
     id: "roll-up",
     name: "Roll Up",
     description:
-      "We meet you, take your flower, roll it, and hand it back ready. You book a time — we show up.",
+      "We pull up. You hand it off. We prep it and return it ready — book a mobile handoff.",
     startingAt: 34.99,
     memberStartingAt: 29.99,
     ctaLabel: "Book Roll Up",
@@ -94,7 +100,7 @@ export const serviceCards: ServiceCard[] = [
     id: "fresh-hit",
     name: "Fresh Hit",
     description:
-      "We clean your glass and hand it back fresh. No sink time for you — book like Roll Up.",
+      "Clean glass. Better hits. Book a separate Fresh Hit handoff from Roll Up.",
     startingAt: 22,
     memberStartingAt: 18,
     ctaLabel: "Book Fresh Hit",
@@ -114,11 +120,11 @@ export const serviceCards: ServiceCard[] = [
 ];
 
 export const membershipPerks: string[] = [
-  "Lower Splifft Subscription price — $60/mo vs $75 non-member",
-  "Lower Drop of the Month and Dank Drops pricing where listed",
-  "Priority appointment times for Roll Up and Fresh Hit",
-  "Early access to limited drops before everyone else",
-  "Glass tip upgrades on subscription and curated rolls",
+  "Lower Splifft Subscription and Drop of the Month pricing",
+  "Lower Dank Drops pricing where listed",
+  "Priority booking for Roll Up and Fresh Hit",
+  "Early access to limited drops",
+  "Glass-tip upgrades on subscription and curated rolls",
 ];
 
 export const locations: LocationArea[] = [

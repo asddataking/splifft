@@ -162,7 +162,7 @@ export type FreshHitAddon = {
   price: number;
 };
 
-/** Fresh Hit step-2 add-ons (priced). */
+/** Fresh Hit step-2 priced sesh upgrades (internal ids still `addon_*` in DB). */
 export const freshHitAddons: FreshHitAddon[] = [
   {
     id: "priority-turnaround",
@@ -172,7 +172,7 @@ export const freshHitAddons: FreshHitAddon[] = [
   },
   {
     id: "multi-piece-pricing",
-    label: "Extra piece add-on",
+    label: "Extra piece (same visit)",
     description: "Additional piece beyond your base type — stacked on the same visit.",
     price: 12,
   },

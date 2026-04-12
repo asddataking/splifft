@@ -39,7 +39,7 @@ export const products: Product[] = [
     slug: "cabin-pack",
     name: "Cabin Pack",
     description:
-      "Cozy night energy: curated rolls, snacks-forward pairing notes, and a tidy kit — built for an easier sesh.",
+      "Cozy night in: rolls, snack ideas, and a neat kit — everything in one box.",
     price: 64,
     memberPrice: 54,
     badge: "Cozy drop",
@@ -50,18 +50,18 @@ export const products: Product[] = [
     slug: "dankndevour-pack",
     name: "DankNDevour Pack",
     description:
-      "The munchies menu, leveled up. Themed extras that pair perfectly with Roll Up — less thinking, more smoking.",
+      "Snack night, upgraded. Extras that pair with Roll Up — less planning, more eating.",
     price: 72,
     memberPrice: 61,
     badge: "Fan favorite",
-    highlights: ["Shareable setup", "Graze-friendly", "Full-sesh vibes"],
+    highlights: ["Shareable setup", "Graze-friendly", "Party-ready vibes"],
   },
   {
     id: "pack-lake",
     slug: "lake-day-pack",
     name: "Lake Day Pack",
     description:
-      "Sun, water, and a breezy bundle that travels clean. Curated extras for a better smoke when you park.",
+      "Sun and water. A tidy bundle for when you park and smoke — made to travel.",
     price: 68,
     memberPrice: 58,
     highlights: ["Travel-tight", "Labeled jars", "Cooler-friendly layout"],
@@ -71,7 +71,7 @@ export const products: Product[] = [
     slug: "mystery-pack",
     name: "Mystery Pack",
     description:
-      "A rotating Splifft drop — a little surprise in every box, same standards.",
+      "A new Splifft box each time — small surprise, same quality.",
     price: 55,
     memberPrice: 47,
     badge: "Limited",
@@ -84,7 +84,7 @@ export const serviceCards: ServiceCard[] = [
     id: "roll-up",
     name: "Roll Up",
     description:
-      "We pull up, take your flower, prep it, and hand it back ready — mobile handoff, no stress, built like a service appointment.",
+      "We meet you, take your flower, roll it, and hand it back ready. You book a time — we show up.",
     startingAt: 34.99,
     memberStartingAt: 29.99,
     ctaLabel: "Book Roll Up",
@@ -94,7 +94,7 @@ export const serviceCards: ServiceCard[] = [
     id: "fresh-hit",
     name: "Fresh Hit",
     description:
-      "Glass cleaning as a mobile handoff — we prep it and hand pieces back fresh. Easier sesh, zero sink time for you.",
+      "We clean your glass and hand it back fresh. No sink time for you — book like Roll Up.",
     startingAt: 22,
     memberStartingAt: 18,
     ctaLabel: "Book Fresh Hit",
@@ -104,7 +104,7 @@ export const serviceCards: ServiceCard[] = [
     id: "splifft-events",
     name: "Splifft Events",
     description:
-      "Cannabis, prepared for your event — ready before guests arrive. Custom quote; we build to your brief.",
+      "Cannabis prepped for your event before guests arrive. Custom quote — we follow your plan.",
     startingAt: 0,
     memberStartingAt: 0,
     ctaLabel: "Request quote",
@@ -114,11 +114,11 @@ export const serviceCards: ServiceCard[] = [
 ];
 
 export const membershipPerks: string[] = [
-  "Member pricing on Roll Up (and Fresh Hit where listed)",
-  "Priority booking & better availability on busy windows",
-  "VIP feel at every handoff — you skip the scramble",
-  "Early drops before the public shop opens",
-  "Glass tips & select pack upgrades included or discounted",
+  "Member prices on Roll Up and Fresh Hit (where listed)",
+  "Priority booking and better times when it is busy",
+  "First-class treatment at every meet-up — you skip the rush",
+  "Early shop drops before everyone else",
+  "Glass tips and pack upgrades included or discounted",
 ];
 
 export const locations: LocationArea[] = [
@@ -126,28 +126,28 @@ export const locations: LocationArea[] = [
     slug: "port-huron",
     name: "Port Huron",
     blurb:
-      "Mobile handoff routes with tight scheduling. Meet at the curb or lot — we prep it and hand it back ready.",
+      "Tight routes and set times. Meet at the curb or lot — we prep and hand it back ready.",
     neighborhoods: ["Downtown", "Fort Gratiot", "Marysville"],
   },
   {
     slug: "detroit",
     name: "Detroit",
     blurb:
-      "City runs with event-aware timing — mobile handoff so you’re not prepping when you should be hosting.",
+      "City runs with smart timing — we meet you so you are not stuck prepping when guests show up.",
     neighborhoods: ["Midtown", "Corktown", "New Center"],
   },
   {
     slug: "ann-arbor",
     name: "Ann Arbor",
     blurb:
-      "Neighborhood-friendly stops — appointment slots built around real traffic. Quick handoff; everything stays mobile until you get it back.",
+      "Neighborhood stops with real-traffic timing. Quick meet-up; your order stays with us until it is ready.",
     neighborhoods: ["Kerrytown", "Burns Park", "Ypsi line"],
   },
   {
     slug: "macomb-county",
     name: "Macomb County",
     blurb:
-      "Suburban meetups with the same mobile prep standard — rolled, cleaned, or packed, then handed back ready to smoke.",
+      "Suburban meet-ups with the same prep rules — rolled, cleaned, or packed, then handed back ready.",
     neighborhoods: ["Sterling Heights", "Clinton Twp", "Shelby Twp"],
   },
 ];
@@ -157,18 +157,18 @@ export const eventUpsells = [
     id: "premium-packaging",
     label: "Premium packaging",
     description:
-      "Branded bags and polished presentation for photos and gifting — prepped before guests arrive.",
+      "Branded bags and clean presentation for photos and gifts — ready before guests arrive.",
   },
   {
     id: "curated-bundles",
-    label: "Curated bundles",
+    label: "Curated packs",
     description:
-      "Themed pack-outs: lake day, cabin night, or custom to your crowd — not one-size-fits-all.",
+      "Themed pack-outs: lake day, cabin night, or your own idea — not one size for all.",
   },
   {
     id: "guest-packs",
     label: "Guest-ready smoke packs",
     description:
-      "Optional add-on: individual packs so guests grab something consistent — great when headcounts vary.",
+      "Optional single packs so guests can grab the same thing — great when the head count shifts.",
   },
 ] as const;

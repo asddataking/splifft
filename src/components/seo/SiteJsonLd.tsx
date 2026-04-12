@@ -9,7 +9,7 @@ const organization = {
   url: SITE_URL,
   logo: logoUrl,
   description:
-    "Mobile cannabis prep — Roll Up, Fresh Hit glass care, curated packs, and event prep. Michigan handoffs; quick handoff, ready to smoke.",
+    "Mobile cannabis prep — Roll Up, Fresh Hit, packs, and event prep. Michigan meet-ups; prep done for you, ready to smoke.",
   slogan: "Stop Rolling. Start Smoking.",
 };
 
@@ -19,7 +19,7 @@ const website = {
   name: "Splifft",
   url: SITE_URL,
   description:
-    "Book Roll Up, shop packs, plan events. Splifft preps your sesh on a mobile handoff — no prep stress, ready to go.",
+    "Book Roll Up, shop packs, plan Splifft Events. Splifft preps your order — we meet you, no prep stress, ready to go.",
   publisher: {
     "@type": "Organization",
     name: "Splifft",

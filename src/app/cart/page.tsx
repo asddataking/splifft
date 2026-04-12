@@ -83,8 +83,8 @@ export default function CartPage() {
               >
                 Add a Roll Up appointment
               </Link>{" "}
-              — bundles pair perfectly with mobile handoff prep; everything comes
-              back ready to go.
+              — packs pair with your Roll Up visit; everything comes back ready
+              to go.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <SplifftButton

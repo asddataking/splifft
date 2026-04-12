@@ -127,8 +127,8 @@ export function FreshHitBookingFlow() {
                 Cleaning type
               </h2>
               <p className="mt-2 text-sm text-[var(--splifft-ink-soft)]">
-                Fresh Hit is glass-only — mobile handoff, pieces back fresh. Book
-                Roll Up separately if you need flower prepped too.
+                Fresh Hit is glass-only — we meet you and hand pieces back clean.
+                Book Roll Up too if you also need flower rolled.
               </p>
             </div>
             <ul className="space-y-3">
@@ -186,8 +186,8 @@ export function FreshHitBookingFlow() {
                   className="w-24 rounded-xl border-2 border-black/15 bg-white px-3 py-2 text-center text-lg font-bold text-[var(--splifft-ink)]"
                 />
                 <span className="text-sm text-[var(--splifft-ink-soft)]">
-                  Line total uses type price × quantity (estimate — final at
-                  handoff).
+                  Line total uses type price × quantity (estimate — final when we
+                  meet you).
                 </span>
               </div>
             </div>

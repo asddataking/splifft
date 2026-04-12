@@ -17,7 +17,7 @@ export type InfusionId = "none" | "crumble" | "rosin";
 export const rollingTiers: RollingTier[] = [
   {
     grams: 3.5,
-    useCase: "Eighth — quick personal sesh",
+    useCase: "Eighth — solo or small night",
     standardPrice: 34.99,
     memberPrice: 29.99,
   },
@@ -92,13 +92,13 @@ export const bookingUpgrades: BookingUpgrade[] = [
   {
     id: "glass-tips",
     label: "Glass tips",
-    description: "Premium glass tips on your rolls — mobile handoff when ready.",
+    description: "Glass tips on your rolls — ready when we meet you.",
     price: 18,
   },
   {
     id: "tube-packaging",
     label: "Tube packaging",
-    description: "Protective tubes so your rolls travel clean after handoff.",
+    description: "Tubes so your rolls travel clean after we meet you.",
     price: 14,
   },
   {
@@ -128,7 +128,7 @@ export const freshHitCleaningTypes: FreshHitCleaningType[] = [
   {
     id: "small-piece",
     label: "Small piece",
-    description: "Bowls, chillums, small pipes — quick clean, mobile handoff.",
+    description: "Bowls, chillums, small pipes — quick clean, same meet-up.",
     standardPrice: 22,
     memberPrice: 18,
   },
@@ -142,14 +142,14 @@ export const freshHitCleaningTypes: FreshHitCleaningType[] = [
   {
     id: "heavy-clean",
     label: "Heavy clean",
-    description: "Reclaim-heavy or neglected glass — extra soak time, same handoff.",
+    description: "Dirty or neglected glass — extra soak, same meet-up.",
     standardPrice: 48,
     memberPrice: 40,
   },
   {
     id: "multi-piece",
     label: "Multi-piece",
-    description: "Multiple pieces in one stop — scope confirmed at meet-up.",
+    description: "Several pieces in one visit — we confirm scope when we meet.",
     standardPrice: 55,
     memberPrice: 46,
   },
@@ -179,7 +179,7 @@ export const freshHitAddons: FreshHitAddon[] = [
   {
     id: "protective-packaging",
     label: "Protective packaging",
-    description: "Padded bags or tubes so glass rides home safe after handoff.",
+    description: "Padded bags or tubes so glass rides home safe.",
     price: 10,
   },
 ];

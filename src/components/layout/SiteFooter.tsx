@@ -51,11 +51,11 @@ export function SiteFooter() {
               />
             </Link>
             <p className="mt-5 max-w-md text-base leading-relaxed text-[var(--splifft-muted)]">
-              Stop rolling. Start smoking. Roll Up, Fresh Hit, packs, and events
-              — mobile handoff, curated extras, easier seshes without the scramble.
+              Stop rolling. Start smoking. Roll Up, Fresh Hit, packs, and Splifft
+              Events — we meet you, add extras, and skip the scramble.
             </p>
             <p className="mt-4 text-xs font-bold uppercase tracking-[0.2em] text-[var(--splifft-blue)]">
-              Michigan · Mobile handoff energy
+              Michigan · We pull up
             </p>
           </div>
 
@@ -109,8 +109,8 @@ export function SiteFooter() {
                 </li>
                 <li>
                   <span className="text-[var(--splifft-muted)]">
-                    Questions? Book Roll Up or request an event quote from the
-                    site — we pull up for a quick handoff.
+                    Questions? Book Roll Up or request a Splifft Events quote from
+                    the site — we meet you fast.
                   </span>
                 </li>
               </ul>
@@ -123,7 +123,7 @@ export function SiteFooter() {
             © {year} Splifft. Mock checkout until your processor is wired.
           </p>
           <p className="text-center text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--splifft-muted)]/70">
-            Built for the sesh
+            Built for your smoke
           </p>
         </div>
       </div>

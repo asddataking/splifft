@@ -1,6 +1,7 @@
 "use client";
 
 import { SplifftButton } from "@/components/ui/SplifftButton";
+import { membershipSection } from "@/lib/marketing";
 
 export function ClubJoinCard() {
   return (
@@ -15,8 +16,7 @@ export function ClubJoinCard() {
         </span>
       </p>
       <p className="mt-4 text-sm text-[var(--splifft-ink-soft)]">
-        Placeholder — connect billing when you launch. Members get Roll Up
-        pricing, priority times, VIP scheduling, and upgrade perks.
+        {membershipSection.pricingBlurb} Connect billing when you launch.
       </p>
       <SplifftButton
         variant="primary"

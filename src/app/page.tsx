@@ -15,7 +15,7 @@ export const metadata = buildPageMetadata({
   title: "Home",
   absoluteTitle: "Splifft — Stop Rolling. Start Smoking.",
   description:
-    "Easier sesh — no prep, no stress. Roll Up, Fresh Hit, curated packs, Splifft Events, and Club. We pull up, prep your smoke, hand it back ready.",
+    "Simple prep — no mess, no stress. Roll Up, Fresh Hit, packs, Splifft Events, and Splifft Club. We meet you, prep your smoke, hand it back ready.",
   shareDescription: SOCIAL_SHARE_DESCRIPTION,
 });
 

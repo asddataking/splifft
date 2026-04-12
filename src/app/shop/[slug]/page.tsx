@@ -130,7 +130,7 @@ function ComingSoonDetail({ product }: { product: Product }) {
                 </li>
                 <li className="flex gap-2">
                   <span className="text-[var(--splifft-pink)]">•</span>
-                  <strong>Artisinally hand rolled</strong>
+                  <strong>Hand-rolled with care</strong>
                 </li>
                 <li className="flex gap-2">
                   <span className="text-[var(--splifft-pink)]">•</span>
@@ -298,8 +298,8 @@ export default async function ProductDetailPage({ params }: Props) {
                 Order this pack
               </p>
               <p className="mt-1 text-sm text-[var(--splifft-muted)]">
-                Add to cart — packs upgrade the sesh. Pair with Roll Up for a full
-                experience; curated for better sessions.
+                Add to cart — packs level up your order. Pair with Roll Up for the
+                full Splifft experience.
               </p>
               <div className="mt-6">
                 <ProductAddToCart product={product} />

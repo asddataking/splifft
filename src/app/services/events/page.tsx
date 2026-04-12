@@ -6,22 +6,22 @@ export const metadata = buildPageMetadata({
   path: "/services/events",
   title: "Splifft Events — custom quote",
   description:
-    "Cannabis, prepared for your event. Stop Rolling. Start Hosting. Request a custom quote; guest packs as add-ons in the form.",
+    "Cannabis prepped for your event. Stop Rolling. Start Hosting. Request a custom quote; guest packs as add-ons in the form.",
   shareDescription: SOCIAL_SHARE_DESCRIPTION,
 });
 
 const useCases = [
   {
     title: "Private parties",
-    body: "Headcount, vibe, and timing — pack-outs ready before the door opens.",
+    body: "Headcount, vibe, and timing — packs ready before the door opens.",
   },
   {
     title: "Brand & rooftop nights",
-    body: "Presentation-forward prep that photographs well and scales with the room.",
+    body: "Prep that looks good on camera and scales with the room.",
   },
   {
     title: "Weddings & milestones",
-    body: "Guest-aware portions and labeled options so nothing feels improvised.",
+    body: "Guest-friendly sizes and labels so nothing feels last minute.",
   },
 ] as const;
 
@@ -37,15 +37,15 @@ export default function ServicesEventsPage() {
             Stop Rolling. Start Hosting.
           </h1>
           <p className="mt-4 max-w-2xl text-lg font-medium text-[var(--splifft-cream)]">
-            Cannabis, prepared for your event.
+            Cannabis prepped for your event.
           </p>
           <p className="mt-3 max-w-2xl text-[var(--splifft-muted)]">
-            Everything ready before your guests arrive — tailored to headcount,
+            Everything ready before your guests arrive — sized to headcount,
             venue, and vibe.{" "}
             <strong className="text-[var(--splifft-cream)]">
               Custom quote only
             </strong>
-            ; guest-ready packs are an optional add-on in the form below, not a
+            . Guest-ready packs are an optional add-on in the form below — not a
             one-size headline.
           </p>
           <SplifftButton href="#quote" variant="primary" className="mt-8">
@@ -60,10 +60,9 @@ export default function ServicesEventsPage() {
             Overview
           </h2>
           <p className="mt-3 max-w-2xl text-[var(--splifft-muted)]">
-            Splifft plans cannabis prep for your event the same way we productize
-            Roll Up — mobile handoff thinking at scale: timelines, pack-outs, and
-            clarity before guests arrive. No public pricing; we build to your
-            brief.
+            We plan cannabis prep for your event the same way we run Roll Up — clear
+            timelines, packed orders, and no guesswork before guests arrive. No
+            public price list; we build to your brief.
           </p>
         </div>
       </section>
@@ -98,7 +97,7 @@ export default function ServicesEventsPage() {
           </h2>
           <p className="mt-2 max-w-2xl text-sm text-[var(--splifft-muted)]">
             Tell us about the event; tick add-ons like guest packs if you want
-            them folded into the proposal.
+            them in the proposal.
           </p>
           <div className="mt-10">
             <EventQuoteForm />

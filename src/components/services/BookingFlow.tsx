@@ -166,9 +166,8 @@ export function BookingFlow() {
                 Choose flower amount
               </h2>
               <p className="mt-2 text-sm text-[var(--splifft-ink-soft)]">
-                Roll Up is priced by flower weight — mobile handoff when your prep
-                is ready. Built like a service appointment, delivered like a perfect
-                sesh.
+                Price follows flower weight — we meet you when prep is done. Book
+                it like any other service — we show up ready.
               </p>
               <p className="mt-2 rounded-lg border border-[var(--splifft-pink)]/40 bg-[var(--splifft-pink)]/10 px-3 py-2 text-sm font-semibold text-[var(--splifft-ink)]">
                 3.5 grams is the minimum mobile appointment.
@@ -279,8 +278,8 @@ export function BookingFlow() {
                 ))}
               </div>
               <p className="text-sm text-[var(--splifft-ink-soft)]">
-                Infused options: crumble or rosin — choose one so we pack your
-                sesh right.
+                Infused options: crumble or rosin — pick one so we pack your order
+                right.
               </p>
             </div>
 
@@ -337,7 +336,8 @@ export function BookingFlow() {
               </h2>
               <p className="mt-2 text-sm text-[var(--splifft-ink-soft)]">
                 Pick each roll size (0.5g–2g). We estimate how many pre-rolls your
-                {tier.grams}g yields — final count matches your flower at handoff.
+                {tier.grams}g yields — final count matches your flower when we meet
+                you.
               </p>
               <p className="mt-3 rounded-lg border border-black/10 bg-white/70 px-3 py-2 text-sm text-[var(--splifft-ink)]">
                 <span className="font-bold">Example:</span> 7g at 0.7g per roll ≈
@@ -386,8 +386,8 @@ export function BookingFlow() {
               Add upgrades
             </h2>
             <p className="text-sm text-[var(--splifft-ink-soft)]">
-              Stack add-ons for the same appointment — same stop, same handoff.
-              Fresh Hit is booked separately.
+              Add-ons ride on the same visit — same stop, same meet-up. Book Fresh
+              Hit on its own if you only need glass cleaned.
             </p>
             <ul className="space-y-3">
               {bookingUpgrades.map((u) => {

@@ -1,4 +1,5 @@
 import { ClubJoinCard } from "@/components/club/ClubJoinCard";
+import { membershipSection } from "@/lib/marketing";
 import { membershipPerks } from "@/lib/data";
 import { buildPageMetadata, SOCIAL_SHARE_DESCRIPTION } from "@/lib/site";
 
@@ -6,7 +7,7 @@ export const metadata = buildPageMetadata({
   path: "/club",
   title: "Splifft Club",
   description:
-    "Splifft Club: member pricing, priority booking, VIP feel, early drops, and glass tip upgrades.",
+    "Splifft Club: member prices, priority booking, first-class meet-ups, early drops, and glass-tip upgrades.",
   shareDescription: SOCIAL_SHARE_DESCRIPTION,
 });
 
@@ -19,11 +20,11 @@ export default function ClubPage() {
             Splifft Club
           </p>
           <h1 className="mt-2 font-[family-name:var(--font-display)] text-4xl uppercase text-[var(--splifft-cream)] sm:text-6xl">
-            Members skip the scramble
+            Members skip the rush
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-[var(--splifft-muted)]">
-            Member pricing on Roll Up, priority appointment times, and VIP
-            treatment at every handoff — the smart move if you Splifft often.
+            Member prices on Roll Up, better times when it is busy, and a smooth
+            meet-up every time — smart if you order often.
           </p>
         </div>
       </section>
@@ -34,6 +35,9 @@ export default function ClubPage() {
             <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-cream)]">
               Perks
             </h2>
+            <p className="mt-3 text-sm text-[var(--splifft-muted)]">
+              {membershipSection.intro}
+            </p>
             <ul className="mt-6 space-y-4">
               {membershipPerks.map((perk) => (
                 <li

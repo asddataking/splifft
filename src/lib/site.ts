@@ -8,7 +8,7 @@ export const GOOGLE_ANALYTICS_MEASUREMENT_ID = "G-9FT8YGPK4K";
 
 /** Primary line for Open Graph / Twitter (share previews). */
 export const SOCIAL_SHARE_DESCRIPTION =
-  "Stop Rolling. Start Smoking. Splifft is mobile cannabis prep — we pull up, prep your smoke, and hand it back ready. Roll Up, Fresh Hit, packs, events, and Club. Michigan handoffs; no prep, no stress.";
+  "Stop rolling. Start smoking. Splifft meets you, preps your smoke, hands it back ready. Roll Up, Fresh Hit, packs, Splifft Events, Splifft Club. Michigan — simple prep, no mess.";
 
 export const OG_IMAGE_PATH = "/splifftlogo.png";
 

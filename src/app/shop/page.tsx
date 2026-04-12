@@ -10,7 +10,7 @@ export const metadata = buildPageMetadata({
   path: "/shop",
   title: "Shop packs",
   description:
-    "Curated packs — upgrades to a sesh, curated for better sessions. Add to your Roll Up.",
+    "Curated packs — add-ons for your order. Pair with Roll Up. Checkout coming soon.",
   shareDescription: SOCIAL_SHARE_DESCRIPTION,
 });
 
@@ -29,8 +29,8 @@ export default async function ShopPage() {
             Packs & drops
           </h1>
           <p className="mt-4 max-w-2xl text-[var(--splifft-muted)]">
-            Packs are part of the experience — curated extras that make it a full
-            sesh. Checkout is mocked until you wire your processor.
+            Packs round out your order — extras that make the night easier.
+            Checkout is mocked until you wire your processor.
           </p>
         </div>
       </section>
@@ -38,8 +38,8 @@ export default async function ShopPage() {
       <section className="border-b-2 border-[var(--splifft-blue)]/40 bg-[#12121a] py-6">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <p className="text-sm font-semibold text-[var(--splifft-cream)]">
-            Make it a full sesh — add packs to your Roll Up. Curated for better
-            sessions; we prep your smoke and hand it back ready.
+            Add packs to your Roll Up — picks for a better night; we prep your
+            smoke and hand it back ready.
           </p>
           <SplifftButton
             href="/services/roll-up"

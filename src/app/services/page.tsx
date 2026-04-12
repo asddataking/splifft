@@ -7,7 +7,7 @@ export const metadata = buildPageMetadata({
   path: "/services",
   title: "Services",
   description:
-    "Roll Up, Fresh Hit, Splifft Events, packs, and Club — mobile handoff cannabis prep for an easier sesh.",
+    "Roll Up, Fresh Hit, Splifft Events, packs, and Splifft Club — we meet you, prep your smoke, keep it simple.",
   shareDescription: SOCIAL_SHARE_DESCRIPTION,
 });
 
@@ -20,13 +20,13 @@ export default function ServicesHubPage() {
             Services
           </p>
           <h1 className="mt-2 font-[family-name:var(--font-display)] text-4xl uppercase text-[var(--splifft-cream)] sm:text-5xl">
-            Easier sesh, mobile handoff
+            Simple smoke, we meet you
           </h1>
           <p className="mt-4 max-w-2xl text-[var(--splifft-muted)]">
-            We&apos;re not selling &ldquo;rolling&rdquo; or &ldquo;cleaning&rdquo;
-            as products — we sell an easier sesh: no prep, no stress,
-            ready-to-go. Roll Up, Fresh Hit, events, packs, and Club — each has
-            its own page.
+            We are not selling &ldquo;rolling&rdquo; or &ldquo;cleaning&rdquo; as
+            products — we sell easy prep: no mess, no stress, ready to go. Roll
+            Up, Fresh Hit, Splifft Events, packs, and Splifft Club — each has its
+            own page.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <SplifftButton href="/services/roll-up" variant="primary">
@@ -85,7 +85,7 @@ export default function ServicesHubPage() {
             >
               Splifft Club
             </Link>{" "}
-            — member pricing, priority booking, VIP feel, early drops.
+            — member prices, priority booking, first-class meet-ups, early drops.
           </p>
         </div>
       </section>

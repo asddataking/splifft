@@ -2,6 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { getShopProducts } from "@/lib/catalog";
 import { serviceCards } from "@/lib/data";
+import {
+  actionCardsSection,
+  eventsTeaserSection,
+  featuredPacksSection,
+  heroMarketing,
+  homeActionCards,
+  membershipSection,
+  serviceAreaSection,
+  servicesPreviewSection,
+  wowGridSection,
+  wowGridTiles,
+} from "@/lib/marketing";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 import { ShopProductCard } from "@/components/shop/ShopProductCard";
 import { membershipPerks, locations } from "@/lib/data";
@@ -13,7 +25,7 @@ export function HeroSection() {
       <div className="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:flex-row lg:items-center lg:py-24">
         <div className="flex-1 space-y-6">
           <p className="inline-flex items-center gap-2 rounded-full border border-[var(--splifft-pink)]/50 bg-black/40 px-3 py-1 text-xs font-bold uppercase tracking-widest text-[var(--splifft-pink)]">
-            Mobile handoff · Built for an easier sesh
+            {heroMarketing.eyebrow}
           </p>
           <div className="relative w-full max-w-[min(100%,28rem)]">
             <Image
@@ -30,11 +42,10 @@ export function HeroSection() {
             Stop Rolling. Start Smoking.
           </h1>
           <p className="max-w-xl text-lg text-[var(--splifft-muted)]">
-            We pull up, prep your smoke, and hand it back ready.
+            {heroMarketing.lead}
           </p>
           <p className="max-w-xl text-base font-medium text-[var(--splifft-cream)]/90">
-            Quick handoff. Clean prep. Ready to smoke. No prep, no stress —
-            built like a service appointment, delivered like a perfect sesh.
+            {heroMarketing.supporting}
           </p>
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <SplifftButton href="/services/roll-up" variant="primary">
@@ -48,8 +59,8 @@ export function HeroSection() {
         <div className="relative flex-1">
           <div className="relative aspect-[4/5] w-full max-w-md overflow-hidden rounded-2xl border-2 border-black shadow-[12px_12px_0_0_rgba(255,45,146,0.45)] lg:mx-auto">
             <Image
-              src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&q=80"
-              alt="Food truck at night with neon city lights"
+              src={heroMarketing.heroImageSrc}
+              alt={heroMarketing.heroImageAlt}
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 400px"
@@ -58,10 +69,10 @@ export function HeroSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-5">
               <p className="font-[family-name:var(--font-display)] text-2xl text-[var(--splifft-cream)]">
-                ROLL UP. HAND OFF. SMOKE.
+                {heroMarketing.cardTitle}
               </p>
               <p className="mt-1 text-sm text-[var(--splifft-muted)]">
-                Mobile handoff — we handle the prep, you get it ready to go.
+                {heroMarketing.cardCaption}
               </p>
             </div>
           </div>
@@ -72,42 +83,17 @@ export function HeroSection() {
 }
 
 export function ActionCardsSection() {
-  const cards = [
-    {
-      title: "Roll Up",
-      body: "We pull up, take your flower, prep it, and hand it back ready.",
-      cta: "Book Roll Up",
-      href: "/services/roll-up",
-      stripe: "from-[var(--splifft-pink)]/25 to-transparent",
-    },
-    {
-      title: "Shop your sesh",
-      body: "Curated bundles and upgrades for an easier smoke.",
-      cta: "Shop packs",
-      href: "/shop",
-      stripe: "from-[var(--splifft-blue)]/25 to-transparent",
-    },
-    {
-      title: "Plan your event",
-      body: "Cannabis prepared for your event — ready before guests arrive.",
-      cta: "Request quote",
-      href: "/services/events",
-      stripe: "from-white/10 to-transparent",
-    },
-  ] as const;
-
   return (
     <section className="border-b-2 border-black bg-[var(--splifft-ink)] py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase tracking-wide text-[var(--splifft-cream)] sm:text-4xl">
-          Start with Roll Up
+          {actionCardsSection.heading}
         </h2>
         <p className="mt-2 max-w-2xl text-[var(--splifft-muted)]">
-          Book Roll Up, shop packs for an easier sesh, or plan an event — quick
-          handoff, we handle the rest.
+          {actionCardsSection.subheading}
         </p>
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          {cards.map((c) => (
+          {homeActionCards.map((c) => (
             <Link
               key={c.title}
               href={c.href}
@@ -133,33 +119,6 @@ export function ActionCardsSection() {
   );
 }
 
-const wowTiles = [
-  {
-    title: "Roll Up",
-    caption: "We pull up and prep your sesh.",
-    src: "https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=800&q=80",
-    alt: "Close-up hands prepping at a workstation",
-  },
-  {
-    title: "Fresh Hit",
-    caption: "Cleaned, rolled, and handed back ready.",
-    src: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800&q=80",
-    alt: "Sparkling clean glassware",
-  },
-  {
-    title: "Bundles & packs",
-    caption: "Your smoke, ready to go.",
-    src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80",
-    alt: "Carefully arranged food and containers",
-  },
-  {
-    title: "No hassle",
-    caption: "No rolling. No hassle.",
-    src: "https://images.unsplash.com/photo-1525695230005-efd074980869?w=800&q=80",
-    alt: "Mobile setup and supplies",
-  },
-];
-
 export function WowGridSection() {
   return (
     <section className="border-b-2 border-black bg-[#111015] py-16 sm:py-20">
@@ -167,11 +126,10 @@ export function WowGridSection() {
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-cream)] sm:text-4xl">
-              Easier sesh, same pull-up
+              {wowGridSection.heading}
             </h2>
             <p className="mt-2 max-w-xl text-[var(--splifft-muted)]">
-              Roll Up and Fresh Hit — cleaned, rolled, and handed back ready.
-              Mobile handoff every time.
+              {wowGridSection.subheading}
             </p>
           </div>
           <SplifftButton href="/services/roll-up" variant="ghost" className="self-start">
@@ -179,7 +137,7 @@ export function WowGridSection() {
           </SplifftButton>
         </div>
         <div className="mt-10 grid gap-4 sm:grid-cols-2">
-          {wowTiles.map((tile) => (
+          {wowGridTiles.map((tile) => (
             <div
               key={tile.title}
               className="relative aspect-[16/11] overflow-hidden rounded-2xl border-2 border-black shadow-[6px_6px_0_0_rgba(0,191,255,0.35)]"
@@ -222,11 +180,10 @@ export async function FeaturedPacksSection() {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-cream)] sm:text-4xl">
-              Featured packs
+              {featuredPacksSection.heading}
             </h2>
             <p className="mt-2 text-[var(--splifft-muted)]">
-              Make it a full sesh — add packs to your Roll Up. Curated for better
-              sessions.
+              {featuredPacksSection.subheading}
             </p>
           </div>
           <SplifftButton href="/shop" variant="secondary">
@@ -248,11 +205,10 @@ export function ServicesPreviewSection() {
     <section className="border-b-2 border-black bg-[var(--splifft-ink)] py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-cream)] sm:text-4xl">
-          Services — appointment style
+          {servicesPreviewSection.heading}
         </h2>
         <p className="mt-2 max-w-2xl text-[var(--splifft-muted)]">
-          Roll Up is the main move — we prep it and hand it back ready. Fresh Hit,
-          events, packs, and Club round out the menu.
+          {servicesPreviewSection.subheading}
         </p>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {serviceCards.map((s) => (
@@ -299,15 +255,13 @@ export function EventsTeaserSection() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="rounded-2xl border-2 border-[var(--splifft-pink)] bg-black/35 p-8 sm:p-12">
           <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-cream)] sm:text-5xl">
-            Stop Rolling. Start Hosting.
+            {eventsTeaserSection.heading}
           </h2>
           <p className="mt-4 max-w-2xl text-lg text-[var(--splifft-muted)]">
-            Cannabis, prepared for your event. Everything ready before your guests
-            arrive — prep, pack-outs, and timing handled Splifft-style (custom
-            quote; not every event is the same).
+            {eventsTeaserSection.body}
           </p>
           <SplifftButton href="/services/events" variant="secondary" className="mt-8">
-            Request custom quote
+            {eventsTeaserSection.cta}
           </SplifftButton>
         </div>
       </div>
@@ -320,10 +274,10 @@ export function ServiceAreaSection() {
     <section className="border-b-2 border-black bg-[#12121a] py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-cream)] sm:text-4xl">
-          Where we pull up
+          {serviceAreaSection.heading}
         </h2>
         <p className="mt-2 text-[var(--splifft-muted)]">
-          Michigan pull-ups — curb or lot meet, quick handoff.
+          {serviceAreaSection.subheading}
         </p>
         <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {locations.map((loc) => (
@@ -353,14 +307,13 @@ export function MembershipSection() {
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--splifft-blue)]">
-              Membership
+              {membershipSection.eyebrow}
             </p>
             <h2 className="mt-2 font-[family-name:var(--font-display)] text-4xl uppercase text-[var(--splifft-cream)] sm:text-5xl">
-              Splifft Club
+              {membershipSection.heading}
             </h2>
             <p className="mt-4 text-[var(--splifft-muted)]">
-              Member pricing, priority booking, VIP feel, early drops, and glass
-              tip upgrades — obvious value if you Splifft on repeat.
+              {membershipSection.intro}
             </p>
             <ul className="mt-6 space-y-3">
               {membershipPerks.map((perk) => (
@@ -385,8 +338,7 @@ export function MembershipSection() {
               </span>
             </p>
             <p className="mt-4 text-sm text-[var(--splifft-ink-soft)]">
-              Stack savings on Roll Up, priority windows, early drops, and
-              glass-tip perks — member-first scheduling.
+              {membershipSection.pricingBlurb}
             </p>
             <SplifftButton href="/club" variant="primary" className="mt-8 w-full sm:w-auto">
               Join Splifft Club

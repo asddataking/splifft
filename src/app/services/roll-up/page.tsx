@@ -10,7 +10,7 @@ export const metadata = buildPageMetadata({
   path: "/services/roll-up",
   title: "Roll Up — book by weight & roll size",
   description:
-    "Stop Rolling. Start Smoking. Book Roll Up: choose flower weight, roll size, upgrades, time, and checkout — mobile handoff, ready to smoke.",
+    "Stop Rolling. Start Smoking. Book Roll Up: pick flower weight, roll size, upgrades, time, and checkout — we meet you, ready to smoke.",
   shareDescription: SOCIAL_SHARE_DESCRIPTION,
 });
 
@@ -26,7 +26,7 @@ export default function RollUpServicePage() {
             Stop Rolling. Start Smoking.
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-[var(--splifft-muted)]">
-            We pull up, prep your smoke, and hand it back ready. Quick handoff.
+            We meet you, prep your smoke, and hand it back ready. Fast meet-up.
             Clean prep. Ready to smoke.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
@@ -47,20 +47,20 @@ export default function RollUpServicePage() {
               How it works
             </h2>
             <ol className="mt-6 list-decimal space-y-3 pl-5 text-[var(--splifft-muted)]">
-              <li>Pick flower weight (3.5g minimum) — see standard &amp; Club price.</li>
+              <li>Pick flower weight (3.5g minimum) — see standard and Club price.</li>
               <li>Choose roll size (0.5g–2g) — we show estimated pre-roll count.</li>
               <li>Add upgrades: glass tips, tubes, labels, DankNDevour.</li>
               <li>Lock a time — members get priority slots.</li>
-              <li>Checkout with name, meet-up, payment notes (wire real pay later).</li>
+              <li>Checkout with name, meet-up spot, payment notes (wire real pay later).</li>
             </ol>
             <p className="mt-6 text-sm text-[var(--splifft-cream)]">
-              Built like a service appointment. Delivered like a perfect sesh.
+              You book a time. We show up ready. You leave with rolls.
             </p>
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border-2 border-black shadow-[8px_8px_0_0_rgba(0,191,255,0.35)]">
             <Image
               src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=900&q=80"
-              alt="Hands prepping rolls at a mobile workstation"
+              alt="Hands prepping rolls at a clean work surface"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -75,9 +75,9 @@ export default function RollUpServicePage() {
             Weight + roll size
           </h2>
           <p className="mt-3 max-w-2xl text-[var(--splifft-muted)]">
-            Price follows weight. Roll size drives your pre-roll estimate — e.g.
-            7g at 0.7g rolls ≈ 10 rolls. You configure; we prep and hand it back
-            ready.
+            Price follows weight. Roll size sets your pre-roll count — for example
+            7g at 0.7g rolls is about 10 rolls. You pick the numbers; we prep and
+            hand it back ready.
           </p>
         </div>
       </section>
@@ -112,8 +112,7 @@ export default function RollUpServicePage() {
             Book Roll Up
           </h2>
           <p className="mt-2 max-w-2xl text-[var(--splifft-muted)]">
-            Same weight + roll-size flow you know — no Fresh Hit here; book glass
-            on{" "}
+            Same weight and roll-size flow — no Fresh Hit here; book glass on{" "}
             <Link
               href="/services/fresh-hit"
               className="font-semibold text-[var(--splifft-blue)] underline-offset-4 hover:underline"

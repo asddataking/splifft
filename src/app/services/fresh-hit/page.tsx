@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { FreshHitBookingFlow } from "@/components/services/FreshHitBookingFlow";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 import { freshHitCleaningTypes } from "@/lib/booking-tiers";
@@ -7,9 +6,9 @@ import { buildPageMetadata, SOCIAL_SHARE_DESCRIPTION } from "@/lib/site";
 
 export const metadata = buildPageMetadata({
   path: "/services/fresh-hit",
-  title: "Fresh Hit — glass cleaning, mobile handoff",
+  title: "Fresh Hit — glass cleaning, we meet you",
   description:
-    "Fresh Hit: bongs, rigs, and pipes cleaned on a mobile handoff — separate from Roll Up. Pick type, add-ons, time, checkout.",
+    "Fresh Hit: bongs, rigs, and pipes cleaned on a meet-up — separate from Roll Up. Pick type, add-ons, time, checkout.",
   shareDescription: SOCIAL_SHARE_DESCRIPTION,
 });
 
@@ -28,8 +27,8 @@ export default function FreshHitServicePage() {
             Glass back fresh — no sink time
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-[var(--splifft-muted)]">
-            We pull up, handle the prep, and hand pieces back ready. Easier sesh;
-            Fresh Hit is its own booking — not bundled with Roll Up.
+            We meet you, clean the glass, and hand it back ready. Fresh Hit is its
+            own booking — not bundled with Roll Up.
           </p>
           <SplifftButton href="#book-fresh-hit" variant="primary" className="mt-6">
             Book Fresh Hit
@@ -44,8 +43,8 @@ export default function FreshHitServicePage() {
               What we clean
             </h2>
             <p className="mt-3 text-[var(--splifft-muted)]">
-              Small pieces, bongs and rigs, heavy reclaim jobs, or multi-piece
-              stops — scope at handoff, always mobile handoff.
+              Small pieces, bongs and rigs, heavy reclaim jobs, or several pieces
+              in one visit — we confirm scope when we meet you.
             </p>
             <h3 className="mt-8 font-[family-name:var(--font-display)] text-xl uppercase text-[var(--splifft-cream)]">
               Piece types
@@ -62,8 +61,8 @@ export default function FreshHitServicePage() {
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="relative aspect-square overflow-hidden rounded-2xl border-2 border-black">
               <Image
-                src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=600&q=80"
-                alt="Clean glassware ready for handoff"
+                src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80"
+                alt="Clear glass on a dark surface — clean and simple"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 50vw, 25vw"
@@ -74,8 +73,8 @@ export default function FreshHitServicePage() {
             </div>
             <div className="relative aspect-square overflow-hidden rounded-2xl border-2 border-black">
               <Image
-                src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&q=80"
-                alt="Glass collection before cleaning"
+                src="https://images.unsplash.com/photo-1603561596112-0a132757e6d2?w=600&q=80"
+                alt="Glass pieces on a table before cleaning"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 50vw, 25vw"
@@ -97,7 +96,7 @@ export default function FreshHitServicePage() {
             Types start around ${minP} standard (${Math.min(...freshHitCleaningTypes.map((t) => t.memberPrice))} Club) up
             to about ${maxP} for multi-piece — plus optional add-ons (priority,
             extra piece, protective packaging). Final total confirmed at checkout
-            and handoff.
+            and when we meet you.
           </p>
           <SplifftButton href="/services/roll-up" variant="ghost" className="mt-6">
             Need flower prepped? Roll Up →

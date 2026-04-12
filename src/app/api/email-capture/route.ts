@@ -47,7 +47,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          "Email capture is not configured. Add SUPABASE_SERVICE_ROLE_KEY on the server.",
+          "Email capture is not configured. Add NEXT_SUPABASE_SECRETKEY (Supabase secret key) or SUPABASE_SERVICE_ROLE_KEY (legacy) on the server.",
       },
       { status: 503 },
     );

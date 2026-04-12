@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { GA_EVENTS, trackGaEvent } from "@/lib/analytics";
 import { useCart } from "@/context/cart-context";
+import { formatUsdForShop, roundUsd } from "@/lib/money";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 
 export default function CartPage() {
@@ -37,7 +38,7 @@ export default function CartPage() {
                     {line.name}
                   </p>
                   <p className="text-sm text-[var(--splifft-ink-soft)]">
-                    ${line.price} each
+                    {formatUsdForShop(roundUsd(line.price))} each
                   </p>
                 </div>
                 <div className="flex items-center gap-3">
@@ -74,7 +75,7 @@ export default function CartPage() {
                 Subtotal
               </span>
               <span className="font-[family-name:var(--font-display)] text-3xl text-[var(--splifft-cream)]">
-                ${subtotal}
+                {formatUsdForShop(roundUsd(subtotal))}
               </span>
             </div>
             <p className="mt-4 text-sm text-[var(--splifft-muted)]">
@@ -93,7 +94,7 @@ export default function CartPage() {
                 onClick={() => {
                   trackGaEvent(GA_EVENTS.BEGIN_CHECKOUT, {
                     currency: "USD",
-                    value: subtotal,
+                    value: roundUsd(subtotal),
                   });
                   alert("Connect checkout — Stripe, Square, etc.");
                 }}

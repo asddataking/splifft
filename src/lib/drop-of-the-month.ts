@@ -18,8 +18,8 @@ export function getDropOfTheMonthProduct(): Product {
     name: "Drop of the Month",
     description:
       `${dropOfTheMonthTheme.themeName} — a curated sesh box built for this month’s vibe. Rotating theme, limited feel, member pricing when you’re in Splifft Club.`,
-    price: 89,
-    memberPrice: 72,
+    price: 24.99,
+    memberPrice: 19.99,
     badge: "Limited drop",
     highlights: [
       "Rotating monthly theme",

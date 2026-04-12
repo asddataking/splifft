@@ -22,8 +22,8 @@ function rowToProduct(row: Tables<"products">): Product {
     slug: row.slug,
     name: row.name,
     description: row.description,
-    price: Math.round(row.price_cents / 100),
-    memberPrice: Math.round(row.member_price_cents / 100),
+    price: Math.round(row.price_cents) / 100,
+    memberPrice: Math.round(row.member_price_cents) / 100,
     badge: row.badge ?? undefined,
     highlights: highlights.length ? highlights : undefined,
   };

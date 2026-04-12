@@ -11,6 +11,7 @@ import {
   dropOfTheMonthTheme,
 } from "@/lib/drop-of-the-month";
 import { SPLIFFT_MONTHLY_SLUG } from "@/lib/splifft-monthly-teaser";
+import { formatUsdForShop } from "@/lib/money";
 import { SITE_URL, buildPageMetadata } from "@/lib/site";
 import type { Metadata } from "next";
 import type { Product } from "@/lib/data";
@@ -275,7 +276,7 @@ export default async function ProductDetailPage({ params }: Props) {
                   Standard
                 </p>
                 <p className="text-3xl font-bold text-[var(--splifft-cream)]">
-                  ${product.price}
+                  {formatUsdForShop(product.price)}
                 </p>
               </div>
               <div>
@@ -283,7 +284,7 @@ export default async function ProductDetailPage({ params }: Props) {
                   Splifft Club
                 </p>
                 <p className="text-3xl font-bold text-[var(--splifft-pink)]">
-                  ${product.memberPrice}
+                  {formatUsdForShop(product.memberPrice)}
                 </p>
               </div>
             </div>

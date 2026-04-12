@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "@/lib/data";
+import { formatUsdForShop } from "@/lib/money";
 import { getPackImage } from "@/lib/pack-images";
 
 type Props = { product: Product; ctaLabel?: string };
@@ -39,9 +40,9 @@ export function ShopProductCard({ product, ctaLabel = "View Drop" }: Props) {
           ) : null}
           <div className="mt-2 flex flex-wrap items-baseline justify-between gap-2">
             <p className="text-lg font-bold text-white">
-              ${product.price}
+              {formatUsdForShop(product.price)}
               <span className="ml-2 text-sm font-normal text-[var(--splifft-muted)]">
-                Club ${product.memberPrice}
+                Club {formatUsdForShop(product.memberPrice)}
               </span>
             </p>
             <span className="text-xs font-bold uppercase tracking-wider text-[var(--splifft-blue)] group-hover:text-[var(--splifft-pink)]">

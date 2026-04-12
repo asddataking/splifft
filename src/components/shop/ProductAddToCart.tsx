@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { GA_EVENTS, trackGaEvent } from "@/lib/analytics";
 import type { Product } from "@/lib/data";
+import { formatUsdForShop, roundUsd } from "@/lib/money";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 import { useCart } from "@/context/cart-context";
 
@@ -69,7 +70,7 @@ export function ProductAddToCart({ product }: Props) {
           );
           trackGaEvent(GA_EVENTS.ADD_TO_CART, {
             currency: "USD",
-            value: product.price * qty,
+            value: roundUsd(product.price * qty),
             items: [
               {
                 item_id: product.id,
@@ -82,7 +83,7 @@ export function ProductAddToCart({ product }: Props) {
           setQty(1);
         }}
       >
-        Add to cart · ${product.price * qty}
+        Add to cart · {formatUsdForShop(roundUsd(product.price * qty))}
       </SplifftButton>
     </div>
   );

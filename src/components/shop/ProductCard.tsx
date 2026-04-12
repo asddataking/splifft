@@ -1,6 +1,7 @@
 "use client";
 
 import type { Product } from "@/lib/data";
+import { formatUsdForShop } from "@/lib/money";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 import { useCart } from "@/context/cart-context";
 
@@ -42,13 +43,13 @@ export function ProductCard({ product, showMemberPrice = true }: Props) {
             Standard
           </p>
           <p className="text-xl font-bold text-[var(--splifft-ink)]">
-            ${product.price}
+            {formatUsdForShop(product.price)}
           </p>
           {showMemberPrice ? (
             <p className="text-xs text-[var(--splifft-ink-soft)]">
               Club{" "}
               <span className="font-semibold text-[var(--splifft-pink)]">
-                ${product.memberPrice}
+                {formatUsdForShop(product.memberPrice)}
               </span>
             </p>
           ) : null}

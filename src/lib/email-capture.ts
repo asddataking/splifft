@@ -38,5 +38,10 @@ export async function submitEmailCapture(
   if (!res.ok) {
     return { ok: false, error: data.error ?? "Something went wrong" };
   }
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(
+      new CustomEvent("splifft:waitlist_joined", { detail: payload.source }),
+    );
+  }
   return { ok: true };
 }

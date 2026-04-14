@@ -12,6 +12,11 @@ type Props = {
 
 export function ShopPageClient({ corePacks, dankDrops }: Props) {
   const [isMember, setIsMember] = useState(false);
+  const vaultProducts = dankDrops.map((product) => ({
+    ...product,
+    memberPrice: 19.99,
+    price: 24.99,
+  }));
 
   return (
     <div className="flex-1">
@@ -72,7 +77,7 @@ export function ShopPageClient({ corePacks, dankDrops }: Props) {
             Member price is $19.99. Guest price is $24.99.
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {dankDrops.map((p) => (
+            {vaultProducts.map((p) => (
               <ShopProductCard
                 key={p.id}
                 product={p}

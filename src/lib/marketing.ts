@@ -1,6 +1,6 @@
 /**
  * Homepage and shared marketing copy — single source for labels and hero imagery.
- * Align with: Splifft Subscription, Drop of the Month, Dank Drops, Roll Up, Fresh Hit, Splifft Events, Splifft Club.
+ * Align with: Splifft Club, 5-packs, Dank Drops, and Splifft Events.
  */
 
 import {
@@ -26,20 +26,20 @@ export const dankDropProductIds = [
 const subscriptionHeroVisual = getPackImage(SPLIFFT_MONTHLY_SLUG);
 
 export const heroMarketing = {
-  eyebrow: "Product-first · Curated monthly",
-  lead: "Get artisinally hand rolled joints and curated sesh boxes delivered to your door.",
-  supporting: "No rolling. No prep. Just smoke.",
+  eyebrow: "Join. Save. Shop.",
+  lead: "Hand-rolled packs delivered to your door.",
+  supporting: "Join the club for $7 to save $15 on every pack.",
   trustLine: "Michigan-based. Built for real smokers.",
   heroImageSrc: subscriptionHeroVisual.url,
   heroImageAlt: subscriptionHeroVisual.alt,
-  cardTitle: "READY TO LIGHT UP.",
-  cardCaption: "Curated monthly. Everything handled.",
+  cardTitle: "THE SMARTEST WAY TO SMOKE.",
+  cardCaption: "Stop Rolling. Start Smoking.",
 } as const;
 
 export const chooseYourSplifftSection = {
-  heading: "Choose your Splifft",
+  heading: "Shop your way",
   subheading:
-    "Pick your monthly joints, or this month’s limited curated box — both are built to sesh.",
+    "Start with a 5-pack, then unlock The Vault for themed boxes.",
 } as const;
 
 export type ChooseSplifftCard = {
@@ -81,20 +81,20 @@ export const chooseSplifftCards: ChooseSplifftCard[] = [
 export const whatYouGetSection = {
   heading: "What you get",
   subheading:
-    "Two ways in — subscription joints or the monthly box. Both are curated, limited where it counts, and built for real sessions.",
-  subscriptionTitle: "Splifft Subscription",
+    "Simple setup: join for $7, save on every 5-pack, and unlock The Vault.",
+  subscriptionTitle: "Core 5-Packs",
   subscriptionBullets: [
-    "5 × 0.7g joints — artisinally hand rolled",
-    "glass tip included",
-    "curated monthly",
-    "delivered ready — no prep at your place",
+    "Sativa or Indica 5-pack",
+    "Hand-rolled and delivered",
+    "Members pay $60, guests pay $75",
+    "No rolling needed",
   ],
-  dropTitle: "Drop of the Month",
+  dropTitle: "The Vault (Dank Drops)",
   dropBullets: [
-    "rotating themed box each month",
-    "snacks, gear, and vibe-forward picks",
-    "exclusive, limited feel",
-    "stack with your sub or grab solo",
+    "Themed boxes for every mood",
+    "Members pay $19.99, guests pay $24.99",
+    "Members see full access first",
+    "Easy add-on after you pick a pack",
   ],
 } as const;
 
@@ -115,28 +115,11 @@ export const fullSeshSection = {
 } as const;
 
 export const servicesPreviewSection = {
-  heading: "Need it done today?",
-  subheading:
-    "Mobile handoff services for quicker, easier sessions.",
+  heading: "Events only",
+  subheading: "Need party prep? Splifft Events is custom quote only.",
 } as const;
 
-export const homeServiceCards = [
-  {
-    id: "roll-up",
-    name: "Roll Up",
-    description:
-      "We pull up. You hand it off. We prep it and return it ready.",
-    ctaLabel: "Book Roll Up",
-    ctaHref: "/services/roll-up",
-  },
-  {
-    id: "fresh-hit",
-    name: "Fresh Hit",
-    description: "Clean glass. Better hits.",
-    ctaLabel: "Book Fresh Hit",
-    ctaHref: "/services/fresh-hit",
-  },
-] as const;
+export const homeServiceCards = [] as const;
 
 export const eventsTeaserSection = {
   heading: "Stop Rolling. Start Hosting.",
@@ -153,13 +136,13 @@ export const serviceAreaSection = {
 
 export const membershipSection = {
   eyebrow: "Membership",
-  heading: "Join Splifft Club & Save Every Sesh",
+  heading: "Join Splifft Club & Save Fast",
   intro:
-    "Lower subscription and drop prices, priority booking, early access, and glass-tip upgrades — repeat buyers win.",
+    "Pay $7 per month. Save $15 on every 5-pack and get lower Vault prices.",
   subscriptionPriceCallout:
-    "Splifft Subscription: $60/mo members · $75/mo non-members — save $15 every month in Club.",
+    "5-Packs: $60 for members · $75 for guests.",
   pricingBlurb:
-    "Club is $9/mo on top of those product savings — worth it if you order often.",
+    "One pack already beats the fee: pay $7, save $15, net $8 saved today.",
 } as const;
 
 export const dankndevourPartnerSection = {

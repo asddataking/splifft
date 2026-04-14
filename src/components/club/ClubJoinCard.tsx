@@ -11,7 +11,7 @@ export function ClubJoinCard() {
         Planned pricing
       </p>
       <p className="mt-2 font-[family-name:var(--font-display)] text-6xl text-[var(--splifft-ink)]">
-        $9
+        $7
         <span className="text-2xl font-sans font-semibold text-[var(--splifft-ink-soft)]">
           /month
         </span>
@@ -26,8 +26,8 @@ export function ClubJoinCard() {
         </p>
         <ClubWaitlistCapture surface="club_page" idPrefix="club-page" />
       </div>
-      <SplifftButton href="/services/roll-up" variant="ghost" className="mt-6 w-full">
-        Book Roll Up with Club slots
+      <SplifftButton href="/shop" variant="ghost" className="mt-6 w-full">
+        Shop Packs with Member Pricing
       </SplifftButton>
     </div>
   );

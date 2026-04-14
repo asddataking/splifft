@@ -7,7 +7,7 @@ export const metadata = buildPageMetadata({
   path: "/club",
   title: "Splifft Club",
   description:
-    "Splifft Club: join the waitlist until checkout is live — member prices, priority booking, early drops, and glass-tip upgrades.",
+    "Splifft Club: $7/month membership with lower 5-pack and Vault pricing plus early access.",
   shareDescription: SOCIAL_SHARE_DESCRIPTION,
 });
 
@@ -20,11 +20,10 @@ export default function ClubPage() {
             Splifft Club
           </p>
           <h1 className="mt-2 font-[family-name:var(--font-display)] text-4xl uppercase text-[var(--splifft-cream)] sm:text-6xl">
-            Members skip the rush
+            Join. Save. Smoke.
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-[var(--splifft-muted)]">
-            Member prices on Roll Up, better times when it is busy, and a smooth
-            meet-up every time — smart if you order often.
+            Pay $7 a month. Save $15 on every 5-pack and unlock lower Vault prices.
           </p>
         </div>
       </section>

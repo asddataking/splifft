@@ -60,9 +60,9 @@ export default function ServicesEventsPage() {
             Overview
           </h2>
           <p className="mt-3 max-w-2xl text-[var(--splifft-muted)]">
-            We plan cannabis prep for your event the same way we run Roll Up — clear
-            timelines, curated orders, and no guesswork before guests arrive. No
-            public price list; we build to your brief.
+            We plan your event with clear timelines, curated orders, and no
+            guesswork before guests arrive. No public price list; we build to your
+            brief.
           </p>
         </div>
       </section>

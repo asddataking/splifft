@@ -111,8 +111,7 @@ function ComingSoonDetail({ product }: { product: Product }) {
               Curated monthly. Ready when you are.
             </p>
             <p className="mt-2 text-lg font-medium text-[var(--splifft-cream)]/90">
-              Built for easier sessions. Built like a service appointment —
-              delivered like a perfect sesh.
+              Built for easier sessions and ready-to-smoke delivery.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-[var(--splifft-muted)]">
               {product.description}
@@ -325,8 +324,8 @@ export default async function ProductDetailPage({ params }: Props) {
               <SplifftButton href="/cart" variant="secondary">
                 View cart
               </SplifftButton>
-              <SplifftButton href="/services/roll-up" variant="ghost">
-                Book Roll Up
+              <SplifftButton href="/club" variant="ghost">
+                Join the Club
               </SplifftButton>
             </div>
           </div>

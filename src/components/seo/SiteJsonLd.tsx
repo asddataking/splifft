@@ -9,7 +9,7 @@ const organization = {
   url: SITE_URL,
   logo: logoUrl,
   description:
-    "Splifft Subscription, Drop of the Month, Dank Drops — plus Roll Up, Fresh Hit, and event prep. Michigan; curated sessions, ready to smoke.",
+    "Splifft Club, 5-pack pre-rolls, and The Vault themed boxes. Splifft Events available by custom quote.",
   slogan: "Stop Rolling. Start Smoking.",
 };
 
@@ -19,7 +19,7 @@ const website = {
   name: "Splifft",
   url: SITE_URL,
   description:
-    "Shop subscriptions and Dank Drops, book Roll Up or Fresh Hit, plan Splifft Events. Splifft preps your sesh — we meet you when you need handoff.",
+    "Join the Club, shop 5-packs, unlock The Vault, and request Splifft Events for parties.",
   publisher: {
     "@type": "Organization",
     name: "Splifft",

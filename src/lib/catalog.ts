@@ -43,6 +43,8 @@ function withPackImage(p: Product): Product {
 
 /** Active catalog from Supabase; falls back to static `data.ts` if DB is empty or unreachable. */
 export async function getShopProducts(): Promise<Product[]> {
+  const staticCatalog = staticProducts.map(enrichFromStatic).map(withPackImage);
+
   try {
     const supabase = await createSupabaseServerClient();
     const { data, error } = await supabase
@@ -52,14 +54,21 @@ export async function getShopProducts(): Promise<Product[]> {
       .order("sort_order", { ascending: true });
 
     if (error || !data?.length) {
-      return staticProducts.map(enrichFromStatic).map(withPackImage);
+      return staticCatalog;
     }
-    return data
+    const dbCatalog = data
       .map(rowToProduct)
       .map(enrichFromStatic)
       .map(withPackImage);
+    const merged = [...dbCatalog];
+    for (const fallbackProduct of staticCatalog) {
+      if (!merged.some((p) => p.slug === fallbackProduct.slug)) {
+        merged.push(fallbackProduct);
+      }
+    }
+    return merged;
   } catch {
-    return staticProducts.map(enrichFromStatic).map(withPackImage);
+    return staticCatalog;
   }
 }
 

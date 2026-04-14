@@ -5,6 +5,7 @@ import {
   EventsTeaserSection,
   FullSeshSection,
   HeroSection,
+  MemberMathSection,
   MembershipSection,
   ServiceAreaSection,
   ServicesPreviewSection,
@@ -18,7 +19,7 @@ export const metadata = buildPageMetadata({
   title: "Home",
   absoluteTitle: "Splifft — Stop Rolling. Start Smoking.",
   description:
-    "Splifft Subscription, Drop of the Month, and Dank Drops — artisinally hand rolled joints and curated sesh boxes. Splifft Club saves every sesh. Michigan.",
+    "The smartest way to smoke. Join Splifft Club for $7, save on 5-packs, and unlock The Vault themed boxes.",
   shareDescription: SOCIAL_SHARE_DESCRIPTION,
 });
 
@@ -29,6 +30,7 @@ export default function Home() {
       <ChooseYourSplifftSection />
       <WhatYouGetSection />
       <MembershipSection />
+      <MemberMathSection />
       <DankDropsSection />
       <FullSeshSection />
       <ServicesPreviewSection />

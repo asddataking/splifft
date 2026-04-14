@@ -6,11 +6,11 @@ import { usePathname } from "next/navigation";
 import { useCart } from "@/context/cart-context";
 
 const nav = [
-  { href: "/shop", label: "Shop" },
-  { href: "/services", label: "Services" },
+  { href: "/", label: "Home" },
+  { href: "/club", label: "The Club" },
+  { href: "/shop", label: "Shop Packs" },
+  { href: "/shop#the-vault", label: "The Vault" },
   { href: "/services/events", label: "Events" },
-  { href: "/locations", label: "Locations" },
-  { href: "/club", label: "Club" },
 ] as const;
 
 /** Items to the left of the logo (desktop). */
@@ -149,6 +149,14 @@ export function SiteHeader() {
             );
           })}
         </nav>
+      </div>
+      <div className="fixed bottom-3 left-0 right-0 z-50 px-3 md:hidden">
+        <Link
+          href="/club"
+          className="mx-auto flex min-h-[48px] w-full max-w-sm items-center justify-center rounded-xl border-2 border-black bg-[var(--splifft-pink)] px-4 py-3 text-sm font-extrabold uppercase tracking-wide text-black shadow-[0_8px_24px_rgba(0,0,0,0.45)]"
+        >
+          Join the Club
+        </Link>
       </div>
     </header>
   );

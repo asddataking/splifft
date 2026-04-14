@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getShopProducts } from "@/lib/catalog";
-import { serviceCards } from "@/lib/data";
 import {
   chooseSplifftCards,
   chooseYourSplifftSection,
@@ -11,10 +10,8 @@ import {
   eventsTeaserSection,
   fullSeshSection,
   heroMarketing,
-  homeServiceCards,
   membershipSection,
   serviceAreaSection,
-  servicesPreviewSection,
   whatYouGetSection,
 } from "@/lib/marketing";
 import { DROP_OF_THE_MONTH_SLUG } from "@/lib/drop-of-the-month";
@@ -29,10 +26,6 @@ import { membershipPerks, locations } from "@/lib/data";
 
 const actionCardClass =
   "group relative flex min-h-[220px] flex-col justify-between overflow-hidden rounded-2xl border-2 border-black bg-gradient-to-br p-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.65)] transition-all duration-300 ease-out motion-safe:transition-[transform,box-shadow,border-color] motion-reduce:transition-none hover:-translate-y-1 hover:border-[var(--splifft-pink)]/35 hover:shadow-[10px_10px_0_0_rgba(255,45,146,0.38)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--splifft-pink)]/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--splifft-ink)] active:scale-[0.99] motion-reduce:active:scale-100";
-
-function servicePricing(id: string) {
-  return serviceCards.find((s) => s.id === id);
-}
 
 export function HeroSection() {
   return (
@@ -61,8 +54,11 @@ export function HeroSection() {
             />
           </div>
           <h1 className="max-w-xl font-[family-name:var(--font-display)] text-4xl uppercase leading-[0.95] tracking-wide text-[var(--splifft-cream)] sm:text-5xl">
-            Stop Rolling. Start Smoking.
+            The Smartest Way to Smoke.
           </h1>
+          <p className="max-w-xl text-lg font-semibold text-[var(--splifft-cream)]">
+            Stop Rolling. Start Smoking.
+          </p>
           <p className="max-w-xl text-lg text-[var(--splifft-muted)]">
             {heroMarketing.lead}
           </p>
@@ -242,7 +238,7 @@ export function MembershipSection() {
               Splifft Club
             </p>
             <p className="mt-2 font-[family-name:var(--font-display)] text-6xl text-[var(--splifft-ink)]">
-              $9
+              $7
               <span className="text-2xl font-sans font-semibold text-[var(--splifft-ink-soft)]">
                 /month
               </span>
@@ -262,6 +258,24 @@ export function MembershipSection() {
             </Link>
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+export function MemberMathSection() {
+  return (
+    <section className="border-b-2 border-black bg-[#0c0c10] py-14 sm:py-16">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-cream)] sm:text-4xl">
+          Member Math
+        </h2>
+        <p className="mt-4 max-w-2xl text-lg text-[var(--splifft-cream)]">
+          Pay $7 to save $15.
+        </p>
+        <p className="mt-2 max-w-2xl text-[var(--splifft-muted)]">
+          You save $8 on your very first order.
+        </p>
       </div>
     </section>
   );
@@ -359,44 +373,23 @@ export function ServicesPreviewSection() {
     <section className="border-b-2 border-black bg-[var(--splifft-ink)] py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-cream)] sm:text-4xl">
-          {servicesPreviewSection.heading}
+          Events only
         </h2>
         <p className="mt-2 max-w-2xl text-[var(--splifft-muted)]">
-          {servicesPreviewSection.subheading}
+          Splifft Events is our premium custom-quote service for parties.
         </p>
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          {homeServiceCards.map((s) => {
-            const pricing = servicePricing(s.id);
-            return (
-              <article
-                key={s.id}
-                className="flex flex-col rounded-2xl border-2 border-[var(--splifft-blue)]/50 bg-black/40 p-6"
-              >
-                <h3 className="font-[family-name:var(--font-display)] text-2xl uppercase text-[var(--splifft-cream)]">
-                  {s.name}
-                </h3>
-                <p className="mt-3 flex-1 text-sm text-[var(--splifft-muted)]">
-                  {s.description}
-                </p>
-                {pricing ? (
-                  <p className="mt-4 text-xs font-bold uppercase tracking-wide text-[var(--splifft-pink)]">
-                    From ${pricing.startingAt}{" "}
-                    <span className="text-[var(--splifft-muted)]">
-                      · Club ${pricing.memberStartingAt}
-                    </span>
-                  </p>
-                ) : null}
-                <SplifftButton
-                  href={s.ctaHref}
-                  variant="primary"
-                  className="mt-5"
-                >
-                  {s.ctaLabel}
-                </SplifftButton>
-              </article>
-            );
-          })}
-        </div>
+        <article className="mt-8 rounded-2xl border-2 border-[var(--splifft-blue)]/50 bg-black/40 p-6">
+          <h3 className="font-[family-name:var(--font-display)] text-2xl uppercase text-[var(--splifft-cream)]">
+            Splifft Events
+          </h3>
+          <p className="mt-3 text-sm text-[var(--splifft-muted)]">
+            Weddings, birthdays, and private parties. Tell us your plan and we will
+            build a custom quote.
+          </p>
+          <SplifftButton href="/services/events" variant="primary" className="mt-5">
+            Request Event Quote
+          </SplifftButton>
+        </article>
       </div>
     </section>
   );

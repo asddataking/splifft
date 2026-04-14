@@ -1,13 +1,39 @@
 "use client";
 
-import Link from "next/link";
+import { useMemo, useState } from "react";
 import { GA_EVENTS, trackGaEvent } from "@/lib/analytics";
 import { useCart } from "@/context/cart-context";
 import { formatUsdForShop, roundUsd } from "@/lib/money";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 
 export default function CartPage() {
-  const { lines, setQuantity, removeLine, subtotal, clear } = useCart();
+  const { lines, setQuantity, removeLine, subtotal, clear, addLine } = useCart();
+  const [memberSwitchOn, setMemberSwitchOn] = useState(false);
+
+  const hasGuestPack = useMemo(
+    () =>
+      lines.some(
+        (line) =>
+          (line.id === "pack-sativa-5" || line.id === "pack-indica-5") &&
+          line.price === 75,
+      ),
+    [lines],
+  );
+  const guestPackCount = useMemo(
+    () =>
+      lines
+        .filter(
+          (line) =>
+            (line.id === "pack-sativa-5" || line.id === "pack-indica-5") &&
+            line.price === 75,
+        )
+        .reduce((sum, line) => sum + line.quantity, 0),
+    [lines],
+  );
+  const upgradedSubtotal = memberSwitchOn
+    ? roundUsd(subtotal - guestPackCount * 15)
+    : roundUsd(subtotal);
+  const todayTotalWithMembership = roundUsd(upgradedSubtotal + 7);
 
   return (
     <div className="flex-1 bg-[#0a0a0c] py-14 sm:py-18">
@@ -75,26 +101,60 @@ export default function CartPage() {
                 Subtotal
               </span>
               <span className="font-[family-name:var(--font-display)] text-3xl text-[var(--splifft-cream)]">
-                {formatUsdForShop(roundUsd(subtotal))}
+                {formatUsdForShop(upgradedSubtotal)}
               </span>
             </div>
             <p className="mt-4 text-sm text-[var(--splifft-muted)]">
-              <Link
-                href="/services/roll-up"
-                className="font-semibold text-[var(--splifft-pink)] underline-offset-4 hover:underline"
-              >
-                Add a Roll Up appointment
-              </Link>{" "}
-              — curated drops pair great with a Roll Up handoff; everything comes
-              back ready to go.
+              Checkout is mocked for this build.
             </p>
+            {hasGuestPack ? (
+              <div className="mt-4 rounded-xl border border-[var(--splifft-blue)]/40 bg-black/30 p-4">
+                <p className="text-sm font-semibold text-[var(--splifft-cream)]">
+                  Wait! Join the Club for $7 and pay only $60 for this pack?
+                </p>
+                <p className="mt-1 text-sm text-[var(--splifft-muted)]">
+                  Total today: {formatUsdForShop(todayTotalWithMembership)}. You save{" "}
+                  {formatUsdForShop(roundUsd(guestPackCount * 15 - 7))}.
+                </p>
+                <SplifftButton
+                  variant={memberSwitchOn ? "secondary" : "primary"}
+                  className="mt-3"
+                  onClick={() => setMemberSwitchOn((v) => !v)}
+                >
+                  {memberSwitchOn ? "Member Switch On" : "Switch to Member"}
+                </SplifftButton>
+              </div>
+            ) : null}
+            {guestPackCount > 0 ? (
+              <div className="mt-4 rounded-xl border border-[var(--splifft-pink)]/40 bg-black/30 p-4">
+                <p className="text-sm font-semibold text-[var(--splifft-cream)]">
+                  Themed Box Upgrade
+                </p>
+                <p className="mt-1 text-sm text-[var(--splifft-muted)]">
+                  One-click add-on at member price: $19.99
+                </p>
+                <SplifftButton
+                  variant="secondary"
+                  className="mt-3"
+                  onClick={() =>
+                    addLine({
+                      id: "themed-box-upgrade",
+                      name: "Themed Box Upgrade",
+                      price: 19.99,
+                    })
+                  }
+                >
+                  Add Themed Box Upgrade
+                </SplifftButton>
+              </div>
+            ) : null}
             <div className="mt-6 flex flex-wrap gap-3">
               <SplifftButton
                 variant="primary"
                 onClick={() => {
                   trackGaEvent(GA_EVENTS.BEGIN_CHECKOUT, {
                     currency: "USD",
-                    value: roundUsd(subtotal),
+                    value: upgradedSubtotal,
                   });
                   alert("Connect checkout — Stripe, Square, etc.");
                 }}

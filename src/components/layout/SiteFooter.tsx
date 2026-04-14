@@ -3,17 +3,16 @@ import Link from "next/link";
 import { SITE_URL } from "@/lib/site";
 
 const explore = [
-  { href: "/shop", label: "Shop" },
-  { href: "/services", label: "Services" },
+  { href: "/shop", label: "Shop Packs" },
+  { href: "/shop#the-vault", label: "The Vault" },
   { href: "/services/events", label: "Events" },
   { href: "/cart", label: "Cart" },
 ] as const;
 
 const service = [
-  { href: "/services/roll-up", label: "Roll Up" },
-  { href: "/services/fresh-hit", label: "Fresh Hit" },
+  { href: "/club", label: "The Club" },
   { href: "/locations", label: "Locations & areas" },
-  { href: "/club", label: "Splifft Club" },
+  { href: "/services/events", label: "Event quotes" },
 ] as const;
 
 export function SiteFooter() {
@@ -51,9 +50,8 @@ export function SiteFooter() {
               />
             </Link>
             <p className="mt-5 max-w-md text-base leading-relaxed text-[var(--splifft-muted)]">
-              Stop rolling. Start smoking. Splifft Subscription, Drop of the Month,
-              and Dank Drops — plus Roll Up, Fresh Hit, and Splifft Events when you
-              need handoff fast.
+              Stop rolling. Start smoking. Join the Club, save on every pack, and
+              unlock themed boxes in The Vault.
             </p>
             <p className="mt-4 text-xs font-bold uppercase tracking-[0.2em] text-[var(--splifft-blue)]">
               Michigan · We pull up
@@ -110,8 +108,7 @@ export function SiteFooter() {
                 </li>
                 <li>
                   <span className="text-[var(--splifft-muted)]">
-                    Questions? Book Roll Up or request a Splifft Events quote from
-                    the site — we meet you fast.
+                    Questions? Join the Club or request a Splifft Events quote.
                   </span>
                 </li>
               </ul>

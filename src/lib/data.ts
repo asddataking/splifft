@@ -37,14 +37,38 @@ export type LocationArea = {
 
 export const products: Product[] = [
   {
+    id: "pack-sativa-5",
+    slug: "sativa-5-pack",
+    name: "Sativa 5-Pack",
+    shopTagline: "Daytime-ready pre-roll pack.",
+    description:
+      "Five hand-rolled sativa pre-rolls. Ready to light. No rolling needed.",
+    price: 75,
+    memberPrice: 60,
+    badge: "Core Pack",
+    highlights: ["5 pre-rolls", "Fast daytime vibe", "Ships ready to smoke"],
+  },
+  {
+    id: "pack-indica-5",
+    slug: "indica-5-pack",
+    name: "Indica 5-Pack",
+    shopTagline: "Night-ready pre-roll pack.",
+    description:
+      "Five hand-rolled indica pre-rolls. Calm down and spark up faster.",
+    price: 75,
+    memberPrice: 60,
+    badge: "Core Pack",
+    highlights: ["5 pre-rolls", "Smooth evening vibe", "Ships ready to smoke"],
+  },
+  {
     id: "pack-cabin",
     slug: "cabin-pack",
     name: "Cabin Drop",
     shopTagline: "Cozy night-in energy — cabin vibes without the prep.",
     description:
       "Curated sesh box for a cozy night in — trip-ready, giftable, or add to your monthly.",
-    price: 64,
-    memberPrice: 54,
+    price: 24.99,
+    memberPrice: 19.99,
     badge: "Curated drop",
     highlights: ["Curated rolls", "Session kit", "Snack pairing card"],
   },
@@ -55,8 +79,8 @@ export const products: Product[] = [
     shopTagline: "Graze, pass, repeat — food-truck smoke without the line.",
     description:
       "Real food meets real smoke — a graze-friendly sesh upgrade, great standalone or with your monthly.",
-    price: 72,
-    memberPrice: 61,
+    price: 24.99,
+    memberPrice: 19.99,
     badge: "Fan favorite",
     highlights: ["Shareable setup", "Graze-friendly", "Party-ready vibes"],
   },
@@ -67,8 +91,8 @@ export const products: Product[] = [
     shopTagline: "Sun, water, and a box built to travel with you.",
     description:
       "Sun and water. A tidy one-off box for when you park and smoke — made to travel.",
-    price: 68,
-    memberPrice: 58,
+    price: 24.99,
+    memberPrice: 19.99,
     highlights: ["Travel-tight", "Labeled jars", "Cooler-friendly layout"],
   },
   {
@@ -78,34 +102,14 @@ export const products: Product[] = [
     shopTagline: "A fresh curated surprise every time — same quality, new twist.",
     description:
       "A new Splifft curated drop each time — small surprise, same quality. Perfect for gifts.",
-    price: 55,
-    memberPrice: 47,
+    price: 24.99,
+    memberPrice: 19.99,
     badge: "Limited",
     highlights: ["Rotating picks", "Members shop first", "Collectible card"],
   },
 ];
 
 export const serviceCards: ServiceCard[] = [
-  {
-    id: "roll-up",
-    name: "Roll Up",
-    description:
-      "We pull up. You hand it off. We prep it and return it ready — book a mobile handoff.",
-    startingAt: 34.99,
-    memberStartingAt: 29.99,
-    ctaLabel: "Book Roll Up",
-    ctaHref: "/services/roll-up",
-  },
-  {
-    id: "fresh-hit",
-    name: "Fresh Hit",
-    description:
-      "Clean glass. Better hits. Book a separate Fresh Hit handoff from Roll Up.",
-    startingAt: 22,
-    memberStartingAt: 18,
-    ctaLabel: "Book Fresh Hit",
-    ctaHref: "/services/fresh-hit",
-  },
   {
     id: "splifft-events",
     name: "Splifft Events",
@@ -120,11 +124,11 @@ export const serviceCards: ServiceCard[] = [
 ];
 
 export const membershipPerks: string[] = [
-  "Lower Splifft Subscription and Drop of the Month pricing",
-  "Lower Dank Drops pricing where listed",
-  "Priority booking for Roll Up and Fresh Hit",
+  "Only $7 per month",
+  "Save $15 on every 5-pack",
+  "Get The Vault boxes at $19.99",
   "Early access to limited drops",
-  "Glass-tip upgrades on subscription and curated rolls",
+  "Priority support for big event quotes",
 ];
 
 export const locations: LocationArea[] = [

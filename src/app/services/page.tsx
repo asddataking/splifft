@@ -7,7 +7,7 @@ export const metadata = buildPageMetadata({
   path: "/services",
   title: "Services",
   description:
-    "Roll Up, Fresh Hit, Splifft Events, and Splifft Club — mobile handoff when you need it. Subscriptions and Dank Drops live in the shop.",
+    "Splifft Events premium custom-quote service for parties.",
   shareDescription: SOCIAL_SHARE_DESCRIPTION,
 });
 
@@ -20,16 +20,15 @@ export default function ServicesHubPage() {
             Services
           </p>
           <h1 className="mt-2 font-[family-name:var(--font-display)] text-4xl uppercase text-[var(--splifft-cream)] sm:text-5xl">
-            Simple smoke, we meet you
+            Splifft Events
           </h1>
           <p className="mt-4 max-w-2xl text-[var(--splifft-muted)]">
-            We sell ready-to-go sessions — Splifft Subscription and Dank Drops lead
-            in the shop. Roll Up, Fresh Hit, and Splifft Events are mobile handoff
-            when you need it today. Splifft Club saves every sesh.
+            We now focus on membership, packs, and themed boxes. Services are now
+            events only, with custom quotes for parties.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <SplifftButton href="/services/roll-up" variant="primary">
-              Book Roll Up
+            <SplifftButton href="/services/events" variant="primary">
+              Request Event Quote
             </SplifftButton>
             <SplifftButton href="/shop" variant="secondary">
               Shop drops
@@ -41,9 +40,9 @@ export default function ServicesHubPage() {
       <section className="border-b-2 border-black bg-[#101018] py-12">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 className="font-[family-name:var(--font-display)] text-2xl uppercase text-[var(--splifft-cream)]">
-            Choose a service
+            Premium custom quote
           </h2>
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
+          <div className="mt-6 grid gap-4 md:grid-cols-1">
             {serviceCards.map((s) => (
               <article
                 key={s.id}
@@ -85,6 +84,7 @@ export default function ServicesHubPage() {
               Splifft Club
             </Link>{" "}
             — member prices, priority booking, first-class meet-ups, early drops.
+            — members save most on packs and vault boxes.
           </p>
         </div>
       </section>

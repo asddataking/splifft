@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     template: "%s | Splifft",
   },
   description:
-    "Splifft makes sessions simpler — Splifft Subscription, Drop of the Month, Dank Drops, Roll Up, Fresh Hit, Splifft Events, and Splifft Club. Michigan.",
+    "Splifft makes sessions simple — join for $7, save on 5-packs, and unlock The Vault. Splifft Events available for custom party quotes.",
   applicationName: "Splifft",
   authors: [{ name: "Splifft", url: SITE_URL }],
   creator: "Splifft",
@@ -47,15 +47,15 @@ export const metadata: Metadata = {
   category: "business",
   keywords: [
     "Splifft",
-    "Roll Up",
-    "mobile cannabis prep",
-    "cannabis prep",
+    "Splifft Club",
+    "5-pack pre-rolls",
+    "member savings",
     "Michigan",
     "pre-rolls",
     "Dank Drops",
-    "Splifft Subscription",
-    "event cannabis prep",
-    "Fresh Hit",
+    "The Vault",
+    "dank drops",
+    "events quotes",
     "getsplifft",
   ],
   formatDetection: {
@@ -109,7 +109,7 @@ export default function RootLayout({
         <SiteJsonLd />
         <Providers>
           <SiteHeader />
-          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col pb-20 md:pb-0">{children}</main>
           <SiteFooter />
         </Providers>
         <Analytics />

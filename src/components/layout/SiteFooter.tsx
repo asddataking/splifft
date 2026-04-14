@@ -13,6 +13,7 @@ const service = [
   { href: "/club", label: "The Club" },
   { href: "/locations", label: "Locations & areas" },
   { href: "/services/events", label: "Event quotes" },
+  { href: "/our-team", label: "Our Team" },
 ] as const;
 
 export function SiteFooter() {
@@ -123,6 +124,29 @@ export function SiteFooter() {
           <p className="text-center text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--splifft-muted)]/70">
             Built for your smoke
           </p>
+        </div>
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-xs text-[var(--splifft-muted)]">
+          <span className="font-semibold text-[var(--splifft-cream)]/85">
+            Social
+          </span>
+          <span>/</span>
+          <a
+            href="https://www.instagram.com/getsplifft/"
+            target="_blank"
+            rel="noreferrer"
+            className="text-[var(--splifft-pink)] hover:underline"
+          >
+            @getsplifft
+          </a>
+          <span>/</span>
+          <a
+            href="https://www.facebook.com/profile.php?id=61572115349869"
+            target="_blank"
+            rel="noreferrer"
+            className="text-[var(--splifft-pink)] hover:underline"
+          >
+            Facebook
+          </a>
         </div>
       </div>
     </footer>

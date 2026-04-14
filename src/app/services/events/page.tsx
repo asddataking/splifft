@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { EventQuoteForm } from "@/components/events/EventQuoteForm";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 import { buildPageMetadata, SOCIAL_SHARE_DESCRIPTION } from "@/lib/site";
@@ -14,14 +15,17 @@ const useCases = [
   {
     title: "Private parties",
     body: "Headcount, vibe, and timing — curated prep ready before the door opens.",
+    image: "/events-private-parties.jpg",
   },
   {
     title: "Brand & rooftop nights",
     body: "Prep that looks good on camera and scales with the room.",
+    image: "/events-brand-rooftop.jpg",
   },
   {
     title: "Weddings & milestones",
     body: "Guest-friendly sizes and labels so nothing feels last minute.",
+    image: "/events-weddings-milestones.jpg",
   },
 ] as const;
 
@@ -78,6 +82,16 @@ export default function ServicesEventsPage() {
                 key={u.title}
                 className="rounded-2xl border-2 border-[var(--splifft-blue)]/40 bg-black/40 p-6"
               >
+                <div className="mb-4 overflow-hidden rounded-xl border border-white/10">
+                  <Image
+                    src={u.image}
+                    alt={`${u.title} preview`}
+                    width={1600}
+                    height={1067}
+                    className="h-44 w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
                 <h3 className="font-[family-name:var(--font-display)] text-xl uppercase text-[var(--splifft-cream)]">
                   {u.title}
                 </h3>

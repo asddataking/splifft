@@ -12,19 +12,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: base, lastModified, changeFrequency: "weekly", priority: 1 },
     { url: `${base}/shop`, lastModified, changeFrequency: "weekly", priority: 0.95 },
+    { url: `${base}/blog`, lastModified, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${base}/press`, lastModified, changeFrequency: "monthly", priority: 0.6 },
     { url: `${base}/services`, lastModified, changeFrequency: "weekly", priority: 0.95 },
-    {
-      url: `${base}/services/roll-up`,
-      lastModified,
-      changeFrequency: "weekly" as const,
-      priority: 0.95,
-    },
-    {
-      url: `${base}/services/fresh-hit`,
-      lastModified,
-      changeFrequency: "weekly" as const,
-      priority: 0.9,
-    },
     {
       url: `${base}/services/events`,
       lastModified,
@@ -34,6 +24,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/events`, lastModified, changeFrequency: "monthly", priority: 0.5 },
     { url: `${base}/locations`, lastModified, changeFrequency: "monthly", priority: 0.85 },
     { url: `${base}/club`, lastModified, changeFrequency: "monthly", priority: 0.8 },
+    {
+      url: `${base}/our-team`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: `${base}/blog/why-joints-burn-uneven-michigan`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.65,
+    },
     { url: `${base}/cart`, lastModified, changeFrequency: "monthly", priority: 0.4 },
   ];
 

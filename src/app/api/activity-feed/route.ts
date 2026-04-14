@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 
+export const revalidate = 60;
+
 const METRO_CITIES = [
   "Detroit",
   "Dearborn",
@@ -51,5 +53,8 @@ export async function GET() {
     message: `Someone from ${cityFromTimestamp(row.created_at)} just ${sourceLabel(row.source)}.`,
   }));
 
-  return NextResponse.json({ items });
+  return NextResponse.json(
+    { items },
+    { headers: { "Cache-Control": "public, s-maxage=60, stale-while-revalidate=120" } },
+  );
 }

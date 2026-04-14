@@ -3,7 +3,7 @@
 import { useEffect, useId, useState } from "react";
 
 const SHARE_URL = "https://getsplifft.com/club";
-const COOLDOWN_KEY = "splifft_waitlist_share_cooldown_until";
+const COOLDOWN_KEY_PREFIX = "splifft_waitlist_share_cooldown_until:";
 const COOLDOWN_MS = 5 * 60 * 1000;
 
 function InstagramIcon() {
@@ -44,9 +44,12 @@ export function WaitlistShareModal() {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    function onJoined() {
+    function onJoined(e: Event) {
+      const custom = e as CustomEvent<{ email?: string; source?: string }>;
+      const email = (custom.detail?.email ?? "").trim().toLowerCase();
+      const key = `${COOLDOWN_KEY_PREFIX}${email || "unknown"}`;
       try {
-        const raw = sessionStorage.getItem(COOLDOWN_KEY);
+        const raw = sessionStorage.getItem(key);
         const until = raw ? Number(raw) : 0;
         if (until && Date.now() < until) return;
       } catch {
@@ -55,10 +58,7 @@ export function WaitlistShareModal() {
       setOpen(true);
       setCopied(false);
       try {
-        sessionStorage.setItem(
-          COOLDOWN_KEY,
-          String(Date.now() + COOLDOWN_MS),
-        );
+        sessionStorage.setItem(key, String(Date.now() + COOLDOWN_MS));
       } catch {
         /* ignore storage issues */
       }

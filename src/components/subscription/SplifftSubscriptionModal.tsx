@@ -31,6 +31,12 @@ export function SplifftSubscriptionModal({ open, onClose }: Props) {
   );
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  function handleClose() {
+    setStatus("idle");
+    setErrorMessage(null);
+    onClose();
+  }
+
   useEffect(() => {
     const el = dialogRef.current;
     if (!el) return;
@@ -48,10 +54,6 @@ export function SplifftSubscriptionModal({ open, onClose }: Props) {
       });
     }
     prevOpen.current = open;
-    if (!open) {
-      setStatus("idle");
-      setErrorMessage(null);
-    }
   }, [open]);
 
   async function handleNotify() {
@@ -81,7 +83,7 @@ export function SplifftSubscriptionModal({ open, onClose }: Props) {
     window.setTimeout(() => {
       setEmail("");
       setStatus("idle");
-      onClose();
+      handleClose();
     }, 1600);
   }
 
@@ -90,9 +92,9 @@ export function SplifftSubscriptionModal({ open, onClose }: Props) {
       ref={dialogRef}
       aria-labelledby={titleId}
       className="max-h-[90dvh] w-[min(100%,28rem)] overflow-y-auto rounded-2xl border-2 border-black bg-[#111015] p-0 text-[var(--splifft-cream)] shadow-[12px_12px_0_0_rgba(255,45,146,0.4)] backdrop:bg-black/70"
-      onClose={onClose}
+      onClose={handleClose}
       onClick={(e) => {
-        if (e.target === dialogRef.current) onClose();
+        if (e.target === dialogRef.current) handleClose();
       }}
     >
       <div className="p-6 sm:p-8">
@@ -106,7 +108,7 @@ export function SplifftSubscriptionModal({ open, onClose }: Props) {
           <button
             type="button"
             className="shrink-0 rounded-lg border border-white/20 px-2 py-1 text-sm font-semibold text-[var(--splifft-muted)] hover:bg-white/5 hover:text-[var(--splifft-cream)]"
-            onClick={onClose}
+            onClick={handleClose}
             aria-label="Close"
           >
             ✕
@@ -164,7 +166,7 @@ export function SplifftSubscriptionModal({ open, onClose }: Props) {
             href={`/shop/${DROP_OF_THE_MONTH_SLUG}`}
             variant="ghost"
             className="mt-3 w-full border-2 border-[var(--splifft-pink)]/35"
-            onClick={onClose}
+            onClick={handleClose}
           >
             Add this month&apos;s drop →
           </SplifftButton>
@@ -243,7 +245,7 @@ export function SplifftSubscriptionModal({ open, onClose }: Props) {
             href={`/shop/${SPLIFFT_MONTHLY_SLUG}`}
             variant="secondary"
             className="w-full"
-            onClick={onClose}
+            onClick={handleClose}
           >
             View full details
           </SplifftButton>

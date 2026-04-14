@@ -58,7 +58,7 @@ export function OrderNotificationPopup() {
       window.clearTimeout(showInitial);
       window.clearInterval(rotate);
     };
-  }, []);
+  }, [notifications.length]);
 
   return (
     <div

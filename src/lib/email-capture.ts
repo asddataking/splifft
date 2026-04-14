@@ -27,6 +27,7 @@ export type EmailCapturePayload = {
 export async function submitEmailCapture(
   payload: EmailCapturePayload,
 ): Promise<{ ok: true } | { ok: false; error: string }> {
+  const normalizedEmail = payload.email.trim().toLowerCase();
   const res = await fetch("/api/email-capture", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -40,7 +41,9 @@ export async function submitEmailCapture(
   }
   if (typeof window !== "undefined") {
     window.dispatchEvent(
-      new CustomEvent("splifft:waitlist_joined", { detail: payload.source }),
+      new CustomEvent("splifft:waitlist_joined", {
+        detail: { source: payload.source, email: normalizedEmail },
+      }),
     );
   }
   return { ok: true };

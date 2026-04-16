@@ -6,6 +6,7 @@ import {
   type EmailCaptureSource,
 } from "@/lib/email-capture";
 import type { Json } from "@/types/database.types";
+import { syncEmailCaptureToSendfox } from "@/lib/sendfox";
 
 function isSource(s: string): s is EmailCaptureSource {
   return (EMAIL_CAPTURE_SOURCES as readonly string[]).includes(s);
@@ -66,6 +67,11 @@ export async function POST(request: Request) {
       { error: "Could not save. Try again later." },
       { status: 500 },
     );
+  }
+
+  const sendfox = await syncEmailCaptureToSendfox({ email, source });
+  if (sendfox.status === "error") {
+    console.error("[email-capture] sendfox:", sendfox.error);
   }
 
   return NextResponse.json({ ok: true });

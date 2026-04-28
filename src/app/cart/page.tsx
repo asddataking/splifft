@@ -110,7 +110,7 @@ export default function CartPage() {
             {hasGuestPack ? (
               <div className="mt-4 rounded-xl border border-[var(--splifft-blue)]/40 bg-black/30 p-4">
                 <p className="text-sm font-semibold text-[var(--splifft-cream)]">
-                  Wait! Join the Club for $7 and pay only $60 for this pack?
+                  Switch to Monthly Access and pay only $60 for this pack?
                 </p>
                 <p className="mt-1 text-sm text-[var(--splifft-muted)]">
                   Total today: {formatUsdForShop(todayTotalWithMembership)}. You save{" "}
@@ -121,7 +121,7 @@ export default function CartPage() {
                   className="mt-3"
                   onClick={() => setMemberSwitchOn((v) => !v)}
                 >
-                  {memberSwitchOn ? "Member Switch On" : "Switch to Member"}
+                  {memberSwitchOn ? "Monthly Access On" : "Switch to Monthly Access"}
                 </SplifftButton>
               </div>
             ) : null}
@@ -131,7 +131,7 @@ export default function CartPage() {
                   Themed Box Upgrade
                 </p>
                 <p className="mt-1 text-sm text-[var(--splifft-muted)]">
-                  One-click add-on at member price: $19.99
+                  One-click add-on at Monthly Access price: $19.99
                 </p>
                 <SplifftButton
                   variant="secondary"

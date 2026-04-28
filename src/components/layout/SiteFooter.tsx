@@ -12,7 +12,7 @@ const explore = [
 ] as const;
 
 const service = [
-  { href: "/club", label: "The Club" },
+  { href: "/monthly-access", label: "Monthly Access" },
   { href: "/locations", label: "Locations & areas" },
   { href: "/services/events", label: "Event quotes" },
   { href: "/our-team", label: "Our Team" },
@@ -53,8 +53,8 @@ export function SiteFooter() {
               />
             </Link>
             <p className="mt-5 max-w-md text-base leading-relaxed text-[var(--splifft-muted)]">
-              Stop rolling. Start smoking. Join the Club, save on every pack, and
-              unlock themed boxes in The Vault.
+              Stop rolling. Start smoking. Get Monthly Access for premium 5-packs,
+              first access to drops, and easy session-ready delivery.
             </p>
             <p className="mt-4 text-xs font-bold uppercase tracking-[0.2em] text-[var(--splifft-blue)]">
               Michigan · We pull up
@@ -111,7 +111,7 @@ export function SiteFooter() {
                 </li>
                 <li>
                   <span className="text-[var(--splifft-muted)]">
-                    Questions? Join the Club or request a Splifft Events quote.
+                    Questions? Get Monthly Access or request a Splifft Events quote.
                   </span>
                 </li>
               </ul>

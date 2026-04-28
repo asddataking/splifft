@@ -178,11 +178,11 @@ export function WaitlistScrollPopup() {
             id={titleId}
             className="mt-5 font-[family-name:var(--font-display)] text-2xl uppercase leading-tight tracking-wide text-[var(--splifft-cream)] sm:text-3xl"
           >
-            Join the waitlist
+            Get Monthly Access
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-[var(--splifft-muted)]">
-            Splifft Subscription — 5 hand rolled joints, glass tips, curated
-            monthly. Same list as our subscription notify. No spam.
+            Splifft Subscription — 5 premium Spliffts, glass tips, curated monthly.
+            Same list as our subscription notify. No spam.
           </p>
         </div>
 
@@ -223,7 +223,7 @@ export function WaitlistScrollPopup() {
               disabled={saving}
               onClick={() => void handleSubmit()}
             >
-              {saving ? "Saving…" : "Notify me"}
+              {saving ? "Saving…" : "Get Monthly Access"}
             </SplifftButton>
             <SplifftButton
               href={`/shop/${SPLIFFT_MONTHLY_SLUG}`}
@@ -231,7 +231,7 @@ export function WaitlistScrollPopup() {
               className="w-full border-2 border-[var(--splifft-blue)]/50 sm:w-auto"
               onClick={() => dismiss("subscription_link")}
             >
-              View subscription
+              View Monthly Access
             </SplifftButton>
           </div>
         </div>

@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 
 const sampleNotifications = [
-  "Someone from Detroit just joined the Club.",
+  "Someone from Detroit just got Monthly Access.",
   "Someone from Troy just grabbed a Sativa 5-Pack.",
   "Someone from Sterling Heights just unlocked The Vault.",
   "Someone from Clinton Township just joined the waitlist.",
@@ -73,10 +73,10 @@ export function OrderNotificationPopup() {
       </p>
       <p className="mt-1 leading-relaxed text-[var(--splifft-cream)]/95">{message}</p>
       <Link
-        href="/club"
+        href="/monthly-access"
         className="mt-2 inline-block text-xs font-semibold text-[var(--splifft-blue)] underline-offset-4 hover:underline"
       >
-        Join the Club
+        Get Monthly Access
       </Link>
     </div>
   );

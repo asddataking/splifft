@@ -8,7 +8,7 @@ export const GA_EVENTS = {
   WAITLIST_SCROLL_OPEN: "waitlist_scroll_open",
   WAITLIST_SCROLL_DISMISS: "waitlist_scroll_dismiss",
   NOTIFY_ME_SUBMIT: "notify_me_submit",
-  CLUB_WAITLIST_SUBMIT: "club_waitlist_submit",
+  MONTHLY_ACCESS_WAITLIST_SUBMIT: "monthly_access_waitlist_submit",
   ADD_TO_CART: "add_to_cart",
   BEGIN_CHECKOUT: "begin_checkout",
 } as const;

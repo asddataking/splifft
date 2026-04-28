@@ -20,8 +20,8 @@ export default function PressPage() {
           Splifft Media
         </h1>
         <p className="mt-4 max-w-2xl text-[var(--splifft-muted)]">
-          We make smoking easier. People join the Club, save on packs, and get ready
-          to smoke without rolling.
+          We make smoking easier. People get Monthly Access, save on packs, and get
+          ready to smoke without rolling.
         </p>
 
         <section className="mt-8 grid gap-6 rounded-2xl border-2 border-black bg-[var(--splifft-card)] p-6 shadow-[8px_8px_0_0_rgba(255,45,146,0.28)] sm:grid-cols-[1fr_1.2fr] sm:p-8">
@@ -52,7 +52,7 @@ export default function PressPage() {
               We fix that.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-[var(--splifft-muted)]">
-              We sell hand-rolled packs and themed boxes. Our Club helps people save
+              We sell premium packs and themed boxes. Monthly Access helps people save
               money fast. We also offer premium event quotes for parties.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-[var(--splifft-muted)]">

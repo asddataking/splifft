@@ -76,24 +76,24 @@ export function ShopSplifftMonthlyTeaserCard({ product }: Props) {
 
           <div className="absolute bottom-0 left-0 right-0 z-[1] p-4 sm:p-5">
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--splifft-blue)]">
-              Flagship subscription
+              Monthly Access
             </p>
             <h2 className="mt-1 font-[family-name:var(--font-display)] text-2xl uppercase leading-tight tracking-wide text-[var(--splifft-cream)] sm:text-3xl">
               {product.name}
             </h2>
             <p className="mt-2 text-sm leading-snug text-[var(--splifft-muted)]">
-              5 artisinally hand rolled 0.7g joints with glass tips, curated
+              5 premium Spliffts with glass filter tips and branded bands, curated
               monthly.
             </p>
             <div className="mt-3 space-y-1.5 border-t border-white/10 pt-3">
               <p className="text-lg font-bold text-white">
-                ${product.memberPrice}
+                ${product.monthlyAccessPrice}
                 <span className="ml-2 text-xs font-bold uppercase tracking-wide text-[var(--splifft-pink)]">
-                  /mo · Members
+                  /month · Monthly Access
                 </span>
               </p>
               <p className="text-sm font-semibold text-[var(--splifft-muted)]">
-                ${product.price}/mo · Non-members
+                ${product.oneTimePackPrice} · One-Time Pack
               </p>
             </div>
             <p className="mt-3 text-xs font-bold uppercase tracking-wider text-[var(--splifft-blue)]">

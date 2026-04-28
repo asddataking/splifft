@@ -43,13 +43,13 @@ export function ProductCard({ product, showMemberPrice = true }: Props) {
             Standard
           </p>
           <p className="text-xl font-bold text-[var(--splifft-ink)]">
-            {formatUsdForShop(product.price)}
+            {formatUsdForShop(product.oneTimePackPrice)}
           </p>
           {showMemberPrice ? (
             <p className="text-xs text-[var(--splifft-ink-soft)]">
-              Club{" "}
+              Monthly Access{" "}
               <span className="font-semibold text-[var(--splifft-pink)]">
-                {formatUsdForShop(product.memberPrice)}
+                {formatUsdForShop(product.monthlyAccessPrice)}
               </span>
             </p>
           ) : null}
@@ -61,7 +61,7 @@ export function ProductCard({ product, showMemberPrice = true }: Props) {
             addLine({
               id: product.id,
               name: product.name,
-              price: product.price,
+              price: product.oneTimePackPrice,
             })
           }
         >

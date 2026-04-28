@@ -11,9 +11,11 @@ type Props = {
 };
 
 export function ShopPageClient({ corePacks, dankDrops }: Props) {
-  const [isMember, setIsMember] = useState(false);
+  const [isMonthlyAccess, setIsMonthlyAccess] = useState(false);
   const vaultProducts = dankDrops.map((product) => ({
     ...product,
+    monthlyAccessPrice: 19.99,
+    oneTimePackPrice: 24.99,
     memberPrice: 19.99,
     price: 24.99,
   }));
@@ -23,7 +25,7 @@ export function ShopPageClient({ corePacks, dankDrops }: Props) {
       <section className="border-b-2 border-black bg-[radial-gradient(circle_at_30%_-10%,rgba(255,45,146,0.25),transparent_50%),#0c0c10] py-14 sm:py-18">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--splifft-blue)]">
-            Join - Save - Shop
+            Monthly Access
           </p>
           <h1 className="mt-2 font-[family-name:var(--font-display)] text-4xl uppercase text-[var(--splifft-cream)] sm:text-5xl">
             Shop Packs
@@ -32,15 +34,15 @@ export function ShopPageClient({ corePacks, dankDrops }: Props) {
             Pick your 5-pack first. Then unlock The Vault.
           </p>
           <div className="mt-6 flex gap-3">
-            <SplifftButton href="/club" variant="primary">
-              Join the Club
+            <SplifftButton href="/monthly-access" variant="primary">
+              Get Monthly Access
             </SplifftButton>
             <button
               type="button"
               className="rounded-xl border-2 border-white/20 px-4 py-2 text-sm font-semibold text-[var(--splifft-cream)]"
-              onClick={() => setIsMember((v) => !v)}
+              onClick={() => setIsMonthlyAccess((v) => !v)}
             >
-              Viewing as: {isMember ? "Member" : "Guest"}
+              Viewing as: {isMonthlyAccess ? "Monthly Access" : "One-Time Pack"}
             </button>
           </div>
         </div>
@@ -55,7 +57,7 @@ export function ShopPageClient({ corePacks, dankDrops }: Props) {
             Sativa or Indica
           </h2>
           <p className="mt-2 max-w-2xl text-sm text-[var(--splifft-muted)]">
-            Member price is $60. Guest price is $75.
+            Monthly Access is $60. One-Time Pack is $75.
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
             {corePacks.map((p) => (
@@ -74,7 +76,7 @@ export function ShopPageClient({ corePacks, dankDrops }: Props) {
             Themed Boxes (Dank Drops)
           </h2>
           <p className="mt-2 max-w-2xl text-sm text-[var(--splifft-muted)]">
-            Member price is $19.99. Guest price is $24.99.
+            Monthly Access price is $19.99. One-Time price is $24.99.
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {vaultProducts.map((p) => (
@@ -82,7 +84,7 @@ export function ShopPageClient({ corePacks, dankDrops }: Props) {
                 key={p.id}
                 product={p}
                 ctaLabel="Add Box"
-                locked={!isMember}
+                locked={!isMonthlyAccess}
               />
             ))}
           </div>

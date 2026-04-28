@@ -4,14 +4,14 @@ import type { EmailCaptureSource } from "@/lib/email-capture";
  * SendFox sync for waitlist / interest signups stored in Supabase `email_captures`.
  *
  * Configure in SendFox (dashboard):
- * 1. Create contact lists (e.g. "Splifft waitlist", "Splifft Club waitlist").
+ * 1. Create contact lists (e.g. "Splifft waitlist", "Splifft monthly access waitlist").
  * 2. For each list, add an automation: trigger when a contact is added to that list → send email(s).
  * 3. Copy each list’s numeric ID from the URL or API (`GET https://api.sendfox.com/lists`).
  *
  * Env:
  * - `NEXT_SENDFOX_KEY` — Personal access token (Bearer).
  * - `NEXT_SENDFOX_WAITLIST_LIST_ID` — List ID for general waitlist (scroll + subscription sources).
- * - `NEXT_SENDFOX_CLUB_LIST_ID` — Optional. If set, `club_waitlist` signups are added here and also to the waitlist list when both IDs are set.
+ * - `NEXT_SENDFOX_MONTHLY_ACCESS_LIST_ID` — Optional. If set, `monthly_access_waitlist` signups are added here and also to the waitlist list when both IDs are set.
  *
  * If the key or waitlist list ID is missing, sync is skipped (signup still succeeds in Supabase).
  */
@@ -27,10 +27,12 @@ function parseListId(raw: string | undefined): number | null {
 function listIdsForSource(
   source: EmailCaptureSource,
   waitlistId: number,
-  clubId: number | null,
+  monthlyAccessId: number | null,
 ): number[] {
-  if (source === "club_waitlist" && clubId != null) {
-    return clubId === waitlistId ? [clubId] : [clubId, waitlistId];
+  if (source === "monthly_access_waitlist" && monthlyAccessId != null) {
+    return monthlyAccessId === waitlistId
+      ? [monthlyAccessId]
+      : [monthlyAccessId, waitlistId];
   }
   return [waitlistId];
 }
@@ -106,13 +108,15 @@ export async function syncEmailCaptureToSendfox(input: {
 }): Promise<SendfoxSyncResult> {
   const token = process.env.NEXT_SENDFOX_KEY;
   const waitlistId = parseListId(process.env.NEXT_SENDFOX_WAITLIST_LIST_ID);
-  const clubId = parseListId(process.env.NEXT_SENDFOX_CLUB_LIST_ID);
+  const monthlyAccessId = parseListId(
+    process.env.NEXT_SENDFOX_MONTHLY_ACCESS_LIST_ID,
+  );
 
   if (!token?.trim() || waitlistId == null) {
     return { status: "skipped" };
   }
 
-  const lists = listIdsForSource(input.source, waitlistId, clubId);
+  const lists = listIdsForSource(input.source, waitlistId, monthlyAccessId);
   const uniqueLists = [...new Set(lists)];
 
   const create = await sendfoxJson<ContactRow>(`/contacts`, {

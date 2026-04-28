@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useState } from "react";
 
-const SHARE_URL = "https://getsplifft.com/club";
+const SHARE_URL = "https://getsplifft.com/monthly-access";
 const COOLDOWN_KEY_PREFIX = "splifft_waitlist_share_cooldown_until:";
 const COOLDOWN_MS = 5 * 60 * 1000;
 
@@ -96,7 +96,7 @@ export function WaitlistShareModal() {
           You’re In
         </h2>
         <p className="mt-2 text-sm text-[var(--splifft-muted)]">
-          Share this with your people and help grow the Club.
+          Share this with your people and help grow Monthly Access.
         </p>
         <div className="mt-5 grid gap-3 sm:grid-cols-3">
           <a

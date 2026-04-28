@@ -41,7 +41,7 @@ export function ShopProductCard({
               🔒
             </span>
             <p className="text-sm font-bold uppercase tracking-wide text-[var(--splifft-cream)]">
-              Join the Club to Unlock
+              Get Monthly Access to Unlock
             </p>
           </div>
         ) : null}
@@ -56,10 +56,10 @@ export function ShopProductCard({
           ) : null}
           <div className="mt-2 flex flex-wrap items-baseline justify-between gap-2">
             <p className="text-lg font-bold text-white">
-              Member {formatUsdForShop(product.memberPrice)}
+              Monthly Access {formatUsdForShop(product.monthlyAccessPrice)}
             </p>
             <p className="text-sm text-[var(--splifft-muted)] line-through">
-              Guest {formatUsdForShop(product.price)}
+              One-Time Pack {formatUsdForShop(product.oneTimePackPrice)}
             </p>
             <span className="text-xs font-bold uppercase tracking-wider text-[var(--splifft-blue)] group-hover:text-[var(--splifft-pink)]">
               {ctaLabel} →
@@ -67,7 +67,7 @@ export function ShopProductCard({
           </div>
           <div className="mt-2 flex items-center justify-end">
             <p className="text-[10px] font-semibold uppercase tracking-wide text-[var(--splifft-cream)]/70">
-              {locked ? "Guest preview" : "Members save more"}
+              {locked ? "One-Time preview" : "Monthly Access saves more"}
             </p>
           </div>
         </div>

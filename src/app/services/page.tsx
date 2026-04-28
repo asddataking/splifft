@@ -23,7 +23,7 @@ export default function ServicesHubPage() {
             Splifft Events
           </h1>
           <p className="mt-4 max-w-2xl text-[var(--splifft-muted)]">
-            We now focus on membership, packs, and themed boxes. Services are now
+            We now focus on Monthly Access, packs, and themed boxes. Services are now
             events only, with custom quotes for parties.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
@@ -62,7 +62,7 @@ export default function ServicesHubPage() {
                   <p className="mt-4 text-xs font-bold uppercase text-[var(--splifft-pink)]">
                     From ${s.startingAt}{" "}
                     <span className="text-[var(--splifft-ink-soft)]">
-                      · Club ${s.memberStartingAt}
+                      · Monthly Access ${s.memberStartingAt}
                     </span>
                   </p>
                 )}
@@ -78,13 +78,12 @@ export default function ServicesHubPage() {
           </div>
           <p className="mt-10 text-center text-sm text-[var(--splifft-muted)]">
             <Link
-              href="/club"
+              href="/monthly-access"
               className="font-semibold text-[var(--splifft-pink)] underline-offset-4 hover:underline"
             >
-              Splifft Club
+              Monthly Access
             </Link>{" "}
-            — member prices, priority booking, first-class meet-ups, early drops.
-            — members save most on packs and vault boxes.
+            — better pricing, first access to drops, and smoother pack planning.
           </p>
         </div>
       </section>

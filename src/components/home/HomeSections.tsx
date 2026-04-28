@@ -235,26 +235,26 @@ export function MembershipSection() {
           </div>
           <div className="rounded-2xl border-2 border-black bg-[var(--splifft-card)] p-8 shadow-[10px_10px_0_0_rgba(255,45,146,0.45)]">
             <p className="text-sm font-bold uppercase tracking-wider text-[var(--splifft-ink-soft)]">
-              Splifft Club
+              Monthly Access
             </p>
             <p className="mt-2 font-[family-name:var(--font-display)] text-6xl text-[var(--splifft-ink)]">
-              $7
+              $60
               <span className="text-2xl font-sans font-semibold text-[var(--splifft-ink-soft)]">
                 /month
               </span>
             </p>
             <p className="mt-4 text-sm text-[var(--splifft-ink-soft)]">
-              {membershipSection.pricingBlurb} Billing opens soon — same Club
-              waitlist as the Club page.
+              {membershipSection.pricingBlurb} Billing opens soon — same Monthly
+              Access list as the details page.
             </p>
             <div className="mt-8 border-t-2 border-dashed border-black/15 pt-8">
               <ClubWaitlistCapture surface="home_membership" idPrefix="home-club" />
             </div>
             <Link
-              href="/club"
+              href="/monthly-access"
               className="mt-4 inline-flex text-sm font-bold uppercase tracking-wide text-[var(--splifft-blue)] underline-offset-4 hover:underline"
             >
-              Full Splifft Club details →
+              Full Monthly Access details →
             </Link>
           </div>
         </div>

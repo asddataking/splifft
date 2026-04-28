@@ -64,18 +64,18 @@ export function ProductAddToCart({ product }: Props) {
             {
               id: product.id,
               name: product.name,
-              price: product.price,
+              price: product.oneTimePackPrice,
             },
             qty,
           );
           trackGaEvent(GA_EVENTS.ADD_TO_CART, {
             currency: "USD",
-            value: roundUsd(product.price * qty),
+            value: roundUsd(product.oneTimePackPrice * qty),
             items: [
               {
                 item_id: product.id,
                 item_name: product.name,
-                price: product.price,
+                price: product.oneTimePackPrice,
                 quantity: qty,
               },
             ],
@@ -83,7 +83,7 @@ export function ProductAddToCart({ product }: Props) {
           setQty(1);
         }}
       >
-        Add to cart · {formatUsdForShop(roundUsd(product.price * qty))}
+        Add to cart · {formatUsdForShop(roundUsd(product.oneTimePackPrice * qty))}
       </SplifftButton>
     </div>
   );

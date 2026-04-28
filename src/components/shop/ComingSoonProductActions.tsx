@@ -81,8 +81,8 @@ export function ComingSoonProductActions({ productSlug }: Props) {
         >
           {saving ? "Saving…" : "Notify Me"}
         </SplifftButton>
-        <SplifftButton href="/club" variant="secondary">
-          Join Splifft Club
+        <SplifftButton href="/monthly-access" variant="secondary">
+          Get Monthly Access
         </SplifftButton>
         <SplifftButton
           type="button"

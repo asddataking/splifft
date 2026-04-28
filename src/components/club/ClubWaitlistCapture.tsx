@@ -33,7 +33,7 @@ export function ClubWaitlistCapture({ surface, idPrefix = "club-waitlist" }: Pro
     setSaving(true);
     const result = await submitEmailCapture({
       email: trimmed,
-      source: "club_waitlist",
+      source: "monthly_access_waitlist",
       metadata: { surface },
     });
     setSaving(false);
@@ -41,23 +41,23 @@ export function ClubWaitlistCapture({ surface, idPrefix = "club-waitlist" }: Pro
       setError(result.error);
       return;
     }
-    trackGaEvent(GA_EVENTS.CLUB_WAITLIST_SUBMIT, { surface });
-    setMessage("You’re on the Splifft Club list.");
+    trackGaEvent(GA_EVENTS.MONTHLY_ACCESS_WAITLIST_SUBMIT, { surface });
+    setMessage("You’re on the Monthly Access list.");
     setEmail("");
   }
 
   return (
     <div className="space-y-4">
       <p className="text-sm leading-relaxed text-[var(--splifft-ink-soft)]">
-        Payment isn’t live yet — join the Club waitlist and we’ll email you when
-        membership opens.
+        Monthly Access checkout is opening soon. Drop your email and we will alert
+        you as soon as it goes live.
       </p>
       <div>
         <label
           htmlFor={emailId}
           className="text-xs font-bold uppercase tracking-wider text-[var(--splifft-ink-soft)]"
         >
-          Email for Club launch
+          Email for Monthly Access launch
         </label>
         <input
           id={emailId}
@@ -87,7 +87,7 @@ export function ClubWaitlistCapture({ surface, idPrefix = "club-waitlist" }: Pro
         disabled={saving}
         onClick={() => void handleSubmit()}
       >
-        {saving ? "Saving…" : "Join Splifft Club waitlist"}
+        {saving ? "Saving…" : "Get Monthly Access"}
       </SplifftButton>
     </div>
   );

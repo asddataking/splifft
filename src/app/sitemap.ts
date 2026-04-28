@@ -23,7 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     { url: `${base}/events`, lastModified, changeFrequency: "monthly", priority: 0.5 },
     { url: `${base}/locations`, lastModified, changeFrequency: "monthly", priority: 0.85 },
-    { url: `${base}/club`, lastModified, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/monthly-access`, lastModified, changeFrequency: "monthly", priority: 0.8 },
     {
       url: `${base}/our-team`,
       lastModified,

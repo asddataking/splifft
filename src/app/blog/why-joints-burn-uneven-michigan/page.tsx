@@ -5,7 +5,7 @@ export const metadata = buildPageMetadata({
   path: "/blog/why-joints-burn-uneven-michigan",
   title: "Why Joints Burn Uneven in Michigan",
   description:
-    "Tired of your joints canoeing? Learn why your smoke burns down one side and how Splifft's hand-rolled 5-packs fix the problem. The smartest way to smoke in Detroit.",
+    "Tired of your joints canoeing? Learn why your smoke burns down one side and how Splifft's premium 5-packs fix the problem. The smartest way to smoke in Detroit.",
 });
 
 export default function BlogArticlePage() {
@@ -91,22 +91,22 @@ export default function BlogArticlePage() {
             You shouldn&apos;t have to keep re-lighting your joint because it’s canoeing.
           </p>
           <p>
-            When you join the Splifft Club, you get a pack of 5 perfect joints
-            delivered to your door. They burn straight, they last long, and they
-            save you money.
+            Monthly Access gives you a pack of 5 premium joints delivered to your
+            door. They burn straight, they last long, and they keep your sessions
+            ready.
           </p>
           <p>
-            Stop fighting your fire. Join the Club for $7 and get the best-rolled
-            packs in Michigan for $60.
+            Stop fighting your fire. Get Monthly Access and lock in the $60 monthly
+            pack before your next session.
           </p>
         </div>
 
         <div className="mt-8">
           <Link
-            href="/club"
+            href="/monthly-access"
             className="inline-flex min-h-[48px] items-center rounded-xl border-2 border-black bg-[var(--splifft-pink)] px-5 py-3 text-sm font-extrabold uppercase tracking-wide text-black shadow-[6px_6px_0_0_rgba(0,0,0,0.35)]"
           >
-            Join the Club
+            Get Monthly Access
           </Link>
         </div>
       </article>

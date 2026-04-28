@@ -29,7 +29,7 @@ function cityFromTimestamp(createdAt: string): string {
 }
 
 function sourceLabel(source: string): string {
-  if (source === "club_waitlist") return "joined the Club";
+  if (source === "monthly_access_waitlist") return "got Monthly Access";
   if (source === "scroll_waitlist") return "joined the waitlist";
   if (source === "subscription_modal") return "joined the waitlist";
   if (source === "subscription_pdp_teaser") return "joined the waitlist";

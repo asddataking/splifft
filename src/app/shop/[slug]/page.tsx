@@ -102,7 +102,7 @@ function ComingSoonDetail({ product }: { product: Product }) {
 
           <div className="flex flex-col">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--splifft-blue)]">
-              Flagship subscription
+              Monthly Access
             </p>
             <h1 className="mt-2 font-[family-name:var(--font-display)] text-4xl uppercase leading-none tracking-wide text-[var(--splifft-cream)] sm:text-5xl">
               {product.name}
@@ -136,7 +136,7 @@ function ComingSoonDetail({ product }: { product: Product }) {
                 </li>
                 <li className="flex gap-2">
                   <span className="text-[var(--splifft-pink)]">•</span>
-                  <strong>Artisinally hand rolled with care</strong>
+                  <strong>Premium crafted finish</strong>
                 </li>
                 <li className="flex gap-2">
                   <span className="text-[var(--splifft-pink)]">•</span>
@@ -152,30 +152,27 @@ function ComingSoonDetail({ product }: { product: Product }) {
               <div className="mt-4 grid gap-4 sm:grid-cols-2">
                 <div className="rounded-2xl border-2 border-[var(--splifft-pink)]/50 bg-black/40 p-5">
                   <p className="text-xs font-bold uppercase text-[var(--splifft-muted)]">
-                    Splifft Club members
+                    Monthly Access
                   </p>
                   <p className="mt-2 font-[family-name:var(--font-display)] text-4xl text-[var(--splifft-pink)]">
-                    ${product.memberPrice}
+                    ${product.monthlyAccessPrice}
                     <span className="text-lg font-sans font-semibold text-[var(--splifft-cream)]">
                       /mo
                     </span>
                   </p>
                   <p className="mt-2 text-sm text-[var(--splifft-muted)]">
-                    Member pricing when we launch — priority access first.
+                    Monthly Access pricing with first access perks.
                   </p>
                 </div>
                 <div className="rounded-2xl border-2 border-white/15 bg-black/35 p-5">
                   <p className="text-xs font-bold uppercase text-[var(--splifft-muted)]">
-                    Non-members
+                    One-Time Pack
                   </p>
                   <p className="mt-2 font-[family-name:var(--font-display)] text-4xl text-[var(--splifft-cream)]">
-                    ${product.price}
-                    <span className="text-lg font-sans font-semibold text-[var(--splifft-muted)]">
-                      /mo
-                    </span>
+                    ${product.oneTimePackPrice}
                   </p>
                   <p className="mt-2 text-sm text-[var(--splifft-muted)]">
-                    Standard monthly rate — join Club to lock the better price.
+                    Single purchase pricing with no monthly perks.
                   </p>
                 </div>
               </div>
@@ -183,11 +180,11 @@ function ComingSoonDetail({ product }: { product: Product }) {
 
             <section className="mt-8 rounded-2xl border-2 border-[var(--splifft-blue)]/35 bg-black/30 p-6">
               <h2 className="font-[family-name:var(--font-display)] text-xl uppercase text-[var(--splifft-cream)]">
-                Membership tie-in
+                Monthly Access perks
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-[var(--splifft-muted)]">
-                Splifft Club is built for repeat buyers: <strong className="text-[var(--splifft-cream)]">member pricing</strong>,{" "}
-                <strong className="text-[var(--splifft-cream)]">priority booking</strong>, early drops, and glass-tip perks. When Splifft Subscription goes live, members get the headline price and first dibs — the subscription is the core of the ecosystem.
+                Monthly Access is built for repeat buyers: <strong className="text-[var(--splifft-cream)]">first access</strong>,{" "}
+                <strong className="text-[var(--splifft-cream)]">better pack pricing</strong>, limited drops, and glass-tip perks.
               </p>
             </section>
 
@@ -197,7 +194,7 @@ function ComingSoonDetail({ product }: { product: Product }) {
               </p>
               <p className="mt-2 text-sm text-[var(--splifft-muted)]">
                 This is a preview only — no cart, no payment. Get notified when it
-                drops, or join Club so you&apos;re first in line.
+                drops, or get Monthly Access so you&apos;re first in line.
               </p>
               <div className="mt-6">
                 <ComingSoonProductActions productSlug={product.slug} />
@@ -275,15 +272,15 @@ export default async function ProductDetailPage({ params }: Props) {
                   Standard
                 </p>
                 <p className="text-3xl font-bold text-[var(--splifft-cream)]">
-                  {formatUsdForShop(product.price)}
+                  {formatUsdForShop(product.oneTimePackPrice)}
                 </p>
               </div>
               <div>
                 <p className="text-xs font-bold uppercase text-[var(--splifft-muted)]">
-                  Splifft Club
+                  Monthly Access
                 </p>
                 <p className="text-3xl font-bold text-[var(--splifft-pink)]">
-                  {formatUsdForShop(product.memberPrice)}
+                  {formatUsdForShop(product.monthlyAccessPrice)}
                 </p>
               </div>
             </div>
@@ -324,8 +321,8 @@ export default async function ProductDetailPage({ params }: Props) {
               <SplifftButton href="/cart" variant="secondary">
                 View cart
               </SplifftButton>
-              <SplifftButton href="/club" variant="ghost">
-                Join the Club
+              <SplifftButton href="/monthly-access" variant="ghost">
+                Get Monthly Access
               </SplifftButton>
             </div>
           </div>

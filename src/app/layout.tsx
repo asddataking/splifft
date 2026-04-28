@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     template: "%s | Splifft",
   },
   description:
-    "Splifft makes sessions simple — join for $7, save on 5-packs, and unlock The Vault. Splifft Events available for custom party quotes.",
+    "Splifft makes sessions simple with Monthly Access: premium 5-packs, first access to drops, and event services available by custom quote.",
   applicationName: "Splifft",
   authors: [{ name: "Splifft", url: SITE_URL }],
   creator: "Splifft",
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
   category: "business",
   keywords: [
     "Splifft",
-    "Splifft Club",
+    "Monthly Access",
     "5-pack pre-rolls",
-    "member savings",
+    "monthly pack",
     "Michigan",
     "pre-rolls",
     "Dank Drops",

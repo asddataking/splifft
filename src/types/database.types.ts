@@ -137,48 +137,279 @@ export type Database = {
       };
       products: {
         Row: {
-          active: boolean;
           badge: string | null;
+          billing_interval: string | null;
           created_at: string;
+          deprecated_at: string | null;
           description: string;
           highlights: Json;
           id: string;
+          is_active: boolean;
+          is_primary: boolean;
           member_price_cents: number;
           name: string;
           price_cents: number;
           slug: string;
           sort_order: number;
+          type: string;
           updated_at: string;
         };
         Insert: {
-          active?: boolean;
           badge?: string | null;
+          billing_interval?: string | null;
           created_at?: string;
+          deprecated_at?: string | null;
           description: string;
           highlights?: Json;
           id: string;
+          is_active?: boolean;
+          is_primary?: boolean;
           member_price_cents: number;
           name: string;
           price_cents: number;
           slug: string;
           sort_order?: number;
+          type?: string;
           updated_at?: string;
         };
         Update: {
-          active?: boolean;
           badge?: string | null;
+          billing_interval?: string | null;
           created_at?: string;
+          deprecated_at?: string | null;
           description?: string;
           highlights?: Json;
           id?: string;
+          is_active?: boolean;
+          is_primary?: boolean;
           member_price_cents?: number;
           name?: string;
           price_cents?: number;
           slug?: string;
           sort_order?: number;
+          type?: string;
           updated_at?: string;
         };
         Relationships: [];
+      };
+      plans: {
+        Row: {
+          billing_interval: string | null;
+          created_at: string;
+          deprecated_at: string | null;
+          description: string;
+          id: string;
+          is_active: boolean;
+          is_primary: boolean;
+          name: string;
+          price_cents: number;
+          slug: string;
+          type: string;
+          updated_at: string;
+        };
+        Insert: {
+          billing_interval?: string | null;
+          created_at?: string;
+          deprecated_at?: string | null;
+          description: string;
+          id?: string;
+          is_active?: boolean;
+          is_primary?: boolean;
+          name: string;
+          price_cents: number;
+          slug: string;
+          type: string;
+          updated_at?: string;
+        };
+        Update: {
+          billing_interval?: string | null;
+          created_at?: string;
+          deprecated_at?: string | null;
+          description?: string;
+          id?: string;
+          is_active?: boolean;
+          is_primary?: boolean;
+          name?: string;
+          price_cents?: number;
+          slug?: string;
+          type?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      access_perks: {
+        Row: {
+          created_at: string;
+          id: string;
+          is_active: boolean;
+          perk: string;
+          plan_slug: string;
+          sort_order: number;
+        };
+        Insert: {
+          created_at?: string;
+          id?: string;
+          is_active?: boolean;
+          perk: string;
+          plan_slug: string;
+          sort_order?: number;
+        };
+        Update: {
+          created_at?: string;
+          id?: string;
+          is_active?: boolean;
+          perk?: string;
+          plan_slug?: string;
+          sort_order?: number;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "access_perks_plan_slug_fkey";
+            columns: ["plan_slug"];
+            isOneToOne: false;
+            referencedRelation: "plans";
+            referencedColumns: ["slug"];
+          },
+        ];
+      };
+      drops: {
+        Row: {
+          access_level: string;
+          created_at: string;
+          description: string;
+          drop_type: string;
+          id: string;
+          is_active: boolean;
+          public_release_date: string | null;
+          release_date: string | null;
+          slug: string;
+          title: string;
+          updated_at: string;
+        };
+        Insert: {
+          access_level?: string;
+          created_at?: string;
+          description?: string;
+          drop_type: string;
+          id?: string;
+          is_active?: boolean;
+          public_release_date?: string | null;
+          release_date?: string | null;
+          slug: string;
+          title: string;
+          updated_at?: string;
+        };
+        Update: {
+          access_level?: string;
+          created_at?: string;
+          description?: string;
+          drop_type?: string;
+          id?: string;
+          is_active?: boolean;
+          public_release_date?: string | null;
+          release_date?: string | null;
+          slug?: string;
+          title?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      subscriptions: {
+        Row: {
+          cancel_at_period_end: boolean;
+          created_at: string;
+          current_period_end: string | null;
+          current_period_start: string | null;
+          id: string;
+          plan_slug: string;
+          skipped_until: string | null;
+          status: string;
+          stripe_subscription_id: string | null;
+          updated_at: string;
+          user_id: string;
+        };
+        Insert: {
+          cancel_at_period_end?: boolean;
+          created_at?: string;
+          current_period_end?: string | null;
+          current_period_start?: string | null;
+          id?: string;
+          plan_slug: string;
+          skipped_until?: string | null;
+          status: string;
+          stripe_subscription_id?: string | null;
+          updated_at?: string;
+          user_id: string;
+        };
+        Update: {
+          cancel_at_period_end?: boolean;
+          created_at?: string;
+          current_period_end?: string | null;
+          current_period_start?: string | null;
+          id?: string;
+          plan_slug?: string;
+          skipped_until?: string | null;
+          status?: string;
+          stripe_subscription_id?: string | null;
+          updated_at?: string;
+          user_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "subscriptions_plan_slug_fkey";
+            columns: ["plan_slug"];
+            isOneToOne: false;
+            referencedRelation: "plans";
+            referencedColumns: ["slug"];
+          },
+        ];
+      };
+      orders: {
+        Row: {
+          created_at: string;
+          id: string;
+          order_type: string;
+          plan_slug: string | null;
+          status: string;
+          stripe_checkout_session_id: string | null;
+          stripe_payment_intent_id: string | null;
+          total_cents: number;
+          updated_at: string;
+          user_id: string | null;
+        };
+        Insert: {
+          created_at?: string;
+          id?: string;
+          order_type: string;
+          plan_slug?: string | null;
+          status?: string;
+          stripe_checkout_session_id?: string | null;
+          stripe_payment_intent_id?: string | null;
+          total_cents: number;
+          updated_at?: string;
+          user_id?: string | null;
+        };
+        Update: {
+          created_at?: string;
+          id?: string;
+          order_type?: string;
+          plan_slug?: string | null;
+          status?: string;
+          stripe_checkout_session_id?: string | null;
+          stripe_payment_intent_id?: string | null;
+          total_cents?: number;
+          updated_at?: string;
+          user_id?: string | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "orders_plan_slug_fkey";
+            columns: ["plan_slug"];
+            isOneToOne: false;
+            referencedRelation: "plans";
+            referencedColumns: ["slug"];
+          },
+        ];
       };
       roll_up_bookings: {
         Row: {

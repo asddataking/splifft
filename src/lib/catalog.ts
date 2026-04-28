@@ -22,6 +22,8 @@ function rowToProduct(row: Tables<"products">): Product {
     slug: row.slug,
     name: row.name,
     description: row.description,
+    oneTimePackPrice: Math.round(row.price_cents) / 100,
+    monthlyAccessPrice: Math.round(row.member_price_cents) / 100,
     price: Math.round(row.price_cents) / 100,
     memberPrice: Math.round(row.member_price_cents) / 100,
     badge: row.badge ?? undefined,
@@ -47,11 +49,19 @@ export async function getShopProducts(): Promise<Product[]> {
 
   try {
     const supabase = await createSupabaseServerClient();
-    const { data, error } = await supabase
+    const primaryQuery = await supabase
       .from("products")
       .select("*")
-      .eq("active", true)
+      .eq("is_active", true)
       .order("sort_order", { ascending: true });
+
+    const { data, error } = primaryQuery.error
+      ? await supabase
+          .from("products")
+          .select("*")
+          .eq("active", true)
+          .order("sort_order", { ascending: true })
+      : primaryQuery;
 
     if (error || !data?.length) {
       return staticCatalog;

@@ -1,6 +1,6 @@
 /**
  * Homepage and shared marketing copy — single source for labels and hero imagery.
- * Align with: Splifft Club, 5-packs, Dank Drops, and Splifft Events.
+ * Align with: Monthly Access, 5-packs, Dank Drops, and Splifft Events.
  */
 
 import {
@@ -26,9 +26,9 @@ export const dankDropProductIds = [
 const subscriptionHeroVisual = getPackImage(SPLIFFT_MONTHLY_SLUG);
 
 export const heroMarketing = {
-  eyebrow: "Join. Save. Shop.",
-  lead: "Hand-rolled packs delivered to your door.",
-  supporting: "Join the club for $7 to save $15 on every pack.",
+  eyebrow: "Monthly Access",
+  lead: "Premium monthly packs delivered to your door.",
+  supporting: "Get Monthly Access for $60 and keep your next session ready.",
   trustLine: "Michigan-based. Built for real smokers.",
   heroImageSrc: subscriptionHeroVisual.url,
   heroImageAlt: subscriptionHeroVisual.alt,
@@ -70,7 +70,7 @@ export const chooseSplifftCards: ChooseSplifftCard[] = [
     bullets: [
       `${dropOfTheMonthTheme.themeName} — rotating theme`,
       "Snacks, gear & vibe picks",
-      "Member & non-member pricing — exclusive feel",
+      "Monthly Access and one-time pricing",
     ],
     cta: "Get This Month’s Drop",
     href: `/shop/${DROP_OF_THE_MONTH_SLUG}`,
@@ -81,19 +81,19 @@ export const chooseSplifftCards: ChooseSplifftCard[] = [
 export const whatYouGetSection = {
   heading: "What you get",
   subheading:
-    "Simple setup: join for $7, save on every 5-pack, and unlock The Vault.",
+    "Simple setup: Monthly Access for $60, with first access to drops and collabs.",
   subscriptionTitle: "Core 5-Packs",
   subscriptionBullets: [
     "Sativa or Indica 5-pack",
-    "Hand-rolled and delivered",
-    "Members pay $60, guests pay $75",
+    "Premium crafted finish and delivery",
+    "Monthly Access is $60, one-time pack is $75",
     "No rolling needed",
   ],
   dropTitle: "The Vault (Dank Drops)",
   dropBullets: [
     "Themed boxes for every mood",
-    "Members pay $19.99, guests pay $24.99",
-    "Members see full access first",
+    "Monthly Access is $19.99, one-time is $24.99",
+    "Monthly Access customers see full access first",
     "Easy add-on after you pick a pack",
   ],
 } as const;
@@ -135,14 +135,14 @@ export const serviceAreaSection = {
 } as const;
 
 export const membershipSection = {
-  eyebrow: "Membership",
-  heading: "Join Splifft Club & Save Fast",
+  eyebrow: "Monthly Access",
+  heading: "Get Monthly Access & Save Fast",
   intro:
-    "Pay $7 per month. Save $15 on every 5-pack and get lower Vault prices.",
+    "Monthly Access is $60 for every 5-pack and includes first access to drops.",
   subscriptionPriceCallout:
-    "5-Packs: $60 for members · $75 for guests.",
+    "5-Packs: $60 Monthly Access · $75 One-Time Pack.",
   pricingBlurb:
-    "One pack already beats the fee: pay $7, save $15, net $8 saved today.",
+    "Monthly Access keeps your sessions ready with the strongest recurring value.",
 } as const;
 
 export const dankndevourPartnerSection = {

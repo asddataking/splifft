@@ -4,7 +4,7 @@ import { buildPageMetadata, SOCIAL_SHARE_DESCRIPTION } from "@/lib/site";
 export const metadata = buildPageMetadata({
   path: "/blog",
   title: "Blog",
-  description: "Splifft blog: simple smoke tips, product stories, and club updates.",
+  description: "Splifft blog: simple smoke tips, product stories, and Monthly Access updates.",
   shareDescription: SOCIAL_SHARE_DESCRIPTION,
 });
 

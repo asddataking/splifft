@@ -13,7 +13,7 @@ type Props = {
 };
 
 const included = [
-  "5 × 0.7g joints — artisinally hand rolled",
+  "5 × 0.7g joints — premium crafted finish",
   "glass tip included",
   "curated monthly delivery",
   "3.5g total monthly · choose Indica or Sativa",
@@ -103,7 +103,7 @@ export function SplifftSubscriptionModal({ open, onClose }: Props) {
             id={titleId}
             className="font-[family-name:var(--font-display)] text-2xl uppercase leading-tight tracking-wide text-[var(--splifft-cream)] sm:text-3xl"
           >
-            Splifft Subscription
+            Monthly Access
           </h2>
           <button
             type="button"
@@ -115,7 +115,7 @@ export function SplifftSubscriptionModal({ open, onClose }: Props) {
           </button>
         </div>
         <p className="mt-3 text-sm leading-relaxed text-[var(--splifft-muted)]">
-          5 artisinally hand rolled joints. Curated monthly. Ready when you are.
+          5 premium Spliffts. Curated monthly. Ready when you are.
         </p>
 
         <div className="mt-6 rounded-xl border border-[var(--splifft-blue)]/40 bg-black/40 p-4">
@@ -175,7 +175,7 @@ export function SplifftSubscriptionModal({ open, onClose }: Props) {
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
           <div className="rounded-xl border-2 border-[var(--splifft-pink)]/50 bg-black/35 p-4">
             <p className="text-[10px] font-bold uppercase text-[var(--splifft-muted)]">
-              Members
+              Monthly Access
             </p>
             <p className="mt-1 font-[family-name:var(--font-display)] text-3xl text-[var(--splifft-pink)]">
               $60
@@ -186,20 +186,17 @@ export function SplifftSubscriptionModal({ open, onClose }: Props) {
           </div>
           <div className="rounded-xl border border-white/15 bg-black/35 p-4">
             <p className="text-[10px] font-bold uppercase text-[var(--splifft-muted)]">
-              Non-members
+              One-Time Pack
             </p>
             <p className="mt-1 font-[family-name:var(--font-display)] text-3xl text-[var(--splifft-cream)]">
               $75
-              <span className="text-base font-sans font-semibold text-[var(--splifft-muted)]">
-                /mo
-              </span>
             </p>
           </div>
         </div>
 
         <p className="mt-4 text-sm font-medium text-[var(--splifft-cream)]/90">
-          Save $15/month and get priority access by joining Splifft Club — plus
-          better drop pricing and glass-tip perks.
+          Monthly Access is the easiest way to keep your session ready, with first
+          access to drops and future collabs.
         </p>
 
         <div className="mt-6">
@@ -239,7 +236,7 @@ export function SplifftSubscriptionModal({ open, onClose }: Props) {
             disabled={status === "saving"}
             onClick={() => void handleNotify()}
           >
-            {status === "saving" ? "Saving…" : "Notify Me"}
+            {status === "saving" ? "Saving…" : "Get Monthly Access"}
           </SplifftButton>
           <SplifftButton
             href={`/shop/${SPLIFFT_MONTHLY_SLUG}`}

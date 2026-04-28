@@ -3,7 +3,11 @@ export type Product = {
   slug: string;
   name: string;
   description: string;
+  oneTimePackPrice: number;
+  monthlyAccessPrice: number;
+  /** Backward-compatible alias; prefer `monthlyAccessPrice`. */
   price: number;
+  /** Backward-compatible alias; prefer `oneTimePackPrice`. */
   memberPrice: number;
   badge?: string;
   highlights?: string[];
@@ -43,6 +47,8 @@ export const products: Product[] = [
     shopTagline: "Daytime-ready pre-roll pack.",
     description:
       "Five hand-rolled sativa pre-rolls. Ready to light. No rolling needed.",
+    oneTimePackPrice: 75,
+    monthlyAccessPrice: 60,
     price: 75,
     memberPrice: 60,
     badge: "Core Pack",
@@ -55,6 +61,8 @@ export const products: Product[] = [
     shopTagline: "Night-ready pre-roll pack.",
     description:
       "Five hand-rolled indica pre-rolls. Calm down and spark up faster.",
+    oneTimePackPrice: 75,
+    monthlyAccessPrice: 60,
     price: 75,
     memberPrice: 60,
     badge: "Core Pack",
@@ -67,6 +75,8 @@ export const products: Product[] = [
     shopTagline: "Cozy night-in energy — cabin vibes without the prep.",
     description:
       "Curated sesh box for a cozy night in — trip-ready, giftable, or add to your monthly.",
+    oneTimePackPrice: 24.99,
+    monthlyAccessPrice: 19.99,
     price: 24.99,
     memberPrice: 19.99,
     badge: "Curated drop",
@@ -79,6 +89,8 @@ export const products: Product[] = [
     shopTagline: "Graze, pass, repeat — food-truck smoke without the line.",
     description:
       "Real food meets real smoke — a graze-friendly sesh upgrade, great standalone or with your monthly.",
+    oneTimePackPrice: 24.99,
+    monthlyAccessPrice: 19.99,
     price: 24.99,
     memberPrice: 19.99,
     badge: "Fan favorite",
@@ -91,6 +103,8 @@ export const products: Product[] = [
     shopTagline: "Sun, water, and a box built to travel with you.",
     description:
       "Sun and water. A tidy one-off box for when you park and smoke — made to travel.",
+    oneTimePackPrice: 24.99,
+    monthlyAccessPrice: 19.99,
     price: 24.99,
     memberPrice: 19.99,
     highlights: ["Travel-tight", "Labeled jars", "Cooler-friendly layout"],
@@ -102,10 +116,12 @@ export const products: Product[] = [
     shopTagline: "A fresh curated surprise every time — same quality, new twist.",
     description:
       "A new Splifft curated drop each time — small surprise, same quality. Perfect for gifts.",
+    oneTimePackPrice: 24.99,
+    monthlyAccessPrice: 19.99,
     price: 24.99,
     memberPrice: 19.99,
     badge: "Limited",
-    highlights: ["Rotating picks", "Members shop first", "Collectible card"],
+    highlights: ["Rotating picks", "Monthly Access customers shop first", "Collectible card"],
   },
 ];
 
@@ -124,11 +140,11 @@ export const serviceCards: ServiceCard[] = [
 ];
 
 export const membershipPerks: string[] = [
-  "Only $7 per month",
-  "Save $15 on every 5-pack",
+  "Monthly Access at $60 per month",
+  "Save on every premium 5-pack",
   "Get The Vault boxes at $19.99",
-  "Early access to limited drops",
-  "Priority support for big event quotes",
+  "First access to limited drops",
+  "First access to flower and rosin collabs",
 ];
 
 export const locations: LocationArea[] = [

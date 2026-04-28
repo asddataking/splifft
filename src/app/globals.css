@@ -35,6 +35,12 @@ body {
   scroll-snap-stop: always;
 }
 
+@media (min-width: 1024px) {
+  .premium-page {
+    scroll-snap-type: y proximity;
+  }
+}
+
 .premium-drops-rail {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;

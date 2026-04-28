@@ -6,12 +6,10 @@ import Image from "next/image";
 import { ClubWaitlistCapture } from "@/components/club/ClubWaitlistCapture";
 import { useSubscriptionModal } from "@/components/home/SubscriptionModalProvider";
 import { SplifftButton } from "@/components/ui/SplifftButton";
-import { SignatureAssemblySection } from "@/components/premium-home/SignatureAssemblySection";
 import { PLAN_PRICING_USD } from "@/lib/pricing";
 
 const sectionIds = [
   "hero",
-  "build-animation",
   "what-you-get",
   "pricing",
   "access-perks",
@@ -73,16 +71,16 @@ export function PremiumHomePage() {
     <div className="premium-page relative">
       <section
         id="hero"
-        className="relative flex min-h-[100svh] snap-start flex-col justify-center overflow-hidden bg-[radial-gradient(circle_at_20%_15%,rgba(255,45,146,0.24),transparent_35%),radial-gradient(circle_at_80%_0%,rgba(0,191,255,0.24),transparent_45%),linear-gradient(180deg,#060608_0%,#0b0712_40%,#050507_100%)] px-4 pb-24 pt-16"
+        className="relative flex min-h-[100svh] snap-start flex-col justify-center overflow-hidden bg-[radial-gradient(circle_at_20%_15%,rgba(255,45,146,0.24),transparent_35%),radial-gradient(circle_at_80%_0%,rgba(0,191,255,0.24),transparent_45%),linear-gradient(180deg,#060608_0%,#0b0712_40%,#050507_100%)] px-4 pb-24 pt-16 md:pt-20"
       >
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.03),transparent)]" />
-        <div className="relative mx-auto grid w-full max-w-md items-center gap-10 md:max-w-6xl md:grid-cols-2">
+        <div className="relative mx-auto grid w-full max-w-md items-center gap-10 md:max-w-7xl md:grid-cols-2 md:gap-14 xl:gap-20">
           <div className="flex flex-col items-start">
           <motion.h1
             initial={{ opacity: 0, y: 26 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, ease: "easeOut" }}
-            className="font-[family-name:var(--font-display)] text-6xl uppercase leading-[0.85] tracking-wide text-[var(--splifft-cream)] md:text-8xl"
+            className="font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.85] tracking-wide text-[var(--splifft-cream)] sm:text-6xl md:text-7xl lg:text-8xl"
           >
             Stop Rolling.
             <br />
@@ -92,7 +90,7 @@ export function PremiumHomePage() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.12, ease: "easeOut" }}
-            className="mt-4 max-w-sm text-base text-[var(--splifft-muted)] md:text-lg"
+            className="mt-4 max-w-xl text-base text-[var(--splifft-muted)] md:text-lg"
           >
             Premium 5-pack Splifft boxes built for smoother sessions, cleaner
             presentation, and zero setup.
@@ -102,7 +100,7 @@ export function PremiumHomePage() {
             initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.85, delay: 0.2, ease: "easeOut" }}
-            className="mt-8 w-full rounded-3xl border border-white/15 bg-white/5 p-5 shadow-[0_0_34px_rgba(255,45,146,0.22)] backdrop-blur-md"
+            className="mt-8 w-full max-w-xl rounded-3xl border border-white/15 bg-white/5 p-5 shadow-[0_0_34px_rgba(255,45,146,0.22)] backdrop-blur-md"
           >
             <div className="relative h-44 rounded-2xl border border-white/10 bg-[radial-gradient(circle_at_25%_25%,rgba(0,191,255,0.3),transparent_45%),radial-gradient(circle_at_80%_50%,rgba(255,45,146,0.28),transparent_46%),linear-gradient(180deg,#14131c,#0a0a0f)]">
               <motion.div
@@ -123,7 +121,7 @@ export function PremiumHomePage() {
             </div>
           </motion.div>
 
-          <div className="mt-8 grid w-full gap-3">
+          <div className="mt-8 grid w-full max-w-xl gap-3 sm:grid-cols-2">
             <SplifftButton onClick={jumpToWaitlist} variant="primary" className="w-full">
               Build My First Pack →
             </SplifftButton>
@@ -147,7 +145,7 @@ export function PremiumHomePage() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.18, ease: "easeOut" }}
-            className="relative hidden min-h-[520px] items-center justify-center md:flex"
+            className="relative hidden min-h-[520px] items-center justify-center md:flex lg:min-h-[620px]"
           >
             <div className="absolute inset-0 rounded-[36px] bg-[radial-gradient(circle_at_35%_30%,rgba(255,45,146,0.18),transparent_45%),radial-gradient(circle_at_75%_70%,rgba(0,191,255,0.2),transparent_45%)]" />
             <Image
@@ -155,24 +153,25 @@ export function PremiumHomePage() {
               alt="Open Splifft premium box with 5 joints"
               width={480}
               height={620}
-              className="relative h-auto w-[78%] object-contain drop-shadow-[0_24px_30px_rgba(0,0,0,0.55)]"
+              className="relative h-auto w-[72%] max-w-[520px] object-contain drop-shadow-[0_24px_30px_rgba(0,0,0,0.55)]"
               priority
             />
           </motion.div>
         </div>
       </section>
 
-      <SignatureAssemblySection onWaitlistCta={jumpToWaitlist} />
-
       <section
         id="what-you-get"
-        className="flex min-h-[100svh] snap-start items-center bg-[linear-gradient(180deg,#f6f2eb,#efe7db)] px-4 py-16"
+        className="flex min-h-[100svh] snap-start items-center bg-[linear-gradient(180deg,#f6f2eb,#efe7db)] px-4 py-16 md:py-20"
       >
-        <div className="mx-auto w-full max-w-md md:max-w-5xl">
-          <h2 className="font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.9] text-[#191622]">
+        <div className="mx-auto w-full max-w-md md:max-w-7xl">
+          <h2 className="font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.9] text-[#191622] md:text-6xl">
             What You Get
           </h2>
-          <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
+          <p className="mt-3 max-w-3xl text-sm text-[#3b334a] md:text-base">
+            Clean premium details in every pack, made to feel consistent from first open to final session.
+          </p>
+          <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4 lg:gap-5">
             {[
               "Glass tip",
               "Branded Splifft band",
@@ -193,13 +192,13 @@ export function PremiumHomePage() {
 
       <section
         id="pricing"
-        className="flex min-h-[100svh] snap-start items-center bg-[radial-gradient(circle_at_20%_20%,rgba(255,45,146,0.18),transparent_42%),radial-gradient(circle_at_80%_40%,rgba(0,191,255,0.15),transparent_45%),#09090d] px-4 py-16"
+        className="flex min-h-[100svh] snap-start items-center bg-[radial-gradient(circle_at_20%_20%,rgba(255,45,146,0.18),transparent_42%),radial-gradient(circle_at_80%_40%,rgba(0,191,255,0.15),transparent_45%),#09090d] px-4 py-16 md:py-20"
       >
-        <div className="mx-auto w-full max-w-md md:max-w-5xl">
-          <h2 className="font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.9] text-[var(--splifft-cream)]">
+        <div className="mx-auto w-full max-w-md md:max-w-7xl">
+          <h2 className="font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.9] text-[var(--splifft-cream)] md:text-6xl">
             Choose Your Access
           </h2>
-          <div className="mt-6 grid gap-4 md:grid-cols-[1.35fr_1fr]">
+          <div className="mt-6 grid gap-4 md:grid-cols-[1.35fr_1fr] md:gap-6">
           <div className="rounded-3xl border border-fuchsia-300/35 bg-white/10 p-6 shadow-[0_0_36px_rgba(255,45,146,0.3)] backdrop-blur-md">
             <p className="inline-flex rounded-full border border-fuchsia-300/40 bg-fuchsia-400/20 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-fuchsia-200">
               Best Value
@@ -259,12 +258,12 @@ export function PremiumHomePage() {
         </div>
       </section>
 
-      <section id="access-perks" className="flex min-h-[100svh] snap-start items-center px-4 py-16">
-        <div className="mx-auto w-full max-w-md md:max-w-5xl">
+      <section id="access-perks" className="flex min-h-[100svh] snap-start items-center px-4 py-16 md:py-20">
+        <div className="mx-auto w-full max-w-md md:max-w-7xl">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-300">
             Monthly Access Perks
           </p>
-          <h2 className="font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.9] text-[var(--splifft-cream)]">
+          <h2 className="font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.9] text-[var(--splifft-cream)] md:text-6xl">
             More Than
             <br />
             Just A Pack
@@ -273,7 +272,7 @@ export function PremiumHomePage() {
             Monthly Access gives you the easiest way to keep your session ready, plus
             first access to limited Splifft drops and future collabs.
           </p>
-          <div className="mt-6 grid gap-3 md:grid-cols-2">
+          <div className="mt-6 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
             {[
               "First access to limited drops",
               "First access to future flower collabs",
@@ -298,16 +297,16 @@ export function PremiumHomePage() {
         </div>
       </section>
 
-      <section id="drops" className="flex min-h-[100svh] snap-start items-center px-4 py-16">
-        <div className="mx-auto w-full max-w-md md:max-w-5xl">
-          <h2 className="font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.9] text-[var(--splifft-cream)]">
+      <section id="drops" className="flex min-h-[100svh] snap-start items-center px-4 py-16 md:py-20">
+        <div className="mx-auto w-full max-w-md md:max-w-7xl">
+          <h2 className="font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.9] text-[var(--splifft-cream)] md:text-6xl">
             Limited Drops
           </h2>
           <p className="mt-2 text-sm text-[var(--splifft-muted)]">
             Limited themed drops built for lake days, cabin weekends, parties,
             holidays, and mystery sessions.
           </p>
-          <div className="premium-drops-rail mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2">
+          <div className="premium-drops-rail mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 md:grid md:grid-cols-3 md:overflow-visible">
             {["Cabin Drop", "Lake Day Drop", "Mystery Drop"].map((drop) => (
               <article
                 key={drop}
@@ -332,9 +331,9 @@ export function PremiumHomePage() {
         </div>
       </section>
 
-      <section id="events" className="flex min-h-[100svh] snap-start items-center px-4 py-16">
-        <div className="mx-auto w-full max-w-md rounded-3xl border border-white/20 bg-white/8 p-6 backdrop-blur-xl md:max-w-5xl">
-          <h2 className="font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.9] text-[var(--splifft-cream)]">
+      <section id="events" className="flex min-h-[100svh] snap-start items-center px-4 py-16 md:py-20">
+        <div className="mx-auto w-full max-w-md rounded-3xl border border-white/20 bg-white/8 p-6 backdrop-blur-xl md:max-w-7xl md:p-8">
+          <h2 className="font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.9] text-[var(--splifft-cream)] md:text-6xl">
             Stop Rolling.
             <br />
             Start Hosting.
@@ -354,10 +353,10 @@ export function PremiumHomePage() {
         </div>
       </section>
 
-      <section id="waitlist" className="flex min-h-[100svh] snap-start items-center px-4 py-16 pb-28">
-        <div className="mx-auto grid w-full max-w-md gap-6 rounded-3xl border border-white/20 bg-white/8 p-6 shadow-[0_0_35px_rgba(255,45,146,0.22)] backdrop-blur-xl md:max-w-5xl md:grid-cols-2">
+      <section id="waitlist" className="flex min-h-[100svh] snap-start items-center px-4 py-16 pb-28 md:py-20">
+        <div className="mx-auto grid w-full max-w-md gap-6 rounded-3xl border border-white/20 bg-white/8 p-6 shadow-[0_0_35px_rgba(255,45,146,0.22)] backdrop-blur-xl md:max-w-7xl md:grid-cols-2 md:gap-10 md:p-8">
           <div>
-          <h2 className="font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.88] text-[var(--splifft-cream)] md:text-6xl">
+          <h2 className="font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.88] text-[var(--splifft-cream)] md:text-6xl lg:text-7xl">
             Your Next Session
             <br />
             Should Already Be Ready.
@@ -400,7 +399,7 @@ export function PremiumHomePage() {
       </div>
 
       <div className="premium-sticky-cta fixed bottom-0 left-0 right-0 z-50 px-4 pb-[calc(env(safe-area-inset-bottom)+0.9rem)] pt-3">
-        <div className="mx-auto max-w-md rounded-3xl border border-white/20 bg-[rgba(10,10,16,0.78)] p-3 backdrop-blur-xl md:max-w-xl">
+        <div className="mx-auto max-w-md rounded-3xl border border-white/20 bg-[rgba(10,10,16,0.78)] p-3 backdrop-blur-xl md:max-w-2xl">
           <SplifftButton onClick={jumpToWaitlist} variant="primary" className="w-full">
             Get Monthly Access →
           </SplifftButton>

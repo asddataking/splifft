@@ -162,7 +162,7 @@ export function PremiumHomePage() {
             {[
               "Glass tip",
               "Branded Splifft band",
-              "Clean white cone",
+              "Premium Midnight Smoking Paper",
               "Premium 5-pack box",
             ].map((item) => (
               <div
@@ -175,27 +175,37 @@ export function PremiumHomePage() {
             ))}
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-3 md:mt-2">
-              <div className="relative h-40 overflow-hidden rounded-2xl border border-black/15 bg-black/5 md:h-44">
+            <div className="relative rounded-2xl border border-black/10 bg-white/50 p-4 md:mt-2 md:p-5">
+              <div className="relative h-32 overflow-hidden rounded-2xl border border-black/10 bg-white md:h-36">
                 <ProductImage
-                  src="/splifft-1.png"
-                  alt="Single Splifft close-up showing glass tip"
-                  fallbackLabel="splifft-glass-tip.png"
+                  src="/joint.png"
+                  alt="Splifft joint with glass filter on the left and premium smoking paper body on the right"
+                  fallbackLabel="splifft-single.png"
+                  className="object-contain px-4 py-3"
                 />
               </div>
-              <div className="relative h-40 overflow-hidden rounded-2xl border border-black/15 bg-black/5 md:h-44">
-                <ProductImage
-                  src="/Splifft 2.png"
-                  alt="Open Splifft box showing branded band details"
-                  fallbackLabel="splifft-band-detail.png"
-                />
+
+              <div className="mt-3 grid grid-cols-2 gap-2">
+                <div className="rounded-xl border border-black/10 bg-white px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1d1a27]">
+                  1. Glass Filter Tip
+                </div>
+                <div className="rounded-xl border border-black/10 bg-white px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1d1a27]">
+                  2. Branded Splifft Band
+                </div>
+                <div className="col-span-2 rounded-xl border border-black/10 bg-white px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1d1a27]">
+                  3. Premium Midnight Smoking Paper
+                </div>
               </div>
-              <div className="relative col-span-2 h-44 overflow-hidden rounded-2xl border border-black/15 bg-black/5 md:h-52">
+
+              <div className="mt-3 relative h-40 overflow-hidden rounded-2xl border border-black/10 bg-white md:h-44">
                 <ProductImage
                   src="/Splifft 2.png"
-                  alt="Splifft premium 5-pack box product shot"
+                  alt="Premium Splifft 5-pack box"
                   fallbackLabel="splifft-box-open.png"
                 />
+                <div className="absolute left-2 top-2 rounded-lg border border-black/10 bg-white/85 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.08em] text-[#1d1a27]">
+                  4. Premium 5-Pack Box
+                </div>
               </div>
             </div>
           </div>

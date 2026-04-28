@@ -142,7 +142,7 @@ export const serviceCards: ServiceCard[] = [
 export const membershipPerks: string[] = [
   "Monthly Access at $60 per month",
   "Save on every premium 5-pack",
-  "Get The Vault boxes at $19.99",
+  "Get optional add-ons at preferred pricing",
   "First access to limited drops",
   "First access to flower and rosin collabs",
 ];

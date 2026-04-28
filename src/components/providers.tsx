@@ -4,13 +4,6 @@ import type { ReactNode } from "react";
 import dynamic from "next/dynamic";
 import { CartProvider } from "@/context/cart-context";
 
-const WaitlistScrollPopup = dynamic(
-  () =>
-    import("@/components/marketing/WaitlistScrollPopup").then(
-      (m) => m.WaitlistScrollPopup,
-    ),
-  { ssr: false },
-);
 const OrderNotificationPopup = dynamic(
   () =>
     import("@/components/marketing/OrderNotificationPopup").then(
@@ -32,7 +25,6 @@ export function Providers({ children }: { children: ReactNode }) {
       {children}
       <OrderNotificationPopup />
       <WaitlistShareModal />
-      <WaitlistScrollPopup />
     </CartProvider>
   );
 }

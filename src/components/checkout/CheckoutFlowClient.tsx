@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { ProductImage } from "@/components/ui/ProductImage";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 import { PLAN_PRICING_USD, PLAN_SLUGS } from "@/lib/pricing";
@@ -58,6 +58,7 @@ function formatUsd(value: number) {
 }
 
 export function CheckoutFlowClient() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const initialPlan = searchParams.get("plan");
   const initialStep = searchParams.get("step");
@@ -142,6 +143,11 @@ export function CheckoutFlowClient() {
           ? "Monthly checkout prepared. Connect Stripe Payment Element to complete payment."
           : "One-time checkout prepared. Connect Stripe Payment Element to complete payment.",
       );
+      window.setTimeout(() => {
+        router.push(
+          `/checkout/success?plan=${encodeURIComponent(plan)}&total=${encodeURIComponent(subtotal.toFixed(2))}`,
+        );
+      }, 600);
     } catch (error) {
       setPaymentStatus("error");
       setPaymentMessage(

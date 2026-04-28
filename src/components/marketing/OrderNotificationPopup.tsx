@@ -6,9 +6,9 @@ import Link from "next/link";
 const sampleNotifications = [
   "Someone from Detroit just got Monthly Access.",
   "Someone from Troy just grabbed a Sativa 5-Pack.",
-  "Someone from Sterling Heights just unlocked The Vault.",
-  "Someone from Clinton Township just joined the waitlist.",
-  "Someone from Port Huron just added a Themed Box.",
+  "Someone from Sterling Heights just bought a One-Time Pack.",
+  "Someone from Clinton Township just started checkout.",
+  "Someone from Port Huron just built their first pack.",
 ] as const;
 
 export function OrderNotificationPopup() {

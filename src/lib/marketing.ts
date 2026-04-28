@@ -1,6 +1,6 @@
 /**
  * Homepage and shared marketing copy — single source for labels and hero imagery.
- * Align with: Monthly Access, 5-packs, Dank Drops, and Splifft Events.
+ * Align with: Monthly Access, One-Time Pack, optional add-ons, and Splifft Events.
  */
 
 import {
@@ -39,7 +39,7 @@ export const heroMarketing = {
 export const chooseYourSplifftSection = {
   heading: "Shop your way",
   subheading:
-    "Start with a 5-pack, then unlock The Vault for themed boxes.",
+    "Start with a 5-pack, then add optional extras during checkout.",
 } as const;
 
 export type ChooseSplifftCard = {
@@ -89,7 +89,7 @@ export const whatYouGetSection = {
     "Monthly Access is $60, one-time pack is $75",
     "No rolling needed",
   ],
-  dropTitle: "The Vault (Dank Drops)",
+  dropTitle: "Optional Add-Ons",
   dropBullets: [
     "Themed boxes for every mood",
     "Monthly Access is $19.99, one-time is $24.99",

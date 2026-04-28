@@ -7,7 +7,7 @@ export const metadata = buildPageMetadata({
   path: "/shop",
   title: "Shop",
   description:
-    "Shop Splifft 5-packs and unlock The Vault. Monthly Access customers pay less on every order.",
+    "Shop Splifft 5-packs with Monthly Access or buy a One-Time Pack.",
   shareDescription: SOCIAL_SHARE_DESCRIPTION,
 });
 

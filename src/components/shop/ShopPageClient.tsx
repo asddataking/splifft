@@ -12,7 +12,7 @@ type Props = {
 
 export function ShopPageClient({ corePacks, dankDrops }: Props) {
   const [isMonthlyAccess, setIsMonthlyAccess] = useState(false);
-  const vaultProducts = dankDrops.map((product) => ({
+  const addOnProducts = dankDrops.map((product) => ({
     ...product,
     monthlyAccessPrice: 19.99,
     oneTimePackPrice: 24.99,
@@ -31,7 +31,7 @@ export function ShopPageClient({ corePacks, dankDrops }: Props) {
             Shop Packs
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-[var(--splifft-muted)]">
-            Pick your 5-pack first. Then unlock The Vault.
+            Pick your 5-pack first. Then add optional extras at checkout.
           </p>
           <div className="mt-6 flex gap-3">
             <SplifftButton href="/monthly-access" variant="primary">
@@ -67,19 +67,19 @@ export function ShopPageClient({ corePacks, dankDrops }: Props) {
         </div>
       </section>
 
-      <section id="the-vault" className="border-b-2 border-black bg-[#0a0a0c] py-14 sm:py-18">
+      <section id="add-ons" className="border-b-2 border-black bg-[#0a0a0c] py-14 sm:py-18">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--splifft-pink)]">
-            The Vault
+            Optional Add-Ons
           </p>
           <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl uppercase text-[var(--splifft-cream)] sm:text-3xl">
-            Themed Boxes (Dank Drops)
+            Checkout Extras
           </h2>
           <p className="mt-2 max-w-2xl text-sm text-[var(--splifft-muted)]">
             Monthly Access price is $19.99. One-Time price is $24.99.
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {vaultProducts.map((p) => (
+            {addOnProducts.map((p) => (
               <ShopProductCard
                 key={p.id}
                 product={p}

@@ -3,11 +3,9 @@ import Link from "next/link";
 import { SITE_URL } from "@/lib/site";
 
 const explore = [
+  { href: "/", label: "Home" },
+  { href: "/monthly-access", label: "Monthly Access" },
   { href: "/shop", label: "Shop Packs" },
-  { href: "/shop#the-vault", label: "The Vault" },
-  { href: "/services/events", label: "Events" },
-  { href: "/blog", label: "Blog" },
-  { href: "/press", label: "Press" },
   { href: "/cart", label: "Cart" },
 ] as const;
 
@@ -53,8 +51,8 @@ export function SiteFooter() {
               />
             </Link>
             <p className="mt-5 max-w-md text-base leading-relaxed text-[var(--splifft-muted)]">
-              Stop rolling. Start smoking. Get Monthly Access for premium 5-packs,
-              first access to drops, and easy session-ready delivery.
+              Stop rolling. Start smoking. Get Monthly Access for premium 5-packs
+              and easy session-ready delivery.
             </p>
             <p className="mt-4 text-xs font-bold uppercase tracking-[0.2em] text-[var(--splifft-blue)]">
               Michigan · We pull up
@@ -111,7 +109,8 @@ export function SiteFooter() {
                 </li>
                 <li>
                   <span className="text-[var(--splifft-muted)]">
-                    Questions? Get Monthly Access or request a Splifft Events quote.
+                    Questions? Get Monthly Access, buy a One-Time Pack, or request
+                    a Splifft Events quote.
                   </span>
                 </li>
               </ul>

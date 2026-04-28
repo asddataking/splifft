@@ -84,12 +84,9 @@ export function PremiumHomePage() {
             presentation, and zero setup.
           </motion.p>
 
-          <div className="mt-10 grid w-full max-w-md gap-3 sm:grid-cols-2">
+          <div className="mt-10 grid w-full max-w-md gap-3">
             <SplifftButton href="/checkout" variant="primary" className="w-full">
               Build My First Pack →
-            </SplifftButton>
-            <SplifftButton href="/checkout?step=addons" variant="ghost" className="w-full">
-              Explore Drops
             </SplifftButton>
           </div>
 
@@ -365,6 +362,9 @@ export function PremiumHomePage() {
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <SplifftButton href="/services/events" variant="secondary">
               Request Event Quote →
+            </SplifftButton>
+            <SplifftButton href="/checkout?plan=monthly_access" variant="ghost">
+              Get Monthly Access →
             </SplifftButton>
           </div>
           </div>

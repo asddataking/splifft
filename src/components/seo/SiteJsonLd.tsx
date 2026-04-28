@@ -9,7 +9,7 @@ const organization = {
   url: SITE_URL,
   logo: logoUrl,
   description:
-    "Monthly Access, 5-pack pre-rolls, and The Vault themed boxes. Splifft Events available by custom quote.",
+    "Monthly Access, One-Time Pack options, and premium 5-pack pre-rolls. Splifft Events available by custom quote.",
   slogan: "Stop Rolling. Start Smoking.",
 };
 
@@ -19,7 +19,7 @@ const website = {
   name: "Splifft",
   url: SITE_URL,
   description:
-    "Get Monthly Access, shop 5-packs, unlock The Vault, and request Splifft Events for parties.",
+    "Get Monthly Access, shop packs, and request Splifft Events for parties.",
   publisher: {
     "@type": "Organization",
     name: "Splifft",

@@ -11,7 +11,7 @@ export const META_PIXEL_ID = "1605409814016301";
 
 /** Primary line for Open Graph / Twitter (share previews). */
 export const SOCIAL_SHARE_DESCRIPTION =
-  "Stop rolling. Start smoking. Get Monthly Access for premium 5-packs, first access to drops, and cleaner ready-to-smoke sessions. Splifft Events available for custom quotes.";
+  "Stop rolling. Start smoking. Get Monthly Access for premium 5-packs, cleaner ready-to-smoke sessions, and One-Time Pack flexibility. Splifft Events available for custom quotes.";
 
 /** DankNDevour brand partner links. */
 export const DANKNDEVOUR_SITE_URL = "https://www.dankndevour.com";

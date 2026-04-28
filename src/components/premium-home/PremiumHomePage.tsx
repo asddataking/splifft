@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { ClubWaitlistCapture } from "@/components/club/ClubWaitlistCapture";
 import { ProductImage } from "@/components/ui/ProductImage";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 import { PLAN_PRICING_USD } from "@/lib/pricing";
@@ -110,8 +111,11 @@ export function PremiumHomePage() {
             <SplifftButton href="/checkout" variant="primary" className="w-full">
               Build My First Pack →
             </SplifftButton>
+            <SplifftButton href="#waitlist" variant="ghost" className="w-full border-white/30 text-white hover:bg-white/10">
+              Join Waitlist
+            </SplifftButton>
             <p className="text-xs font-semibold uppercase tracking-[0.13em] text-[var(--splifft-muted)]">
-              ~60 sec checkout · Cancel anytime · Secure payment
+              ~60 sec checkout · Secure payment · Want updates? Join waitlist
             </p>
           </div>
 
@@ -197,6 +201,26 @@ export function PremiumHomePage() {
                 <p className="mt-2 text-sm text-[var(--splifft-muted)]">{step.body}</p>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="waitlist" className="flex snap-start items-start px-4 pb-8 pt-2 md:pb-8 md:pt-2">
+        <div className="mx-auto w-full max-w-md md:max-w-7xl">
+          <div className="rounded-3xl border border-white/20 bg-white/[0.06] p-5 backdrop-blur-md md:p-7">
+            <p className="text-xs font-bold uppercase tracking-[0.14em] text-cyan-300">
+              Want Launch Alerts?
+            </p>
+            <h2 className="mt-2 font-[family-name:var(--font-display)] text-3xl uppercase leading-[0.95] text-[var(--splifft-cream)] md:text-4xl">
+              Join The Splifft Waitlist
+            </h2>
+            <p className="mt-2 max-w-2xl text-sm text-[var(--splifft-muted)] md:text-base">
+              Checkout is live now. If you also want launch updates, limited drop
+              heads-ups, and Monthly Access announcements, join here.
+            </p>
+            <div className="mt-5 max-w-xl">
+              <ClubWaitlistCapture surface="home_membership" idPrefix="premium-home-waitlist" />
+            </div>
           </div>
         </div>
       </section>
@@ -430,9 +454,14 @@ export function PremiumHomePage() {
           <p className="mt-3 text-sm text-[var(--splifft-muted)]">
             No rolling. No mess. No setup.
           </p>
-          <SplifftButton href="/checkout?plan=monthly_access" variant="primary" className="mt-5 w-full sm:w-auto">
+          <div className="mt-5 flex flex-wrap gap-3">
+          <SplifftButton href="/checkout?plan=monthly_access" variant="primary" className="w-full sm:w-auto">
             Get Monthly Access →
           </SplifftButton>
+          <SplifftButton href="#waitlist" variant="ghost" className="w-full sm:w-auto border-white/30 text-white hover:bg-white/10">
+            Join Waitlist
+          </SplifftButton>
+          </div>
           </div>
           <div className="hidden items-center justify-center md:flex">
             <div className="relative h-[360px] w-[62%] min-w-[220px]">
@@ -495,9 +524,14 @@ export function PremiumHomePage() {
         }`}
       >
         <div className="mx-auto max-w-md rounded-3xl border border-white/20 bg-[rgba(10,10,16,0.78)] p-3 backdrop-blur-xl md:max-w-2xl">
-          <SplifftButton href="/checkout?plan=monthly_access" variant="primary" className="w-full">
-            Get Monthly Access →
-          </SplifftButton>
+          <div className="grid gap-2 md:grid-cols-2">
+            <SplifftButton href="/checkout?plan=monthly_access" variant="primary" className="w-full">
+              Get Monthly Access →
+            </SplifftButton>
+            <SplifftButton href="#waitlist" variant="ghost" className="w-full border-white/30 text-white hover:bg-white/10">
+              Join Waitlist
+            </SplifftButton>
+          </div>
         </div>
       </div>
     </div>

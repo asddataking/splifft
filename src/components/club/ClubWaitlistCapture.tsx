@@ -49,8 +49,8 @@ export function ClubWaitlistCapture({ surface, idPrefix = "club-waitlist" }: Pro
   return (
     <div className="space-y-4">
       <p className="text-sm leading-relaxed text-[var(--splifft-ink-soft)]">
-        Monthly Access checkout is opening soon. Drop your email and we will alert
-        you as soon as it goes live.
+        Drop your email to get Monthly Access updates, limited-drop alerts, and
+        launch announcements.
       </p>
       <div>
         <label

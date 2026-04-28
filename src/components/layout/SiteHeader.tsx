@@ -15,10 +15,8 @@ export function SiteHeader() {
   const pathname = usePathname();
 
   const linkClass = (active: boolean) =>
-    `rounded-lg px-3 py-2 text-sm font-semibold transition ${
-      active
-        ? "bg-[var(--splifft-pink)] text-black"
-        : "text-[var(--splifft-cream)] hover:bg-white/5"
+    `px-1 text-sm font-bold uppercase tracking-[0.08em] text-white transition ${
+      active ? "opacity-100" : "opacity-85 hover:opacity-100"
     }`;
 
   const isActive = (href: string) => {
@@ -29,7 +27,22 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b-2 border-black/40 bg-[var(--splifft-ink)]/95 backdrop-blur-md">
       <div className="relative mx-auto max-w-6xl px-4 py-3 sm:px-6 md:py-4">
-        <div className="hidden items-center justify-center gap-6 md:flex">
+        <div className="hidden items-center justify-center gap-8 md:flex">
+          <nav className="flex items-center gap-3" aria-label="Primary left links">
+            {nav.slice(0, 2).map((item, index) => (
+              <div key={item.href} className="flex items-center gap-3">
+                <Link
+                  href={item.href}
+                  aria-current={isActive(item.href) ? "page" : undefined}
+                  className={linkClass(isActive(item.href))}
+                >
+                  {item.label}
+                </Link>
+                {index < 1 ? <span className="text-sm font-bold text-white/80">|</span> : null}
+              </div>
+            ))}
+          </nav>
+
           <Link
             href="/"
             className="shrink-0 transition hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--splifft-blue)]"
@@ -44,20 +57,19 @@ export function SiteHeader() {
               priority
             />
           </Link>
-          <nav className="flex flex-wrap items-center justify-center gap-1" aria-label="Primary">
-            {nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={isActive(item.href) ? "page" : undefined}
-                className={
-                  item.href === "/checkout"
-                    ? `rounded-lg px-3 py-2 text-sm font-semibold transition bg-[var(--splifft-pink)] text-black hover:brightness-110`
-                    : linkClass(isActive(item.href))
-                }
-              >
-                {item.label}
-              </Link>
+
+          <nav className="flex items-center gap-3" aria-label="Primary right links">
+            {nav.slice(2).map((item, index) => (
+              <div key={item.href} className="flex items-center gap-3">
+                <Link
+                  href={item.href}
+                  aria-current={isActive(item.href) ? "page" : undefined}
+                  className={linkClass(isActive(item.href))}
+                >
+                  {item.label}
+                </Link>
+                {index < 1 ? <span className="text-sm font-bold text-white/80">|</span> : null}
+              </div>
             ))}
           </nav>
         </div>
@@ -82,26 +94,24 @@ export function SiteHeader() {
 
       <div className="border-t border-white/5 md:hidden">
         <nav
-          className="mx-auto flex max-w-6xl flex-wrap justify-center gap-1 px-2 py-2 sm:px-4"
+          className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-2 px-2 py-2 sm:px-4"
           aria-label="Mobile"
         >
-          {nav.map((item) => {
+          {nav.map((item, index) => {
             const active = isActive(item.href);
             return (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={active ? "page" : undefined}
-                className={`rounded-lg px-3 py-2 text-xs font-semibold ${
-                  item.href === "/checkout"
-                    ? "bg-[var(--splifft-pink)] text-black"
-                    : active
-                    ? "bg-[var(--splifft-pink)] text-black"
-                    : "text-[var(--splifft-cream)]/90"
-                }`}
-              >
-                {item.label}
-              </Link>
+              <div key={item.href} className="flex items-center gap-2">
+                <Link
+                  href={item.href}
+                  aria-current={active ? "page" : undefined}
+                  className={`text-[11px] font-bold uppercase tracking-[0.07em] text-white ${
+                    active ? "opacity-100" : "opacity-85"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+                {index < nav.length - 1 ? <span className="text-[11px] font-bold text-white/80">|</span> : null}
+              </div>
             );
           })}
         </nav>

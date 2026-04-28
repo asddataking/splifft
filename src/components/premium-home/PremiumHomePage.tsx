@@ -333,37 +333,37 @@ export function PremiumHomePage() {
           <p className="max-w-[46rem] text-sm text-[var(--splifft-muted)] md:text-[1.05rem]">
             Hosting nights, private sessions, or elevated celebrations? Splifft Events gives you a premium presentation without prep stress.
           </p>
-          <div className="relative mt-6 overflow-hidden rounded-[22px] border border-white/14 bg-[#070912] px-5 py-7 shadow-[0_16px_38px_rgba(0,0,0,0.45)] md:px-9 md:py-9">
+          <div className="relative mt-6 overflow-hidden rounded-[22px] border border-white/14 bg-[#070912] px-5 py-7 shadow-[0_16px_38px_rgba(0,0,0,0.45)] md:px-10 md:py-10">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_83%_16%,rgba(196,70,255,0.38),transparent_30%),radial-gradient(circle_at_24%_56%,rgba(30,176,255,0.14),transparent_40%),linear-gradient(120deg,rgba(255,255,255,0.03),transparent_42%)]" />
-            <div className="relative grid gap-8 md:grid-cols-[0.95fr_1.25fr] md:gap-9">
-              <div>
+            <div className="relative grid items-center gap-7 md:grid-cols-[0.9fr_1.3fr] md:gap-10">
+              <div className="md:self-stretch md:pt-2">
                 <h2 className="font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.86] tracking-tight text-white md:text-7xl">
                   Stop Rolling.
                   <br />
                   Start Hosting.
                 </h2>
-                <p className="mt-3 text-[1.3rem] font-bold uppercase tracking-wide text-[#bf68ff]">
+                <p className="mt-3 text-[1.18rem] font-bold uppercase tracking-[0.04em] text-[#bf68ff] md:text-[1.25rem]">
                   Premium presentation. Zero prep.
                 </p>
-                <p className="mt-4 max-w-md text-[1.09rem] leading-relaxed text-[var(--splifft-muted)]">
+                <p className="mt-4 max-w-md text-[1.03rem] leading-relaxed text-[var(--splifft-muted)] md:text-[1.08rem]">
                   Splifft Events delivers a curated, elevated experience so you can
                   focus on your guests. We handle the joints - you handle the good
                   times.
                 </p>
-                <SplifftButton href="/services/events" variant="primary" className="mt-8 min-w-[250px] bg-[#17c8ff] px-8 py-4 text-lg font-bold text-[#061123] hover:bg-[#45d4ff]">
+                <SplifftButton href="/services/events" variant="primary" className="mt-7 min-w-[250px] bg-[#17c8ff] px-8 py-4 text-lg font-bold text-[#061123] hover:bg-[#45d4ff]">
                   Request Event Quote →
                 </SplifftButton>
               </div>
 
-              <div className="relative min-h-[230px] overflow-hidden rounded-2xl border border-white/10 bg-[#100a1f] md:min-h-[330px]">
+              <div className="relative min-h-[230px] overflow-hidden rounded-2xl border border-white/10 bg-[#100a1f] md:min-h-[360px]">
                 <ProductImage
                   src="/events-private-parties.jpg"
                   alt="Purple event lighting background for Splifft events"
                   fallbackLabel="splifft-events-bg.png"
-                  className="object-cover opacity-62"
+                  className="object-cover opacity-68"
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,8,24,0.18),rgba(14,8,24,0.58))]" />
-                <div className="absolute inset-x-0 bottom-0 top-[42%] md:left-[2%] md:right-[-10%]">
+                <div className="absolute inset-x-0 bottom-0 top-[44%] md:left-[1%] md:right-[-8%]">
                   <ProductImage
                     src="/joint.png"
                     alt="Splifft joint hero for events section"
@@ -403,10 +403,10 @@ export function PremiumHomePage() {
                       {item.icon}
                     </span>
                     <div>
-                      <h3 className="text-[0.92rem] font-bold uppercase tracking-wide text-white">
+                      <h3 className="text-[0.9rem] font-bold uppercase tracking-wide text-white">
                         {item.title}
                       </h3>
-                      <p className="mt-1 text-[1rem] leading-relaxed text-[var(--splifft-muted)]">
+                      <p className="mt-1 text-[0.95rem] leading-relaxed text-[var(--splifft-muted)]">
                         {item.body}
                       </p>
                     </div>

@@ -25,6 +25,38 @@ body {
   font-family: var(--font-body), system-ui, sans-serif;
 }
 
+.premium-page {
+  position: relative;
+  scroll-snap-type: y mandatory;
+}
+
+.premium-page > section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.premium-drops-rail {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.premium-drops-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.premium-progress-dots {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.premium-sticky-cta {
+  pointer-events: none;
+}
+
+.premium-sticky-cta > * {
+  pointer-events: auto;
+}
+
 ::selection {
   background: var(--splifft-pink);
   color: #0a0a0a;
@@ -43,5 +75,29 @@ body {
 
   .splifft-hero-gradient-drift {
     animation: splifft-hero-drift 22s ease-in-out infinite;
+  }
+
+  @keyframes premium-pulse {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-2px);
+    }
+  }
+
+  .premium-sticky-cta button {
+    animation: premium-pulse 2.4s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .premium-page {
+    scroll-snap-type: y proximity;
+  }
+
+  .premium-sticky-cta button {
+    animation: none;
   }
 }

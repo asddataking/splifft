@@ -55,13 +55,7 @@ export async function getShopProducts(): Promise<Product[]> {
       .eq("is_active", true)
       .order("sort_order", { ascending: true });
 
-    const { data, error } = primaryQuery.error
-      ? await supabase
-          .from("products")
-          .select("*")
-          .eq("active", true)
-          .order("sort_order", { ascending: true })
-      : primaryQuery;
+    const { data, error } = primaryQuery;
 
     if (error || !data?.length) {
       return staticCatalog;

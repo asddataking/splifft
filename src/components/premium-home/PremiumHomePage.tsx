@@ -163,7 +163,7 @@ export function PremiumHomePage() {
 
       <section
         id="how-it-works"
-        className="flex min-h-[88svh] snap-start items-start bg-[radial-gradient(circle_at_20%_20%,rgba(255,45,146,0.15),transparent_40%),radial-gradient(circle_at_80%_30%,rgba(0,191,255,0.15),transparent_45%),#0a0a10] px-4 py-12 md:min-h-[82svh] md:py-10"
+        className="flex snap-start items-start bg-[radial-gradient(circle_at_20%_20%,rgba(255,45,146,0.15),transparent_40%),radial-gradient(circle_at_80%_30%,rgba(0,191,255,0.15),transparent_45%),#0a0a10] px-4 pb-8 pt-10 md:pb-8 md:pt-8"
       >
         <div className="mx-auto w-full max-w-md md:max-w-7xl">
           <h2 className="font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.9] text-[var(--splifft-cream)] md:text-6xl">
@@ -202,7 +202,7 @@ export function PremiumHomePage() {
 
       <section
         id="pricing"
-        className="flex min-h-[90svh] snap-start items-start bg-[radial-gradient(circle_at_20%_20%,rgba(255,45,146,0.18),transparent_42%),radial-gradient(circle_at_80%_40%,rgba(0,191,255,0.15),transparent_45%),#09090d] px-4 py-12 md:min-h-[86svh] md:py-10"
+        className="flex snap-start items-start bg-[radial-gradient(circle_at_20%_20%,rgba(255,45,146,0.18),transparent_42%),radial-gradient(circle_at_80%_40%,rgba(0,191,255,0.15),transparent_45%),#09090d] px-4 pb-10 pt-8 md:pb-10 md:pt-8"
       >
         <div className="mx-auto w-full max-w-md md:max-w-7xl">
           <h2 className="font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.9] text-[var(--splifft-cream)] md:text-6xl">
@@ -327,37 +327,92 @@ export function PremiumHomePage() {
         </div>
       </section>
 
-      <section id="events" className="flex min-h-[84svh] snap-start items-start px-4 py-12 md:min-h-[80svh] md:py-10">
+      <section id="events" className="flex snap-start items-start px-4 py-10 md:py-10">
         <div className="mx-auto w-full max-w-md md:max-w-7xl">
-          <p className="max-w-2xl text-sm text-[var(--splifft-muted)] md:text-base">
+          <p className="max-w-[46rem] text-sm text-[var(--splifft-muted)] md:text-[1.05rem]">
             Hosting nights, private sessions, or elevated celebrations? Splifft Events gives you a premium presentation without prep stress.
           </p>
-          <div className="premium-glow-frame relative mt-5 overflow-hidden rounded-3xl border border-white/20 bg-white/8 p-6 backdrop-blur-xl md:p-8">
-          <div className="absolute inset-0">
-            <ProductImage
-              src="/events-private-parties.jpg"
-              alt="Outdoor concert and crowd atmosphere for Splifft events"
-              fallbackLabel="splifft-lifestyle-session.png"
-              className="object-cover opacity-28"
-            />
-          </div>
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,7,11,0.22),rgba(7,7,11,0.8))]" />
-          <div className="relative z-10">
-          <h2 className="font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.9] text-[var(--splifft-cream)] md:text-6xl">
-            Stop Rolling.
-            <br />
-            Start Hosting.
-          </h2>
-          <p className="mt-3 max-w-2xl text-sm text-[var(--splifft-muted)]">
-            Splifft Events stays separate from Monthly Access pricing. Events are
-            custom-quote only.
-          </p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <SplifftButton href="/services/events" variant="secondary">
-              Request Event Quote →
-            </SplifftButton>
-          </div>
-          </div>
+          <div className="relative mt-6 overflow-hidden rounded-[22px] border border-white/14 bg-[#070912] px-5 py-7 shadow-[0_16px_38px_rgba(0,0,0,0.45)] md:px-9 md:py-9">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_83%_16%,rgba(196,70,255,0.38),transparent_30%),radial-gradient(circle_at_24%_56%,rgba(30,176,255,0.14),transparent_40%),linear-gradient(120deg,rgba(255,255,255,0.03),transparent_42%)]" />
+            <div className="relative grid gap-8 md:grid-cols-[0.95fr_1.25fr] md:gap-9">
+              <div>
+                <h2 className="font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.86] tracking-tight text-white md:text-7xl">
+                  Stop Rolling.
+                  <br />
+                  Start Hosting.
+                </h2>
+                <p className="mt-3 text-[1.3rem] font-bold uppercase tracking-wide text-[#bf68ff]">
+                  Premium presentation. Zero prep.
+                </p>
+                <p className="mt-4 max-w-md text-[1.09rem] leading-relaxed text-[var(--splifft-muted)]">
+                  Splifft Events delivers a curated, elevated experience so you can
+                  focus on your guests. We handle the joints - you handle the good
+                  times.
+                </p>
+                <SplifftButton href="/services/events" variant="primary" className="mt-8 min-w-[250px] bg-[#17c8ff] px-8 py-4 text-lg font-bold text-[#061123] hover:bg-[#45d4ff]">
+                  Request Event Quote →
+                </SplifftButton>
+              </div>
+
+              <div className="relative min-h-[230px] overflow-hidden rounded-2xl border border-white/10 bg-[#100a1f] md:min-h-[330px]">
+                <ProductImage
+                  src="/events-private-parties.jpg"
+                  alt="Purple event lighting background for Splifft events"
+                  fallbackLabel="splifft-events-bg.png"
+                  className="object-cover opacity-62"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,8,24,0.18),rgba(14,8,24,0.58))]" />
+                <div className="absolute inset-x-0 bottom-0 top-[42%] md:left-[2%] md:right-[-10%]">
+                  <ProductImage
+                    src="/joint.png"
+                    alt="Splifft joint hero for events section"
+                    fallbackLabel="splifft-events-joint.png"
+                    className="object-contain drop-shadow-[0_22px_22px_rgba(0,0,0,0.6)]"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="relative mt-7 grid gap-4 border-t border-white/12 pt-5 md:grid-cols-4 md:gap-0">
+              {[
+                {
+                  icon: "◈",
+                  title: "CURATED PACKS",
+                  body: "Premium joints in elevated packaging - ready to impress.",
+                },
+                {
+                  icon: "◍",
+                  title: "FLEXIBLE OPTIONS",
+                  body: "Small gatherings or large events - we scale with you.",
+                },
+                {
+                  icon: "◉",
+                  title: "DISCREET & RELIABLE",
+                  body: "On-time delivery, discreet service, always professional.",
+                },
+                {
+                  icon: "✦",
+                  title: "MADE TO STAND OUT",
+                  body: "Designed to elevate your event and leave a lasting impression.",
+                },
+              ].map((item) => (
+                <article key={item.title} className="px-0 md:px-4 md:border-l md:border-white/12 first:md:border-l-0">
+                  <div className="flex items-start gap-3">
+                    <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#bf68ff]/60 bg-[#bf68ff]/12 text-lg text-[#d38eff] shadow-[0_0_16px_rgba(191,104,255,0.35)]">
+                      {item.icon}
+                    </span>
+                    <div>
+                      <h3 className="text-[0.92rem] font-bold uppercase tracking-wide text-white">
+                        {item.title}
+                      </h3>
+                      <p className="mt-1 text-[1rem] leading-relaxed text-[var(--splifft-muted)]">
+                        {item.body}
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>

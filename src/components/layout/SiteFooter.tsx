@@ -5,7 +5,6 @@ import { SITE_URL } from "@/lib/site";
 const explore = [
   { href: "/", label: "Home" },
   { href: "/checkout?plan=monthly_access", label: "Monthly Access" },
-  { href: "/shop", label: "Browse Packs" },
   { href: "/cart", label: "Cart" },
 ] as const;
 
@@ -166,30 +165,24 @@ export function SiteFooter() {
               View Profile →
             </a>
           </div>
-          <div className="mt-4 grid grid-cols-3 gap-2 sm:gap-3">
-            {[
-              "/events-brand-rooftop.jpg",
-              "/events-private-parties.jpg",
-              "/events-weddings-milestones.jpg",
-            ].map((src) => (
-              <a
-                key={src}
-                href={instagramUrl}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Open Splifft Instagram profile"
-                className="group relative block aspect-square overflow-hidden rounded-xl border border-white/10"
-              >
-                <Image
-                  src={src}
-                  alt="Latest Splifft Instagram preview"
-                  fill
-                  className="object-cover transition duration-300 group-hover:scale-105"
-                  sizes="(max-width: 768px) 33vw, 180px"
-                />
-                <div className="absolute inset-0 bg-black/20 transition group-hover:bg-black/5" />
-              </a>
-            ))}
+          <div className="mt-4 overflow-hidden rounded-xl border border-white/10 bg-black/30">
+            <iframe
+              src="https://www.instagram.com/getsplifft/embed"
+              title="Splifft Instagram feed"
+              className="h-[420px] w-full"
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
+          </div>
+          <div className="mt-3 text-center">
+            <a
+              href={instagramUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="text-xs font-semibold text-[var(--splifft-pink)] hover:underline"
+            >
+              Open @getsplifft on Instagram
+            </a>
           </div>
         </div>
       </div>

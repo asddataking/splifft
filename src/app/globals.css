@@ -35,6 +35,41 @@ body {
   scroll-snap-stop: always;
 }
 
+.premium-tilt-card {
+  transition:
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 260ms ease;
+}
+
+.premium-glow-frame {
+  position: relative;
+}
+
+.premium-glow-frame::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(0, 191, 255, 0.22), transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(255, 45, 146, 0.2), transparent 48%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .premium-tilt-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 28px rgba(0, 0, 0, 0.34);
+  }
+
+  .premium-glow-frame:hover::before {
+    opacity: 1;
+  }
+}
+
 @media (min-width: 1024px) {
   .premium-page {
     scroll-snap-type: y proximity;
@@ -105,5 +140,18 @@ body {
 
   .premium-sticky-cta button {
     animation: none;
+  }
+
+  .premium-tilt-card {
+    transition: none;
+  }
+
+  .premium-tilt-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .premium-glow-frame::before {
+    transition: none;
   }
 }

@@ -8,6 +8,7 @@ import {
 type CheckoutRequest = {
   plan_slug?: string;
   quantity?: number;
+  drops?: string[];
 };
 
 export async function POST(request: Request) {
@@ -20,6 +21,9 @@ export async function POST(request: Request) {
 
   const planSlug = body.plan_slug;
   const quantity = Math.max(1, Math.min(99, Number(body.quantity ?? 1) || 1));
+  const drops = Array.isArray(body.drops)
+    ? body.drops.filter((drop): drop is string => typeof drop === "string")
+    : [];
   if (
     planSlug !== PLAN_SLUGS.monthlyAccess &&
     planSlug !== PLAN_SLUGS.oneTimePack
@@ -45,6 +49,7 @@ export async function POST(request: Request) {
     ok: true,
     mode,
     plan_slug: planSlug,
+    drops,
     line_items: [{ price: stripePriceId, quantity }],
   });
 }

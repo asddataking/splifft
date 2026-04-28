@@ -151,40 +151,6 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-6 rounded-2xl border border-white/10 bg-[linear-gradient(140deg,rgba(255,45,146,0.08),rgba(0,191,255,0.08))] p-4 sm:p-5">
-          <div className="flex items-center justify-between gap-3">
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-[var(--splifft-cream)]">
-              Latest On Instagram
-            </p>
-            <a
-              href={instagramUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="text-xs font-semibold text-[var(--splifft-pink)] hover:underline"
-            >
-              View Profile →
-            </a>
-          </div>
-          <div className="mt-4 overflow-hidden rounded-xl border border-white/10 bg-black/30">
-            <iframe
-              src="https://www.instagram.com/getsplifft/embed"
-              title="Splifft Instagram feed"
-              className="h-[420px] w-full"
-              loading="lazy"
-              referrerPolicy="strict-origin-when-cross-origin"
-            />
-          </div>
-          <div className="mt-3 text-center">
-            <a
-              href={instagramUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="text-xs font-semibold text-[var(--splifft-pink)] hover:underline"
-            >
-              Open @getsplifft on Instagram
-            </a>
-          </div>
-        </div>
       </div>
     </footer>
   );

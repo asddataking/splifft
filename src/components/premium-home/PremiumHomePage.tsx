@@ -147,67 +147,94 @@ export function PremiumHomePage() {
 
       <section
         id="what-you-get"
-        className="flex min-h-[86svh] snap-start items-start bg-[linear-gradient(180deg,#f6f2eb,#efe7db)] px-4 py-10 md:min-h-[82svh] md:py-10 lg:min-h-[80svh]"
+        className="flex min-h-[86svh] snap-start items-start bg-[linear-gradient(180deg,#f3eee5,#ebe4d8)] px-4 py-8 md:min-h-[82svh] md:py-10 lg:min-h-[80svh]"
       >
-        <div className="mx-auto w-full max-w-md md:max-w-7xl">
-          <div className="grid gap-6 md:grid-cols-[1.25fr_1fr] md:items-start">
-            <div>
-              <h2 className="font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.9] text-[#191622] md:text-6xl">
-                What You Get
-              </h2>
-              <p className="mt-3 max-w-3xl text-sm text-[#3b334a] md:text-base">
-                Clean premium details in every pack, made to feel consistent from first open to final session.
-              </p>
-              <div className="mt-6 grid grid-cols-2 gap-3 md:gap-4 lg:gap-5">
+        <div className="mx-auto w-full max-w-md rounded-[34px] bg-[#f6f1e8] px-4 py-8 shadow-[0_18px_35px_rgba(49,39,33,0.09)] md:max-w-7xl md:px-10 md:py-10 lg:px-14">
+          <div className="text-center">
+            <p className="text-[1.85rem] italic leading-none text-[#d2679e] md:text-[2.15rem]">
+              ~ Handcrafted ~
+            </p>
+            <h2 className="mt-2 font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.9] tracking-tight text-[#0d1020] md:text-7xl">
+              What You Get
+            </h2>
+            <p className="mx-auto mt-4 max-w-[36rem] text-base text-[#2e2b36] md:text-[1.35rem]">
+              Clean premium details in every pack,
+              <br className="hidden md:block" />
+              made to feel consistent from first open to final session.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-4 text-center md:grid-cols-3 md:gap-8">
             {[
-              "Glass tip",
-              "Branded Splifft band",
-              "Premium Midnight Smoking Paper",
-              "Premium 5-pack box",
+              {
+                title: "GLASS FILTER TIP",
+                body: "Premium glass tip for a smoother, cooler draw.",
+              },
+              {
+                title: "BRANDED SPLIFFT BAND",
+                body: "Signature Splifft band seals quality in every pack.",
+              },
+              {
+                title: "PREMIUM MIDNIGHT SMOKING PAPER",
+                body: "Ultra-thin, slow-burning paper for a smooth even burn.",
+              },
             ].map((item) => (
-              <div
-                key={item}
-                className="premium-tilt-card rounded-2xl border border-black/10 bg-white/80 p-4 shadow-[0_8px_24px_rgba(12,12,20,0.12)] md:p-5"
-              >
-                <p className="text-xs uppercase tracking-[0.16em] text-[#5d5768]">Included</p>
-                <p className="mt-2 text-sm font-semibold text-[#1d1a27] md:text-base">{item}</p>
+              <div key={item.title}>
+                <p className="text-[13px] font-extrabold uppercase tracking-[0.08em] text-[#151622]">
+                  {item.title}
+                </p>
+                <p className="mx-auto mt-2 max-w-[16rem] text-sm leading-relaxed text-[#2f2d35]">
+                  {item.body}
+                </p>
               </div>
             ))}
-              </div>
-            </div>
-            <div className="relative rounded-2xl border border-black/10 bg-white/50 p-4 md:mt-2 md:p-5">
-              <div className="relative h-32 overflow-hidden rounded-2xl border border-black/10 bg-white md:h-36">
-                <ProductImage
-                  src="/joint.png"
-                  alt="Splifft joint with glass filter on the left and premium smoking paper body on the right"
-                  fallbackLabel="splifft-single.png"
-                  className="object-contain px-4 py-3"
-                />
-              </div>
+          </div>
 
-              <div className="mt-3 grid grid-cols-2 gap-2">
-                <div className="rounded-xl border border-black/10 bg-white px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1d1a27]">
-                  1. Glass Filter Tip
-                </div>
-                <div className="rounded-xl border border-black/10 bg-white px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1d1a27]">
-                  2. Branded Splifft Band
-                </div>
-                <div className="col-span-2 rounded-xl border border-black/10 bg-white px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1d1a27]">
-                  3. Premium Midnight Smoking Paper
-                </div>
-              </div>
-
-              <div className="mt-3 relative h-40 overflow-hidden rounded-2xl border border-black/10 bg-white md:h-44">
-                <ProductImage
-                  src="/Splifft 2.png"
-                  alt="Premium Splifft 5-pack box"
-                  fallbackLabel="splifft-box-open.png"
-                />
-                <div className="absolute left-2 top-2 rounded-lg border border-black/10 bg-white/85 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.08em] text-[#1d1a27]">
-                  4. Premium 5-Pack Box
-                </div>
-              </div>
+          <div className="mt-5 rounded-[22px] bg-white/70 px-2 py-2 shadow-[0_8px_22px_rgba(22,18,24,0.08)] md:px-8 md:py-4">
+            <div className="relative mx-auto h-24 w-full max-w-5xl md:h-40">
+              <ProductImage
+                src="/joint.png"
+                alt="Splifft joint with glass filter on the left and premium smoking paper body on the right"
+                fallbackLabel="splifft-single.png"
+                className="object-contain"
+              />
             </div>
+          </div>
+
+          <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
+            {[
+              {
+                title: "PREMIUM MATERIALS",
+                body: "Top-shelf components chosen for quality, consistency, and taste.",
+                icon: "◇",
+              },
+              {
+                title: "HANDCRAFTED",
+                body: "Carefully packed by hand to ensure the perfect experience every time.",
+                icon: "♡",
+              },
+              {
+                title: "CONSISTENT QUALITY",
+                body: "From first open to final session. Always reliable.",
+                icon: "⌂",
+              },
+              {
+                title: "SMOOTH EXPERIENCE",
+                body: "Designed for a clean, even burn and a satisfying session.",
+                icon: "◌",
+              },
+            ].map((item) => (
+              <article
+                key={item.title}
+                className="rounded-2xl border border-black/10 bg-white/90 px-5 py-4 text-center shadow-[0_8px_18px_rgba(0,0,0,0.07)]"
+              >
+                <p className="text-lg font-semibold text-[#d2679e]">{item.icon}</p>
+                <h3 className="mt-1 text-[15px] font-extrabold uppercase tracking-[0.04em] text-[#171923]">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#2f2d35]">{item.body}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>

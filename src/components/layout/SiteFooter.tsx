@@ -17,6 +17,8 @@ const service = [
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
+  const instagramUrl = "https://www.instagram.com/getsplifft/";
+  const facebookUrl = "https://www.facebook.com/profile.php?id=61572115349869";
 
   return (
     <footer className="relative mt-auto overflow-hidden border-t-2 border-black bg-[#0a0a0c]">
@@ -125,28 +127,70 @@ export function SiteFooter() {
             Built for your smoke
           </p>
         </div>
-        <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-xs text-[var(--splifft-muted)]">
-          <span className="font-semibold text-[var(--splifft-cream)]/85">
-            Social
-          </span>
-          <span>/</span>
-          <a
-            href="https://www.instagram.com/getsplifft/"
-            target="_blank"
-            rel="noreferrer"
-            className="text-[var(--splifft-pink)] hover:underline"
-          >
-            @getsplifft
-          </a>
-          <span>/</span>
-          <a
-            href="https://www.facebook.com/profile.php?id=61572115349869"
-            target="_blank"
-            rel="noreferrer"
-            className="text-[var(--splifft-pink)] hover:underline"
-          >
-            Facebook
-          </a>
+
+        <div className="mt-8 rounded-2xl border border-white/10 bg-black/25 p-4 sm:p-5">
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-[var(--splifft-blue)]">
+            Social Breadcrumbs
+          </p>
+          <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
+            <a
+              href={instagramUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full border border-[var(--splifft-pink)]/45 px-3 py-1.5 font-semibold text-[var(--splifft-pink)] transition hover:bg-[var(--splifft-pink)]/12"
+            >
+              Instagram / @getsplifft
+            </a>
+            <a
+              href={facebookUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full border border-[var(--splifft-blue)]/45 px-3 py-1.5 font-semibold text-[var(--splifft-blue)] transition hover:bg-[var(--splifft-blue)]/12"
+            >
+              Facebook / Splifft
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-6 rounded-2xl border border-white/10 bg-[linear-gradient(140deg,rgba(255,45,146,0.08),rgba(0,191,255,0.08))] p-4 sm:p-5">
+          <div className="flex items-center justify-between gap-3">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-[var(--splifft-cream)]">
+              Latest On Instagram
+            </p>
+            <a
+              href={instagramUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="text-xs font-semibold text-[var(--splifft-pink)] hover:underline"
+            >
+              View Profile →
+            </a>
+          </div>
+          <div className="mt-4 grid grid-cols-3 gap-2 sm:gap-3">
+            {[
+              "/events-brand-rooftop.jpg",
+              "/events-private-parties.jpg",
+              "/events-weddings-milestones.jpg",
+            ].map((src) => (
+              <a
+                key={src}
+                href={instagramUrl}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Open Splifft Instagram profile"
+                className="group relative block aspect-square overflow-hidden rounded-xl border border-white/10"
+              >
+                <Image
+                  src={src}
+                  alt="Latest Splifft Instagram preview"
+                  fill
+                  className="object-cover transition duration-300 group-hover:scale-105"
+                  sizes="(max-width: 768px) 33vw, 180px"
+                />
+                <div className="absolute inset-0 bg-black/20 transition group-hover:bg-black/5" />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>

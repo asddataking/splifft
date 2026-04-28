@@ -93,7 +93,13 @@ export function CheckoutFlowClient() {
   const subtotal = basePrice + dropsTotal;
 
   const isLastStep = step === "payment";
-  const continueLabel = isLastStep ? "Finish" : "Continue";
+  const continueLabel = isLastStep
+    ? "Complete Purchase"
+    : step === "plan"
+      ? "Continue to Add-ons"
+      : step === "addons"
+        ? "Continue to Review"
+        : "Continue to Payment";
 
   const selectedDropData = dropOptions.filter((drop) =>
     selectedDrops.includes(drop.key),
@@ -167,6 +173,9 @@ export function CheckoutFlowClient() {
         </h1>
         <p className="mt-2 text-sm text-[var(--splifft-muted)] md:text-base">
           A clear guided flow that takes about 60 seconds.
+        </p>
+        <p className="mt-1 text-xs uppercase tracking-[0.14em] text-cyan-300">
+          Step {currentStepIndex + 1} of {checkoutSteps.length}
         </p>
 
         <div

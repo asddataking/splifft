@@ -109,6 +109,9 @@ export function PremiumHomePage() {
             <SplifftButton href="/checkout" variant="primary" className="w-full">
               Build My First Pack →
             </SplifftButton>
+            <p className="text-xs font-semibold uppercase tracking-[0.13em] text-[var(--splifft-muted)]">
+              ~60 sec checkout · Cancel anytime · Secure payment
+            </p>
           </div>
 
           <div className="mt-6 flex flex-wrap gap-2">
@@ -393,9 +396,6 @@ export function PremiumHomePage() {
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <SplifftButton href="/services/events" variant="secondary">
               Request Event Quote →
-            </SplifftButton>
-            <SplifftButton href="/checkout?plan=monthly_access" variant="ghost">
-              Get Monthly Access →
             </SplifftButton>
           </div>
           </div>

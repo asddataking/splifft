@@ -25,17 +25,17 @@ export function ShopPageClient({ corePacks, dankDrops }: Props) {
       <section className="border-b-2 border-black bg-[radial-gradient(circle_at_30%_-10%,rgba(255,45,146,0.25),transparent_50%),#0c0c10] py-14 sm:py-18">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--splifft-blue)]">
-            Monthly Access
+            Browse Packs
           </p>
           <h1 className="mt-2 font-[family-name:var(--font-display)] text-4xl uppercase text-[var(--splifft-cream)] sm:text-5xl">
             Shop Packs
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-[var(--splifft-muted)]">
-            Pick your 5-pack first. Then add optional extras at checkout.
+            Browse products here. Finalize your plan and optional add-ons in checkout.
           </p>
           <div className="mt-6 flex gap-3">
-            <SplifftButton href="/monthly-access" variant="primary">
-              Get Monthly Access
+            <SplifftButton href="/checkout" variant="primary">
+              Continue to Checkout
             </SplifftButton>
             <button
               type="button"
@@ -61,7 +61,7 @@ export function ShopPageClient({ corePacks, dankDrops }: Props) {
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
             {corePacks.map((p) => (
-              <ShopProductCard key={p.id} product={p} ctaLabel="Shop Pack" />
+              <ShopProductCard key={p.id} product={p} ctaLabel="View Pack" />
             ))}
           </div>
         </div>
@@ -83,7 +83,7 @@ export function ShopPageClient({ corePacks, dankDrops }: Props) {
               <ShopProductCard
                 key={p.id}
                 product={p}
-                ctaLabel="Add Box"
+                ctaLabel="View Add-On"
                 locked={!isMonthlyAccess}
               />
             ))}

@@ -6,9 +6,9 @@ import { usePathname } from "next/navigation";
 
 const nav = [
   { href: "/", label: "Home" },
-  { href: "/monthly-access", label: "Monthly Access" },
-  { href: "/shop", label: "Shop Packs" },
-  { href: "/cart", label: "Cart" },
+  { href: "/#how-it-works", label: "How It Works" },
+  { href: "/#pricing", label: "Pricing" },
+  { href: "/checkout", label: "Checkout" },
 ] as const;
 
 export function SiteHeader() {
@@ -21,8 +21,10 @@ export function SiteHeader() {
         : "text-[var(--splifft-cream)] hover:bg-white/5"
     }`;
 
-  const isActive = (href: string) =>
-    pathname === href || pathname.startsWith(`${href}/`);
+  const isActive = (href: string) => {
+    if (href.startsWith("/#")) return pathname === "/";
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b-2 border-black/40 bg-[var(--splifft-ink)]/95 backdrop-blur-md">
@@ -48,7 +50,11 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 aria-current={isActive(item.href) ? "page" : undefined}
-                className={linkClass(isActive(item.href))}
+                className={
+                  item.href === "/checkout"
+                    ? `rounded-lg px-3 py-2 text-sm font-semibold transition bg-[var(--splifft-pink)] text-black hover:brightness-110`
+                    : linkClass(isActive(item.href))
+                }
               >
                 {item.label}
               </Link>
@@ -87,7 +93,9 @@ export function SiteHeader() {
                 href={item.href}
                 aria-current={active ? "page" : undefined}
                 className={`rounded-lg px-3 py-2 text-xs font-semibold ${
-                  active
+                  item.href === "/checkout"
+                    ? "bg-[var(--splifft-pink)] text-black"
+                    : active
                     ? "bg-[var(--splifft-pink)] text-black"
                     : "text-[var(--splifft-cream)]/90"
                 }`}

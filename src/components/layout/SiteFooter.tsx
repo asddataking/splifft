@@ -4,8 +4,8 @@ import { SITE_URL } from "@/lib/site";
 
 const explore = [
   { href: "/", label: "Home" },
-  { href: "/monthly-access", label: "Monthly Access" },
-  { href: "/shop", label: "Shop Packs" },
+  { href: "/checkout?plan=monthly_access", label: "Monthly Access" },
+  { href: "/shop", label: "Browse Packs" },
   { href: "/cart", label: "Cart" },
 ] as const;
 

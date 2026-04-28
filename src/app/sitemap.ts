@@ -25,12 +25,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/locations`, lastModified, changeFrequency: "monthly", priority: 0.85 },
     { url: `${base}/monthly-access`, lastModified, changeFrequency: "monthly", priority: 0.8 },
     {
-      url: `${base}/our-team`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
       url: `${base}/blog/why-joints-burn-uneven-michigan`,
       lastModified,
       changeFrequency: "monthly",

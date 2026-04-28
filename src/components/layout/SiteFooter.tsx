@@ -13,7 +13,6 @@ const service = [
   { href: "/monthly-access", label: "Monthly Access" },
   { href: "/locations", label: "Locations & areas" },
   { href: "/services/events", label: "Event quotes" },
-  { href: "/our-team", label: "Our Team" },
 ] as const;
 
 export function SiteFooter() {

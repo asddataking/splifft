@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ProductImage } from "@/components/ui/ProductImage";
 import { SplifftButton } from "@/components/ui/SplifftButton";
 import { PLAN_PRICING_USD } from "@/lib/pricing";
@@ -44,6 +44,10 @@ function useSectionProgress() {
 
 export function PremiumHomePage() {
   const activeSection = useSectionProgress();
+  const { scrollYProgress } = useScroll();
+  const jointY = useTransform(scrollYProgress, [0, 1], [0, -220]);
+  const jointRotate = useTransform(scrollYProgress, [0, 1], [-18, 20]);
+  const jointScale = useTransform(scrollYProgress, [0, 1], [0.9, 1.08]);
 
   const trustPills = useMemo(
     () => [
@@ -57,6 +61,23 @@ export function PremiumHomePage() {
 
   return (
     <div className="premium-page relative">
+      <motion.div
+        aria-hidden
+        className={`pointer-events-none fixed right-2 top-[22%] z-30 hidden h-40 w-24 md:block ${
+          activeSection === "what-you-get" ? "opacity-0" : "opacity-85"
+        }`}
+        style={{ y: jointY, rotate: jointRotate, scale: jointScale }}
+      >
+        <div className="relative h-full w-full">
+          <ProductImage
+            src="/splifft-1.png"
+            alt="Decorative Splifft joint accent"
+            fallbackLabel="splifft-single.png"
+            className="mix-blend-multiply drop-shadow-[0_12px_18px_rgba(0,0,0,0.45)]"
+          />
+        </div>
+      </motion.div>
+
       <section
         id="hero"
         className="relative flex min-h-[100svh] snap-start flex-col justify-center overflow-hidden bg-[radial-gradient(circle_at_20%_15%,rgba(255,45,146,0.24),transparent_35%),radial-gradient(circle_at_80%_0%,rgba(0,191,255,0.24),transparent_45%),linear-gradient(180deg,#060608_0%,#0b0712_40%,#050507_100%)] px-4 pb-24 pt-16 md:pt-20"
@@ -349,7 +370,17 @@ export function PremiumHomePage() {
           <p className="max-w-2xl text-sm text-[var(--splifft-muted)] md:text-base">
             Hosting nights, private sessions, or elevated celebrations? Splifft Events gives you a premium presentation without prep stress.
           </p>
-          <div className="premium-glow-frame mt-5 rounded-3xl border border-white/20 bg-white/8 p-6 backdrop-blur-xl md:p-8">
+          <div className="premium-glow-frame relative mt-5 overflow-hidden rounded-3xl border border-white/20 bg-white/8 p-6 backdrop-blur-xl md:p-8">
+          <div className="absolute inset-0">
+            <ProductImage
+              src="/events-private-parties.jpg"
+              alt="Outdoor concert and crowd atmosphere for Splifft events"
+              fallbackLabel="splifft-lifestyle-session.png"
+              className="object-cover opacity-28"
+            />
+          </div>
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,7,11,0.22),rgba(7,7,11,0.8))]" />
+          <div className="relative z-10">
           <h2 className="font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.9] text-[var(--splifft-cream)] md:text-6xl">
             Stop Rolling.
             <br />
@@ -366,6 +397,7 @@ export function PremiumHomePage() {
             <SplifftButton href="/checkout?plan=monthly_access" variant="ghost">
               Get Monthly Access →
             </SplifftButton>
+          </div>
           </div>
           </div>
         </div>

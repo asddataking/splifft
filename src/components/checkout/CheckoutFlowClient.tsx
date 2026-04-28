@@ -166,16 +166,20 @@ export function CheckoutFlowClient() {
           Checkout
         </h1>
         <p className="mt-2 text-sm text-[var(--splifft-muted)] md:text-base">
-          A branded Splifft flow before secure payment.
+          A clear guided flow that takes about 60 seconds.
         </p>
 
-        <div className="mt-5 grid gap-2 rounded-2xl border border-white/10 bg-black/30 p-3 md:grid-cols-4">
+        <div
+          className="mt-5 grid gap-2 rounded-2xl border border-white/10 bg-black/30 p-3 md:grid-cols-4"
+          aria-label="Checkout progress"
+        >
           {checkoutSteps.map((checkoutStep, index) => {
             const isActive = checkoutStep.id === step;
             const isComplete = index < currentStepIndex;
             return (
               <div
                 key={checkoutStep.id}
+                aria-current={isActive ? "step" : undefined}
                 className={`rounded-xl px-3 py-2 text-xs uppercase tracking-[0.14em] ${
                   isActive
                     ? "bg-fuchsia-500/20 text-fuchsia-200"
@@ -197,10 +201,15 @@ export function CheckoutFlowClient() {
                 <h2 className="font-[family-name:var(--font-display)] text-3xl uppercase text-[var(--splifft-cream)]">
                   Choose Your Access
                 </h2>
-                <div className="mt-4 grid gap-3">
+                <div className="mt-3 text-sm text-[var(--splifft-muted)]">
+                  Start with Monthly Access, or choose a One-Time Pack.
+                </div>
+                <div className="mt-4 grid gap-3" role="radiogroup" aria-label="Choose access plan">
                   <button
                     type="button"
                     onClick={() => setPlan(PLAN_SLUGS.monthlyAccess)}
+                    role="radio"
+                    aria-checked={plan === PLAN_SLUGS.monthlyAccess}
                     className={`rounded-2xl border p-4 text-left transition ${
                       plan === PLAN_SLUGS.monthlyAccess
                         ? "border-fuchsia-300/70 bg-fuchsia-500/15 shadow-[0_0_24px_rgba(255,45,146,0.25)]"
@@ -216,6 +225,8 @@ export function CheckoutFlowClient() {
                   <button
                     type="button"
                     onClick={() => setPlan(PLAN_SLUGS.oneTimePack)}
+                    role="radio"
+                    aria-checked={plan === PLAN_SLUGS.oneTimePack}
                     className={`rounded-2xl border p-4 text-left transition ${
                       plan === PLAN_SLUGS.oneTimePack
                         ? "border-fuchsia-300/70 bg-fuchsia-500/15 shadow-[0_0_24px_rgba(255,45,146,0.25)]"
@@ -275,6 +286,8 @@ export function CheckoutFlowClient() {
                                 onClick={() => toggleDrop(drop.key)}
                                 variant={active ? "secondary" : "ghost"}
                                 className="min-h-[38px] px-3 py-1 text-sm"
+                                aria-pressed={active}
+                                aria-label={`${active ? "Remove" : "Add"} ${drop.name}`}
                               >
                                 {active ? "Remove" : "Add"}
                               </SplifftButton>

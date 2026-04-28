@@ -44,7 +44,12 @@ export function SiteHeader() {
           </Link>
           <nav className="flex flex-wrap items-center justify-center gap-1" aria-label="Primary">
             {nav.map((item) => (
-              <Link key={item.href} href={item.href} className={linkClass(isActive(item.href))}>
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={isActive(item.href) ? "page" : undefined}
+                className={linkClass(isActive(item.href))}
+              >
                 {item.label}
               </Link>
             ))}
@@ -80,6 +85,7 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
+                aria-current={active ? "page" : undefined}
                 className={`rounded-lg px-3 py-2 text-xs font-semibold ${
                   active
                     ? "bg-[var(--splifft-pink)] text-black"
